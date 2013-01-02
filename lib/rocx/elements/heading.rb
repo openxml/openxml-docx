@@ -6,7 +6,7 @@ module Rocx
     class Heading < XmlElement
       include LibXML
     
-      def initialize(text, level=1)
+      def initialize(text, level)
         @text = text
         @level = level
       end
