@@ -34,7 +34,7 @@ module Rocx
       paragraph(text, style: 'ListBullet')
     end
     
-    def heading(text, level)
+    def heading(text, level=1)
       @children << Heading.new(text, level)
     end
     
