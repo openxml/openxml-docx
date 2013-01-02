@@ -19,6 +19,7 @@ module Rocx
       @types << default("rels", "application/vnd.openxmlformats-package.relationships+xml")
       @types << default("jpeg", "image/jpeg")
       @types << override("/word/document.xml", "application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml")
+      @types << override("/word/numbering.xml", "application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml")
       @types << override("/word/styles.xml", "application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml")
       @types << override("/word/stylesWithEffects.xml", "application/vnd.ms-word.stylesWithEffects+xml")
       @types << override("/word/settings.xml", "application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml")
