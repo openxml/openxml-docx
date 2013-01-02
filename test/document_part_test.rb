@@ -6,11 +6,12 @@ class DocumentPartTest < ActiveSupport::TestCase
     document = Rocx::Document.new do
       body
     end
+    document.document.to_xml
     expected = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14">
   <w:body/>
-</document>
+</w:document>
     XML
     assert_equal expected, document.document.to_s
   end
@@ -24,18 +25,18 @@ class DocumentPartTest < ActiveSupport::TestCase
     document.document.to_xml
     expected = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14">
   <w:body>
     <w:p>
       <w:pPr>
-        <w:pStyle val="Heading1"/>
+        <w:pStyle w:val="Heading1"/>
       </w:pPr>
       <w:r>
         <w:t>Luke &amp; Gene &gt; everyone else</w:t>
       </w:r>
     </w:p>
   </w:body>
-</document>
+</w:document>
 XML
     assert_equal expected, document.document.to_s
   end
@@ -59,15 +60,15 @@ XML
     document.document.to_xml
     expected = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14">
   <w:body>
     <w:p>
       <w:r>
-        <w:br type="page"/>
+        <w:br w:type="page"/>
       </w:r>
     </w:p>
   </w:body>
-</document>
+</w:document>
     XML
     assert_equal expected, document.document.to_s
   end
@@ -81,12 +82,12 @@ XML
     document.document.to_xml
     expected = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14">
   <w:body>
     <w:p>
       <w:pPr>
-        <w:pStyle val="BodyText"/>
-        <w:jc val="left"/>
+        <w:pStyle w:val="BodyText"/>
+        <w:jc w:val="left"/>
       </w:pPr>
       <w:r>
         <w:rPr/>
@@ -94,7 +95,7 @@ XML
       </w:r>
     </w:p>
   </w:body>
-</document>
+</w:document>
     XML
     assert_equal expected, document.document.to_s
   end
@@ -108,12 +109,12 @@ XML
     document.document.to_xml
     expected = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14">
   <w:body>
     <w:p>
       <w:pPr>
-        <w:pStyle val="BodyText"/>
-        <w:jc val="left"/>
+        <w:pStyle w:val="BodyText"/>
+        <w:jc w:val="left"/>
       </w:pPr>
       <w:r>
         <w:rPr/>
@@ -132,13 +133,13 @@ XML
       </w:r>
       <w:r>
         <w:rPr>
-          <w:u val="single"/>
+          <w:u w:val="single"/>
         </w:rPr>
         <w:t>paragraph</w:t>
       </w:r>
     </w:p>
   </w:body>
-</document>
+</w:document>
     XML
     assert_equal expected, document.document.to_s
   end
@@ -155,50 +156,58 @@ XML
     document.document.to_xml
     expected = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14">
   <w:body>
     <w:p>
       <w:pPr>
-        <w:pStyle val="ListBullet"/>
-        <w:jc val="left"/>
+        <w:pStyle w:val="ListBullet"/>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="2"/>
+        </w:numPr>
       </w:pPr>
       <w:r>
-        <w:rPr/>
         <w:t>Bob</w:t>
       </w:r>
     </w:p>
     <w:p>
       <w:pPr>
-        <w:pStyle val="ListBullet"/>
-        <w:jc val="left"/>
+        <w:pStyle w:val="ListBullet"/>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="2"/>
+        </w:numPr>
       </w:pPr>
       <w:r>
-        <w:rPr/>
         <w:t>Luke</w:t>
       </w:r>
     </w:p>
     <w:p>
       <w:pPr>
-        <w:pStyle val="ListBullet"/>
-        <w:jc val="left"/>
+        <w:pStyle w:val="ListBullet"/>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="2"/>
+        </w:numPr>
       </w:pPr>
       <w:r>
-        <w:rPr/>
         <w:t>Jesse</w:t>
       </w:r>
     </w:p>
     <w:p>
       <w:pPr>
-        <w:pStyle val="ListBullet"/>
-        <w:jc val="left"/>
+        <w:pStyle w:val="ListBullet"/>
+        <w:numPr>
+          <w:ilvl w:val="0"/>
+          <w:numId w:val="2"/>
+        </w:numPr>
       </w:pPr>
       <w:r>
-        <w:rPr/>
         <w:t>And the rest</w:t>
       </w:r>
     </w:p>
   </w:body>
-</document>
+</w:document>
     XML
     assert_equal expected, document.document.to_s
   end
@@ -214,29 +223,30 @@ XML
         ]
       end
     end
+    document.document.to_xml
     expected = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 wp14">
   <w:body>
     <w:tbl>
       <w:tblPr>
-        <w:tblStyle val=""/>
-        <w:tblW w="100" type="pct"/>
-        <w:look val="0400"/>
+        <w:tblStyle w:val=""/>
+        <w:tblW w:w="100" w:type="pct"/>
+        <w:look w:val="0400"/>
       </w:tblPr>
       <w:tblGrid>
-        <w:gridCol w="50"/>
-        <w:gridCol w="50"/>
+        <w:gridCol w:w="50"/>
+        <w:gridCol w:w="50"/>
       </w:tblGrid>
       <w:tr>
         <w:tc>
           <w:tcPr>
-            <w:tcW w="0" type="auto"/>
+            <w:tcW w:w="0" w:type="auto"/>
           </w:tcPr>
           <w:p>
             <w:pPr>
-              <w:pStyle val="BodyText"/>
-              <w:jc val="left"/>
+              <w:pStyle w:val="BodyText"/>
+              <w:jc w:val="left"/>
             </w:pPr>
             <w:r>
               <w:rPr/>
@@ -246,12 +256,12 @@ XML
         </w:tc>
         <w:tc>
           <w:tcPr>
-            <w:tcW w="0" type="auto"/>
+            <w:tcW w:w="0" w:type="auto"/>
           </w:tcPr>
           <w:p>
             <w:pPr>
-              <w:pStyle val="BodyText"/>
-              <w:jc val="left"/>
+              <w:pStyle w:val="BodyText"/>
+              <w:jc w:val="left"/>
             </w:pPr>
             <w:r>
               <w:rPr/>
@@ -263,12 +273,12 @@ XML
       <w:tr>
         <w:tc>
           <w:tcPr>
-            <w:tcW w="0" type="auto"/>
+            <w:tcW w:w="0" w:type="auto"/>
           </w:tcPr>
           <w:p>
             <w:pPr>
-              <w:pStyle val="BodyText"/>
-              <w:jc val="left"/>
+              <w:pStyle w:val="BodyText"/>
+              <w:jc w:val="left"/>
             </w:pPr>
             <w:r>
               <w:rPr/>
@@ -278,12 +288,12 @@ XML
         </w:tc>
         <w:tc>
           <w:tcPr>
-            <w:tcW w="0" type="auto"/>
+            <w:tcW w:w="0" w:type="auto"/>
           </w:tcPr>
           <w:p>
             <w:pPr>
-              <w:pStyle val="BodyText"/>
-              <w:jc val="left"/>
+              <w:pStyle w:val="BodyText"/>
+              <w:jc w:val="left"/>
             </w:pPr>
             <w:r>
               <w:rPr/>
@@ -295,12 +305,12 @@ XML
       <w:tr>
         <w:tc>
           <w:tcPr>
-            <w:tcW w="0" type="auto"/>
+            <w:tcW w:w="0" w:type="auto"/>
           </w:tcPr>
           <w:p>
             <w:pPr>
-              <w:pStyle val="BodyText"/>
-              <w:jc val="left"/>
+              <w:pStyle w:val="BodyText"/>
+              <w:jc w:val="left"/>
             </w:pPr>
             <w:r>
               <w:rPr/>
@@ -310,12 +320,12 @@ XML
         </w:tc>
         <w:tc>
           <w:tcPr>
-            <w:tcW w="0" type="auto"/>
+            <w:tcW w:w="0" w:type="auto"/>
           </w:tcPr>
           <w:p>
             <w:pPr>
-              <w:pStyle val="BodyText"/>
-              <w:jc val="left"/>
+              <w:pStyle w:val="BodyText"/>
+              <w:jc w:val="left"/>
             </w:pPr>
             <w:r>
               <w:rPr/>
@@ -327,12 +337,12 @@ XML
       <w:tr>
         <w:tc>
           <w:tcPr>
-            <w:tcW w="0" type="auto"/>
+            <w:tcW w:w="0" w:type="auto"/>
           </w:tcPr>
           <w:p>
             <w:pPr>
-              <w:pStyle val="BodyText"/>
-              <w:jc val="left"/>
+              <w:pStyle w:val="BodyText"/>
+              <w:jc w:val="left"/>
             </w:pPr>
             <w:r>
               <w:rPr/>
@@ -342,12 +352,12 @@ XML
         </w:tc>
         <w:tc>
           <w:tcPr>
-            <w:tcW w="0" type="auto"/>
+            <w:tcW w:w="0" w:type="auto"/>
           </w:tcPr>
           <w:p>
             <w:pPr>
-              <w:pStyle val="BodyText"/>
-              <w:jc val="left"/>
+              <w:pStyle w:val="BodyText"/>
+              <w:jc w:val="left"/>
             </w:pPr>
             <w:r>
               <w:rPr/>
@@ -358,9 +368,8 @@ XML
       </w:tr>
     </w:tbl>
   </w:body>
-</document>
+</w:document>
     XML
-    document.document.to_xml
     assert_equal expected, document.document.to_s
   end
 end
