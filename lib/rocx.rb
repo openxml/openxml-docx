@@ -43,18 +43,20 @@ module Rocx
     def save(path)
       parts_to_write = [@core, @document, @app, @content_types, @web_settings, @relationships]
       
-      Zip::ZipFile.open(path, Zip::ZipFile::CREATE) do |zipfile|
+      Zip::ZipOutputStream.open(path) do |io|
         Dir.chdir(File.expand_path(File.dirname(__FILE__) + "/../data/template/"))
-        Dir.glob('**/*') { |a| zipfile.add(a, a) if File.file?(a) }
+        Dir.glob('**/*', File::FNM_DOTMATCH) do |file|
+          puts file if File.file?(file)
+          if File.file?(file)
+            io.put_next_entry file
+            io.write File.read(file)
+          end
+        end
         
         parts_to_write.each do |part|
           part.to_xml
-          temp = Tempfile.new('part')
-          temp.write part.to_s
-          temp.rewind
-          zipfile.add part.path, temp.path
-          temp.close
-          temp.unlink
+          io.put_next_entry part.path
+          io.write part.to_s
         end
       end
     end
