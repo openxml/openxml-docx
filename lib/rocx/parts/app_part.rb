@@ -20,7 +20,7 @@ module Rocx
         'Template' => "Normal.dotm",
         'TotalTime' => "6",
         'Pages' => "1", # !todo: find actual pages
-        'Words' => "", # !todo: find actual words
+        'Words' => "0", # !todo: find actual words
         'Characters' => "475", # !todo find actual characters
         'Application' => "Microsoft Word 14.0.0",
         'DocSecurity' => "0",
