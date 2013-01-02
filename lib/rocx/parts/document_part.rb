@@ -3,6 +3,7 @@ require 'rocx/elements/heading'
 require 'rocx/elements/page_break'
 require 'rocx/elements/paragraph'
 require 'rocx/elements/table'
+require 'rocx/elements/bullet'
 require 'xml_renderer'
 
 module Rocx
@@ -50,7 +51,7 @@ module Rocx
     end
     
     def bullet(text)
-      paragraph(text, style: 'ListBullet')
+      @children << Bullet.new(text)
     end
     
     def heading(text, level=1)
