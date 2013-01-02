@@ -11,7 +11,7 @@ class AppPartTest < ActiveSupport::TestCase
   <Template>Normal.dotm</Template>
   <TotalTime>6</TotalTime>
   <Pages>1</Pages>
-  <Words></Words>
+  <Words>0</Words>
   <Characters>475</Characters>
   <Application>Microsoft Word 14.0.0</Application>
   <DocSecurity>0</DocSecurity>
