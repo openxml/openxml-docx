@@ -28,9 +28,9 @@ document = Rocx::Document.new do
   features.each { |feature| bullet feature }
   
   table do
-    row "A1", "A2", "A3"
-    row "B1", "B2", "B3"
-    row "C1", "C2", "C3"
+    "A1", "A2", "A3"
+    "B1", "B2", "B3"
+    "C1", "C2", "C3"
   end
   
 end
