@@ -6,13 +6,14 @@ require 'rocx/version'
 Gem::Specification.new do |gem|
   gem.name          = "rocx"
   gem.version       = Rocx::VERSION
-  gem.authors       = ["Gene Doyel", "Jesse Lewis"]
-  gem.email         = ["gene.doyel@cph.org", "jesse.lewis@cph.org"]
+  gem.authors       = ["Gene Doyel"]
+  gem.email         = ["gene.doyel@cph.org"]
   gem.description   = %q{Words}
   gem.summary       = %q{Words}
   gem.homepage      = ""
   
-  gem.add_dependency "lib"
+  gem.add_dependency "libxml"
+  gem.add_dependency "rubyzip"
   
   gem.add_development_dependency "rails", "~> 3.2.8"
   gem.add_development_dependency "turn"
