@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Using a simple API, create docx files programmatically, including bullet points, titles, headings, page breaks and tables!}
   gem.homepage      = "https://github.com/southcitygene/rocx"
   
-  gem.add_dependency "libxml"
+  gem.add_dependency "libxml-ruby"
   gem.add_dependency "rubyzip"
   gem.add_dependency "active_support"
   
