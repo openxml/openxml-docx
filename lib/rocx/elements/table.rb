@@ -15,6 +15,7 @@ module Rocx
         @has_borders = options[:borders] || false
         @border_type = options[:border_type] || 'single'
         @border_color = options[:border_color] || 'auto'
+        @headings = options[:headings] || true
       end
       
       def to_xml(namespace)
@@ -50,16 +51,19 @@ module Rocx
           end
           table << grid
           
-          # !todo: add heading row
-          
           # contents
-          @contents.each do |content_row|
+          @contents.each_with_index do |content_row, i|
             row = make_element 'tr'
             content_row.each do |content_cell|
               cell = make_element 'tc'
               cell_properties = make_element 'tcPr'
               cell_width = make_element 'tcW', attributes: {'w' => '0', 'type' => 'auto'}
               cell_properties << cell_width
+              if @headings and i == 0
+                cell_style = make_element 'shd', attributes: {'val' => 'clear', 'color' => 'auto', 'fill' => 'FFFFFF', 'themeFill' => 'text2', 'themeFillTint' => '99'}
+                cell_properties << cell_style
+              end
+
               cell << cell_properties
             
               # paragraph (content)
