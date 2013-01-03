@@ -6,24 +6,28 @@ module Rocx
     class Heading < XmlElement
       include LibXML
     
-      def initialize(text, level)
+      def initialize(text, level=1)
         @text = text
         @level = level
+        super()
       end
 
       def to_xml(namespace)
-        node = make_element 'p', namespaces: namespace
+        with_namespace(namespace) do
+          node = make_element 'p'
       
-        pPr = make_element 'pPr', namespaces: namespace
-        pStyle = make_element 'pStyle', attributes: {'val' => "Heading#{@level}"}, namespaces: namespace
-        pPr << pStyle
+          pPr = make_element 'pPr'
+          pStyle = make_element 'pStyle', attributes: {'val' => "Heading#{@level}"}
+          pPr << pStyle
       
-        run = make_element 'r', namespaces: namespace
-        text = make_element 't', content: @text, namespaces: namespace
-        run << text
+          run = make_element 'r'
+          text = make_element 't', content: @text
+          run << text
       
-        node << pPr
-        node << run
+          node << pPr
+          node << run
+          node
+        end
       end
     
     end
