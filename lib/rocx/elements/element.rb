@@ -19,7 +19,8 @@ module Rocx
       end
       
       def make_element(tag_name, options={})
-        content = options[:content] || nil
+        content = options[:content]
+        content = content.encode(:xml => :text) unless content.nil?
         node = XML::Node.new(tag_name, content, self.namespace)
         attributes = options[:attributes] || nil
         add_attributes(node, attributes, self.namespace) unless attributes.nil?
