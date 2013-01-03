@@ -28,6 +28,8 @@ And, coming soon, images and more.
       bullet "And if you could have this in by Friday, that would be great."
     end
     
+    document.save("/path/where/it/should/be/saved.docx")
+    
 ## History
 
 ### 0.1.0
