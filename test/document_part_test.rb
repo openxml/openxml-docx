@@ -372,4 +372,27 @@ XML
     XML
     assert_equal expected, document.document.to_s
   end
+  
+  # test "bullet points with different styles" do
+  #   document = Rocx::Document.new do
+  #     body do
+  #       bullet "Color blob", style: 14
+  #     end
+  #   end
+  #   assert true
+  # end
+  # 
+  # test "bullet points with different indent levels" do
+  #   document = Rocx::Document.new do
+  #     body do
+  #       bullet "Red", level: 0
+  #       bullet "Green", level: 0
+  #       bullet "Yellow", level: 1
+  #       bullet "Black", level: 2
+  #       bullet "Orange", level: 0
+  #     end
+  #   end
+  #   document.save(File.expand_path("~/Desktop/bullet-bonanza.docx"))
+  #   assert true
+  # end
 end
