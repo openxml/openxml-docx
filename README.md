@@ -11,6 +11,20 @@ Rocx is a gem for creating .docx (Microsoft Word 2007) files. Using a simple API
   
 And, coming soon, images and more.
 
+## Installation
+
+Add to your Rails application in the Gemfile:
+
+    gem 'rocx'
+    
+And then run:
+
+    bundle install
+    
+Or install it yourself:
+
+    gem install rocx
+
 ## Examples
 
     document = Rocx::Document.new do
