@@ -1,9 +1,6 @@
 require 'libxml'
-require 'rocx/elements/heading'
-require 'rocx/elements/page_break'
-require 'rocx/elements/paragraph'
-require 'rocx/elements/table'
-require 'rocx/elements/bullet'
+require 'active_support'
+require 'rocx/elements'
 require 'xml_renderer'
 
 module Rocx
@@ -50,39 +47,24 @@ module Rocx
       xr.render_tree(self)
     end
     
-    def bullet(text)
-      @children << Bullet.new(text)
+    def respond_to_missing?(method_name, *args)
+      element_name = method_name.to_s.camelize
+      return true if Rocx::XmlElements.const_get(element_name)
+      super(method_name, *args)
     end
     
-    def heading(text, level=1)
-      @children << Heading.new(text, level)
-    end
-    
-    def page_break(options={})
-      @children << PageBreak.new(options)
-    end
-    
-    def paragraph(text, options={})
-      @children << Paragraph.new(text, options)
-    end
-    
-    def table(contents, options={})
-      @children << Table.new(contents, options)
+    def method_missing(method_name, *args, &block)
+      element_name = method_name.to_s.camelize
+      element = Rocx::XmlElements.const_get(element_name)
+      if element
+        @children << element.new(*args)
+      else
+        super
+      end
     end
     
     def to_s
       @document.to_s
-    end
-    
-    def export(file_name)
-      # coreprops = coreproperties(title='Python docx demo',subject='A practical example of making docx from Python',creator='Mike MacCana',keywords=['python','Office Open XML','Word'])
-      # appprops = appproperties()
-      # contenttypes = contenttypes()
-      # websettings = websettings()
-      # wordrelationships = wordrelationships(relationships)
-      # 
-      # # Save our document
-      # savedocx(document,coreprops,appprops,contenttypes,websettings,wordrelationrships,'Welcome to the Python docx module.docx')
     end
     
   end
