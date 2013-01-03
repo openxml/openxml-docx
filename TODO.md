@@ -6,7 +6,8 @@
     
   - Table
     - Add header row
-    - Add border option
+    - Enhance borders
+      - Add ability to choose which borders to show
     
   - Image
     - Do it
