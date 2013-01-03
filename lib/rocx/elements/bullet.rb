@@ -6,8 +6,10 @@ module Rocx
     class Bullet < XmlElement
       include LibXML
       
-      def initialize(text)
+      def initialize(text, options={})
         @bullet_text = text
+        @style = options[:style] || 2
+        @level = options[:level] || 0
         super()
       end
       
@@ -21,11 +23,11 @@ module Rocx
         
           num_properties = make_element 'numPr'
           # ilvl = indent level
-          ilvl = make_element 'ilvl', attributes: {'val' => "0"}
+          ilvl = make_element 'ilvl', attributes: {'val' => "#{@level}"}
           # numId = bullet type (bullet, oval, square, etc.)
           # 2 -> standard bullet
           # 3 -> number list
-          num_id = make_element 'numId', attributes: {'val' => "2"}
+          num_id = make_element 'numId', attributes: {'val' => "#{@style}"}
         
           num_properties << ilvl
           num_properties << num_id
