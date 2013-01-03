@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   
   gem.add_dependency "libxml-ruby"
   gem.add_dependency "rubyzip"
-  gem.add_dependency "active_support"
+  gem.add_dependency "activesupport"
   
   gem.add_development_dependency "rails", "~> 3.2.8"
   gem.add_development_dependency "turn"
