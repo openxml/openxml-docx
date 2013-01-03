@@ -5,7 +5,6 @@
     - Add font style options (bold..)
     
   - Table
-    - Add header row
     - Enhance borders
       - Add ability to choose which borders to show
     
