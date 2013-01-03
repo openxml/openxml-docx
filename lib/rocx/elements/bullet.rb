@@ -8,34 +8,37 @@ module Rocx
       
       def initialize(text)
         @bullet_text = text
+        super()
       end
       
       def to_xml(namespace)
-        node = make_element 'p', namespaces: namespace
+        with_namespace(namespace) do
+          node = make_element 'p'
         
-        properties = make_element 'pPr', namespaces: namespace
-        style = make_element 'pStyle', attributes: {'val' => 'ListBullet'}, namespaces: namespace
-        properties << style
+          properties = make_element 'pPr'
+          style = make_element 'pStyle', attributes: {'val' => 'ListBullet'}
+          properties << style
         
-        num_properties = make_element 'numPr', namespaces: namespace
-        # ilvl = indent level
-        ilvl = make_element 'ilvl', attributes: {'val' => "0"}, namespaces: namespace
-        # numId = bullet type (bullet, oval, square, etc.)
-        # 2 -> standard bullet
-        # 3 -> number list
-        num_id = make_element 'numId', attributes: {'val' => "2"}, namespaces: namespace
+          num_properties = make_element 'numPr'
+          # ilvl = indent level
+          ilvl = make_element 'ilvl', attributes: {'val' => "0"}
+          # numId = bullet type (bullet, oval, square, etc.)
+          # 2 -> standard bullet
+          # 3 -> number list
+          num_id = make_element 'numId', attributes: {'val' => "2"}
         
-        num_properties << ilvl
-        num_properties << num_id
-        properties << num_properties
+          num_properties << ilvl
+          num_properties << num_id
+          properties << num_properties
         
-        run = make_element 'r', namespaces: namespace
-        text = make_element 't', content: @bullet_text, namespaces: namespace
-        run << text
+          run = make_element 'r'
+          text = make_element 't', content: @bullet_text
+          run << text
         
-        node << properties
-        node << run
-        node
+          node << properties
+          node << run
+          node
+        end
       end
       
     end

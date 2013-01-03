@@ -15,27 +15,30 @@ module Rocx
       end
       
       def to_xml(namespace)
-        pg_break = make_element 'p', namespaces: namespace
+        with_namespace(namespace) do
+          pg_break = make_element 'p'
+      
+          case @type
+          when :page
+            run = make_element 'r'
+            br = make_element 'br', attributes: {'type' => @type.to_s}
         
-        case @type
-        when :page
-          run = make_element 'r', namespaces: namespace
-          br = make_element 'br', attributes: {'type' => @type.to_s}, namespaces: namespace
-          
-          run << br
-          pg_break << run
-        
-        when :section
-          pPr = make_element 'pPr', namespaces: namespace
-          sectPr = make_element 'sectPr', namespaces: namespace
+            run << br
+            pg_break << run
+      
+          when :section
+            pPr = make_element 'pPr'
+            sectPr = make_element 'sectPr'
 
-          attributes = {'w' => '12240', 'h' => '15840'}
-          attributes['orient'] = 'landscape' if orientation == :landscape
-          pgSz = make_element 'pgSz', attributes: attributes, namespaces: namespace
-          
-          sectPr << pgSz
-          pPr << sectPr
-          pg_break << pPr
+            attributes = {'w' => '12240', 'h' => '15840'}
+            attributes['orient'] = 'landscape' if orientation == :landscape
+            pgSz = make_element 'pgSz', attributes: attributes
+        
+            sectPr << pgSz
+            pPr << sectPr
+            pg_break << pPr
+          end
+          pg_break
         end
       end
       
