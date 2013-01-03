@@ -5,8 +5,10 @@ module Rocx
       @namespace = namespace
     end
     
+    attr_reader :namespace
+    
     def render_tree(element)
-      element.children.each { |child| element.body << child.to_xml(@namespace) }
+      element.children.each { |child| element.body << child.to_xml(namespace) }
     end
     
   end
