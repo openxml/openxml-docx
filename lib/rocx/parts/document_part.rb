@@ -10,30 +10,37 @@ module Rocx
     
     attr_reader :document, :namespace, :children, :body, :path
     
+    WORTHLESS_NAMESPACES = {
+      'wpc' => 'http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas',
+      'mo' => 'http://schemas.microsoft.com/office/mac/office/2008/main',
+      'mv' => 'urn:schemas-microsoft-com:mac:vml',
+      'o' => 'urn:schemas-microsoft-com:office:office',
+      'r' => 'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      'm' => 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+      'v' => 'urn:schemas-microsoft-com:vml',
+      'wp14' => 'http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing',
+      'wp' => 'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+      'w10' => 'urn:schemas-microsoft-com:office:word',
+      'w14' => 'http://schemas.microsoft.com/office/word/2010/wordml',
+      'wpg' => 'http://schemas.microsoft.com/office/word/2010/wordprocessingGroup',
+      'wpi' => 'http://schemas.microsoft.com/office/word/2010/wordprocessingInk',
+      'wne' => 'http://schemas.microsoft.com/office/word/2006/wordml',
+      'wps' => 'http://schemas.microsoft.com/office/word/2010/wordprocessingShape'
+    }
+    
     def initialize(&block)
       @path = 'word/document.xml'
       @document = XML::Document.new()
       @document.root = XML::Node.new('document')
+      WORTHLESS_NAMESPACES.each { |k, v| XML::Namespace.new(@document.root, k, v) }
+      
       @w_namespace = XML::Namespace.new(@document.root, 'w', "http://schemas.openxmlformats.org/wordprocessingml/2006/main")
       @document.root.namespaces.namespace = @w_namespace
-      XML::Namespace.new(@document.root, "wpc", "http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas")
-      XML::Namespace.new(@document.root, "mo", "http://schemas.microsoft.com/office/mac/office/2008/main")
+      
       @mc_namespace = XML::Namespace.new(@document.root, "mc", "http://schemas.openxmlformats.org/markup-compatibility/2006")
-      XML::Namespace.new(@document.root, "mv", "urn:schemas-microsoft-com:mac:vml")
-      XML::Namespace.new(@document.root, "o", "urn:schemas-microsoft-com:office:office")
-      XML::Namespace.new(@document.root, "r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships")
-      XML::Namespace.new(@document.root, "m", "http://schemas.openxmlformats.org/officeDocument/2006/math")
-      XML::Namespace.new(@document.root, "v", "urn:schemas-microsoft-com:vml")
-      XML::Namespace.new(@document.root, "wp14", "http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing")
-      XML::Namespace.new(@document.root, "wp", "http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing")
-      XML::Namespace.new(@document.root, "w10", "urn:schemas-microsoft-com:office:word")
-      XML::Namespace.new(@document.root, "w14", "http://schemas.microsoft.com/office/word/2010/wordml")
-      XML::Namespace.new(@document.root, "wpg", "http://schemas.microsoft.com/office/word/2010/wordprocessingGroup")
-      XML::Namespace.new(@document.root, "wpi", "http://schemas.microsoft.com/office/word/2010/wordprocessingInk")
-      XML::Namespace.new(@document.root, "wne", "http://schemas.microsoft.com/office/word/2006/wordml")
-      XML::Namespace.new(@document.root, "wps", "http://schemas.microsoft.com/office/word/2010/wordprocessingShape")
       ignorable = XML::Attr.new(@document.root, "Ignorable", "w14 wp14")
       ignorable.namespaces.namespace = @mc_namespace
+      
       @body = XML::Node.new('body', nil, @w_namespace)
       @document.root << @body
       
