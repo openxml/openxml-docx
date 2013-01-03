@@ -40,13 +40,16 @@ module Rocx
       @document = DocumentPart.new(&block)
     end
     
+    def template_files
+      Dir.chdir(File.expand_path(File.dirname(__FILE__) + "/../data/template/"))
+      Dir.glob('**/*', File::FNM_DOTMATCH)
+    end
+    
     def save(path)
       parts_to_write = [@core, @document, @app, @content_types, @web_settings, @relationships]
       
       Zip::ZipOutputStream.open(path) do |io|
-        Dir.chdir(File.expand_path(File.dirname(__FILE__) + "/../data/template/"))
-        Dir.glob('**/*', File::FNM_DOTMATCH) do |file|
-          puts file if File.file?(file)
+        template_files.each do |file|
           if File.file?(file)
             io.put_next_entry file
             io.write File.read(file)
