@@ -10,6 +10,9 @@
     
   - Image
     - Do it
+  
+  - Title
+    - Give it some style
     
   - App Part
     - Make counts work (?)
