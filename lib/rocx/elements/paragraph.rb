@@ -23,40 +23,44 @@ module Rocx
             text = []
             @paragraph_text.each do |p|
               if p.is_a?(Array)
-                text << [make_element('t', content: p[0]), p[1]]
+                content = p.shift
+                text << [make_element('t', content: content, attributes: {'xml:space' => 'preserve'}, attribute_namespace: :none), p]
               else
-                text << [make_element('t', content: p), '']
+                text << [make_element('t', content: p, attributes: {'xml:space' => 'preserve'}, attribute_namespace: :none), []]
               end
             end
           else
-            text = [[make_element('t', content: @paragraph_text), '']]
+            text = [[make_element('t', content: @paragraph_text), []]]
           end
-        
+          
           pPr = make_element 'pPr'
           pStyle = make_element 'pStyle', attributes: {'val' => @style}
           pPr << pStyle
-        
+          
           pJc = make_element 'jc', attributes: {'val' => @alignment.to_s}
           pPr << pJc
           node << pPr
-        
-          text.each do |t|
+          
+          text.each_with_index do |t, i|
             run = make_element 'r'
             rPr = make_element 'rPr'
-          
+            
+            content = t.shift
             # apply styles
-            rPr << make_element('b') if t[1] =~ /b/
-            rPr << make_element('u', attributes: {'val' => 'single'}) if t[1] =~ /u/
-            rPr << make_element('i') if t[1] =~ /i/
-          
+            rPr << make_element('b') if t[0].member?(:bold)
+            rPr << make_element('u', attributes: {'val' => 'single'}) if t[0].member?(:underline)
+            rPr << make_element('i') if t[0].member?(:italic)
+            rPr << make_element('vertAlign', attributes: {'val' => 'superscript'}) if t[0].member?(:super)
+            rPr << make_element('vertAlign', attributes: {'val' => 'subscript'}) if t[0].member?(:sub)
+            
             run << rPr
-          
+            
             if @break_before
               last_rendered_page_break = make_element 'lastRenderedPageBreak'
               run << last_rendered_page_break
             end
-          
-            run << t[0]
+            
+            run << content
             node << run
           end
           node

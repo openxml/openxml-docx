@@ -32,7 +32,7 @@ class ParagraphTest < ActiveSupport::TestCase
   test "a paragraph with special style should create a paragraph element in the document" do
     document = Rocx::Document.new do
       body do
-        paragraph ["This is a ", ["very", "ib"], " small ", ["paragraph", "u"]]
+        paragraph ["This is a ", ["very ", :bold, :italic], "small ", ["paragraph", :underline]]
       end
     end
     document.document.to_xml
@@ -47,24 +47,24 @@ class ParagraphTest < ActiveSupport::TestCase
       </w:pPr>
       <w:r>
         <w:rPr/>
-        <w:t>This is a </w:t>
+        <w:t xml:space="preserve">This is a </w:t>
       </w:r>
       <w:r>
         <w:rPr>
           <w:b/>
           <w:i/>
         </w:rPr>
-        <w:t>very</w:t>
+        <w:t xml:space="preserve">very </w:t>
       </w:r>
       <w:r>
         <w:rPr/>
-        <w:t> small </w:t>
+        <w:t xml:space="preserve">small </w:t>
       </w:r>
       <w:r>
         <w:rPr>
           <w:u w:val="single"/>
         </w:rPr>
-        <w:t>paragraph</w:t>
+        <w:t xml:space="preserve">paragraph</w:t>
       </w:r>
     </w:p>
   </w:body>
