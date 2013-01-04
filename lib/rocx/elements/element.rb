@@ -23,7 +23,12 @@ module Rocx
         content = content.encode(:xml => :text) unless content.nil?
         node = XML::Node.new(tag_name, content, self.namespace)
         attributes = options[:attributes] || nil
-        add_attributes(node, attributes, self.namespace) unless attributes.nil?
+        attribute_namespace = options[:attribute_namespace] || self.namespace
+        if attribute_namespace == :none
+          add_attributes(node, attributes, nil) unless attributes.nil?
+        else
+          add_attributes(node, attributes, attribute_namespace) unless attributes.nil?
+        end
         node
       end
       
