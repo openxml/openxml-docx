@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe Rocx::Document do
-  let(:document) {Rocx::Document.new}
-  let(:app_part) { File.read(File.join(File.dirname(__FILE__), "data", "app_part.xml")) }
-  let(:content_types_part) { File.read(File.join(File.dirname(__FILE__), "data", "content_types_part.xml")) }
-  let(:default_core_part) { File.read(File.join(File.dirname(__FILE__), "data", "core_part_default.xml")) }
-  let(:relationships_part) { File.read(File.join(File.dirname(__FILE__), "data", "relationships_part.xml")) }
-  let(:web_settings_part) { File.read(File.join(File.dirname(__FILE__), "data", "web_settings_part.xml")) }
+  let(:document) { Rocx::Document.new }
+  %w{app content_types default_core relationships web_settings}.each do |part|
+    let("#{part}_part".to_sym) { part_xml(part) }
+  end
   
   it "should create the app part XML" do
     document.app.to_xml
