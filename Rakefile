@@ -1,19 +1,7 @@
-$:.push File.expand_path("./lib")
-
-require "rubygems"
-require "rocx"
-require "rake"
 require "bundler/gem_tasks"
-require "rake/testtask"
+require "rspec/core/rake_task"
 
-task :install do
-  `gem build rocx.gemspec`
-  `sudo gem install rocx-#{Rocx::VERSION}.gem`
-end
+RSpec::Core::RakeTask.new
 
-Rake::TestTask.new(:test) do |t|
-  t.libs << "lib"
-  t.libs << "test"
-  t.pattern = "test/**/*_test.rb"
-  t.verbose = false
-end
+task default: :spec
+task test: :spec
