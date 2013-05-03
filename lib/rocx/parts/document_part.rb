@@ -1,5 +1,4 @@
 require 'libxml'
-require 'active_support'
 require 'rocx/elements'
 require 'xml_renderer'
 
@@ -8,7 +7,13 @@ module Rocx
     include XmlElements
     include LibXML
     
-    attr_reader :document, :namespace, :children, :body, :path
+    attr_reader :body,
+                :children,
+                :document,
+                :media,
+                :namespace,
+                :path,
+                :relationships
     
     WORTHLESS_NAMESPACES = {
       'wpc' => 'http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas',
@@ -28,10 +33,12 @@ module Rocx
       'wps' => 'http://schemas.microsoft.com/office/word/2010/wordprocessingShape'
     }
     
-    def initialize(&block)
+    def initialize(relationships, &block)
       @path = 'word/document.xml'
+      @relationships = relationships
       @document = XML::Document.new()
       @document.root = XML::Node.new('document')
+      @media = []
       WORTHLESS_NAMESPACES.each { |k, v| XML::Namespace.new(@document.root, k, v) }
       
       @w_namespace = XML::Namespace.new(@document.root, 'w', "http://schemas.openxmlformats.org/wordprocessingml/2006/main")
@@ -54,14 +61,23 @@ module Rocx
       xr.render_tree(self)
     end
     
+    def image(source, options={})
+      source = File.expand_path(source)
+      raise ArgumentError.new("The file you supplied doesn't exist.") unless File.file?(source)
+      new_image = Image.new(source, @relationships, options)
+      @children << new_image
+      @relationships = new_image.relationships
+      @media << source
+    end
+    
     def respond_to_missing?(method_name, *args)
-      element_name = method_name.to_s.camelize
+      element_name = method_name.to_s.split('_').map(&:capitalize).join
       return true if Rocx::XmlElements.const_get(element_name)
       super(method_name, *args)
     end
     
     def method_missing(method_name, *args, &block)
-      element_name = method_name.to_s.camelize
+      element_name = method_name.to_s.split('_').map(&:capitalize).join
       element = Rocx::XmlElements.const_get(element_name)
       if element
         @children << element.new(*args)
