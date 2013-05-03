@@ -25,7 +25,6 @@ module Rocx
         ['http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable','fontTable.xml'],
         ['http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme','theme/theme1.xml']
       ]
-      
       instance_eval &block if block_given?
       
       meta_data if @core.nil?
@@ -37,7 +36,8 @@ module Rocx
     end
     
     def body(&block)
-      @document = DocumentPart.new(&block)
+      @document = DocumentPart.new(@relationships, &block)
+      @relationships = @document.relationships
     end
     
     def template_files
@@ -54,6 +54,10 @@ module Rocx
             io.put_next_entry file
             io.write File.read(file)
           end
+        end
+        document.media.each do |image|
+          io.put_next_entry "word/media/#{File.basename(image)}"
+          io.write File.open(image, "rb") {|f| f.read}
         end
         
         parts_to_write.each do |part|
