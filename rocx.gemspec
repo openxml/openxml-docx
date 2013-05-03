@@ -14,14 +14,15 @@ Gem::Specification.new do |gem|
   
   gem.add_dependency "libxml-ruby"
   gem.add_dependency "rubyzip"
-  gem.add_dependency "activesupport"
+  gem.add_dependency "dimensions"
   
-  gem.add_development_dependency "rails", "~> 3.2.8"
-  gem.add_development_dependency "turn"
+  gem.add_development_dependency "rspec"
+  gem.add_development_dependency "rake"
   gem.add_development_dependency "pry"
+  gem.add_development_dependency "simplecov"
   
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.test_files    = Dir.glob('spec/**/*_spec.rb')
   gem.require_paths = ["lib"]
 end
