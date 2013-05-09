@@ -16,11 +16,12 @@ describe Rocx::Document do
     expect(document.content_types.to_s).to eq(content_types_part)
   end
   
-  # !TODO: make this file work! (timestamps)
-  # it "should create the default core part XML" do
-  #   document.core.to_xml
-  #   expect(document.core.to_s).to eq(default_core_part)
-  # end
+  it "should create the default core part XML" do
+    Timecop.freeze(Time.local(2011, 10, 1, 14, 30, 0)) do
+      document.core.to_xml
+      expect(document.core.to_s).to eq(default_core_part)
+    end
+  end
   
   # !TODO: tests for core (meta_data) options -> creator, last_modified_by
   
