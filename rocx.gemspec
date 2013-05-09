@@ -16,10 +16,11 @@ Gem::Specification.new do |gem|
   gem.add_dependency "rubyzip"
   gem.add_dependency "dimensions"
   
+  gem.add_development_dependency "pry"
   gem.add_development_dependency "rspec"
   gem.add_development_dependency "rake"
-  gem.add_development_dependency "pry"
   gem.add_development_dependency "simplecov"
+  gem.add_development_dependency "timecop"
   
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

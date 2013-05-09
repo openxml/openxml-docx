@@ -34,6 +34,7 @@ GEM
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.4.4)
+    timecop (0.5.7)
 
 PLATFORMS
   ruby
@@ -44,3 +45,4 @@ DEPENDENCIES
   rocx!
   rspec
   simplecov
+  timecop
