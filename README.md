@@ -1,4 +1,4 @@
-# Rocx
+# Rocx [![Code Climate](https://codeclimate.com/github/genebot/rocx.png)](https://codeclimate.com/github/genebot/rocx)
 
 Rocx is a gem for creating .docx (Microsoft Word 2007) files. Using a simple API, you can create Word documents with:
 
