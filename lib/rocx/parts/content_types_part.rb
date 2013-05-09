@@ -38,9 +38,9 @@ module Rocx
     
     def new_content_type(type, name, content_type)
       name_attr = type == :default ? "Extension" : "PartName"
-      node = XML::Node(type.to_s.capitalize)
+      node = XML::Node.new(type.to_s.capitalize)
       XML::Attr.new(node, name_attr, name)
-      XML::Attr.new(node, Content_Type, content_type)
+      XML::Attr.new(node, "ContentType", content_type)
       @types << node
     end
     
