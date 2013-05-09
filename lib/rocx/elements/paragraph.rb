@@ -9,7 +9,6 @@ module Rocx
       def initialize(text, options={})
         @paragraph_text = text
         @style = options[:style] || 'BodyText'
-        @break_before = options[:break_before] || false
         @alignment = options[:alignment] || :left
         super()
       end
@@ -18,7 +17,7 @@ module Rocx
         with_namespace(namespace) do
           node = make_element 'p'
         
-          # AHHHHHHHHHHH
+          # !Todo: This needs a better API
           if @paragraph_text.is_a?(Array)
             text = []
             @paragraph_text.each do |p|
@@ -33,32 +32,27 @@ module Rocx
             text = [[make_element('t', content: @paragraph_text), []]]
           end
           
-          pPr = make_element 'pPr'
-          pStyle = make_element 'pStyle', attributes: {'val' => @style}
-          pPr << pStyle
+          paragraph_properties = make_element 'pPr'
+          paragraph_style = make_element 'pStyle', attributes: {'val' => @style}
+          paragraph_properties << paragraph_style
           
-          pJc = make_element 'jc', attributes: {'val' => @alignment.to_s}
-          pPr << pJc
-          node << pPr
+          paragraph_justification = make_element 'jc', attributes: {'val' => @alignment.to_s}
+          paragraph_properties << paragraph_justification
+          node << paragraph_properties
           
           text.each_with_index do |t, i|
             run = make_element 'r'
-            rPr = make_element 'rPr'
+            run_properties = make_element 'rPr'
             
             content = t.shift
             # apply styles
-            rPr << make_element('b') if t[0].member?(:bold)
-            rPr << make_element('u', attributes: {'val' => 'single'}) if t[0].member?(:underline)
-            rPr << make_element('i') if t[0].member?(:italic)
-            rPr << make_element('vertAlign', attributes: {'val' => 'superscript'}) if t[0].member?(:super)
-            rPr << make_element('vertAlign', attributes: {'val' => 'subscript'}) if t[0].member?(:sub)
+            run_properties << make_element('b') if t[0].member?(:bold)
+            run_properties << make_element('u', attributes: {'val' => 'single'}) if t[0].member?(:underline)
+            run_properties << make_element('i') if t[0].member?(:italic)
+            run_properties << make_element('vertAlign', attributes: {'val' => 'superscript'}) if t[0].member?(:super)
+            run_properties << make_element('vertAlign', attributes: {'val' => 'subscript'}) if t[0].member?(:sub)
             
-            run << rPr
-            
-            if @break_before
-              last_rendered_page_break = make_element 'lastRenderedPageBreak'
-              run << last_rendered_page_break
-            end
+            run << run_properties
             
             run << content
             node << run

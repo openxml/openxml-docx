@@ -16,27 +16,22 @@ module Rocx
       def to_xml(namespace)
         with_namespace(namespace) do
           node = make_element 'p'
-        
+          
           properties = make_element 'pPr'
           style = make_element 'pStyle', attributes: {'val' => 'ListBullet'}
           properties << style
-        
+          
           num_properties = make_element 'numPr'
-          # ilvl = indent level
-          ilvl = make_element 'ilvl', attributes: {'val' => "#{@level}"}
-          # numId = bullet type (bullet, oval, square, etc.)
-          # 2 -> standard bullet
-          # 3 -> number list
-          num_id = make_element 'numId', attributes: {'val' => "#{@style}"}
-        
-          num_properties << ilvl
-          num_properties << num_id
+          indent_level = make_element 'ilvl', attributes: {'val' => "#{@level}"}
+          bullet_type = make_element 'numId', attributes: {'val' => "#{@style}"} # (standard bullet = 2, number = 3)
+          num_properties << indent_level
+          num_properties << bullet_type
           properties << num_properties
-        
+          
           run = make_element 'r'
           text = make_element 't', content: @bullet_text
           run << text
-        
+          
           node << properties
           node << run
           node

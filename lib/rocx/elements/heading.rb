@@ -16,15 +16,15 @@ module Rocx
         with_namespace(namespace) do
           node = make_element 'p'
       
-          pPr = make_element 'pPr'
-          pStyle = make_element 'pStyle', attributes: {'val' => "Heading#{@level}"}
-          pPr << pStyle
+          paragraph_properties = make_element 'pPr'
+          paragraph_style = make_element 'pStyle', attributes: {'val' => "Heading#{@level}"}
+          paragraph_properties << paragraph_style
       
           run = make_element 'r'
           text = make_element 't', content: @text
           run << text
       
-          node << pPr
+          node << paragraph_properties
           node << run
           node
         end

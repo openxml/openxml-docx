@@ -9,36 +9,38 @@ module Rocx
       def initialize(options={})
         @type = options[:type] || :page
         @orientation = options[:orientation] || :portrait
+        check_type!
+      end
+      
+      def check_type!
         valid_types = [:page, :section]
-        
         raise ArgumentError.new("Valid page break types are :page and :section, not #{@type.inspect}") unless valid_types.member?(@type)
       end
       
       def to_xml(namespace)
         with_namespace(namespace) do
-          pg_break = make_element 'p'
-      
+          page_break = make_element 'p'
+          
           case @type
           when :page
             run = make_element 'r'
             br = make_element 'br', attributes: {'type' => @type.to_s}
-        
+            
             run << br
-            pg_break << run
-      
+            page_break << run
           when :section
-            pPr = make_element 'pPr'
-            sectPr = make_element 'sectPr'
-
+            paragraph_properties = make_element 'pPr'
+            section_properties = make_element 'sectPr'
+            
             attributes = {'w' => '12240', 'h' => '15840'}
             attributes['orient'] = 'landscape' if orientation == :landscape
-            pgSz = make_element 'pgSz', attributes: attributes
-        
-            sectPr << pgSz
-            pPr << sectPr
-            pg_break << pPr
+            page_size = make_element 'pgSz', attributes: attributes
+            
+            section_properties << page_size
+            paragraph_properties << section_properties
+            page_break << paragraph_properties
           end
-          pg_break
+          page_break
         end
       end
       
