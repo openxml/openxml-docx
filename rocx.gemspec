@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["gene.doyel@cph.org"]
   gem.description   = %q{Create Microsoft Word (.docx) files.}
   gem.summary       = %q{Using a simple API, create docx files programmatically, including bullet points, titles, headings, page breaks and tables!}
-  gem.homepage      = "https://github.com/southcitygene/rocx"
+  gem.homepage      = "https://github.com/genebot/rocx"
   
   gem.add_dependency "libxml-ruby"
   gem.add_dependency "rubyzip"
