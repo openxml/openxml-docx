@@ -5,6 +5,7 @@ require 'rocx/parts/app_part'
 require 'rocx/parts/content_types_part'
 require 'rocx/parts/web_settings_part'
 require 'rocx/parts/relationships_part'
+require 'rocx/core_ext/fixnum'
 
 module Rocx
   class Document

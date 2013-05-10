@@ -61,15 +61,6 @@ module Rocx
       xr.render_tree(self)
     end
     
-    def image(source, options={})
-      source = File.expand_path(source)
-      raise ArgumentError.new("The file you supplied doesn't exist.") unless File.file?(source)
-      new_image = Image.new(source, @relationships, options)
-      @children << new_image
-      @relationships = new_image.relationships
-      @media << source
-    end
-    
     def respond_to_missing?(method_name, *args)
       element_name = method_name.to_s.split('_').map(&:capitalize).join
       return true if Rocx::XmlElements.const_get(element_name)
