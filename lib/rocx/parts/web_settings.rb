@@ -3,13 +3,13 @@ module Rocx
     class WebSettings < BasePart
 
       def to_xml
-        XML::Builder.new(encoding: "UTF-8") do |xml|
+        build_xml do |xml|
           xml.webSettings(root_namespaces) {
             xml.parent.namespace = xml.parent.namespace_definitions.find { |ns| ns.prefix == 'w' }
             xml['w'].allowPNG
             xml['w'].doNotSaveAsSingleFile
           }
-        end.to_xml
+        end
       end
 
     private
