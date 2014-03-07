@@ -24,38 +24,6 @@ And then run:
 Or install it yourself:
 
     gem install rocx
-
-## Examples
-
-    document = Rocx::Document.new do
-      title "TPS Report Cover Sheet"
-      table [
-        ["Prepared by", ""]
-        ["Date", ""]
-        ["Product Code", ""]
-        ["Customer", ""]
-        ["Vendor", ""]
-      ]
-      page_break
-      heading "Comments"
-      paragraph [["Comments", "b"], "should be", ["descriptive:", "u"]]
-      bullet "And if you could have this in by Friday, that would be great."
-    end
-    
-    document.save("/path/where/it/should/be/saved.docx")
-    
-## History
-
-### 0.1.0
-
- - Initial release
- - Support for:
-   - Paragraphs
-   - Titles
-   - Headings
-   - Page breaks
-   - Bullet points
-   - Tables
    
 ## Contribute!
 
