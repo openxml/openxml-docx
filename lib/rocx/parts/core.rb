@@ -40,6 +40,8 @@ module Rocx
         end.to_xml
       end
 
+    private
+
       def root_namespaces
         { "xmlns:cp" => "http://schemas.openxmlformats.org/package/2006/metadata/core-properties",
           "xmlns:dc" => "http://purl.org/dc/elements/1.1/",
