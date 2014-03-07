@@ -8,6 +8,10 @@ class PackageTest < Test::Unit::TestCase
       @package = Rocx::Package.new
     end
 
+    should "create the content types part" do
+      assert_is_a Rocx::Parts::ContentTypes, package.content_types
+    end
+
     should "create the core part" do
       assert_is_a Rocx::Parts::Core, package.core
     end
