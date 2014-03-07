@@ -9,7 +9,7 @@ class PackageTest < Test::Unit::TestCase
     end
 
     should "create the core part" do
-      assert package.core.is_a? Rocx::Parts::Core
+      assert_is_a Rocx::Parts::Core, package.core
     end
   end
 
