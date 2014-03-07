@@ -8,13 +8,13 @@ module Rocx
       end
 
       def to_xml
-        XML::Builder.new(encoding: "UTF-8") do |xml|
+        build_xml do |xml|
           xml.Relationships(xmlns: "http://schemas.openxmlformats.org/package/2006/relationships") {
             relationship_attributes.each do |rel|
               xml.Relationship(rel)
             end
           }
-        end.to_xml
+        end
       end
 
     private
