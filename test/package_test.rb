@@ -12,6 +12,10 @@ class PackageTest < Test::Unit::TestCase
       assert_is_a Rocx::Parts::Core, package.core
     end
 
+    should "create the _rels part" do
+      assert_is_a Rocx::Parts::Rels, package.rels
+    end
+
     should "create the web settings part" do
       assert_is_a Rocx::Parts::WebSettings, package.web_settings
     end
