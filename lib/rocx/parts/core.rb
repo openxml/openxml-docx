@@ -1,7 +1,6 @@
 module Rocx
   module Parts
     class Core < BasePart
-
       attr_accessor :title,
                     :subject,
                     :creator,
