@@ -1,6 +1,5 @@
 module Rocx
   class Package
-
     attr_reader :content_types,
                 :core,
                 :document,
