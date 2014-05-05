@@ -1,10 +1,10 @@
-require 'rocx'
-require 'test/unit'
-require 'shoulda-context'
-require 'pry'
-require 'timecop'
-require 'turn'
-require 'simplecov'
+require "rocx"
+require "test/unit"
+require "shoulda-context"
+require "pry"
+require "timecop"
+require "turn"
+require "simplecov"
 SimpleCov.start
 
 def part_xml(part)
