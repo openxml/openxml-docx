@@ -16,5 +16,16 @@ module Rocx
       @styles = Rocx::Parts::Styles.new
     end
 
+    def save(path)
+      package = OpenXmlPackage.new
+      package.add_part "_rels/.rels", global_rels
+      package.add_part "[Content_Types].xml", content_types
+      package.add_part "word/_rels/document.xml.rels", rels
+      package.add_part "word/document.xml", document
+      package.add_part "word/settings.xml", settings
+      package.add_part "word/styles.xml", styles
+      package.write_to path
+    end
+
   end
 end

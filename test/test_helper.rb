@@ -1,5 +1,7 @@
 require "rocx"
+require "open_xml_package"
 require "test/unit"
+require "rr"
 require "shoulda-context"
 require "pry"
 require "timecop"
