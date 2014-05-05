@@ -2,7 +2,7 @@ module Rocx
   module Parts
     class GlobalRels < BasePart
 
-      def to_xml
+      def read
         xml = build_xml do |xml|
           xml.Relationships(xmlns: "http://schemas.openxmlformats.org/package/2006/relationships") {
             xml.Relationship(document_relation_attributes)
