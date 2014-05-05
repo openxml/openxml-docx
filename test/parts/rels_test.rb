@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class RelsTest < Test::Unit::TestCase
   attr_reader :rels

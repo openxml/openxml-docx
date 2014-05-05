@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class DocumentTest < Test::Unit::TestCase
   attr_reader :document

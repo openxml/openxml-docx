@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class PackageTest < Test::Unit::TestCase
   attr_reader :package
@@ -22,6 +22,10 @@ class PackageTest < Test::Unit::TestCase
 
     should "create the settings part" do
       assert_is_a Rocx::Parts::Settings, package.settings
+    end
+
+    should "create the styles part" do
+      assert_is_a Rocx::Parts::Styles, package.styles
     end
 
   end
