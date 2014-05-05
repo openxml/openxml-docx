@@ -7,7 +7,7 @@ module Rocx
         @settings = []
       end
 
-      def to_xml
+      def read
         xml = build_standalone_xml do |xml|
           xml.settings("xmlns:w" => "http://schemas.openxmlformats.org/wordprocessingml/2006/main") {
             xml.parent.namespace = xml.parent.namespace_definitions.find { |ns| ns.prefix == "w" }

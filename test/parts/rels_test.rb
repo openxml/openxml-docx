@@ -41,7 +41,7 @@ class RelsTest < Test::Unit::TestCase
   context "transforming to XML" do
     should "output the correct XML" do
       @rels = Rocx::Parts::Rels.new
-      assert_equal part_xml('rels').strip, rels.to_xml
+      assert_equal part_xml('rels').strip, rels.read
     end
   end
 

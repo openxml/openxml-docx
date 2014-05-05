@@ -6,7 +6,7 @@ class SettingsTest < Test::Unit::TestCase
   context "transforming to XML" do
     should "output the correct XML" do
       @settings = Rocx::Parts::Settings.new
-      assert_equal part_xml('settings').strip, settings.to_xml
+      assert_equal part_xml('settings').strip, settings.read
     end
   end
 
