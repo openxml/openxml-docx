@@ -31,7 +31,18 @@ class PackageTest < Test::Unit::TestCase
     should "create the styles part" do
       assert_is_a Rocx::Parts::Styles, package.styles
     end
+  end
 
+  context "when saving a package, it" do
+    setup do
+      @package = Rocx::Package.new
+    end
+
+    should "write to a OpenXmlPackage" do
+      path = "some_file.docx"
+      mock.instance_of(OpenXmlPackage).write_to(path)
+      package.save(path)
+    end
   end
 
 end
