@@ -14,6 +14,10 @@ module Rocx
         XML::Builder.with(xml) { |xml| yield xml }.to_xml
       end
 
+      def read
+        raise NotImplementedError
+      end
+
     protected
 
       def strip_whitespace(xml)

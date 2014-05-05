@@ -6,7 +6,7 @@ class DocumentTest < Test::Unit::TestCase
   context "transforming to XML" do
     should "output the correct XML" do
       @document = Rocx::Parts::Document.new
-      assert_equal part_xml('empty_document'), document.to_xml
+      assert_equal part_xml('empty_document'), document.read
     end
   end
 

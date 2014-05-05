@@ -6,7 +6,7 @@ class StylesTest < Test::Unit::TestCase
   context "transforming to XML" do
     should "output the correct XML" do
       @styles = Rocx::Parts::Styles.new
-      assert_equal part_xml('styles').strip, styles.to_xml
+      assert_equal part_xml('styles').strip, styles.read
     end
   end
 

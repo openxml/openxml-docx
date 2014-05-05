@@ -31,7 +31,7 @@ class ContentTypesTest < Test::Unit::TestCase
   context "transforming to XML" do
     should "output the correct XML" do
       @content_types = Rocx::Parts::ContentTypes.new
-      assert_equal part_xml('content_types').strip, content_types.to_xml
+      assert_equal part_xml('content_types').strip, content_types.read
     end
   end
 end
