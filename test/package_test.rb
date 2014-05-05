@@ -12,10 +12,6 @@ class PackageTest < Test::Unit::TestCase
       assert_is_a Rocx::Parts::ContentTypes, package.content_types
     end
 
-    should "create the core part" do
-      assert_is_a Rocx::Parts::Core, package.core
-    end
-
     should "create the document part" do
       assert_is_a Rocx::Parts::Document, package.document
     end
