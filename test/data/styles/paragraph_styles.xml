@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<styleFoo xmlns:w="http://wnamespace.com">
+  <w:style w:styleId="coolStyle" w:type="paragraph">
+    <w:name w:val="coolStyle"/>
+    <w:pPr>
+      <w:ind w:firstLine="0" w:left="0" w:right="0"/>
+      <w:jc w:val="left"/>
+    </w:pPr>
+    <w:rPr/>
+  </w:style>
+</styleFoo>
