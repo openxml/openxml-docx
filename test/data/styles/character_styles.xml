@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<styleFoo xmlns:w="http://wnamespace.com">
+  <w:style w:styleId="anotherCoolStyle" w:type="character">
+    <w:name w:val="anotherCoolStyle"/>
+    <w:pPr/>
+    <w:rPr>
+      <w:rFonts w:ascii="Times New Roman" w:cs="Times New Roman" w:hAnsi="Times New Roman"/>
+      <w:color w:val="FF0000"/>
+      <w:sz w:val="20"/>
+      <w:b w:val="0"/>
+      <w:i w:val="0"/>
+      <w:u w:val="none"/>
+    </w:rPr>
+  </w:style>
+</styleFoo>

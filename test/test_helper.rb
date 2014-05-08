@@ -13,6 +13,14 @@ def part_xml(part)
   File.read(File.join(File.dirname(__FILE__), "data", "parts", "#{part}_part.xml"))
 end
 
+def style_xml(part)
+  File.read(File.join(File.dirname(__FILE__), "data", "styles", "#{part}_styles.xml"))
+end
+
+def element_xml(part)
+  File.read(File.join(File.dirname(__FILE__), "data", "elements", "#{part}_element.xml"))
+end
+
 def assert_is_a(klass, instance)
   assert instance.is_a?(klass), "Expected #{instance} to be a #{klass}"
 end

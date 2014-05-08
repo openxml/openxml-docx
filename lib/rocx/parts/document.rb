@@ -1,14 +1,26 @@
 module Rocx
   module Parts
     class Document < BasePart
+      attr_reader :children
+
+      def initialize
+        @children = []
+      end
+
+      def <<(child)
+        children << child
+      end
 
       def read
-        build_xml do |xml|
+        xml = build_xml do |xml|
           xml.document(root_namespaces) {
             xml.parent.namespace = xml.parent.namespace_definitions.find { |ns| ns.prefix == 'w' }
-            xml['w'].body
+            xml['w'].body {
+              children.each { |child| child.to_xml(xml) }
+            }
           }
         end
+        strip_whitespace(xml)
       end
 
     private
