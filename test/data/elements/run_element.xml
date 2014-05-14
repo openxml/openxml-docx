@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<fakeDocument xmlns:w="http://wnamespace.com">
+  <w:r>
+    <w:rPr>
+      <w:i w:val="0"/>
+      <w:b w:val="0"/>
+    </w:rPr>
+    <w:t/>
+  </w:r>
+</fakeDocument>
