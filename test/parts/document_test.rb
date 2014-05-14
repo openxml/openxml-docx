@@ -7,8 +7,12 @@ class DocumentTest < Test::Unit::TestCase
     setup do
       @document = Rocx::Parts::Document.new
       paragraph = Rocx::Elements::Paragraph.new
-      paragraph << Rocx::Elements::Run.new("This is just a test run.")
-      paragraph << Rocx::Elements::Run.new("But this isn't!")
+      first_run = Rocx::Elements::Run.new
+      first_run << Rocx::Elements::Text.new("This is just a test run.")
+      paragraph << first_run
+      second_run = Rocx::Elements::Run.new
+      second_run << Rocx::Elements::Text.new("But this isn't!")
+      paragraph << second_run
       document << paragraph
     end
 
