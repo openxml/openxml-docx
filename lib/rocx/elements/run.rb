@@ -3,9 +3,17 @@ module Rocx
     class Run
       attr_reader :text, :properties
 
-      def initialize(text)
+      def initialize(text, properties={})
         @text = text
-        @properties = []
+        @properties = properties
+      end
+
+      def [](reference)
+        properties[reference]
+      end
+
+      def []=(reference, value)
+        properties[reference] = value
       end
 
       def to_xml(xml)
