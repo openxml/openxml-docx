@@ -8,7 +8,7 @@ module Rocx
           @tag_name
         end
 
-        def attribute(name, limit_to: nil, xml_name: nil)
+        def attribute(name, limit_to: nil, xml_name: nil, regex: nil)
           attr_reader name
 
           if limit_to
@@ -25,6 +25,17 @@ module Rocx
               raise ArgumentError, "Invalid #{name}; must be one of #{valid_values}" unless send("valid_#{name}?", value)
               instance_variable_set("@#{name}", value)
             end
+          elsif regex
+            define_method "valid_#{name}?" do |value|
+              !!(regex =~ value)
+            end
+
+            define_method "#{name}=" do |value|
+              raise ArgumentError, "Invalid #{name}; must match #{regex.inspect}" unless send("valid_#{name}?", value)
+              instance_variable_set("@#{name}", value)
+            end
+          else
+            attr_writer name
           end
 
           attributes[name] = xml_name || name
