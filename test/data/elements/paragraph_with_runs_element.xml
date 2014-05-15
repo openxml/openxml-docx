@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<fakeDocument xmlns:w="http://wnamespace.com">
+<root xmlns:w="http://wnamespace.org">
   <w:p>
     <w:pPr>
-      <w:jc w:val="center"/>
+      <w:ind w:start="720" w:end="-1440"/>
     </w:pPr>
     <w:r>
       <w:t>Hey Run 1</w:t>
@@ -11,4 +11,4 @@
       <w:t>Hey Run 2</w:t>
     </w:r>
   </w:p>
-</fakeDocument>
+</root>

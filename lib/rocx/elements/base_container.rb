@@ -36,8 +36,8 @@ module Rocx
 
       def to_xml(xml)
         (namespace ? xml[namespace] : xml).public_send(tag_name, xml_attributes) {
-          children.each { |child| child.to_xml(xml) }
           property_xml(xml)
+          children.each { |child| child.to_xml(xml) }
         }
       end
 

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<fakeDocument xmlns:w="http://wnamespace.com">
+<root xmlns:w="http://wnamespace.org">
   <w:p>
     <w:pPr>
       <w:jc w:val="center"/>
     </w:pPr>
   </w:p>
-</fakeDocument>
+</root>

@@ -3,75 +3,35 @@ require "test_helper"
 class ParagraphTest < Test::Unit::TestCase
   attr_reader :paragraph
 
-  context "when creating a new paragraph, it" do
-    should "accept some properties" do
-      @paragraph = Rocx::Elements::Paragraph.new("w:jc" => {"w:val" => "center"})
-      expected_value = {"w:val" => "center"}
-      assert_equal expected_value, paragraph["w:jc"], "Expected the property to be set on the paragraph when initialized with it"
-    end
-  end
-
-  context "after creation, it" do
+  context "with runs, it" do
     setup do
-      @paragraph = Rocx::Elements::Paragraph.new("w:jc" => {"w:val" => "center"})
+      @paragraph = Rocx::Elements::Paragraph.new
+      paragraph.indentation = {start: 720, end: -1440}
+      run = Rocx::Elements::Run.new
+      run << Rocx::Elements::Text.new("Hey Run 1")
+      paragraph << run
+      run = Rocx::Elements::Run.new
+      run << Rocx::Elements::Text.new("Hey Run 2")
+      paragraph << run
     end
 
-    should "be able to have additional properties set" do
-      paragraph["w:ind"] = {"w:firstLine" => 0, "w:left" => 0, "w:right" => 0}
-      assert_equal 2, paragraph.properties.length, "Expected the paragraph's properties to be added"
+    should "generate the proper XML" do
+      paragraph_xml = build_xml { |xml| paragraph.to_xml(xml) }
+      assert_equal element_xml("paragraph_with_runs"), paragraph_xml
     end
   end
 
-  should "be able to add a run" do
-    @paragraph = Rocx::Elements::Paragraph.new
-    run = Rocx::Elements::Run.new
-    run << Rocx::Elements::Text.new("Blah blah blah")
-    paragraph << run
-    assert_equal 1, paragraph.children.length, "Expected the run to be added to the paragraph's list of runs"
-  end
-
-  context "when there are no runs" do
+  context "without runs, it" do
     setup do
-      @paragraph = Rocx::Elements::Paragraph.new("w:jc" => {"w:val" => "center"})
+      @paragraph = Rocx::Elements::Paragraph.new
+      paragraph.alignment = :center
     end
 
-    should "return the proper XML" do
-      paragraph_xml = build_xml do |xml|
-        paragraph.to_xml(xml)
-      end
+    should "also generate the proper XML" do
+      paragraph_xml = build_xml { |xml| paragraph.to_xml(xml) }
 
-      assert_equal element_xml("paragraph"), paragraph_xml, "Expected the generated XML to match expectations"
+      assert_equal element_xml("paragraph"), paragraph_xml
     end
-  end
-
-  context "where there are runs" do
-    setup do
-      @paragraph = Rocx::Elements::Paragraph.new("w:jc" => {"w:val" => "center"})
-      first_run = Rocx::Elements::Run.new
-      first_run << Rocx::Elements::Text.new("Hey Run 1")
-      paragraph << first_run
-      second_run = Rocx::Elements::Run.new
-      second_run << Rocx::Elements::Text.new("Hey Run 2")
-      paragraph << second_run
-    end
-
-    should "return the proper XML" do
-      paragraph_xml = build_xml do |xml|
-        paragraph.to_xml(xml)
-      end
-
-      assert_equal element_xml("paragraph_with_runs"), paragraph_xml, "Expected the generated XML to match expectations"
-    end
-  end
-
-private
-
-  def build_xml
-    Nokogiri::XML::Builder.new do |xml|
-      xml.fakeDocument("xmlns:w" => "http://wnamespace.com") {
-        yield xml
-      }
-    end.to_xml
   end
 
 end
