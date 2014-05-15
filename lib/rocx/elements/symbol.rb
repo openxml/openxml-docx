@@ -1,6 +1,6 @@
 module Rocx
   module Elements
-    class Symbol < Element
+    class Symbol < BaseElement
       tag_name :sym
       namespace :w
       attribute :font, xml_name: "w:font"

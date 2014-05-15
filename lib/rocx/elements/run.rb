@@ -1,16 +1,11 @@
 module Rocx
   module Elements
-    class Run < Property
-
-    private
-
-      def tag
-        :r
-      end
-
-      def property_tag
-        :rPr
-      end
+    class Run < BaseContainer
+      tag_name :r
+      namespace :w
+      properties_tag :rPr
+      property :italics
+      property :bold
 
     end
   end

@@ -1,6 +1,6 @@
 module Rocx
   module Elements
-    class Element
+    class BaseElement
       class << self
 
         def tag_name(*args)

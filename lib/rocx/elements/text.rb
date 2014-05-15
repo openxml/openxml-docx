@@ -1,6 +1,6 @@
 module Rocx
   module Elements
-    class Text < Element
+    class Text < BaseElement
       attr_reader :text
 
       tag_name :t

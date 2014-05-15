@@ -1,6 +1,6 @@
 module Rocx
   module Elements
-    class Break < Element
+    class Break < BaseElement
       tag_name :br
       namespace :w
       attribute :break_type, xml_name: "w:type", limit_to: [nil, :column, :page, :textWrapping]
