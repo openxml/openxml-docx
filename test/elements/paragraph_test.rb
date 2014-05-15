@@ -24,9 +24,10 @@ class ParagraphTest < Test::Unit::TestCase
 
   should "be able to add a run" do
     @paragraph = Rocx::Elements::Paragraph.new
-    run = Rocx::Elements::Run.new("Blah blah blah")
+    run = Rocx::Elements::Run.new
+    run << Rocx::Elements::Text.new("Blah blah blah")
     paragraph << run
-    assert_equal 1, paragraph.runs.length, "Expected the run to be added to the paragraph's list of runs"
+    assert_equal 1, paragraph.children.length, "Expected the run to be added to the paragraph's list of runs"
   end
 
   context "when there are no runs" do
@@ -46,8 +47,12 @@ class ParagraphTest < Test::Unit::TestCase
   context "where there are runs" do
     setup do
       @paragraph = Rocx::Elements::Paragraph.new("w:jc" => {"w:val" => "center"})
-      paragraph << Rocx::Elements::Run.new("Hey Run 1")
-      paragraph << Rocx::Elements::Run.new("Hey Run 2")
+      first_run = Rocx::Elements::Run.new
+      first_run << Rocx::Elements::Text.new("Hey Run 1")
+      paragraph << first_run
+      second_run = Rocx::Elements::Run.new
+      second_run << Rocx::Elements::Text.new("Hey Run 2")
+      paragraph << second_run
     end
 
     should "return the proper XML" do

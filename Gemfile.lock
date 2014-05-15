@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rocx (0.4.0)
+    rocx (0.5.5)
       nokogiri
       open_xml_package
 

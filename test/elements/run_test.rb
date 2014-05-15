@@ -5,7 +5,7 @@ class RunTest < Test::Unit::TestCase
 
   context "when creating a new run, it" do
     should "accept some properties" do
-      @run_node = Rocx::Elements::Run.new("Some text", "w:i" => {"w:val" => 0})
+      @run_node = Rocx::Elements::Run.new("w:i" => {"w:val" => 0})
       expected_value = {"w:val" => 0}
       assert_equal expected_value, run_node["w:i"], "Expected the property to be set on the run when initialized with it"
     end
@@ -13,7 +13,7 @@ class RunTest < Test::Unit::TestCase
 
   context "after creation, it" do
     setup do
-      @run_node = Rocx::Elements::Run.new("", "w:i" => {"w:val" => 0})
+      @run_node = Rocx::Elements::Run.new("w:i" => {"w:val" => 0})
     end
 
     should "be able to have additional properties set" do
@@ -23,6 +23,7 @@ class RunTest < Test::Unit::TestCase
 
     should "return the proper XML" do
       run_node["w:b"] = {"w:val" => 0}
+      run_node << Rocx::Elements::Text.new("")
       run_xml = build_xml do |xml|
         run_node.to_xml(xml)
       end
