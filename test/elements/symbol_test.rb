@@ -16,7 +16,7 @@ class SymbolTest < Test::Unit::TestCase
 
   should "output the right XML" do
     @symbol = Rocx::Elements::Symbol.new(char: "43fd", font: "Wingdings")
-    xml = Nokogiri::XML::Builder.new { |xml| symbol.to_xml(xml) }.to_xml
+    xml = build_xml { |xml| symbol.to_xml(xml) }
     assert_equal element_xml("symbol"), xml
   end
 

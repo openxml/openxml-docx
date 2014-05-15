@@ -8,6 +8,11 @@ module Rocx
           @tag_name
         end
 
+        def namespace(*args)
+          @namespace = args.first if args.any?
+          @namespace
+        end
+
         def attribute(name, limit_to: nil, xml_name: nil, regex: nil)
           attr_reader name
 
@@ -53,7 +58,11 @@ module Rocx
       end
 
       def to_xml(xml)
-        xml.public_send tag_name, xml_attributes
+        if namespace
+          xml[namespace].public_send tag_name, xml_attributes
+        else
+          xml.public_send tag_name, xml_attributes
+        end
       end
 
     protected
@@ -71,6 +80,10 @@ module Rocx
 
       def tag_name
         self.class.tag_name
+      end
+
+      def namespace
+        self.class.namespace
       end
 
     end

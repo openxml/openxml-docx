@@ -1,2 +1,4 @@
 <?xml version="1.0"?>
-<br w:type="page" w:clear="left"/>
+<root xmlns:w="http://wnamespace.org">
+  <w:br w:type="page" w:clear="left"/>
+</root>

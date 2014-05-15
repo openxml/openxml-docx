@@ -1,25 +1,19 @@
 module Rocx
   module Elements
-    class Text < Property
+    class Text < Element
       attr_reader :text
 
-      def initialize(text, properties={})
-        super properties
-        @text = text
-      end
+      tag_name :t
+      namespace :w
+      attribute :space, xml_name: "xml:space", limit_to: [nil, :preserve]
 
-      def <<(string)
-        text << string
+      def initialize(text, **args)
+        @text = text
+        super args
       end
 
       def to_xml(xml)
-        xml["w"].send tag, text, properties
-      end
-
-    private
-
-      def tag
-        :t
+        xml[namespace].public_send tag_name, text, xml_attributes
       end
 
     end

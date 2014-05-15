@@ -1,2 +1,4 @@
 <?xml version="1.0"?>
-<br/>
+<root xmlns:w="http://wnamespace.org">
+  <w:br/>
+</root>

@@ -3,41 +3,24 @@ require "test_helper"
 class TextTest < Test::Unit::TestCase
   attr_reader :text
 
-  context "when creating a new run, it" do
-    should "accept some properties" do
-      @text = Rocx::Elements::Text.new("Banana", "xml:space" => "preserve")
-      expected_value = "preserve"
-      assert_equal expected_value, text["xml:space"], "Expected the property to be set on the text when initialized with it"
+  should "require space to be :preserve or nil" do
+    assert_nothing_raised do
+      @text = Rocx::Elements::Text.new("Banana", space: :preserve)
+    end
+
+    assert_nothing_raised do
+      @text = Rocx::Elements::Text.new("Banana")
+    end
+
+    assert_raises ArgumentError do
+      @text = Rocx::Elements::Text.new("Banana", space: :the_final_frontier)
     end
   end
 
-  context "after creation, it" do
-    setup do
-      @text = Rocx::Elements::Text.new("Smucker's Preserves")
-    end
-
-    should "be able to have additional properties set" do
-      text["xml:space"] = "preserve"
-      assert_equal 1, text.properties.length, "Expected the text's new property to be successfully added"
-    end
-
-    should "return the proper XML" do
-      text["xml:space"] = "preserve"
-      text_xml = build_xml do |xml|
-        text.to_xml(xml)
-      end
-      assert_equal element_xml("text"), text_xml
-    end
-  end
-
-private
-
-  def build_xml
-    Nokogiri::XML::Builder.new do |xml|
-      xml.fakeDocument("xmlns:w" => "http://wnamespace.com") {
-        yield xml
-      }
-    end.to_xml
+  should "generate the proper XML" do
+    @text = Rocx::Elements::Text.new("Banana", space: :preserve)
+    text_xml = build_xml { |xml| text.to_xml(xml) }
+    assert_equal element_xml("text"), text_xml
   end
 
 end

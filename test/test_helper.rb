@@ -24,3 +24,11 @@ end
 def assert_is_a(klass, instance)
   assert instance.is_a?(klass), "Expected #{instance} to be a #{klass}"
 end
+
+def build_xml
+  Nokogiri::XML::Builder.new do |xml|
+    xml.root("xmlns:w" => "http://wnamespace.org") {
+      yield xml
+    }
+  end.to_xml
+end

@@ -51,10 +51,4 @@ class BreakTest < Test::Unit::TestCase
     end
   end
 
-private
-
-  def build_xml
-    Nokogiri::XML::Builder.new { |xml| yield xml }.to_xml
-  end
-
 end
