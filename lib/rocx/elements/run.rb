@@ -1,6 +1,6 @@
 module Rocx
   module Elements
-    class Run < Element
+    class Run < Property
 
     private
 

@@ -1,6 +1,6 @@
 module Rocx
   module Elements
-    class Paragraph < Element
+    class Paragraph < Property
 
     private
 

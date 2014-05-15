@@ -1,6 +1,6 @@
 module Rocx
   module Elements
-    class Text < Element
+    class Text < Property
       attr_reader :text
 
       def initialize(text, properties={})

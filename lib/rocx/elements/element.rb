@@ -1,51 +1,76 @@
 module Rocx
   module Elements
     class Element
-      attr_reader :properties, :children
+      class << self
 
-      def initialize(properties={})
-        @properties = properties
-        @children = []
+        def tag_name(*args)
+          @tag_name = args.first if args.any?
+          @tag_name
+        end
+
+        def attribute(name, limit_to: nil, xml_name: nil, regex: nil)
+          attr_reader name
+
+          if limit_to
+            define_method "valid_#{name}" do
+              limit_to
+            end
+
+            define_method "valid_#{name}?" do |value|
+              send("valid_#{name}").member? value
+            end
+
+            define_method "#{name}=" do |value|
+              valid_values = send("valid_#{name}").join(", ")
+              raise ArgumentError, "Invalid #{name}; must be one of #{valid_values}" unless send("valid_#{name}?", value)
+              instance_variable_set("@#{name}", value)
+            end
+          elsif regex
+            define_method "valid_#{name}?" do |value|
+              !!(regex =~ value)
+            end
+
+            define_method "#{name}=" do |value|
+              raise ArgumentError, "Invalid #{name}; must match #{regex.inspect}" unless send("valid_#{name}?", value)
+              instance_variable_set("@#{name}", value)
+            end
+          else
+            attr_writer name
+          end
+
+          attributes[name] = xml_name || name
+        end
+
+        def attributes
+          @attributes ||= {}
+        end
       end
 
-      def <<(child)
-        children << child
-      end
-
-      def [](reference)
-        properties[reference]
-      end
-
-      def []=(reference, value)
-        properties[reference] = value
+      def initialize(**args)
+        args.each do |property, value|
+          self.send("#{property}=", value)
+        end
       end
 
       def to_xml(xml)
-        xml["w"].public_send(tag) {
-          property_xml(xml)
-          children.each { |child| child.to_xml(xml) }
-        }
+        xml.public_send tag_name, xml_attributes
       end
 
     protected
 
-      def property_xml(xml)
-        return unless properties.length > 0
-        xml["w"].public_send(property_tag) {
-          properties.each do |property, value|
-            xml.send(property, value)
-          end
-        }
+      def xml_attributes
+        attributes.each_with_object({}) do |(attribute, name), props|
+          value = send(attribute)
+          props[name] = value unless value.nil?
+        end
       end
 
-    private
-
-      def tag
-        raise NotImplementedError
+      def attributes
+        self.class.attributes
       end
 
-      def property_tag
-        raise NotImplementedError
+      def tag_name
+        self.class.tag_name
       end
 
     end
