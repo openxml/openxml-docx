@@ -11,6 +11,10 @@ module Rocx
       property :keep_lines
       property :keep_next
       property :mirror_indent
+      property :page_break_before
+      property :supress_auto_hyphens
+      property :supress_line_numbers
+      property :supress_overlap
 
     end
   end
