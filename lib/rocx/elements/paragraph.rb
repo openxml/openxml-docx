@@ -10,6 +10,7 @@ module Rocx
       property :auto_space_de
       property :auto_space_dn
       property :bidi
+      property :conditional_formatting
       property :contextual_spacing
       property :keep_lines
       property :keep_next
@@ -21,7 +22,6 @@ module Rocx
       property :supress_auto_hyphens
       property :supress_line_numbers
       property :supress_overlap
-
     end
   end
 end
