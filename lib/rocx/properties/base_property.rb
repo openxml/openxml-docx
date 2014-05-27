@@ -3,19 +3,17 @@ module Rocx
     class BaseProperty
       attr_reader :value
 
-      OK_VALUES = [nil, true, false]
-
       def initialize(value)
         @value = value
         raise ArgumentError, invalid_message unless valid?
       end
 
       def valid?
-        OK_VALUES.member? value
+        ok_values.member? value
       end
 
       def invalid_message
-        "Invalid value for #{name}; acceptable values are #{OK_VALUES.join(", ")}"
+        "Invalid value for #{name}; acceptable values are #{ok_values.join(", ")}"
       end
 
       def name
