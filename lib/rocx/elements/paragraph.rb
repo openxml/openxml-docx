@@ -7,6 +7,7 @@ module Rocx
       property :alignment
       property :indentation
       property :bidi
+      property :contextual_spacing
 
     end
   end
