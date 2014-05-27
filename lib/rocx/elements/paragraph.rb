@@ -12,6 +12,7 @@ module Rocx
       property :bidi
       property :conditional_formatting
       property :contextual_spacing
+      property :div_id
       property :keep_lines
       property :keep_next
       property :indentation
