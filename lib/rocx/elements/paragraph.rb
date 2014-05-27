@@ -10,6 +10,7 @@ module Rocx
       property :contextual_spacing
       property :keep_lines
       property :keep_next
+      property :mirror_indent
 
     end
   end
