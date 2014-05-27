@@ -6,6 +6,7 @@ module Rocx
       properties_tag :pPr
       property :alignment
       property :indentation
+      property :auto_adjust_right_indent
       property :bidi
       property :contextual_spacing
       property :keep_lines
