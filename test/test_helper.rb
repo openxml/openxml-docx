@@ -32,3 +32,24 @@ def build_xml
     }
   end.to_xml
 end
+
+require "test_helper"
+
+class PropertyTest < Test::Unit::TestCase
+
+private
+
+  def xml(obj)
+    doc = Nokogiri::XML::Builder.new do |xml|
+      xml.root("xmlns:w" => "http://wnamespace.org") {
+        obj.to_xml(xml)
+      }
+    end.to_xml
+    doc_pattern =~ doc ? $1 : ""
+  end
+
+  def doc_pattern
+    /<\?xml\sversion="1.0"\?>\n<root xmlns:w="http:\/\/wnamespace.org">\n\s+([^\s].+)\n<\/root>/
+  end
+
+end

@@ -6,6 +6,7 @@ module Rocx
       properties_tag :pPr
       property :alignment
       property :indentation
+      property :bidi
 
     end
   end

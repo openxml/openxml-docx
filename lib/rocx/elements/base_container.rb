@@ -13,7 +13,8 @@ module Rocx
           attr_reader name
 
           define_method "#{name}=" do |value|
-            prop_class = Rocx::Properties.const_get name.capitalize
+            class_name = name.to_s.split("_").map(&:capitalize).join
+            prop_class = Rocx::Properties.const_get class_name
             instance_variable_set "@#{name}", prop_class.new(value)
           end
 
