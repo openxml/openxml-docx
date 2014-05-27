@@ -24,6 +24,7 @@ module Rocx
       property :supress_auto_hyphens
       property :supress_line_numbers
       property :supress_overlap
+      property :widow_control
     end
   end
 end
