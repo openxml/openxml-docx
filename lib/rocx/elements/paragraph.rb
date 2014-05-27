@@ -9,6 +9,7 @@ module Rocx
       property :bidi
       property :contextual_spacing
       property :keep_lines
+      property :keep_next
 
     end
   end
