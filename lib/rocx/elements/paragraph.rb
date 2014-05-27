@@ -15,6 +15,7 @@ module Rocx
       property :keep_next
       property :indentation
       property :mirror_indent
+      property :outline_level
       property :overflow_punctuation
       property :page_break_before
       property :supress_auto_hyphens
