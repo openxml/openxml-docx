@@ -25,6 +25,7 @@ module Rocx
       property :supress_line_numbers
       property :supress_overlap
       property :widow_control
+      property :word_wrap
     end
   end
 end
