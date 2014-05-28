@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Create Microsoft Word (.docx) files.}
   gem.summary       = %q{Using a simple API, create docx files programmatically, including bullet points, titles, headings, page breaks and tables!}
   gem.homepage      = "https://github.com/genebot/rocx"
+  gem.required_ruby_version = "~> 2.0"
 
   gem.add_dependency "nokogiri"
   gem.add_dependency "open_xml_package"
