@@ -22,6 +22,7 @@ module Rocx
       property :overflow_punctuation
       property :page_break_before
       property :snap_to_grid
+      property :style
       property :supress_auto_hyphens
       property :supress_line_numbers
       property :supress_overlap
