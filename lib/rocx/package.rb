@@ -1,3 +1,5 @@
+require "open_xml_package"
+
 module Rocx
   class Package
     attr_reader :content_types,
