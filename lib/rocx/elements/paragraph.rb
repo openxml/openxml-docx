@@ -25,6 +25,7 @@ module Rocx
       property :supress_auto_hyphens
       property :supress_line_numbers
       property :supress_overlap
+      property :textbox_tight_wrap
       property :text_direction
       property :widow_control
       property :word_wrap
