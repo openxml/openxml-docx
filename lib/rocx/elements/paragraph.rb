@@ -30,6 +30,8 @@ module Rocx
       property :vertical_alignment
       property :widow_control
       property :word_wrap
+
+      block_property :tabs
     end
   end
 end

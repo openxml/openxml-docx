@@ -21,6 +21,16 @@ module Rocx
           properties << name
         end
 
+        def block_property(name)
+          attr_reader name
+
+          class_name = name.to_s.split("_").map(&:capitalize).join
+          prop_class = Rocx::Properties.const_get class_name
+          instance_variable_set "@#{name}", prop_class.new
+
+          properties << name
+        end
+
         def properties
           @properties ||= []
         end
