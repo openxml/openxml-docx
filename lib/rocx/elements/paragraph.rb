@@ -10,6 +10,7 @@ module Rocx
       property :auto_space_de
       property :auto_space_dn
       property :bidi
+      property :compress_punctuation
       property :conditional_formatting
       property :contextual_spacing
       property :div_id
