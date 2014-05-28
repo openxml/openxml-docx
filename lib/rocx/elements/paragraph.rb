@@ -27,6 +27,7 @@ module Rocx
       property :supress_overlap
       property :textbox_tight_wrap
       property :text_direction
+      property :vertical_alignment
       property :widow_control
       property :word_wrap
     end
