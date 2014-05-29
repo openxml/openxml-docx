@@ -5,7 +5,7 @@ class PageBreakBeforeTest < PropertyTest
 
   context "always" do
     setup do
-      @page_break_before = Rocx::Properties::PageBreakBefore.new(false)
+      @page_break_before = PageBreakBefore.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class PageBreakBeforeTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @page_break_before = Rocx::Properties::PageBreakBefore.new(true)
+      @page_break_before = PageBreakBefore.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class PageBreakBeforeTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @page_break_before = Rocx::Properties::PageBreakBefore.new(false)
+      @page_break_before = PageBreakBefore.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class PageBreakBeforeTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @page_break_before = Rocx::Properties::PageBreakBefore.new(nil)
+      @page_break_before = PageBreakBefore.new(nil)
     end
 
     should "not return XML" do

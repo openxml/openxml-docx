@@ -5,7 +5,7 @@ class SupressOverlapTest < PropertyTest
 
   context "always" do
     setup do
-      @supress_overlap = Rocx::Properties::SupressOverlap.new(false)
+      @supress_overlap = SupressOverlap.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class SupressOverlapTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @supress_overlap = Rocx::Properties::SupressOverlap.new(true)
+      @supress_overlap = SupressOverlap.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class SupressOverlapTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @supress_overlap = Rocx::Properties::SupressOverlap.new(false)
+      @supress_overlap = SupressOverlap.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class SupressOverlapTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @supress_overlap = Rocx::Properties::SupressOverlap.new(nil)
+      @supress_overlap = SupressOverlap.new(nil)
     end
 
     should "not return XML" do

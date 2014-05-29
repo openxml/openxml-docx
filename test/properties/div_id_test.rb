@@ -5,7 +5,7 @@ class DivIdTest < PropertyTest
 
   context "always" do
     setup do
-      @div_id = Rocx::Properties::DivId.new(0)
+      @div_id = DivId.new(0)
     end
 
     should "have the right tag" do
@@ -20,14 +20,14 @@ class DivIdTest < PropertyTest
   context "with non-integer values, it" do
     should "raise an error" do
       assert_raises ArgumentError do
-        @div_id = Rocx::Properties::DivId.new(:big)
+        @div_id = DivId.new(:big)
       end
     end
   end
 
   context "with valid value, it" do
     setup do
-      @div_id = Rocx::Properties::DivId.new(2)
+      @div_id = DivId.new(2)
     end
 
     should "return the proper XML" do

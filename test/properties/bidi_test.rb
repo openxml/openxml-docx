@@ -5,7 +5,7 @@ class BidiTest < PropertyTest
 
   context "always" do
     setup do
-      @bidi = Rocx::Properties::Bidi.new(false)
+      @bidi = Bidi.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class BidiTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @bidi = Rocx::Properties::Bidi.new(true)
+      @bidi = Bidi.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class BidiTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @bidi = Rocx::Properties::Bidi.new(false)
+      @bidi = Bidi.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class BidiTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @bidi = Rocx::Properties::Bidi.new(nil)
+      @bidi = Bidi.new(nil)
     end
 
     should "not return XML" do

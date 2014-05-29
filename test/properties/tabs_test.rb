@@ -5,7 +5,7 @@ class TabsTest < PropertyTest
 
   context "always" do
     setup do
-      @tabs = Rocx::Properties::Tabs.new
+      @tabs = Tabs.new
     end
 
     should "have the right name" do
@@ -19,7 +19,7 @@ class TabsTest < PropertyTest
 
   context "when trying to add tabs, it" do
     setup do
-      @tabs = Rocx::Properties::Tabs.new
+      @tabs = Tabs.new
     end
 
     should "raise an exception if the tab to be added isn't a tab at all" do
@@ -31,7 +31,7 @@ class TabsTest < PropertyTest
 
   context "when there are no tabs, it" do
     setup do
-      @tabs = Rocx::Properties::Tabs.new
+      @tabs = Tabs.new
     end
 
     should "not return any XML" do
@@ -41,9 +41,9 @@ class TabsTest < PropertyTest
 
   context "when there are tabs, it" do
     setup do
-      @tabs = Rocx::Properties::Tabs.new
-      tabs << Rocx::Properties::Tab.new(1234, :start)
-      tabs << Rocx::Properties::Tab.new(5678, :end, :heavy)
+      @tabs = Tabs.new
+      tabs << Tab.new(1234, :start)
+      tabs << Tab.new(5678, :end, :heavy)
     end
 
     should "return the correct XML" do

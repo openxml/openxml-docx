@@ -5,7 +5,7 @@ class OverflowPunctuationTest < PropertyTest
 
   context "always" do
     setup do
-      @overflow_punctuation = Rocx::Properties::OverflowPunctuation.new(false)
+      @overflow_punctuation = OverflowPunctuation.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class OverflowPunctuationTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @overflow_punctuation = Rocx::Properties::OverflowPunctuation.new(true)
+      @overflow_punctuation = OverflowPunctuation.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class OverflowPunctuationTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @overflow_punctuation = Rocx::Properties::OverflowPunctuation.new(false)
+      @overflow_punctuation = OverflowPunctuation.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class OverflowPunctuationTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @overflow_punctuation = Rocx::Properties::OverflowPunctuation.new(nil)
+      @overflow_punctuation = OverflowPunctuation.new(nil)
     end
 
     should "not return XML" do

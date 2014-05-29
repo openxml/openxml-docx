@@ -5,7 +5,7 @@ class TabTest < PropertyTest
 
   context "always" do
     setup do
-      @tab = Rocx::Properties::Tab.new(1234, :start)
+      @tab = Tab.new(1234, :start)
     end
 
     should "have the right name" do
@@ -20,7 +20,7 @@ class TabTest < PropertyTest
   context "when assigning bad position values, it" do
     should "raise an exception" do
       assert_raises ArgumentError do
-        @tab = Rocx::Properties::Tab.new(:bad, :start)
+        @tab = Tab.new(:bad, :start)
       end
     end
   end
@@ -28,7 +28,7 @@ class TabTest < PropertyTest
   context "when assigning bad type values, it" do
     should "raise an exception" do
       assert_raises ArgumentError do
-        @tab = Rocx::Properties::Tab.new(1234, :bad)
+        @tab = Tab.new(1234, :bad)
       end
     end
   end
@@ -36,14 +36,14 @@ class TabTest < PropertyTest
   context "when assigniing bad leader values, it" do
     should "raise an exception" do
       assert_raises ArgumentError do
-        @tab = Rocx::Properties::Tab.new(1234, :clear, :bad)
+        @tab = Tab.new(1234, :clear, :bad)
       end
     end
   end
 
   context "with valid values, it" do
     setup do
-      @tab = Rocx::Properties::Tab.new(1234, :start)
+      @tab = Tab.new(1234, :start)
     end
 
     should "return the right XML" do
@@ -53,7 +53,7 @@ class TabTest < PropertyTest
 
   context "with valid values and a specified leader, it" do
     setup do
-      @tab = Rocx::Properties::Tab.new(1234, :start, :dot)
+      @tab = Tab.new(1234, :start, :dot)
     end
 
     should "Return the right XML" do

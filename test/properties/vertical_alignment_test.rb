@@ -5,7 +5,7 @@ class VerticalAlignmentTest < PropertyTest
 
   context "always" do
     setup do
-      @vertical_alignment = Rocx::Properties::VerticalAlignment.new(:auto)
+      @vertical_alignment = VerticalAlignment.new(:auto)
     end
 
     should "have the right tag" do
@@ -20,7 +20,7 @@ class VerticalAlignmentTest < PropertyTest
   context "with valid values," do
     context "like :auto, it" do
       setup do
-        @vertical_alignment = Rocx::Properties::VerticalAlignment.new(:auto)
+        @vertical_alignment = VerticalAlignment.new(:auto)
       end
 
       should "return the right XML" do
@@ -32,7 +32,7 @@ class VerticalAlignmentTest < PropertyTest
   context "with valid values," do
     context "like :baseline, it" do
       setup do
-        @vertical_alignment = Rocx::Properties::VerticalAlignment.new(:baseline)
+        @vertical_alignment = VerticalAlignment.new(:baseline)
       end
 
       should "return the right XML" do
@@ -44,7 +44,7 @@ class VerticalAlignmentTest < PropertyTest
   context "with valid values," do
     context "like :bottom, it" do
       setup do
-        @vertical_alignment = Rocx::Properties::VerticalAlignment.new(:bottom)
+        @vertical_alignment = VerticalAlignment.new(:bottom)
       end
 
       should "return the right XML" do
@@ -56,7 +56,7 @@ class VerticalAlignmentTest < PropertyTest
   context "with valid values," do
     context "like :center, it" do
       setup do
-        @vertical_alignment = Rocx::Properties::VerticalAlignment.new(:center)
+        @vertical_alignment = VerticalAlignment.new(:center)
       end
 
       should "return the right XML" do
@@ -68,7 +68,7 @@ class VerticalAlignmentTest < PropertyTest
   context "with valid values," do
     context "like :top, it" do
       setup do
-        @vertical_alignment = Rocx::Properties::VerticalAlignment.new(:top)
+        @vertical_alignment = VerticalAlignment.new(:top)
       end
 
       should "return the right XML" do
@@ -80,7 +80,7 @@ class VerticalAlignmentTest < PropertyTest
   context "with invalid values, it" do
     should "raise an error" do
       assert_raises ArgumentError do
-        @vertical_alignment = Rocx::Properties::VerticalAlignment.new(:something_terrible)
+        @vertical_alignment = VerticalAlignment.new(:something_terrible)
       end
     end
   end

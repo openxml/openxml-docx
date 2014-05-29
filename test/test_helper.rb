@@ -36,6 +36,7 @@ end
 require "test_helper"
 
 class PropertyTest < Test::Unit::TestCase
+  include Rocx::Properties
 
 private
 

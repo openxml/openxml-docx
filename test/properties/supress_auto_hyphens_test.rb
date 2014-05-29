@@ -5,7 +5,7 @@ class SupressAutoHyphensTest < PropertyTest
 
   context "always" do
     setup do
-      @supress_auto_hyphens = Rocx::Properties::SupressAutoHyphens.new(false)
+      @supress_auto_hyphens = SupressAutoHyphens.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class SupressAutoHyphensTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @supress_auto_hyphens = Rocx::Properties::SupressAutoHyphens.new(true)
+      @supress_auto_hyphens = SupressAutoHyphens.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class SupressAutoHyphensTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @supress_auto_hyphens = Rocx::Properties::SupressAutoHyphens.new(false)
+      @supress_auto_hyphens = SupressAutoHyphens.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class SupressAutoHyphensTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @supress_auto_hyphens = Rocx::Properties::SupressAutoHyphens.new(nil)
+      @supress_auto_hyphens = SupressAutoHyphens.new(nil)
     end
 
     should "not return XML" do

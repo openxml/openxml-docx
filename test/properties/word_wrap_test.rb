@@ -5,7 +5,7 @@ class WordWrapTest < PropertyTest
 
   context "always" do
     setup do
-      @word_wrap = Rocx::Properties::WordWrap.new(:on)
+      @word_wrap = WordWrap.new(:on)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class WordWrapTest < PropertyTest
 
   context "when the value is on, it" do
     setup do
-      @word_wrap = Rocx::Properties::WordWrap.new(:on)
+      @word_wrap = WordWrap.new(:on)
     end
 
     should "return XML to that effect" do
@@ -29,7 +29,7 @@ class WordWrapTest < PropertyTest
 
   context "when the value is off, it" do
     setup do
-      @word_wrap = Rocx::Properties::WordWrap.new(:off)
+      @word_wrap = WordWrap.new(:off)
     end
 
     should "return XML to that effect" do
@@ -39,7 +39,7 @@ class WordWrapTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @word_wrap = Rocx::Properties::WordWrap.new(nil)
+      @word_wrap = WordWrap.new(nil)
     end
 
     should "not return XML" do

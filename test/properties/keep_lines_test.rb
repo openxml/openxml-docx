@@ -5,7 +5,7 @@ class KeepLinesTest < PropertyTest
 
   context "always" do
     setup do
-      @keep_lines = Rocx::Properties::KeepLines.new(false)
+      @keep_lines = KeepLines.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class KeepLinesTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @keep_lines = Rocx::Properties::KeepLines.new(true)
+      @keep_lines = KeepLines.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class KeepLinesTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @keep_lines = Rocx::Properties::KeepLines.new(false)
+      @keep_lines = KeepLines.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class KeepLinesTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @keep_lines = Rocx::Properties::KeepLines.new(nil)
+      @keep_lines = KeepLines.new(nil)
     end
 
     should "not return XML" do

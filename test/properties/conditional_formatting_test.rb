@@ -5,7 +5,7 @@ class ConditionalFormattingTest < PropertyTest
 
   context "always" do
     setup do
-      @cnf_style = Rocx::Properties::ConditionalFormatting.new
+      @cnf_style = ConditionalFormatting.new
     end
 
     should "have the correct tag" do
@@ -20,7 +20,7 @@ class ConditionalFormattingTest < PropertyTest
   context "trying to set an invalid property" do
     should "raise an error" do
       assert_raises ArgumentError do
-        @cnf_style = Rocx::Properties::ConditionalFormatting.new(bad: true)
+        @cnf_style = ConditionalFormatting.new(bad: true)
       end
     end
   end
@@ -28,14 +28,14 @@ class ConditionalFormattingTest < PropertyTest
   context "trying to set an invalid value to a valid property" do
     should "raise an error" do
       assert_raises ArgumentError do
-        @cnf_style = Rocx::Properties::ConditionalFormatting.new(even_v: :bad)
+        @cnf_style = ConditionalFormatting.new(even_v: :bad)
       end
     end
   end
 
   context "with valid properties and values, it" do
     setup do
-      @cnf_style = Rocx::Properties::ConditionalFormatting.new(first_row: true, first_column: true, first_row_first_column: true)
+      @cnf_style = ConditionalFormatting.new(first_row: true, first_column: true, first_row_first_column: true)
     end
 
     should "render the correct XML" do

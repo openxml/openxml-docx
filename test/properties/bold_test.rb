@@ -5,7 +5,7 @@ class BoldTest < PropertyTest
 
   context "always" do
     setup do
-      @bold = Rocx::Properties::Bold.new(false)
+      @bold = Bold.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class BoldTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @bold = Rocx::Properties::Bold.new(true)
+      @bold = Bold.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class BoldTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @bold = Rocx::Properties::Bold.new(false)
+      @bold = Bold.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class BoldTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @bold = Rocx::Properties::Bold.new(nil)
+      @bold = Bold.new(nil)
     end
 
     should "not return XML" do

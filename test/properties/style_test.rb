@@ -5,7 +5,7 @@ class StylePropertyTest < PropertyTest
 
   context "always" do
     setup do
-      @style = Rocx::Properties::Style.new("Nope Style 1")
+      @style = Style.new("Nope Style 1")
     end
 
     should "set the right tag" do
@@ -19,7 +19,7 @@ class StylePropertyTest < PropertyTest
 
   context "with a valid style" do
     setup do
-      @style = Rocx::Properties::Style.new("Nope Style 1")
+      @style = Style.new("Nope Style 1")
     end
 
     should "return the proper XML" do

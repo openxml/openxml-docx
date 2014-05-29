@@ -5,7 +5,7 @@ class AutoAdjustRightIndentTest < PropertyTest
 
   context "always" do
     setup do
-      @auto_adjust_right_ind = Rocx::Properties::AutoAdjustRightIndent.new(false)
+      @auto_adjust_right_ind = AutoAdjustRightIndent.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class AutoAdjustRightIndentTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @auto_adjust_right_ind = Rocx::Properties::AutoAdjustRightIndent.new(true)
+      @auto_adjust_right_ind = AutoAdjustRightIndent.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class AutoAdjustRightIndentTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @auto_adjust_right_ind = Rocx::Properties::AutoAdjustRightIndent.new(false)
+      @auto_adjust_right_ind = AutoAdjustRightIndent.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class AutoAdjustRightIndentTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @auto_adjust_right_ind = Rocx::Properties::AutoAdjustRightIndent.new(nil)
+      @auto_adjust_right_ind = AutoAdjustRightIndent.new(nil)
     end
 
     should "not return XML" do

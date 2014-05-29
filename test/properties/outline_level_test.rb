@@ -5,7 +5,7 @@ class OutlineLevelTest < PropertyTest
 
   context "always" do
     setup do
-      @outline_level = Rocx::Properties::OutlineLevel.new(0)
+      @outline_level = OutlineLevel.new(0)
     end
 
     should "have the right tag" do
@@ -20,7 +20,7 @@ class OutlineLevelTest < PropertyTest
   context "with non-integer values, it" do
     should "raise an error" do
       assert_raises ArgumentError do
-        @outline_level = Rocx::Properties::OutlineLevel.new(:big)
+        @outline_level = OutlineLevel.new(:big)
       end
     end
   end
@@ -28,14 +28,14 @@ class OutlineLevelTest < PropertyTest
   context "with integers less than 0, it" do
     should "raise an error" do
       assert_raises ArgumentError do
-        @outline_level = Rocx::Properties::OutlineLevel.new(-1)
+        @outline_level = OutlineLevel.new(-1)
       end
     end
   end
 
   context "with valid value, it" do
     setup do
-      @outline_level = Rocx::Properties::OutlineLevel.new(2)
+      @outline_level = OutlineLevel.new(2)
     end
 
     should "return the proper XML" do

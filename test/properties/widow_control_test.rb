@@ -5,7 +5,7 @@ class WidowControlTest < PropertyTest
 
   context "always" do
     setup do
-      @widow_control = Rocx::Properties::WidowControl.new(:on)
+      @widow_control = WidowControl.new(:on)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class WidowControlTest < PropertyTest
 
   context "when the value is on, it" do
     setup do
-      @widow_control = Rocx::Properties::WidowControl.new(:on)
+      @widow_control = WidowControl.new(:on)
     end
 
     should "return XML to that effect" do
@@ -29,7 +29,7 @@ class WidowControlTest < PropertyTest
 
   context "when the value is off, it" do
     setup do
-      @widow_control = Rocx::Properties::WidowControl.new(:off)
+      @widow_control = WidowControl.new(:off)
     end
 
     should "return XML to that effect" do
@@ -39,7 +39,7 @@ class WidowControlTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @widow_control = Rocx::Properties::WidowControl.new(nil)
+      @widow_control = WidowControl.new(nil)
     end
 
     should "not return XML" do

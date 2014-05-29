@@ -5,7 +5,7 @@ class TextboxTightWrapTest < PropertyTest
 
   context "always" do
     setup do
-      @textbox_tight_wrap = Rocx::Properties::TextboxTightWrap.new(:allLines)
+      @textbox_tight_wrap = TextboxTightWrap.new(:allLines)
     end
 
     should "have the right tag" do
@@ -20,7 +20,7 @@ class TextboxTightWrapTest < PropertyTest
   context "with valid values," do
     context "like :allLines, it" do
       setup do
-        @textbox_tight_wrap = Rocx::Properties::TextboxTightWrap.new(:allLines)
+        @textbox_tight_wrap = TextboxTightWrap.new(:allLines)
       end
 
       should "return the right XML" do
@@ -32,7 +32,7 @@ class TextboxTightWrapTest < PropertyTest
   context "with valid values," do
     context "like :firstAndLastLine, it" do
       setup do
-        @textbox_tight_wrap = Rocx::Properties::TextboxTightWrap.new(:firstAndLastLine)
+        @textbox_tight_wrap = TextboxTightWrap.new(:firstAndLastLine)
       end
 
       should "return the right XML" do
@@ -44,7 +44,7 @@ class TextboxTightWrapTest < PropertyTest
   context "with valid values," do
     context "like :firstLineOnly, it" do
       setup do
-        @textbox_tight_wrap = Rocx::Properties::TextboxTightWrap.new(:firstLineOnly)
+        @textbox_tight_wrap = TextboxTightWrap.new(:firstLineOnly)
       end
 
       should "return the right XML" do
@@ -56,7 +56,7 @@ class TextboxTightWrapTest < PropertyTest
   context "with valid values," do
     context "like :lastLineOnly, it" do
       setup do
-        @textbox_tight_wrap = Rocx::Properties::TextboxTightWrap.new(:lastLineOnly)
+        @textbox_tight_wrap = TextboxTightWrap.new(:lastLineOnly)
       end
 
       should "return the right XML" do
@@ -68,7 +68,7 @@ class TextboxTightWrapTest < PropertyTest
   context "with valid values," do
     context "like :none, it" do
       setup do
-        @textbox_tight_wrap = Rocx::Properties::TextboxTightWrap.new(:none)
+        @textbox_tight_wrap = TextboxTightWrap.new(:none)
       end
 
       should "return the right XML" do
@@ -80,7 +80,7 @@ class TextboxTightWrapTest < PropertyTest
   context "with invalid values, it" do
     should "raise an error" do
       assert_raises ArgumentError do
-        @textbox_tight_wrap = Rocx::Properties::TextboxTightWrap.new(:something_terrible)
+        @textbox_tight_wrap = TextboxTightWrap.new(:something_terrible)
       end
     end
   end

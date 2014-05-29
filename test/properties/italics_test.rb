@@ -5,7 +5,7 @@ class ItalicsTest < PropertyTest
 
   context "always" do
     setup do
-      @italics = Rocx::Properties::Italics.new(false)
+      @italics = Italics.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class ItalicsTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @italics = Rocx::Properties::Italics.new(true)
+      @italics = Italics.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class ItalicsTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @italics = Rocx::Properties::Italics.new(false)
+      @italics = Italics.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class ItalicsTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @italics = Rocx::Properties::Italics.new(nil)
+      @italics = Italics.new(nil)
     end
 
     should "not return XML" do

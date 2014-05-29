@@ -5,7 +5,7 @@ class CompressPunctuationTest < PropertyTest
 
   context "always" do
     setup do
-      @compress_punctuation = Rocx::Properties::CompressPunctuation.new(:on)
+      @compress_punctuation = CompressPunctuation.new(:on)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class CompressPunctuationTest < PropertyTest
 
   context "when the value is on, it" do
     setup do
-      @compress_punctuation = Rocx::Properties::CompressPunctuation.new(:on)
+      @compress_punctuation = CompressPunctuation.new(:on)
     end
 
     should "return XML to that effect" do
@@ -29,7 +29,7 @@ class CompressPunctuationTest < PropertyTest
 
   context "when the value is off, it" do
     setup do
-      @compress_punctuation = Rocx::Properties::CompressPunctuation.new(:off)
+      @compress_punctuation = CompressPunctuation.new(:off)
     end
 
     should "return XML to that effect" do
@@ -39,7 +39,7 @@ class CompressPunctuationTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @compress_punctuation = Rocx::Properties::CompressPunctuation.new(nil)
+      @compress_punctuation = CompressPunctuation.new(nil)
     end
 
     should "not return XML" do

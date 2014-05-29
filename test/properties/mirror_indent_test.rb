@@ -5,7 +5,7 @@ class MirrorIndentTest < PropertyTest
 
   context "always" do
     setup do
-      @mirror_indent = Rocx::Properties::MirrorIndent.new(false)
+      @mirror_indent = MirrorIndent.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class MirrorIndentTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @mirror_indent = Rocx::Properties::MirrorIndent.new(true)
+      @mirror_indent = MirrorIndent.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class MirrorIndentTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @mirror_indent = Rocx::Properties::MirrorIndent.new(false)
+      @mirror_indent = MirrorIndent.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class MirrorIndentTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @mirror_indent = Rocx::Properties::MirrorIndent.new(nil)
+      @mirror_indent = MirrorIndent.new(nil)
     end
 
     should "not return XML" do

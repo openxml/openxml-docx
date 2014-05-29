@@ -5,7 +5,7 @@ class ContextualSpacingTest < PropertyTest
 
   context "always" do
     setup do
-      @contextual_spacing = Rocx::Properties::ContextualSpacing.new(false)
+      @contextual_spacing = ContextualSpacing.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class ContextualSpacingTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @contextual_spacing = Rocx::Properties::ContextualSpacing.new(true)
+      @contextual_spacing = ContextualSpacing.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class ContextualSpacingTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @contextual_spacing = Rocx::Properties::ContextualSpacing.new(false)
+      @contextual_spacing = ContextualSpacing.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class ContextualSpacingTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @contextual_spacing = Rocx::Properties::ContextualSpacing.new(nil)
+      @contextual_spacing = ContextualSpacing.new(nil)
     end
 
     should "not return XML" do

@@ -5,7 +5,7 @@ class AutoSpaceDeTest < PropertyTest
 
   context "always" do
     setup do
-      @auto_space_de = Rocx::Properties::AutoSpaceDe.new(false)
+      @auto_space_de = AutoSpaceDe.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class AutoSpaceDeTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @auto_space_de = Rocx::Properties::AutoSpaceDe.new(true)
+      @auto_space_de = AutoSpaceDe.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class AutoSpaceDeTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @auto_space_de = Rocx::Properties::AutoSpaceDe.new(false)
+      @auto_space_de = AutoSpaceDe.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class AutoSpaceDeTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @auto_space_de = Rocx::Properties::AutoSpaceDe.new(nil)
+      @auto_space_de = AutoSpaceDe.new(nil)
     end
 
     should "not return XML" do

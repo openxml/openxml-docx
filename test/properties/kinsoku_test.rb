@@ -5,7 +5,7 @@ class KinsokuTest < PropertyTest
 
   context "always" do
     setup do
-      @kinsoku = Rocx::Properties::Kinsoku.new(:on)
+      @kinsoku = Kinsoku.new(:on)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class KinsokuTest < PropertyTest
 
   context "when the value is on, it" do
     setup do
-      @kinsoku = Rocx::Properties::Kinsoku.new(:on)
+      @kinsoku = Kinsoku.new(:on)
     end
 
     should "return XML to that effect" do
@@ -29,7 +29,7 @@ class KinsokuTest < PropertyTest
 
   context "when the value is off, it" do
     setup do
-      @kinsoku = Rocx::Properties::Kinsoku.new(:off)
+      @kinsoku = Kinsoku.new(:off)
     end
 
     should "return XML to that effect" do
@@ -39,7 +39,7 @@ class KinsokuTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @kinsoku = Rocx::Properties::Kinsoku.new(nil)
+      @kinsoku = Kinsoku.new(nil)
     end
 
     should "not return XML" do

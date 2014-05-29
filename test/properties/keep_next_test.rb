@@ -5,7 +5,7 @@ class KeepNextTest < PropertyTest
 
   context "always" do
     setup do
-      @keep_next = Rocx::Properties::KeepNext.new(false)
+      @keep_next = KeepNext.new(false)
     end
 
     should "have the right tag" do
@@ -19,7 +19,7 @@ class KeepNextTest < PropertyTest
 
   context "when the value is true, it" do
     setup do
-      @keep_next = Rocx::Properties::KeepNext.new(true)
+      @keep_next = KeepNext.new(true)
     end
 
     should "return XML" do
@@ -29,7 +29,7 @@ class KeepNextTest < PropertyTest
 
   context "when the value is false, it" do
     setup do
-      @keep_next = Rocx::Properties::KeepNext.new(false)
+      @keep_next = KeepNext.new(false)
     end
 
     should "not return XML" do
@@ -39,7 +39,7 @@ class KeepNextTest < PropertyTest
 
   context "when the value is nil, it" do
     setup do
-      @keep_next = Rocx::Properties::KeepNext.new(nil)
+      @keep_next = KeepNext.new(nil)
     end
 
     should "not return XML" do

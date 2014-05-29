@@ -5,7 +5,7 @@ class TextDirectionTest < PropertyTest
 
   context "always" do
     setup do
-      @text_direction = Rocx::Properties::TextDirection.new(:lr)
+      @text_direction = TextDirection.new(:lr)
     end
 
     should "have the right tag" do
@@ -20,7 +20,7 @@ class TextDirectionTest < PropertyTest
   context "with valid values," do
     context "like :lr, it" do
       setup do
-        @text_direction = Rocx::Properties::TextDirection.new(:lr)
+        @text_direction = TextDirection.new(:lr)
       end
 
       should "return the right XML" do
@@ -32,7 +32,7 @@ class TextDirectionTest < PropertyTest
   context "with valid values," do
     context "like :lrV, it" do
       setup do
-        @text_direction = Rocx::Properties::TextDirection.new(:lrV)
+        @text_direction = TextDirection.new(:lrV)
       end
 
       should "return the right XML" do
@@ -44,7 +44,7 @@ class TextDirectionTest < PropertyTest
   context "with valid values," do
     context "like :rl, it" do
       setup do
-        @text_direction = Rocx::Properties::TextDirection.new(:rl)
+        @text_direction = TextDirection.new(:rl)
       end
 
       should "return the right XML" do
@@ -56,7 +56,7 @@ class TextDirectionTest < PropertyTest
   context "with valid values," do
     context "like :rlV, it" do
       setup do
-        @text_direction = Rocx::Properties::TextDirection.new(:rlV)
+        @text_direction = TextDirection.new(:rlV)
       end
 
       should "return the right XML" do
@@ -68,7 +68,7 @@ class TextDirectionTest < PropertyTest
   context "with valid values," do
     context "like :tb, it" do
       setup do
-        @text_direction = Rocx::Properties::TextDirection.new(:tb)
+        @text_direction = TextDirection.new(:tb)
       end
 
       should "return the right XML" do
@@ -80,7 +80,7 @@ class TextDirectionTest < PropertyTest
   context "with valid values," do
     context "like :tbV, it" do
       setup do
-        @text_direction = Rocx::Properties::TextDirection.new(:tbV)
+        @text_direction = TextDirection.new(:tbV)
       end
 
       should "return the right XML" do
@@ -92,7 +92,7 @@ class TextDirectionTest < PropertyTest
   context "with invalid values, it" do
     should "raise an error" do
       assert_raises ArgumentError do
-        @text_direction = Rocx::Properties::TextDirection.new(:left_to_right)
+        @text_direction = TextDirection.new(:left_to_right)
       end
     end
   end
