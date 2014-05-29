@@ -32,6 +32,7 @@ module Rocx
       property :widow_control
       property :word_wrap
 
+      block_property :borders
       block_property :tabs
     end
   end
