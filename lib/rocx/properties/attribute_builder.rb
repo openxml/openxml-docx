@@ -15,16 +15,16 @@ module Rocx
             instance_variable_set "@#{name}", value
           end
 
-          attributes << name
+          attributes[name] = displays_as || name
         end
 
         def attributes
-          @attributes ||= []
+          @attributes ||= {}
         end
       end
 
       def render?
-        attributes.map(&method(:send)).any?
+        attributes.keys.map(&method(:send)).any?
       end
 
       def attributes
@@ -32,6 +32,13 @@ module Rocx
       end
 
     private
+
+      def xml_attributes
+        attributes.each_with_object({}) do |(name, display), attrs|
+          value = send(name)
+          attrs["w:#{display}"] = value if value
+        end
+      end
 
       def true_or_false(name, value)
         message = "Invalid #{name}: frame must be true or false"

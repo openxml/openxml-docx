@@ -204,12 +204,12 @@ module Rocx
       attribute :color, expects: :hex_color
       attribute :frame, expects: :true_or_false
       attribute :shadow, expects: :true_or_false
-      attribute :size, expects: :positive_integer
+      attribute :size, expects: :positive_integer, displays_as: :sz
       attribute :space, expects: :positive_integer
-      attribute :theme_color, expects: :valid_theme_color
-      attribute :theme_shade, expects: :hex_digit
-      attribute :theme_tint, expects: :hex_digit
-      attribute :type, expects: :valid_type
+      attribute :theme_color, expects: :valid_theme_color, displays_as: :themeColor
+      attribute :theme_shade, expects: :hex_digit, displays_as: :themeShade
+      attribute :theme_tint, expects: :hex_digit, displays_as: :themeTint
+      attribute :type, expects: :valid_type, displays_as: :val
 
       def initialize(tag)
         @tag = tag
@@ -224,20 +224,6 @@ module Rocx
       end
 
     private
-
-      def xml_attributes
-        attrs = {}
-        attrs["w:color"] = color if color
-        attrs["w:frame"] = frame if frame
-        attrs["w:shadow"] = shadow if shadow
-        attrs["w:space"] = space if space
-        attrs["w:sz"] = size if size
-        attrs["w:themeColor"] = theme_color if theme_color
-        attrs["w:themeShade"] = theme_shade if theme_shade
-        attrs["w:themeTint"] = theme_tint if theme_tint
-        attrs["w:val"] = type if type
-        attrs
-      end
 
       def valid_theme_color(name, value)
         message = "Invalid #{name}: must be one of #{VALID_THEME_COLORS.join(", ")}"
