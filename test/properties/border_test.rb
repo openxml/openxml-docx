@@ -17,7 +17,7 @@ class BorderTest < PropertyTest
     end
   end
 
-  context "for a border's color property" do
+  context "for a border's color attribute" do
     setup do
       @border = Border.new(:left)
     end
@@ -41,7 +41,7 @@ class BorderTest < PropertyTest
     end
   end
 
-  context "for a border's frame property" do
+  context "for a border's frame attribute" do
     setup do
       @border = Border.new(:right)
     end
@@ -63,7 +63,7 @@ class BorderTest < PropertyTest
     end
   end
 
-  context "for a border's shadow property" do
+  context "for a border's shadow attribute" do
     setup do
       @border = Border.new(:top)
     end
@@ -85,7 +85,7 @@ class BorderTest < PropertyTest
     end
   end
 
-  context "for a border's size property" do
+  context "for a border's size attribute" do
     setup do
       @border = Border.new(:bar)
     end
@@ -107,7 +107,7 @@ class BorderTest < PropertyTest
     end
   end
 
-  context "for a border's space property" do
+  context "for a border's space attribute" do
     setup do
       @border = Border.new(:bottom)
     end
