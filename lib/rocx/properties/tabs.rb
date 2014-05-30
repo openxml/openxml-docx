@@ -16,8 +16,12 @@ module Rocx
         tabs.each *args, &block
       end
 
+      def render?
+        !tabs.length.zero?
+      end
+
       def to_xml(xml)
-        return if tabs.length.zero?
+        return unless render?
 
         xml["w"].public_send(tag) {
           each { |tab| tab.to_xml(xml) }

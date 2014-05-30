@@ -22,11 +22,16 @@ module Rocx
         end
 
         def block_property(name)
-          attr_reader name
+          define_method "#{name}" do
+            class_name = name.to_s.split("_").map(&:capitalize).join
+            prop_class = Rocx::Properties.const_get class_name
 
-          class_name = name.to_s.split("_").map(&:capitalize).join
-          prop_class = Rocx::Properties.const_get class_name
-          instance_variable_set "@#{name}", prop_class.new
+            if instance_variable_get("@#{name}").nil?
+              instance_variable_set "@#{name}", prop_class.new
+            end
+
+            instance_variable_get "@#{name}"
+          end
 
           properties << name
         end
@@ -56,7 +61,7 @@ module Rocx
 
       def property_xml(xml)
         props = properties.map(&method(:send)).compact
-        return if props.empty?
+        return if props.none?(&:render?)
         xml[namespace].public_send(properties_tag) {
           props.each { |prop| prop.to_xml(xml) }
         }

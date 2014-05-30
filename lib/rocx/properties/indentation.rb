@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Indentation
+    class Indentation < BaseProperty
       attr_reader :value
 
       OK_KEYS = [:end, :endChars, :firstLine, :firstLineChars, :hanging, :hangingChars, :start, :startChars]

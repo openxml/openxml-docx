@@ -20,8 +20,12 @@ module Rocx
         "borders"
       end
 
+      def render?
+        !renderable_borders.length.zero?
+      end
+
       def to_xml(xml)
-        return if no_borders_to_render?
+        return unless render?
         xml["w"].public_send(tag) { render_borders_xml(xml) }
       end
 
@@ -29,10 +33,6 @@ module Rocx
 
       def render_borders_xml(xml)
         renderable_borders.each { |border| border.to_xml(xml) }
-      end
-
-      def no_borders_to_render?
-        renderable_borders.length.zero?
       end
 
       def renderable_borders

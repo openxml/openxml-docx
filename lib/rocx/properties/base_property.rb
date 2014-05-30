@@ -16,6 +16,10 @@ module Rocx
         "Invalid value for #{name}; acceptable values are #{ok_values.join(", ")}"
       end
 
+      def render?
+        !value.nil?
+      end
+
       def name
         class_name.gsub(/(.)([A-Z])/, '\1_\2').downcase
       end

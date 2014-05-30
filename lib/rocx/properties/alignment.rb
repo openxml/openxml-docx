@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Alignment
+    class Alignment < BaseProperty
       attr_reader :value
 
       OK_VALUES = [:both, :center, :distribute, :end, :highKashida, :lowKashida, :mediumKashida, :numTab, :start, :thaiDistribute]
