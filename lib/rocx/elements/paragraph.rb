@@ -33,6 +33,7 @@ module Rocx
       property :word_wrap
 
       block_property :borders
+      block_property :frame
       block_property :tabs
     end
   end

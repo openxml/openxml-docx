@@ -55,6 +55,11 @@ module Rocx
         raise ArgumentError, message unless value =~ /[0-9A-F]{2}/
       end
 
+      def integer(name, value)
+        message = "Invalid #{name}: must be an integer"
+        raise ArgumentError, message unless value.is_a?(Integer)
+      end
+
       def positive_integer(name, value)
         message = "Invalid #{name}: must be a positive integer"
         raise ArgumentError, message unless value.is_a?(Integer) && value >= 0
