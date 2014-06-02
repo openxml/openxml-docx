@@ -9,7 +9,7 @@ module Rocx
           @properties_tag
         end
 
-        def property(name)
+        def value_property(name)
           attr_reader name
 
           define_method "#{name}=" do |value|
@@ -21,7 +21,7 @@ module Rocx
           properties << name
         end
 
-        def block_property(name)
+        def property(name)
           define_method "#{name}" do
             class_name = name.to_s.split("_").map(&:capitalize).join
             prop_class = Rocx::Properties.const_get class_name

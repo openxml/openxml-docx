@@ -5,36 +5,36 @@ module Rocx
       namespace :w
       properties_tag :pPr
 
-      property :alignment
-      property :auto_adjust_right_indent
-      property :auto_space_de
-      property :auto_space_dn
-      property :bidi
-      property :compress_punctuation
-      property :conditional_formatting
-      property :contextual_spacing
-      property :div_id
-      property :keep_lines
-      property :keep_next
-      property :indentation
-      property :mirror_indent
-      property :outline_level
-      property :overflow_punctuation
-      property :page_break_before
-      property :snap_to_grid
-      property :style
-      property :supress_auto_hyphens
-      property :supress_line_numbers
-      property :supress_overlap
-      property :textbox_tight_wrap
-      property :text_direction
-      property :vertical_alignment
-      property :widow_control
-      property :word_wrap
+      value_property :alignment
+      value_property :auto_adjust_right_indent
+      value_property :auto_space_de
+      value_property :auto_space_dn
+      value_property :bidi
+      value_property :compress_punctuation
+      value_property :conditional_formatting
+      value_property :contextual_spacing
+      value_property :div_id
+      value_property :keep_lines
+      value_property :keep_next
+      value_property :indentation
+      value_property :mirror_indent
+      value_property :outline_level
+      value_property :overflow_punctuation
+      value_property :page_break_before
+      value_property :snap_to_grid
+      value_property :style
+      value_property :supress_auto_hyphens
+      value_property :supress_line_numbers
+      value_property :supress_overlap
+      value_property :textbox_tight_wrap
+      value_property :text_direction
+      value_property :vertical_alignment
+      value_property :widow_control
+      value_property :word_wrap
 
-      block_property :borders
-      block_property :frame
-      block_property :tabs
+      property :borders
+      property :frame
+      property :tabs
     end
   end
 end

@@ -4,8 +4,8 @@ module Rocx
       tag_name :r
       namespace :w
       properties_tag :rPr
-      property :italics
-      property :bold
+      value_property :italics
+      value_property :bold
 
     end
   end
