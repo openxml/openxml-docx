@@ -9,27 +9,27 @@ class PackageTest < Test::Unit::TestCase
     end
 
     should "create the content types part" do
-      assert_is_a Rocx::Parts::ContentTypes, package.content_types
+      assert_kind_of Rocx::Parts::ContentTypes, package.content_types
     end
 
     should "create the document part" do
-      assert_is_a Rocx::Parts::Document, package.document
+      assert_kind_of Rocx::Parts::Document, package.document
     end
 
     should "create the global rels part" do
-      assert_is_a Rocx::Parts::GlobalRels, package.global_rels
+      assert_kind_of Rocx::Parts::GlobalRels, package.global_rels
     end
 
     should "create the _rels part" do
-      assert_is_a Rocx::Parts::Rels, package.rels
+      assert_kind_of Rocx::Parts::Rels, package.rels
     end
 
     should "create the settings part" do
-      assert_is_a Rocx::Parts::Settings, package.settings
+      assert_kind_of Rocx::Parts::Settings, package.settings
     end
 
     should "create the styles part" do
-      assert_is_a Rocx::Parts::Styles, package.styles
+      assert_kind_of Rocx::Parts::Styles, package.styles
     end
   end
 

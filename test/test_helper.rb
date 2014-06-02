@@ -21,10 +21,6 @@ def element_xml(part)
   File.read(File.join(File.dirname(__FILE__), "data", "elements", "#{part}_element.xml"))
 end
 
-def assert_is_a(klass, instance)
-  assert instance.is_a?(klass), "Expected #{instance} to be a #{klass}"
-end
-
 def build_xml
   Nokogiri::XML::Builder.new do |xml|
     xml.root("xmlns:w" => "http://wnamespace.org") {
