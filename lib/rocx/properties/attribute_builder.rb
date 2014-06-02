@@ -60,6 +60,11 @@ module Rocx
         raise ArgumentError, message unless value.is_a?(Integer) && value >= 0
       end
 
+      def valid_in?(name, value, list)
+        message = "Invalid #{name}: must be one of #{list.join(", ")}"
+        raise ArgumentError, message unless list.member?(value)
+      end
+
     end
   end
 end

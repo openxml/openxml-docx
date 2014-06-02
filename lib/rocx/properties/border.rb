@@ -226,13 +226,11 @@ module Rocx
     private
 
       def valid_theme_color(name, value)
-        message = "Invalid #{name}: must be one of #{VALID_THEME_COLORS.join(", ")}"
-        raise ArgumentError, message unless VALID_THEME_COLORS.member? value
+        valid_in? name, value, VALID_THEME_COLORS
       end
 
       def valid_type(name, value)
-        message = "Invalid #{name}: must be one of #{VALID_TYPES.join(", ")}"
-        raise ArgumentError, message unless VALID_TYPES.member? value
+        valid_in? name, value, VALID_TYPES
       end
 
     end
