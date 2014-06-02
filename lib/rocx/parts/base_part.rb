@@ -15,6 +15,10 @@ module Rocx
       end
 
       def read
+        strip_whitespace to_xml
+      end
+
+      def to_xml
         raise NotImplementedError
       end
 

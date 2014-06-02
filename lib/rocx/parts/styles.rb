@@ -11,15 +11,14 @@ module Rocx
         @styles << style
       end
 
-      def read
-        xml = build_standalone_xml do |xml|
+      def to_xml
+        build_standalone_xml do |xml|
           xml.styles(root_namespaces) {
             xml.parent.namespace = xml.parent.namespace_definitions.find { |ns| ns.prefix == "w" }
             add_default_styles(xml)
             styles.each { |style| style.build_xml(xml) }
           }
         end
-        strip_whitespace(xml)
       end
 
     private

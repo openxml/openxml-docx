@@ -21,15 +21,14 @@ module Rocx
         relationships << {"Type" => type, "Target" => target, "Id" => id}
       end
 
-      def read
-        xml = build_xml do |xml|
+      def to_xml
+        build_xml do |xml|
           xml.Relationships(xmlns: "http://schemas.openxmlformats.org/package/2006/relationships") {
             relationships.each do |rel|
               xml.Relationship(rel)
             end
           }
         end
-        strip_whitespace(xml)
       end
 
     private

@@ -28,19 +28,15 @@ module Rocx
         overrides << {"PartName" => part_name, "ContentType" => content_type}
       end
 
-      def read
-        xml = build_xml do |xml|
+      def to_xml
+        build_xml do |xml|
           xml.Types(xmlns: "http://schemas.openxmlformats.org/package/2006/content-types") {
             defaults.each { |default| xml.Default(default) }
             overrides.each { |override| xml.Override(override) }
           }
         end
-        strip_whitespace(xml)
       end
 
     end
   end
 end
-
-
-
