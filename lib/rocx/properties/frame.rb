@@ -41,28 +41,28 @@ module Rocx
 
     private
 
-      def valid_drop_cap(name, value)
-        valid_in? name, value, VALID_DROP_CAPS
+      def valid_drop_cap(value)
+        valid_in? value, VALID_DROP_CAPS
       end
 
-      def valid_anchor(name, value)
-        valid_in? name, value, VALID_ANCHORS
+      def valid_anchor(value)
+        valid_in? value, VALID_ANCHORS
       end
 
-      def valid_height_rule(name, value)
-        valid_in? name, value, VALID_HEIGHT_RULES
+      def valid_height_rule(value)
+        valid_in? value, VALID_HEIGHT_RULES
       end
 
-      def valid_relative_horizontal_position(name, value)
-        valid_in? name, value, VALID_RELATIVE_HORIZONTAL_POSITIONS
+      def valid_relative_horizontal_position(value)
+        valid_in? value, VALID_RELATIVE_HORIZONTAL_POSITIONS
       end
 
-      def valid_relative_vertical_position(name, value)
-        valid_in? name, value, VALID_RELATIVE_VERTICAL_POSITIONS
+      def valid_relative_vertical_position(value)
+        valid_in? value, VALID_RELATIVE_VERTICAL_POSITIONS
       end
 
-      def valid_wrap(name, value)
-        valid_in? name, value, VALID_WRAPS
+      def valid_wrap(value)
+        valid_in? value, VALID_WRAPS
       end
 
     end

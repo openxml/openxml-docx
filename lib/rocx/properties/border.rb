@@ -225,12 +225,12 @@ module Rocx
 
     private
 
-      def valid_theme_color(name, value)
-        valid_in? name, value, VALID_THEME_COLORS
+      def valid_theme_color(value)
+        valid_in? value, VALID_THEME_COLORS
       end
 
-      def valid_type(name, value)
-        valid_in? name, value, VALID_TYPES
+      def valid_type(value)
+        valid_in? value, VALID_TYPES
       end
 
     end

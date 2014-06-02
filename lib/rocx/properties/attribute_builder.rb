@@ -11,7 +11,7 @@ module Rocx
           attr_reader name
 
           define_method "#{name}=" do |value|
-            send(expects, name, value)
+            send(expects, value)
             instance_variable_set "@#{name}", value
           end
 
@@ -40,32 +40,32 @@ module Rocx
         end
       end
 
-      def true_or_false(name, value)
+      def true_or_false(value)
         message = "Invalid #{name}: frame must be true or false"
         raise ArgumentError, message unless [true, false].member? value
       end
 
-      def hex_color(name, value)
+      def hex_color(value)
         message = "Invalid #{name}: must be :auto or a hex color, e.g. 4F1B8C"
         raise ArgumentError, message unless value == :auto || value =~ /[0-9A-F]{6}/
       end
 
-      def hex_digit(name, value)
+      def hex_digit(value)
         message = "Invalid #{name}: must be a two-digit hex number, e.g. BF"
         raise ArgumentError, message unless value =~ /[0-9A-F]{2}/
       end
 
-      def integer(name, value)
+      def integer(value)
         message = "Invalid #{name}: must be an integer"
         raise ArgumentError, message unless value.is_a?(Integer)
       end
 
-      def positive_integer(name, value)
+      def positive_integer(value)
         message = "Invalid #{name}: must be a positive integer"
         raise ArgumentError, message unless value.is_a?(Integer) && value >= 0
       end
 
-      def valid_in?(name, value, list)
+      def valid_in?(value, list)
         message = "Invalid #{name}: must be one of #{list.join(", ")}"
         raise ArgumentError, message unless list.member?(value)
       end
