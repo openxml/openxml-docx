@@ -36,6 +36,7 @@ module Rocx
       property :frame
       property :numbering
       property :shading
+      property :spacing
       property :tabs
     end
   end

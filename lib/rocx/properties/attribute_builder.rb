@@ -261,6 +261,10 @@ module Rocx
         raise ArgumentError, message unless value.is_a?(Integer) && value >= 0
       end
 
+      def on_or_off(value)
+        valid_in? value, [:on, :off]
+      end
+
       def valid_theme_color(value)
         valid_in? value, VALID_THEME_COLORS
       end
