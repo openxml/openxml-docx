@@ -12,6 +12,7 @@ module Rocx
       value_property :snap_to_grid
 
       property :border
+      property :color
       property :shading
 
     end
