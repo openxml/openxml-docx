@@ -6,6 +6,7 @@ module Rocx
       properties_tag :rPr
 
       value_property :bold
+      value_property :caps
       value_property :complex_bold
       value_property :italics
       value_property :snap_to_grid
