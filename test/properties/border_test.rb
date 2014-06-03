@@ -17,6 +17,22 @@ class BorderTest < PropertyTest
     end
   end
 
+  context "with no tag specified, it" do
+    setup do
+      @border = Border.new
+      border.color = "FF00FF"
+      border.type = :crazyMaze
+    end
+
+    should "have its tag be :bdr" do
+      assert_equal :bdr, border.tag
+    end
+
+    should "output the right XML" do
+      assert_equal "<w:bdr w:color=\"FF00FF\" w:val=\"crazyMaze\"/>", xml(border)
+    end
+  end
+
   context "for a border's color attribute" do
     setup do
       @border = Border.new(:left)

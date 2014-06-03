@@ -11,6 +11,7 @@ module Rocx
       value_property :italics
       value_property :snap_to_grid
 
+      property :border
       property :shading
 
     end

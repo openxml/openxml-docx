@@ -15,7 +15,7 @@ module Rocx
       attribute :theme_tint, expects: :hex_digit, displays_as: :themeTint
       attribute :type, expects: :valid_type, displays_as: :val
 
-      def initialize(tag)
+      def initialize(tag=:bdr)
         @tag = tag
       end
 
@@ -24,6 +24,7 @@ module Rocx
       end
 
       def to_xml(xml)
+        return if xml_attributes.empty?
         xml["w"].public_send(tag, xml_attributes)
       end
 
