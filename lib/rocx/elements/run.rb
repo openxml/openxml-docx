@@ -8,6 +8,9 @@ module Rocx
       value_property :bold
       value_property :complex_bold
       value_property :italics
+      value_property :snap_to_grid
+
+      property :shading
 
     end
   end
