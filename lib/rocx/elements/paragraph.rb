@@ -34,6 +34,7 @@ module Rocx
 
       property :borders
       property :frame
+      property :shading
       property :tabs
     end
   end
