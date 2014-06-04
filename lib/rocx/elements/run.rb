@@ -13,6 +13,7 @@ module Rocx
       value_property :effect
       value_property :emboss
       value_property :emphasis
+      value_property :highlight
       value_property :italics
       value_property :snap_to_grid
 
