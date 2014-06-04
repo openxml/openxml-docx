@@ -15,6 +15,7 @@ module Rocx
 
       property :border
       property :color
+      property :east_asian_layout
       property :shading
 
     end
