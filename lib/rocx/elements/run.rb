@@ -10,6 +10,7 @@ module Rocx
       value_property :complex_bold
       value_property :complex_script_formatting
       value_property :double_strikethrough
+      value_property :effect
       value_property :italics
       value_property :snap_to_grid
 
