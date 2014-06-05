@@ -12,18 +12,21 @@ module Rocx
         def value_property(name)
           attr_reader name
 
-          define_method "#{name}=" do |value|
-            class_name = name.to_s.split("_").map(&:capitalize).join
+          class_eval <<-CODE, __FILE__, __LINE__ + 1
+          def #{name}=(value)
+            class_name = "#{name}".split.map(&:capitalize).join
             prop_class = Rocx::Properties.const_get class_name
             instance_variable_set "@#{name}", prop_class.new(value)
           end
+          CODE
 
           properties << name
         end
 
         def property(name)
-          define_method "#{name}" do
-            class_name = name.to_s.split("_").map(&:capitalize).join
+          class_eval <<-CODE, __FILE__, __LINE__ + 1
+          def #{name}
+            class_name = "#{name}".split("_").map(&:capitalize).join
             prop_class = Rocx::Properties.const_get class_name
 
             if instance_variable_get("@#{name}").nil?
@@ -32,6 +35,7 @@ module Rocx
 
             instance_variable_get "@#{name}"
           end
+          CODE
 
           properties << name
         end
