@@ -18,6 +18,7 @@ module Rocx
       value_property :imprint
       value_property :italics
       value_property :snap_to_grid
+      value_property :web_hidden
 
       property :border
       property :color
