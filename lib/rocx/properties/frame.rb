@@ -10,8 +10,8 @@ module Rocx
       VALID_RELATIVE_VERTICAL_POSITIONS = %i(bottom center inline inside outside top)
       VALID_WRAPS = %i(around auto none notBeside through tight)
 
-      attribute :anchor_lock, expects: :true_or_false, displays_as: :anchorLock
-      attribute :drop_cap, expects: :valid_drop_cap, displays_as: :dropCap
+      attribute :anchor_lock, expects: :true_or_false
+      attribute :drop_cap, expects: :valid_drop_cap
       attribute :height, expects: :positive_integer, displays_as: :h
       attribute :height_rule, expects: :valid_height_rule, displays_as: :hRule
       attribute :horizontal_anchor, expects: :valid_anchor, displays_as: :hAnchor

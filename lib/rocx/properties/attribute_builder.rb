@@ -211,7 +211,8 @@ module Rocx
             instance_variable_set "@#{name}", value
           end
 
-          attributes[name] = displays_as || name
+          camelized_name = name.to_s.gsub(/_([a-z])/i) { $1.upcase }.to_sym
+          attributes[name] = displays_as || camelized_name
         end
 
         def attributes

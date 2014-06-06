@@ -6,7 +6,7 @@ module Rocx
       VALID_BRACKETS = %i(angle curly none round square)
 
       attribute :combine, expects: :on_or_off
-      attribute :combine_brackets, expects: :valid_bracket, displays_as: :combineBrackets
+      attribute :combine_brackets, expects: :valid_bracket
       attribute :id, expects: :integer
       attribute :vertical, expects: :on_or_off, displays_as: :vert
       attribute :vertical_compress, expects: :on_or_off, displays_as: :vertCompress

@@ -10,9 +10,9 @@ module Rocx
       attribute :shadow, expects: :true_or_false
       attribute :size, expects: :positive_integer, displays_as: :sz
       attribute :space, expects: :positive_integer
-      attribute :theme_color, expects: :valid_theme_color, displays_as: :themeColor
-      attribute :theme_shade, expects: :hex_digit, displays_as: :themeShade
-      attribute :theme_tint, expects: :hex_digit, displays_as: :themeTint
+      attribute :theme_color, expects: :valid_theme_color
+      attribute :theme_shade, expects: :hex_digit
+      attribute :theme_tint, expects: :hex_digit
       attribute :type, expects: :valid_type, displays_as: :val
 
       def initialize(tag=:bdr)

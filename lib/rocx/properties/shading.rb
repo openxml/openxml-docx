@@ -43,12 +43,12 @@ module Rocx
 
       attribute :color, expects: :hex_color
       attribute :fill, expects: :hex_color
-      attribute :theme_color, expects: :valid_theme_color, displays_as: :themeColor
-      attribute :theme_fill, expects: :valid_theme_color, displays_as: :themeFill
-      attribute :theme_fill_shade, expects: :hex_digit, displays_as: :themeFillShade
-      attribute :theme_fill_tint, expects: :hex_digit, displays_as: :themeFillTint
-      attribute :theme_shade, expects: :hex_digit, displays_as: :themeShade
-      attribute :theme_tint, expects: :hex_digit, displays_as: :themeTint
+      attribute :theme_color, expects: :valid_theme_color
+      attribute :theme_fill, expects: :valid_theme_color
+      attribute :theme_fill_shade, expects: :hex_digit
+      attribute :theme_fill_tint, expects: :hex_digit
+      attribute :theme_shade, expects: :hex_digit
+      attribute :theme_tint, expects: :hex_digit
       attribute :pattern, expects: :shading_pattern, displays_as: :val
 
       def name
