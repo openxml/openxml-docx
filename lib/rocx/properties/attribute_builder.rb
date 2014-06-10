@@ -275,7 +275,7 @@ module Rocx
       end
 
       def valid_in?(value, list)
-        message = "Invalid #{name}: must be one of #{list.join(", ")}"
+        message = "Invalid #{name}: must be one of #{list.join(", ")} (was #{value.inspect})"
         raise ArgumentError, message unless list.member?(value)
       end
 
