@@ -1,9 +1,9 @@
 require "spec_helper"
 
-describe Rocx::Properties::VerticalAlignment do
+describe Rocx::Properties::TextAlignment do
   include ValuePropertyTestMacros
 
-  it_should_use tag: :textAlignment, name: "vertical_alignment", value: :auto
+  it_should_use tag: :textAlignment, name: "text_alignment", value: :auto
 
   with_value(:auto) do
     it_should_work

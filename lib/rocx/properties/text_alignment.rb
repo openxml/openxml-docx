@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class VerticalAlignment < BaseProperty
+    class TextAlignment < BaseProperty
 
       def ok_values
         %i(auto baseline bottom center top)
@@ -8,10 +8,6 @@ module Rocx
 
       def to_xml(xml)
         xml["w"].public_send(tag, "w:val" => value)
-      end
-
-      def tag
-        :textAlignment
       end
 
     end

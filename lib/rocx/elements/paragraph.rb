@@ -27,8 +27,8 @@ module Rocx
       value_property :supress_line_numbers
       value_property :supress_overlap
       value_property :textbox_tight_wrap
+      value_property :text_alignment
       value_property :text_direction
-      value_property :vertical_alignment
       value_property :widow_control
       value_property :word_wrap
 
