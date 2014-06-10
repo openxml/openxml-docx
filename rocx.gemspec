@@ -18,10 +18,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency "open_xml_package"
 
   gem.add_development_dependency "pry"
-  gem.add_development_dependency "turn"
+  gem.add_development_dependency "rspec"
   gem.add_development_dependency "rake"
   gem.add_development_dependency "rr"
-  gem.add_development_dependency "shoulda-context"
   gem.add_development_dependency "simplecov"
   gem.add_development_dependency "timecop"
 

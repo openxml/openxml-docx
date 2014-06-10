@@ -8,8 +8,8 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    ansi (1.4.3)
     coderay (1.0.9)
+    diff-lcs (1.2.5)
     method_source (0.8.1)
     mini_portile (0.5.3)
     multi_json (1.7.2)
@@ -23,16 +23,21 @@ GEM
       slop (~> 3.4)
     rake (10.0.4)
     rr (1.1.2)
+    rspec (2.14.1)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
+    rspec-core (2.14.7)
+    rspec-expectations (2.14.4)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.14.4)
     rubyzip (1.1.3)
-    shoulda-context (1.1.6)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.4.4)
     timecop (0.6.3)
-    turn (0.9.6)
-      ansi
 
 PLATFORMS
   ruby
@@ -42,7 +47,6 @@ DEPENDENCIES
   rake
   rocx!
   rr
-  shoulda-context
+  rspec
   simplecov
   timecop
-  turn
