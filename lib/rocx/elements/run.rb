@@ -15,6 +15,7 @@ module Rocx
       value_property :emboss
       value_property :emphasis
       value_property :expansion
+      value_property :hidden_text
       value_property :highlight
       value_property :imprint
       value_property :italics
