@@ -8,6 +8,7 @@ module Rocx
       value_property :bold
       value_property :caps
       value_property :complex_bold
+      value_property :complex_font_size
       value_property :complex_italics
       value_property :complex_script_formatting
       value_property :double_strikethrough
