@@ -1,17 +1,14 @@
 module Rocx
   module Properties
-    class Numbering
+    class Numbering < BaseProperty
       include AttributeBuilder
+
+      tag :numPr
 
       attribute :level, expects: :positive_integer, displays_as: :ilvl
       attribute :id, expects: :positive_integer, displays_as: :numId
 
-      def name
-        "numbering"
-      end
-
-      def tag
-        :numPr
+      def initialize
       end
 
       def to_xml(xml)

@@ -1,13 +1,10 @@
 module Rocx
   module Properties
     class VerticalAlignment < BaseProperty
+      tag :vertAlign
 
       def ok_values
         %i(baseline subscript superscript)
-      end
-
-      def tag
-        :vertAlign
       end
 
       def to_xml(xml)

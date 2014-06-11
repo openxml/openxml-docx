@@ -1,6 +1,8 @@
 module Rocx
   module Properties
     class ConditionalFormatting < BaseProperty
+      tag :cnfStyle
+
       VALID_ARGUMENTS = %i(even_h
                            even_v
                            odd_h
@@ -21,10 +23,6 @@ module Rocx
       def initialize(**args)
         check_arguments(args)
         assign_arguments(args)
-      end
-
-      def tag
-        :cnfStyle
       end
 
       def to_xml(xml)

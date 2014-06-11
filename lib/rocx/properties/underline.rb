@@ -1,7 +1,9 @@
 module Rocx
   module Properties
-    class Underline
+    class Underline < BaseProperty
       include AttributeBuilder
+
+      tag :u
 
       VALID_UNDERLINE_TYPES = %i(dash dashDotDotHeavy dashDotHeavy dashedHeavy dashLong dashLongHeavy dotDash dotDotDash dotted dottedHeavy double none single thick wave wavyDouble wavyHeavy words)
 
@@ -11,12 +13,7 @@ module Rocx
       attribute :theme_tint, expects: :hex_digit
       attribute :type, expects: :valid_underline_type, displays_as: :val
 
-      def name
-        "underline"
-      end
-
-      def tag
-        :u
+      def initialize
       end
 
       def to_xml(xml)

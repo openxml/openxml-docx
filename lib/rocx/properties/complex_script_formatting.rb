@@ -1,10 +1,7 @@
 module Rocx
   module Properties
     class ComplexScriptFormatting < ToggleProperty
-
-      def tag
-        :cs
-      end
+      tag :cs
       
     end
   end

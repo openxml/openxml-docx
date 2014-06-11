@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Spacing
+    class Spacing < BaseProperty
       include AttributeBuilder
 
       VALID_LINE_RULES = %i(atLeast auto exact)
@@ -14,12 +14,7 @@ module Rocx
       attribute :line, expects: :integer
       attribute :line_rule, expects: :valid_line_rule
 
-      def name
-        "spacing"
-      end
-
-      def tag
-        :spacing
+      def initialize
       end
 
       def to_xml(xml)

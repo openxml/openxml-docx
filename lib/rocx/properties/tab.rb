@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Tab
+    class Tab < BaseProperty
       attr_reader :position, :type, :leader
 
       VALID_TYPES = %i(bar center clear decimal end num start)
@@ -29,14 +29,6 @@ module Rocx
 
       def to_xml(xml)
         xml["w"].public_send(tag, xml_attributes)
-      end
-
-      def tag
-        :tab
-      end
-
-      def name
-        "tab"
       end
 
     private

@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Color
+    class Color < BaseProperty
       include AttributeBuilder
 
       attribute :color, expects: :hex_color, displays_as: :val
@@ -8,12 +8,7 @@ module Rocx
       attribute :theme_shade, expects: :hex_digit
       attribute :theme_tint, expects: :hex_digit
 
-      def name
-        "color"
-      end
-
-      def tag
-        :color
+      def initialize
       end
 
       def to_xml(xml)

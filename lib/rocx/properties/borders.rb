@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Borders
+    class Borders < BaseProperty
       attr_reader :left, :right, :top, :bottom, :between, :bar
 
       def initialize
@@ -12,13 +12,7 @@ module Rocx
         @bar = new_border :bar
       end
 
-      def tag
-        :pBdr
-      end
-
-      def name
-        "borders"
-      end
+      tag :pBdr
 
       def render?
         !renderable_borders.length.zero?

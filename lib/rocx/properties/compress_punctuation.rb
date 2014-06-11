@@ -1,10 +1,7 @@
 module Rocx
   module Properties
     class CompressPunctuation < OnOffProperty
-
-      def tag
-        :topLinePunct
-      end
+      tag :topLinePunct
 
     end
   end

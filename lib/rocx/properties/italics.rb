@@ -1,10 +1,7 @@
 module Rocx
   module Properties
     class Italics < ToggleProperty
-
-      def tag
-        :i
-      end
+      tag :i
 
     end
   end

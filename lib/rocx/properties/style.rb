@@ -1,13 +1,10 @@
 module Rocx
   module Properties
     class Style < BaseProperty
+      tag :pStyle
 
       def valid?
         !value.nil?
-      end
-
-      def tag
-        :pStyle
       end
 
       def invalid_message

@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Tabs
+    class Tabs < BaseProperty
       include Enumerable
 
       def initialize
@@ -26,14 +26,6 @@ module Rocx
         xml["w"].public_send(tag) {
           each { |tab| tab.to_xml(xml) }
         }
-      end
-
-      def name
-        "tabs"
-      end
-
-      def tag
-        :tabs
       end
 
     protected

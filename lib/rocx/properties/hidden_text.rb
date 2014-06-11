@@ -1,10 +1,7 @@
 module Rocx
   module Properties
     class HiddenText < ToggleProperty
-
-      def tag
-        :vanish
-      end
+      tag :vanish
 
     end
   end

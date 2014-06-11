@@ -1,10 +1,7 @@
 module Rocx
   module Properties
     class DoubleStrikethrough < BooleanProperty
-
-      def tag
-        :dstrike
-      end
+      tag :dstrike
 
     end
   end

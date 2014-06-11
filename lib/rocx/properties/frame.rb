@@ -1,7 +1,9 @@
 module Rocx
   module Properties
-    class Frame
+    class Frame < BaseProperty
       include AttributeBuilder
+
+      tag :framePr
 
       VALID_ANCHORS = %i(margin page text)
       VALID_DROP_CAPS = %i(drop margin none)
@@ -26,12 +28,7 @@ module Rocx
       attribute :width, expects: :positive_integer, displays_as: :w
       attribute :wrap, expects: :valid_wrap
 
-      def tag
-        :framePr
-      end
-
-      def name
-        "frame"
+      def initialize
       end
 
       def to_xml(xml)

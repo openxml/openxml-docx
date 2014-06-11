@@ -1,10 +1,7 @@
 module Rocx
   module Properties
     class ComplexBold < ToggleProperty
-
-      def tag
-        :bCs
-      end
+      tag :bCs
 
     end
   end

@@ -10,10 +10,6 @@ module Rocx
         "Invalid value for #{name}; acceptable values are integers"
       end
 
-      def tag
-        :divId
-      end
-
       def to_xml(xml)
         xml["w"].public_send(tag, "w:val" => value)
       end

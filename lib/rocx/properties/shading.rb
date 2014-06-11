@@ -1,7 +1,9 @@
 module Rocx
   module Properties
-    class Shading
+    class Shading < BaseProperty
       include AttributeBuilder
+
+      tag :shd
 
       VALID_SHADING_PATTERNS = %i(clear
                                   diagCross
@@ -51,12 +53,7 @@ module Rocx
       attribute :theme_tint, expects: :hex_digit
       attribute :pattern, expects: :shading_pattern, displays_as: :val
 
-      def name
-        "shading"
-      end
-
-      def tag
-        :shd
+      def initialize
       end
 
       def to_xml(xml)

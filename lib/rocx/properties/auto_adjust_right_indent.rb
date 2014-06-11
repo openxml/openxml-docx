@@ -1,15 +1,9 @@
 module Rocx
   module Properties
     class AutoAdjustRightIndent < BooleanProperty
-
-      def name
-        "auto_adjust_right_ind"
-      end
-
-      def tag
-        :adjustRightInd
-      end
-
+      tag :adjustRightInd
+      name "auto_adjust_right_ind"
+      
     end
   end
 end

@@ -1,6 +1,7 @@
 module Rocx
   module Properties
     class Expansion < BaseProperty
+      tag :w
 
       def valid?
         return false unless value =~ /(\d{1,3})%/
@@ -10,10 +11,6 @@ module Rocx
 
       def invalid_message
         "Invalid #{name}: value must be a percentage greater than 0 or less than 601"
-      end
-
-      def tag
-        :w
       end
 
       def to_xml(xml)
