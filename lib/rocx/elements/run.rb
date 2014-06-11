@@ -28,6 +28,7 @@ module Rocx
       value_property :outline
       value_property :position
       value_property :right_to_left
+      value_property :run_style
       value_property :shadow
       value_property :small_caps
       value_property :snap_to_grid
