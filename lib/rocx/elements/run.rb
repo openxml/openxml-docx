@@ -7,6 +7,7 @@ module Rocx
 
       value_property :bold
       value_property :caps
+      value_property :character_spacing
       value_property :complex_bold
       value_property :complex_font_size
       value_property :complex_italics
