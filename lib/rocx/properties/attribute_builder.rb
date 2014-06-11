@@ -262,6 +262,11 @@ module Rocx
         raise ArgumentError, message unless value.is_a?(Integer) && value >= 0
       end
 
+      def string(value)
+        message = "Invalid #{name}: must be a string"
+        raise ArgumentError, message unless value.is_a?(String)
+      end
+
       def on_or_off(value)
         valid_in? value, [:on, :off]
       end

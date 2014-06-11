@@ -38,6 +38,7 @@ module Rocx
 
       property :border
       property :color
+      property :font
       property :east_asian_layout
       property :language
       property :manual_width
