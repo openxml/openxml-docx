@@ -19,8 +19,6 @@ module Rocx
         @tag = tag
       end
 
-      name "border"
-
     end
   end
 end
