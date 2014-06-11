@@ -22,6 +22,7 @@ module Rocx
       value_property :imprint
       value_property :italics
       value_property :snap_to_grid
+      value_property :strikethrough
       value_property :vertical_alignment
       value_property :web_hidden
 
