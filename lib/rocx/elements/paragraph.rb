@@ -22,7 +22,7 @@ module Rocx
       value_property :overflow_punctuation
       value_property :page_break_before
       value_property :snap_to_grid
-      value_property :style
+      value_property :paragraph_style
       value_property :supress_auto_hyphens
       value_property :supress_line_numbers
       value_property :supress_overlap

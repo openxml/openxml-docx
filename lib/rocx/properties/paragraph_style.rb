@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Style < ValueProperty
+    class ParagraphStyle < ValueProperty
       tag :pStyle
 
       def valid?

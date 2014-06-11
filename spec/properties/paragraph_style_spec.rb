@@ -1,9 +1,9 @@
 require "spec_helper"
 
-describe Rocx::Properties::Style do
+describe Rocx::Properties::ParagraphStyle do
   include ValuePropertyTestMacros
 
-  it_should_use tag: :pStyle, name: "style", value: "Nope"
+  it_should_use tag: :pStyle, name: "paragraph_style", value: "Nope"
 
   with_value("Nope") do
     it_should_work
