@@ -23,6 +23,7 @@ module Rocx
       value_property :imprint
       value_property :italics
       value_property :math
+      value_property :no_proof
       value_property :outline
       value_property :position
       value_property :right_to_left
