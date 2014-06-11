@@ -40,6 +40,7 @@ module Rocx
       property :color
       property :east_asian_layout
       property :language
+      property :manual_width
       property :shading
       property :underline
 
