@@ -6,7 +6,8 @@ describe Rocx::Elements::Paragraph do
   context "with runs" do
     before(:each) do
       @node = described_class.new
-      node.indentation = {start: 720, end: -1440}
+      node.indentation.start = 720
+      node.indentation.end = -1440
       run = Rocx::Elements::Run.new
       run << Rocx::Elements::Text.new("Hey Run 1")
       node << run

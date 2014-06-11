@@ -11,12 +11,10 @@ module Rocx
       value_property :auto_space_dn
       value_property :bidi
       value_property :compress_punctuation
-      value_property :conditional_formatting
       value_property :contextual_spacing
       value_property :div_id
       value_property :keep_lines
       value_property :keep_next
-      value_property :indentation
       value_property :mirror_indent
       value_property :outline_level
       value_property :overflow_punctuation
@@ -35,6 +33,7 @@ module Rocx
       property :borders
       property :conditional_formatting
       property :frame
+      property :indentation
       property :numbering
       property :shading
       property :spacing

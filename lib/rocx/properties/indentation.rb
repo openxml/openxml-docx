@@ -1,31 +1,18 @@
 module Rocx
   module Properties
-    class Indentation < BaseProperty
-      attr_reader :value
+    class Indentation < ComplexProperty
+      include AttributeBuilder
 
-      OK_KEYS = [:end, :endChars, :firstLine, :firstLineChars, :hanging, :hangingChars, :start, :startChars]
+      tag :ind
 
-      def initialize(value)
-        @value = value
-        raise ArgumentError invalid_message unless valid?
-      end
-
-      def invalid_message
-        "Invalid value for indentation"
-      end
-
-      def valid?
-        value.keys.all?(&OK_KEYS.method(:member?))
-      end
-
-      def to_xml(xml)
-        return unless value.length > 0
-        namespaced_values = value.each_with_object({}) do |(prop, value), values|
-          values["w:#{prop}"] = value
-        end
-        xml["w"].ind(namespaced_values) if value
-      end
-
+      attribute :end, expects: :integer
+      attribute :end_characters, expects: :integer, displays_as: :endChars
+      attribute :hanging, expects: :integer
+      attribute :hanging_characters, expects: :integer, displays_as: :hangingChars
+      attribute :first_line, expects: :integer
+      attribute :first_line_characters, expects: :integer, displays_as: :firstLineChars
+      attribute :start, expects: :integer
+      attribute :start_characters, expects: :integer, displays_as: :startChars
     end
   end
 end

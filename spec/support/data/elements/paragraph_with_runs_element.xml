@@ -2,7 +2,7 @@
 <root xmlns:w="http://wnamespace.org">
   <w:p>
     <w:pPr>
-      <w:ind w:start="720" w:end="-1440"/>
+      <w:ind w:end="-1440" w:start="720"/>
     </w:pPr>
     <w:r>
       <w:t>Hey Run 1</w:t>
