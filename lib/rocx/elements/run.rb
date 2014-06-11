@@ -20,6 +20,7 @@ module Rocx
       value_property :font_size
       value_property :hidden_text
       value_property :highlight
+      value_property :kerning
       value_property :imprint
       value_property :italics
       value_property :math
