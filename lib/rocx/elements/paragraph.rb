@@ -33,6 +33,7 @@ module Rocx
       value_property :word_wrap
 
       property :borders
+      property :conditional_formatting
       property :frame
       property :numbering
       property :shading
