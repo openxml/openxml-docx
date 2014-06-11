@@ -22,6 +22,7 @@ module Rocx
       value_property :highlight
       value_property :imprint
       value_property :italics
+      value_property :small_caps
       value_property :snap_to_grid
       value_property :spec_vanish
       value_property :strikethrough
