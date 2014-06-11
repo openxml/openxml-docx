@@ -22,6 +22,7 @@ module Rocx
       value_property :highlight
       value_property :imprint
       value_property :italics
+      value_property :position
       value_property :right_to_left
       value_property :shadow
       value_property :small_caps
