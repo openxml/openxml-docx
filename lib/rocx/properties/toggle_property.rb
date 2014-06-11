@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class ToggleProperty < BaseProperty
+    class ToggleProperty < ValueProperty
 
       def ok_values
         [nil, true, false]

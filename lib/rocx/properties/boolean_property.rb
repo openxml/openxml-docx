@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class BooleanProperty < BaseProperty
+    class BooleanProperty < ValueProperty
 
       def ok_values
         [nil, true, false]

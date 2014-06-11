@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Underline < BaseProperty
+    class Underline < ComplexProperty
       include AttributeBuilder
 
       tag :u
@@ -12,14 +12,6 @@ module Rocx
       attribute :theme_shade, expects: :hex_digit
       attribute :theme_tint, expects: :hex_digit
       attribute :type, expects: :valid_underline_type, displays_as: :val
-
-      def initialize
-      end
-
-      def to_xml(xml)
-        return if xml_attributes.empty?
-        xml["w"].public_send(tag, xml_attributes)
-      end
 
     private
 

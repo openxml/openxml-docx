@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Borders < BaseProperty
+    class Borders < ComplexProperty
       attr_reader :left, :right, :top, :bottom, :between, :bar
 
       def initialize

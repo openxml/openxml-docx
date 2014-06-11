@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Border < BaseProperty
+    class Border < ComplexProperty
       include AttributeBuilder
 
       attr_reader :tag
@@ -20,11 +20,6 @@ module Rocx
       end
 
       name "border"
-
-      def to_xml(xml)
-        return if xml_attributes.empty?
-        xml["w"].public_send(tag, xml_attributes)
-      end
 
     end
   end

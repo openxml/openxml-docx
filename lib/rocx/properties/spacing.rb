@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Spacing < BaseProperty
+    class Spacing < ComplexProperty
       include AttributeBuilder
 
       VALID_LINE_RULES = %i(atLeast auto exact)
@@ -13,14 +13,6 @@ module Rocx
       attribute :before_lines, expects: :integer
       attribute :line, expects: :integer
       attribute :line_rule, expects: :valid_line_rule
-
-      def initialize
-      end
-
-      def to_xml(xml)
-        return if xml_attributes.empty?
-        xml["w"].public_send(tag, xml_attributes)
-      end
 
     private
 

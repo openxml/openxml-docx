@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class EastAsianLayout < BaseProperty
+    class EastAsianLayout < ComplexProperty
       include AttributeBuilder
 
       VALID_BRACKETS = %i(angle curly none round square)
@@ -10,14 +10,6 @@ module Rocx
       attribute :id, expects: :integer
       attribute :vertical, expects: :on_or_off, displays_as: :vert
       attribute :vertical_compress, expects: :on_or_off, displays_as: :vertCompress
-
-      def initialize
-      end
-
-      def to_xml(xml)
-        return if xml_attributes.empty?
-        xml["w"].public_send(tag, xml_attributes)
-      end
 
     private
 

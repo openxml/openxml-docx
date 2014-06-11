@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class OutlineLevel < BaseProperty
+    class OutlineLevel < ValueProperty
       tag :outlineLvl
 
       def valid?
@@ -9,10 +9,6 @@ module Rocx
 
       def invalid_message
         "Invalid value for #{name}; acceptable values are integers greater than or equal to 0"
-      end
-
-      def to_xml(xml)
-        xml["w"].public_send(tag, "w:val" => value)
       end
 
     end

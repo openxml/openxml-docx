@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class OnOffProperty < BaseProperty
+    class OnOffProperty < ValueProperty
 
       def ok_values
         [nil, :on, :off]

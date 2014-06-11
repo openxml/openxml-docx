@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Frame < BaseProperty
+    class Frame < ComplexProperty
       include AttributeBuilder
 
       tag :framePr
@@ -27,14 +27,6 @@ module Rocx
       attribute :vertical_position, expects: :integer, displays_as: :y
       attribute :width, expects: :positive_integer, displays_as: :w
       attribute :wrap, expects: :valid_wrap
-
-      def initialize
-      end
-
-      def to_xml(xml)
-        return if xml_attributes.empty?
-        xml["w"].public_send(tag, xml_attributes)
-      end
 
     private
 

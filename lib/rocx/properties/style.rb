@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Style < BaseProperty
+    class Style < ValueProperty
       tag :pStyle
 
       def valid?
@@ -9,10 +9,6 @@ module Rocx
 
       def invalid_message
         "Invalid #{name}: value must not be nil"
-      end
-
-      def to_xml(xml)
-        xml["w"].public_send(tag, "w:val" => value)
       end
 
     end

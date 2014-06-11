@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Shading < BaseProperty
+    class Shading < ComplexProperty
       include AttributeBuilder
 
       tag :shd
@@ -52,14 +52,6 @@ module Rocx
       attribute :theme_shade, expects: :hex_digit
       attribute :theme_tint, expects: :hex_digit
       attribute :pattern, expects: :shading_pattern, displays_as: :val
-
-      def initialize
-      end
-
-      def to_xml(xml)
-        return if xml_attributes.empty?
-        xml["w"].public_send(tag, xml_attributes)
-      end
 
     private
 

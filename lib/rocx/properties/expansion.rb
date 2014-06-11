@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Expansion < BaseProperty
+    class Expansion < ValueProperty
       tag :w
 
       def valid?
@@ -11,10 +11,6 @@ module Rocx
 
       def invalid_message
         "Invalid #{name}: value must be a percentage greater than 0 or less than 601"
-      end
-
-      def to_xml(xml)
-        xml["w"].public_send(tag, "w:val" => value)
       end
 
     end

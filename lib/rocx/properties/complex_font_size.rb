@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class ComplexFontSize < BaseProperty      
+    class ComplexFontSize < ValueProperty
       tag :szCs
 
       def valid?
@@ -9,10 +9,6 @@ module Rocx
 
       def invalid_message
         "Invalid #{name}: must be a positive integer"
-      end
-
-      def to_xml(xml)
-        xml["w"].public_send(tag, "w:val" => value)
       end
 
     end

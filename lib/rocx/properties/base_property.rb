@@ -5,7 +5,7 @@ module Rocx
 
       class << self
         attr_reader :property_name
-        
+
         def tag(*args)
           @tag = args.first if args.any?
           @tag
@@ -15,19 +15,6 @@ module Rocx
           @property_name = args.first if args.any?
           @name
         end
-      end
-
-      def initialize(value)
-        @value = value
-        raise ArgumentError, invalid_message unless valid?
-      end
-
-      def valid?
-        ok_values.member? value
-      end
-
-      def invalid_message
-        "Invalid value for #{name}; acceptable values are #{ok_values.join(", ")}"
       end
 
       def render?
