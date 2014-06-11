@@ -11,6 +11,7 @@ require "rocx/properties/integer_property"
 require "rocx/properties/positive_integer_property"
 require "rocx/properties/on_off_property"
 require "rocx/properties/toggle_property"
+require "rocx/properties/style"
 Dir.glob("#{File.join(File.dirname(__FILE__), "properties", "*.rb")}").each do |file|
   require file
 end

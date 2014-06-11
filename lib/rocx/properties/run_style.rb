@@ -1,15 +1,7 @@
 module Rocx
   module Properties
-    class RunStyle < ValueProperty
+    class RunStyle < Style
       tag :rStyle
-
-      def valid?
-        !value.nil?
-      end
-
-      def invalid_message
-        "Invalid #{name}: value must not be nil"
-      end
 
     end
   end
