@@ -25,6 +25,10 @@ module Rocx
         self.class.property_name || default_name
       end
 
+      def to_xml(xml)
+        xml["w"].public_send(tag, xml_attributes)
+      end
+
     private
 
       def default_tag

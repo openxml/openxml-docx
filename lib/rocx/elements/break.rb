@@ -9,10 +9,6 @@ module Rocx
       VALID_CLEARS = %i(all left none right)
       VALID_BREAK_TYPES = %i(column page textWrapping)
 
-      def to_xml(xml)
-        xml["w"].public_send(tag, xml_attributes)
-      end
-
     private
 
       def valid_clear(value)
