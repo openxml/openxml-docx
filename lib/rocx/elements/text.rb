@@ -1,19 +1,26 @@
 module Rocx
   module Elements
-    class Text < BaseElement
+    class Text < Element
       attr_reader :text
 
-      tag_name :t
-      namespace :w
-      attribute :space, xml_name: "xml:space", limit_to: [nil, :preserve]
+      tag :t
 
-      def initialize(text, **args)
+      attribute :space, expects: :valid_space_preserve, namespace: :xml
+
+      VALID_SPACE_PRESERVES = [:preserve, nil]
+
+      def initialize(text=nil)
         @text = text
-        super args
       end
 
       def to_xml(xml)
-        xml[namespace].public_send tag_name, text, xml_attributes
+        xml["w"].public_send(tag, text, xml_attributes)
+      end
+
+    private
+
+      def valid_space_preserve(value)
+        valid_in? value, VALID_SPACE_PRESERVES
       end
 
     end

@@ -3,21 +3,22 @@ require "spec_helper"
 describe Rocx::Elements::Text do
   include ElementTestMacros
 
-  context "for the space attribute" do
-    it "shoudl require space to be :preserve or nil" do
-      expect { described_class.new("Banana", space: :preserve) }.to_not raise_error
+  it_should_use tag: :t, name: "text"
 
-      expect { described_class.new("Banana") }.to_not raise_error
+  for_attribute(:space) do
+    with_value(nil) do
+      it_should_assign_successfully
+      it_should_output "<w:t/>"
+    end
 
-      expect { described_class.new("Banana", space: :the_final_frontier) }.to raise_error(ArgumentError)
+    with_value(:preserve) do
+      it_should_assign_successfully
+      it_should_output "<w:t xml:space=\"preserve\"/>"
+    end
+
+    with_value(:the_final_frontier) do
+      it_should_raise_an_exception
     end
   end
 
-  context "with valid attributes" do
-    before(:each) do
-      @node = described_class.new("Banana", space: :preserve)
-    end
-
-    it_should_output_correct_xml
-  end
 end
