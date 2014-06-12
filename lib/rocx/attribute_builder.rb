@@ -202,7 +202,7 @@ module Rocx
     end
 
     module ClassMethods
-      def attribute(name, expects: nil, displays_as: nil)
+      def attribute(name, expects: nil, displays_as: nil, namespace: nil)
         attr_reader name
 
         define_method "#{name}=" do |value|
@@ -211,7 +211,7 @@ module Rocx
         end
 
         camelized_name = name.to_s.gsub(/_([a-z])/i) { $1.upcase }.to_sym
-        attributes[name] = displays_as || camelized_name
+        attributes[name] = [displays_as || camelized_name, namespace || :w]
       end
 
       def attributes
@@ -230,9 +230,10 @@ module Rocx
   private
 
     def xml_attributes
-      attributes.each_with_object({}) do |(name, display), attrs|
+      attributes.each_with_object({}) do |(name, options), attrs|
+        display, namespace = options
         value = send(name)
-        attrs["w:#{display}"] = value if value
+        attrs["#{namespace}:#{display}"] = value if value
       end
     end
 
