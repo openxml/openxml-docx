@@ -3,45 +3,53 @@ require "spec_helper"
 describe Rocx::Elements::Break do
   include ElementTestMacros
 
-  context "when creating a new break" do
-    it "should not accept invalid values for the clear property" do
-      expect { described_class.new(clear: :obviouslyInvalid) }.to raise_error(ArgumentError)
+  it_should_use tag: :br, name: "break"
+
+  for_attribute(:clear) do
+    with_value(:all) do
+      it_should_assign_successfully
+      it_should_output "<w:br w:clear=\"all\"/>"
     end
 
-    it "should not accept invalid values for the break_type property" do
-      expect { described_class.new(break_type: :invalidType) }.to raise_error(ArgumentError)
+    with_value(:left) do
+      it_should_assign_successfully
+      it_should_output "<w:br w:clear=\"left\"/>"
+    end
+
+    with_value(:none) do
+      it_should_assign_successfully
+      it_should_output "<w:br w:clear=\"none\"/>"
+    end
+
+    with_value(:right) do
+      it_should_assign_successfully
+      it_should_output "<w:br w:clear=\"right\"/>"
+    end
+
+    with_value(:somethingElse) do
+      it_should_raise_an_exception
     end
   end
 
-  context "after initial creation" do
-    before(:each) do
-      @node = described_class.new
+  for_attribute(:type) do
+    with_value(:column) do
+      it_should_assign_successfully
+      it_should_output "<w:br w:type=\"column\"/>"
     end
 
-    it "should still not accept invalid values for the clear property" do
-      node = described_class.new
-      expect { node.clear = :invalid }.to raise_error(ArgumentError)
+    with_value(:page) do
+      it_should_assign_successfully
+      it_should_output "<w:br w:type=\"page\"/>"
     end
 
-    it "should still not accept invalid values for the break_type property" do
-      node = described_class.new
-      expect { node.break_type = :weird }.to raise_error(ArgumentError)
+    with_value(:textWrapping) do
+      it_should_assign_successfully
+      it_should_output "<w:br w:type=\"textWrapping\"/>"
+    end
+
+    with_value(:somethingElse) do
+      it_should_raise_an_exception
     end
   end
 
-  context "when both properties are nil" do
-    before(:each) do
-      @node = described_class.new
-    end
-
-    it_should_output_correct_xml
-  end
-
-  context "when either of the properties isn't nil" do
-    before(:each) do
-      @node = described_class.new(break_type: :page, clear: :left)
-    end
-
-    it_should_output_correct_xml node_xml: "break_with_attributes"
-  end
 end
