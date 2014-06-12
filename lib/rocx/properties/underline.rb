@@ -1,8 +1,6 @@
 module Rocx
   module Properties
     class Underline < ComplexProperty
-      include AttributeBuilder
-
       tag :u
 
       VALID_UNDERLINE_TYPES = %i(dash dashDotDotHeavy dashDotHeavy dashedHeavy dashLong dashLongHeavy dotDash dotDotDash dotted dottedHeavy double none single thick wave wavyDouble wavyHeavy words)

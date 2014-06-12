@@ -1,8 +1,6 @@
 module Rocx
   module Properties
     class ConditionalFormatting < ComplexProperty
-      include AttributeBuilder
-
       tag :cnfStyle
 
       attribute :even_horizontal_band, expects: :true_or_false, displays_as: :evenHBand

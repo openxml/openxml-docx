@@ -1,8 +1,6 @@
 module Rocx
   module Properties
     class Indentation < ComplexProperty
-      include AttributeBuilder
-
       tag :ind
 
       attribute :end, expects: :integer

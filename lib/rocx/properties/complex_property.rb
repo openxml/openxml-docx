@@ -1,6 +1,7 @@
 module Rocx
   module Properties
     class ComplexProperty < BaseProperty
+      include AttributeBuilder
 
       def to_xml(xml)
         return unless render?

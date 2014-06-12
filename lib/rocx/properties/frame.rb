@@ -1,16 +1,7 @@
 module Rocx
   module Properties
     class Frame < ComplexProperty
-      include AttributeBuilder
-
       tag :framePr
-
-      VALID_ANCHORS = %i(margin page text)
-      VALID_DROP_CAPS = %i(drop margin none)
-      VALID_HEIGHT_RULES = %i(atLeast auto exact)
-      VALID_RELATIVE_HORIZONTAL_POSITIONS = %i(center inside left outside right)
-      VALID_RELATIVE_VERTICAL_POSITIONS = %i(bottom center inline inside outside top)
-      VALID_WRAPS = %i(around auto none notBeside through tight)
 
       attribute :anchor_lock, expects: :true_or_false
       attribute :drop_cap, expects: :valid_drop_cap
@@ -27,6 +18,13 @@ module Rocx
       attribute :vertical_position, expects: :integer, displays_as: :y
       attribute :width, expects: :positive_integer, displays_as: :w
       attribute :wrap, expects: :valid_wrap
+
+      VALID_ANCHORS = %i(margin page text)
+      VALID_DROP_CAPS = %i(drop margin none)
+      VALID_HEIGHT_RULES = %i(atLeast auto exact)
+      VALID_RELATIVE_HORIZONTAL_POSITIONS = %i(center inside left outside right)
+      VALID_RELATIVE_VERTICAL_POSITIONS = %i(bottom center inline inside outside top)
+      VALID_WRAPS = %i(around auto none notBeside through tight)
 
     private
 

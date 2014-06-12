@@ -1,8 +1,6 @@
 module Rocx
   module Properties
     class Font < ComplexProperty
-      include AttributeBuilder
-
       tag :rFonts
 
       attribute :ascii, expects: :string

@@ -1,9 +1,8 @@
 module Rocx
   module Properties
     class Language < ComplexProperty
-      include AttributeBuilder
-
       tag :lang
+
       attribute :bidi, expects: :valid_language
       attribute :east_asia, expects: :valid_language
       attribute :latin, expects: :valid_language, displays_as: :val

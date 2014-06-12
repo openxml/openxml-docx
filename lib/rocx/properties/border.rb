@@ -1,8 +1,6 @@
 module Rocx
   module Properties
     class Border < ComplexProperty
-      include AttributeBuilder
-
       attr_reader :tag
 
       attribute :color, expects: :hex_color

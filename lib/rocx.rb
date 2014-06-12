@@ -1,3 +1,4 @@
+require "rocx/attribute_builder"
 require "rocx/properties"
 require "rocx/elements"
 require "rocx/package"

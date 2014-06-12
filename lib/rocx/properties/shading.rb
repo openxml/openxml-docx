@@ -1,8 +1,6 @@
 module Rocx
   module Properties
     class Shading < ComplexProperty
-      include AttributeBuilder
-
       tag :shd
 
       VALID_SHADING_PATTERNS = %i(clear

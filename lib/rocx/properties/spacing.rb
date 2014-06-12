@@ -1,8 +1,6 @@
 module Rocx
   module Properties
     class Spacing < ComplexProperty
-      include AttributeBuilder
-
       VALID_LINE_RULES = %i(atLeast auto exact)
 
       attribute :after, expects: :positive_integer

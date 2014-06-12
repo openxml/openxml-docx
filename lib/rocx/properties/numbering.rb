@@ -1,8 +1,6 @@
 module Rocx
   module Properties
     class Numbering < ComplexProperty
-      include AttributeBuilder
-
       tag :numPr
 
       attribute :level, expects: :positive_integer, displays_as: :ilvl
