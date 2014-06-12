@@ -3,22 +3,32 @@ require "spec_helper"
 describe Rocx::Elements::Symbol do
   include ElementTestMacros
 
-  context "always" do
-    before(:each) do
-      @node = described_class.new
+  it_should_use tag: :sym, name: "symbol"
+
+  for_attribute(:font) do
+    with_value("Wingdings") do
+      it_should_assign_successfully
+      it_should_output "<w:sym w:font=\"Wingdings\"/>"
     end
 
-    it "should raise an exception if the char property isn't a 4-digit hex" do
-      expect { node.char = "not valid" }.to raise_error(ArgumentError)
-      expect { node.char = "43fd" }.to_not raise_error
+    with_value(123) do
+      it_should_raise_an_exception
     end
   end
 
-  context "with valid attributes" do
-    before(:each) do
-      @node = described_class.new(char: "43fd", font: "Wingdings")
+  for_attribute(:character) do
+    with_value("43FD") do
+      it_should_assign_successfully
+      it_should_output "<w:sym w:char=\"43FD\"/>"
     end
 
-    it_should_output_correct_xml
+    with_value("43gg") do
+      it_should_raise_an_exception
+    end
+
+    with_value("abcdef") do
+      it_should_raise_an_exception
+    end
   end
+
 end

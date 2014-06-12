@@ -251,6 +251,11 @@ module Rocx
       raise ArgumentError, message unless value =~ /[0-9A-F]{2}/
     end
 
+    def hex_digit_4(value)
+      message = "Invalid #{name}: must be a four-digit hex number, e.g. BF12"
+      raise ArgumentError, message unless value =~ /[0-9A-F]{4}/
+    end
+
     def integer(value)
       message = "Invalid #{name}: must be an integer"
       raise ArgumentError, message unless value.is_a?(Integer)
