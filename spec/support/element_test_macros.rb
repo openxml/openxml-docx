@@ -110,6 +110,16 @@ module ElementTestMacros
       end
     end
 
+    def with_no_attributes_set(&block)
+      attribute_context = context "with no attributes set" do
+        before(:each) do
+          @instance = described_class.new
+        end
+      end
+
+      attribute_context.class_eval &block
+    end
+
   end
 
 end
