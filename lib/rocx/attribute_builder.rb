@@ -269,7 +269,7 @@ module Rocx
 
     def string(value)
       message = "Invalid #{name}: must be a string"
-      raise ArgumentError, message unless value.is_a?(String)
+      raise ArgumentError, message if !value.is_a?(String) || value.length.zero?
     end
 
     def on_or_off(value)
