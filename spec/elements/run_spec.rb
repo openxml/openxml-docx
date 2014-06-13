@@ -5,8 +5,8 @@ describe Rocx::Elements::Run do
 
   context "after creation" do
     before(:each) do
-      @node = described_class.new
-      node.italics = true
+      @instance = described_class.new
+      instance.italics = true
     end
 
     it_should_output_correct_xml

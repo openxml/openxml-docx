@@ -18,7 +18,7 @@ module ElementTestMacros
   end
 
   def self.included(base)
-    attr_reader :node, :instance, :attribute, :value
+    attr_reader :instance, :attribute, :value
     base.extend ClassMethods
   end
 
@@ -33,7 +33,7 @@ module ElementTestMacros
 
         generated_xml = Nokogiri::XML::Builder.new do |xml|
           xml.root("xmlns:w" => "http://wnamespace.org") {
-            node.to_xml(xml)
+            instance.to_xml(xml)
           }
         end.to_xml
 

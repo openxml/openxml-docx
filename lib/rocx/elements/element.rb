@@ -15,6 +15,12 @@ module Rocx
           @property_name = args.first if args.any?
           @name
         end
+
+        def namespace(*args)
+          @namespace = args.first if args.any?
+          @namespace
+        end
+
       end
 
       def tag
@@ -23,6 +29,10 @@ module Rocx
 
       def name
         self.class.property_name || default_name
+      end
+
+      def namespace
+        self.class.namespace || default_namespace
       end
 
       def to_xml(xml)
@@ -37,6 +47,10 @@ module Rocx
 
       def default_name
         class_name.gsub(/(.)([A-Z])/, '\1_\2').downcase
+      end
+
+      def default_namespace
+        :w
       end
 
       def class_name

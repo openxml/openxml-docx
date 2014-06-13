@@ -1,6 +1,6 @@
 module Rocx
   module Elements
-    class BaseContainer < BaseElement
+    class Container < Element
       attr_reader :children
 
       class << self
@@ -45,9 +45,8 @@ module Rocx
         end
       end
 
-      def initialize(**args)
+      def initialize
         @children = []
-        super args
       end
 
       def <<(child)
@@ -55,13 +54,13 @@ module Rocx
       end
 
       def to_xml(xml)
-        (namespace ? xml[namespace] : xml).public_send(tag_name, xml_attributes) {
+        xml[namespace].public_send(tag, xml_attributes) {
           property_xml(xml)
           children.each { |child| child.to_xml(xml) }
         }
       end
 
-    protected
+    private
 
       def property_xml(xml)
         props = properties.map(&method(:send)).compact
@@ -76,7 +75,11 @@ module Rocx
       end
 
       def properties_tag
-        self.class.properties_tag
+        self.class.properties_tag || default_properties_tag
+      end
+
+      def default_properties_tag
+        :"#{tag}Pr"
       end
 
     end

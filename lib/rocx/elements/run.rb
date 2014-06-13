@@ -1,9 +1,7 @@
 module Rocx
   module Elements
-    class Run < BaseContainer
-      tag_name :r
-      namespace :w
-      properties_tag :rPr
+    class Run < Container
+      tag :r
 
       value_property :bold
       value_property :caps

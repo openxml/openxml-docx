@@ -1,9 +1,7 @@
 module Rocx
   module Elements
-    class Paragraph < BaseContainer
-      tag_name :p
-      namespace :w
-      properties_tag :pPr
+    class Paragraph < Container
+      tag :p
 
       value_property :alignment
       value_property :auto_adjust_right_indent
