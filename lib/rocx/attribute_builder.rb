@@ -203,6 +203,9 @@ module Rocx
 
     module ClassMethods
       def attribute(name, expects: nil, displays_as: nil, namespace: nil)
+        bad_names = %w(tag name namespace properties_tag)
+        raise ArgumentError if bad_names.member? name
+
         attr_reader name
 
         define_method "#{name}=" do |value|
