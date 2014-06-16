@@ -120,6 +120,19 @@ module ElementTestMacros
       attribute_context.class_eval &block
     end
 
+    def with_these_attributes_set(attributes, &block)
+      attribute_context = context "with valid attributes set" do
+        before(:each) do
+          @instance = described_class.new
+          attributes.each do |attr, val|
+            instance.send "#{attr}=", val
+          end
+        end
+      end
+
+      attribute_context.class_eval &block
+    end
+
     def it_should_have_property(property, as_instance_of: nil, with_value: nil)
       context "this class" do
         before(:each) do
