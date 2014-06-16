@@ -42,4 +42,25 @@ describe Rocx::Elements::Ruby do
     it_should_output "<w:ruby>\n    <w:rt>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>to&#x304;</w:t>\n      </w:r>\n    </w:rt>\n    <w:rubyBase>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>&#x6771;&#x304;</w:t>\n      </w:r>\n    </w:rubyBase>\n  </w:ruby>", assign: false
   end
 
+  context "with base text, ruby text and properties set" do
+    before(:each) do
+      @instance = described_class.new
+      text = Rocx::Elements::Text.new("東̄")
+      run = Rocx::Elements::Run.new
+      run.bold = true
+      run << text
+      instance.base = run
+
+      text = Rocx::Elements::Text.new("tō")
+      run = Rocx::Elements::Run.new
+      run.bold = true
+      run << text
+      instance.ruby = run
+
+      instance.alignment = :left
+    end
+
+    it_should_output "<w:ruby>\n    <w:rubyPr>\n      <w:rubyAlign w:val=\"left\"/>\n    </w:rubyPr>\n    <w:rt>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>to&#x304;</w:t>\n      </w:r>\n    </w:rt>\n    <w:rubyBase>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>&#x6771;&#x304;</w:t>\n      </w:r>\n    </w:rubyBase>\n  </w:ruby>", assign: false
+  end
+
 end
