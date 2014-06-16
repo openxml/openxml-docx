@@ -11,4 +11,20 @@ describe Rocx::Elements::Ruby do
   it_should_have_property :language, as_instance_of: :phonetic_guide_language, with_value: "ja-JP"
   it_should_have_property :alignment, as_instance_of: :phonetic_guide_alignment, with_value: :left
 
+  context "for base text" do
+    before(:each) do
+      @instance = described_class.new
+      text = Rocx::Elements::Text.new("Howdy Partner")
+      run = Rocx::Elements::Run.new
+      run << text
+      instance.base = run
+    end
+
+    it_should_output "<w:ruby>\n    <w:rt/>\n    <w:rubyBase>\n      <w:r>\n        <w:t>Howdy Partner</w:t>\n      </w:r>\n    </w:rubyBase>\n  </w:ruby>", assign: false
+  end
+
+
+    end
+  end
+
 end
