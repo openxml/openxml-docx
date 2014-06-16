@@ -9,24 +9,28 @@ module Rocx
           @properties_tag
         end
 
-        def value_property(name)
+        def value_property(name, as: nil)
           attr_reader name
+
+          properties[name] = (as || name).to_s
 
           class_eval <<-CODE, __FILE__, __LINE__ + 1
           def #{name}=(value)
-            class_name = "#{name}".split.map(&:capitalize).join
+            property_key = "#{name}".to_sym
+            class_name = properties[property_key].split("_").map(&:capitalize).join
             prop_class = Rocx::Properties.const_get class_name
             instance_variable_set "@#{name}", prop_class.new(value)
           end
           CODE
-
-          properties << name
         end
 
-        def property(name)
+        def property(name, as: nil)
+          properties[name] = (as || name).to_s
+
           class_eval <<-CODE, __FILE__, __LINE__ + 1
           def #{name}
-            class_name = "#{name}".split("_").map(&:capitalize).join
+            property_key = "#{name}".to_sym
+            class_name = properties[property_key].split("_").map(&:capitalize).join
             prop_class = Rocx::Properties.const_get class_name
 
             if instance_variable_get("@#{name}").nil?
@@ -36,12 +40,10 @@ module Rocx
             instance_variable_get "@#{name}"
           end
           CODE
-
-          properties << name
         end
 
         def properties
-          @properties ||= []
+          @properties ||= {}
         end
       end
 
@@ -63,7 +65,7 @@ module Rocx
     private
 
       def property_xml(xml)
-        props = properties.map(&method(:send)).compact
+        props = properties.keys.map(&method(:send)).compact
         return if props.none?(&:render?)
         xml[namespace].public_send(properties_tag) {
           props.each { |prop| prop.to_xml(xml) }
