@@ -13,7 +13,7 @@ module Rocx
       end
 
       def invalid_message
-        "Invalid value for #{name}; acceptable values are #{ok_values.join(", ")}"
+        "Invalid value for #{name}; acceptable values are #{ok_values.join(", ")} (provided: #{value.inspect})"
       end
 
       def render?
