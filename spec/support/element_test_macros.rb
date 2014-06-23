@@ -133,7 +133,7 @@ module ElementTestMacros
       attribute_context.class_eval &block
     end
 
-    def it_should_have_property(property, as_instance_of: nil, with_value: nil)
+    def it_should_have_value_property(property, as_instance_of: nil, with_value: nil)
       as_instance_of ||= property
 
       context "this class" do
