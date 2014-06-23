@@ -5,5 +5,6 @@ describe Rocx::Section do
 
   it_should_have_property :bidi
   it_should_have_property :form_protection
+  it_should_have_property :rtl_gutter
 
 end

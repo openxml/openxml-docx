@@ -6,6 +6,7 @@ module Rocx
 
     value_property :bidi
     value_property :form_protection
+    value_property :rtl_gutter
 
   private
 
