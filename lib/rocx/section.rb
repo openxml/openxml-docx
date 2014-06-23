@@ -4,6 +4,8 @@ module Rocx
 
     properties_tag :sectPr
 
+    property :document_grid
+
     value_property :bidi
     value_property :form_protection
     value_property :rtl_gutter

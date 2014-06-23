@@ -133,6 +133,26 @@ module ElementTestMacros
       attribute_context.class_eval &block
     end
 
+    def it_should_have_property(property, as_instance_of: nil)
+      as_instance_of ||= property
+
+      context "this class" do
+        before(:each) do
+          @instance = described_class.new
+        end
+
+        it "should have the #{property} method defined" do
+          expect(instance.respond_to?(property)).to be(true)
+        end
+
+        it "should have #{property} return an instance of #{as_instance_of}" do
+          class_name = as_instance_of.to_s.split("_").map(&:capitalize).join
+          prop_class = Rocx::Properties.const_get class_name
+          expect(instance.public_send(property)).to be_instance_of(prop_class)
+        end
+      end
+    end
+
     def it_should_have_value_property(property, as_instance_of: nil, with_value: nil)
       as_instance_of ||= property
 
