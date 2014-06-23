@@ -4,6 +4,7 @@ describe Rocx::Section do
   include ElementTestMacros
 
   it_should_have_property :document_grid
+  it_should_have_property :line_numbering
 
   it_should_have_value_property :bidi
   it_should_have_value_property :form_protection

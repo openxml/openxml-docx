@@ -5,6 +5,7 @@ module Rocx
     properties_tag :sectPr
 
     property :document_grid
+    property :line_numbering
 
     value_property :bidi
     value_property :form_protection
