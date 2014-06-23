@@ -8,6 +8,7 @@ module Rocx
     value_property :form_protection
     value_property :rtl_gutter
     value_property :text_direction
+    value_property :type, as: :section_type
 
   private
 
