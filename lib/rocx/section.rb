@@ -5,6 +5,7 @@ module Rocx
     properties_tag :sectPr
 
     value_property :bidi
+    value_property :form_protection
 
   private
 
