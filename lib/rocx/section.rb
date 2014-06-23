@@ -6,6 +6,7 @@ module Rocx
 
     property :document_grid
     property :line_numbering
+    property :paper_source
 
     value_property :bidi
     value_property :form_protection
