@@ -4,6 +4,8 @@ module Rocx
 
     properties_tag :sectPr
 
+    value_property :bidi
+
   private
 
     def namespace
