@@ -134,6 +134,8 @@ module ElementTestMacros
     end
 
     def it_should_have_property(property, as_instance_of: nil, with_value: nil)
+      as_instance_of ||= property
+
       context "this class" do
         before(:each) do
           @instance = described_class.new
@@ -147,13 +149,11 @@ module ElementTestMacros
           expect(instance.respond_to?("#{property}=")).to be(true)
         end
 
-        if as_instance_of
-          it "should have #{property} return an instance of #{as_instance_of}" do
-            instance.public_send "#{property}=", with_value
-            class_name = as_instance_of.to_s.split("_").map(&:capitalize).join
-            prop_class = Rocx::Properties.const_get class_name
-            expect(instance.public_send(property)).to be_instance_of(prop_class)
-          end
+        it "should have #{property} return an instance of #{as_instance_of}" do
+          instance.public_send "#{property}=", with_value
+          class_name = as_instance_of.to_s.split("_").map(&:capitalize).join
+          prop_class = Rocx::Properties.const_get class_name
+          expect(instance.public_send(property)).to be_instance_of(prop_class)
         end
 
       end
