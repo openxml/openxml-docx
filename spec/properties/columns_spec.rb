@@ -36,4 +36,139 @@ describe Rocx::Properties::Columns do
       expect(xml(instance)).to eq("<w:cols>\n    <w:col w:space=\"1234\" w:w=\"5678\"/>\n    <w:col w:space=\"8765\" w:w=\"4321\"/>\n  </w:cols>")
     end
   end
+
+  for_attribute(:equal_width) do
+    before(:each) do
+      @instance = described_class.new
+      @instance << Rocx::Properties::Column.new(1, 1)
+    end
+
+    context "when the value is true" do
+      before(:each) do
+        @value = true
+      end
+
+      it "should accept the value" do
+        expect { instance.send("#{attribute}=", value) }.to_not raise_error
+      end
+
+      it "should output the correct value" do
+        instance.send("#{attribute}=", value)
+        expect(xml(instance)).to eq("<w:cols w:equalWidth=\"true\">\n    <w:col w:space=\"1\" w:w=\"1\"/>\n  </w:cols>")
+      end
+    end
+
+    for_attribute(:number) do
+      before(:each) do
+        @instance = described_class.new
+        @instance << Rocx::Properties::Column.new(1, 1)
+      end
+
+      context "when the value is 1" do
+        before(:each) do
+          @value = 1
+        end
+
+        it "should accept the value" do
+          expect { instance.send("#{attribute}=", value) }.to_not raise_error
+        end
+
+        it "should output the correct value" do
+          instance.send("#{attribute}=", value)
+          expect(xml(instance)).to eq("<w:cols w:num=\"1\">\n    <w:col w:space=\"1\" w:w=\"1\"/>\n  </w:cols>")
+        end
+      end
+
+      context "when the value is -1" do
+        before(:each) do
+          @value = -1
+        end
+
+        it "should accept the value" do
+          expect { instance.send("#{attribute}=", value) }.to_not raise_error
+        end
+
+        it "should output the correct value" do
+          instance.send("#{attribute}=", value)
+          expect(xml(instance)).to eq("<w:cols w:num=\"-1\">\n    <w:col w:space=\"1\" w:w=\"1\"/>\n  </w:cols>")
+        end
+      end
+
+      with_value(1.3) do
+        it_should_raise_an_exception
+      end
+
+      with_value(:a_lot) do
+        it_should_raise_an_exception
+      end
+    end
+
+    for_attribute(:separator) do
+      before(:each) do
+        @instance = described_class.new
+        @instance << Rocx::Properties::Column.new(1, 1)
+      end
+
+      context "when the value is true" do
+        before(:each) do
+          @value = true
+        end
+
+        it "should accept the value" do
+          expect { instance.send("#{attribute}=", value) }.to_not raise_error
+        end
+
+        it "should output the correct value" do
+          instance.send("#{attribute}=", value)
+          expect(xml(instance)).to eq("<w:cols w:sep=\"true\">\n    <w:col w:space=\"1\" w:w=\"1\"/>\n  </w:cols>")
+        end
+      end
+    end
+
+    for_attribute(:space) do
+      before(:each) do
+        @instance = described_class.new
+        @instance << Rocx::Properties::Column.new(1, 1)
+      end
+
+      context "when the value is 1" do
+        before(:each) do
+          @value = 1
+        end
+
+        it "should accept the value" do
+          expect { instance.send("#{attribute}=", value) }.to_not raise_error
+        end
+
+        it "should output the correct value" do
+          instance.send("#{attribute}=", value)
+          expect(xml(instance)).to eq("<w:cols w:space=\"1\">\n    <w:col w:space=\"1\" w:w=\"1\"/>\n  </w:cols>")
+        end
+      end
+
+      context "when the value is -1" do
+        before(:each) do
+          @value = -1
+        end
+
+        it "should accept the value" do
+          expect { instance.send("#{attribute}=", value) }.to_not raise_error
+        end
+
+        it "should output the correct value" do
+          instance.send("#{attribute}=", value)
+          expect(xml(instance)).to eq("<w:cols w:space=\"-1\">\n    <w:col w:space=\"1\" w:w=\"1\"/>\n  </w:cols>")
+        end
+      end
+
+      with_value(1.3) do
+        it_should_raise_an_exception
+      end
+
+      with_value(:a_lot) do
+        it_should_raise_an_exception
+      end
+    end
+
+  end
 end
