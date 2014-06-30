@@ -4,6 +4,7 @@ module Rocx
 
     properties_tag :sectPr
 
+    property :columns
     property :document_grid
     property :line_numbering
     property :page_borders

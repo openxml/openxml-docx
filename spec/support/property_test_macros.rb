@@ -40,10 +40,10 @@ module PropertyTestMacros
       end
     end
 
-    def it_should_output(expected_xml, assign: true)
+    def it_should_output(expected_xml, *values, assign: true)
       it "should output the correct XML" do
         if assign
-          @instance = described_class.new
+          @instance = described_class.new *values
           instance.send "#{attribute}=", value
         end
 
@@ -71,10 +71,10 @@ module PropertyTestMacros
       value_context.class_eval &block
     end
 
-    def it_should_assign_successfully
+    def it_should_assign_successfully(*values)
       it "should assign successfully" do
         expect do
-          obj = described_class.new
+          obj = described_class.new *values
           obj.send "#{attribute}=", value
         end.to_not raise_error
       end
