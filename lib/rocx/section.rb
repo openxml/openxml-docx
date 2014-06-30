@@ -6,6 +6,7 @@ module Rocx
 
     property :document_grid
     property :line_numbering
+    property :page_borders
     property :page_margins
     property :page_numbering
     property :page_size
