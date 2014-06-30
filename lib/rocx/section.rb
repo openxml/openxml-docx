@@ -8,6 +8,7 @@ module Rocx
     property :line_numbering
     property :page_margins
     property :page_numbering
+    property :page_size
     property :paper_source
 
     value_property :bidi
