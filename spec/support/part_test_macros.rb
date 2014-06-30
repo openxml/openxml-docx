@@ -1,7 +1,7 @@
 module PartTestMacros
 
   def xml(part)
-    File.read(File.join(File.dirname(__FILE__), "data", "parts", "#{part}_part.xml")).strip
+    File.read(File.join(File.dirname(__FILE__), "data", "parts", "#{part}_part.xml")).lines.map(&:strip).join
   end
 
   def self.included(base)

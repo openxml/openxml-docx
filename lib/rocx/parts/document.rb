@@ -1,22 +1,36 @@
 module Rocx
   module Parts
     class Document < BasePart
-      attr_reader :children
+      attr_reader :children, :current_section
 
       def initialize
         @children = []
       end
 
       def <<(child)
-        children << child
+        if child.is_a?(Rocx::Section)
+          set_section(child)
+        else
+          children << child
+        end
+      end
+
+      def set_section(section)
+        if current_section.nil?
+          @current_section = section
+        else
+          children.last.section_properties = current_section
+          @current_section = section
+        end
       end
 
       def to_xml
         build_xml do |xml|
           xml.document(root_namespaces) {
-            xml.parent.namespace = xml.parent.namespace_definitions.find { |ns| ns.prefix == 'w' }
-            xml['w'].body {
+            xml.parent.namespace = xml.parent.namespace_definitions.find { |ns| ns.prefix == "w" }
+            xml["w"].body {
               children.each { |child| child.to_xml(xml) }
+              current_section.to_xml(xml) unless current_section.nil?
             }
           }
         end

@@ -1,6 +1,7 @@
 module Rocx
   module Elements
     class Paragraph < Container
+      attr_reader :section_properties
       tag :p
 
       value_property :alignment
@@ -36,6 +37,20 @@ module Rocx
       property :shading
       property :spacing
       property :tabs
+
+      def section_properties=(section)
+        raise ArgumentError, "Section properties must be an instance of Rocx::Section" unless section.is_a?(Rocx::Section)
+        @section_properties = section
+      end
+
+      def to_xml(xml)
+        xml[namespace].public_send(tag, xml_attributes) {
+          section_properties.to_xml(xml) unless section_properties.nil?
+          property_xml(xml)
+          children.each { |child| child.to_xml(xml) }
+        }
+      end
+
     end
   end
 end

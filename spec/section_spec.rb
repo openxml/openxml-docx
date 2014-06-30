@@ -19,4 +19,26 @@ describe Rocx::Section do
   it_should_have_value_property :type, as_instance_of: :section_type, with_value: :oddPage
   it_should_have_value_property :vertical_alignment, as_instance_of: :vertical_text_alignment, with_value: :both
 
+  context "if no attribute are set" do
+    before(:each) do
+      @instance = described_class.new
+    end
+
+    it "should output nothing" do
+      expect(xml(instance)).to eq("")
+    end
+  end
+
+  context "if there are properties set" do
+    before(:each) do
+      @instance = described_class.new
+      instance.bidi = true
+      instance.columns << Rocx::Properties::Column.new(1, 1)
+    end
+
+    it "should output the correct XML" do
+      expect(xml(instance)).to eq("<w:sectPr>\n    <w:cols>\n      <w:col w:space=\"1\" w:w=\"1\"/>\n    </w:cols>\n    <w:bidi/>\n  </w:sectPr>")
+    end
+  end
+
 end
