@@ -6,6 +6,7 @@ describe Rocx::Section do
   it_should_have_property :document_grid
   it_should_have_property :line_numbering
   it_should_have_property :page_margins
+  it_should_have_property :page_numbering
   it_should_have_property :paper_source
 
   it_should_have_value_property :bidi

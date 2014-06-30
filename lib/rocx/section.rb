@@ -7,6 +7,7 @@ module Rocx
     property :document_grid
     property :line_numbering
     property :page_margins
+    property :page_numbering
     property :paper_source
 
     value_property :bidi
