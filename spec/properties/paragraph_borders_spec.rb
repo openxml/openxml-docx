@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Borders do
+describe Rocx::Properties::ParagraphBorders do
   include PropertyTestMacros
 
   it_should_use tag: :pBdr, name: "borders"

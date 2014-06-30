@@ -28,7 +28,7 @@ module Rocx
       value_property :widow_control
       value_property :word_wrap
 
-      property :borders
+      property :borders, as: :paragraph_borders
       property :conditional_formatting
       property :frame
       property :indentation

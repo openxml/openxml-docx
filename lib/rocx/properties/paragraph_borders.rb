@@ -1,6 +1,6 @@
 module Rocx
   module Properties
-    class Borders < ComplexProperty
+    class ParagraphBorders < ComplexProperty
       attr_reader :left, :right, :top, :bottom, :between, :bar
 
       def initialize
@@ -13,9 +13,10 @@ module Rocx
       end
 
       tag :pBdr
+      name "borders"
 
       def render?
-        !renderable_borders.length.zero?
+        renderable_borders.any?
       end
 
       def to_xml(xml)
