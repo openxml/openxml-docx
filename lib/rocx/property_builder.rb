@@ -49,8 +49,6 @@ module Rocx
       end
     end
 
-  private
-
     def property_xml(xml)
       props = properties.keys.map(&method(:send)).compact
       return if props.none?(&:render?)
@@ -59,6 +57,8 @@ module Rocx
         props.each { |prop| prop.to_xml(xml) }
       }
     end
+
+  private
 
     def properties
       self.class.properties

@@ -1,37 +1,40 @@
 module Rocx
   class Style
-    attr_reader :name, :type, :run, :paragraph
+    include AttributeBuilder
 
-    def initialize(name, type, run={}, paragraph={})
-      @name = name
-      @type = type
-      @run = run
-      @paragraph = paragraph
+    attr_reader :paragraph, :character
+
+    attribute :custom, expects: :true_or_false, displays_as: :customStyle
+    attribute :default, expects: :true_or_false
+    attribute :id, expects: :string, displays_as: :styleId
+    attribute :type, expects: :valid_style_type
+
+    def initialize
+      @paragraph = Rocx::Elements::Paragraph.new
+      @character = Rocx::Elements::Run.new
     end
 
-    def build_xml(xml)
-      xml["w"].style("w:styleId" => name, "w:type" => type) {
-        xml["w"].name("w:val" => name)
-        paragraph_as_xml(xml)
-        run_as_xml(xml)
+    def tag
+      :style
+    end
+
+    def name
+      "style"
+    end
+
+    def to_xml(xml)
+      xml["w"].public_send(tag, xml_attributes) {
+        paragraph.property_xml(xml)
+        character.property_xml(xml)
       }
     end
 
+    VALID_STYLE_TYPES = %i(character numbering paragraph table)
+
   private
 
-    def paragraph_as_xml(xml)
-      xml["w"].pPr { xml_properties(xml, paragraph) }
-    end
-
-    def run_as_xml(xml)
-      xml["w"].rPr { xml_properties(xml, run) }
-    end
-
-    def xml_properties(xml, properties)
-      properties.each do |property, options|
-        namespace, tag = property.split(":")
-        xml[namespace].send(tag, options)
-      end
+    def valid_style_type(value)
+      valid_in? value, VALID_STYLE_TYPES
     end
 
   end

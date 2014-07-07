@@ -14,11 +14,12 @@ describe Rocx::Parts::Styles do
   context "after adding additional styles" do
     before(:each) do
       @doc = described_class.new
-      paragraph_styles = {
-        "w:ind" => {"w:firstLine" => "0", "w:left" => "0", "w:right" => "0"},
-        "w:jc" => {"w:val" => "left"}
-      }
-      style = Rocx::Style.new("coolStyle", "paragraph", {}, paragraph_styles)
+
+      style = Rocx::Style.new
+      style.id = "coolStyle"
+      style.type = :paragraph
+      style.paragraph.alignment = :start
+
       doc << style
     end
 

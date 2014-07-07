@@ -16,7 +16,7 @@ module Rocx
           xml.styles(root_namespaces) {
             xml.parent.namespace = xml.parent.namespace_definitions.find { |ns| ns.prefix == "w" }
             add_default_styles(xml)
-            styles.each { |style| style.build_xml(xml) }
+            styles.each { |style| style.to_xml(xml) }
           }
         end
       end
