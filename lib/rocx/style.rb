@@ -10,6 +10,7 @@ module Rocx
     attribute :id, expects: :string, displays_as: :styleId
     attribute :type, expects: :valid_style_type
 
+    value_property :semi_hidden
     value_property :style_name
     value_property :ui_priority
     value_property :unhide_when_used
