@@ -107,5 +107,6 @@ describe Rocx::Style do
   end
 
   it_should_have_value_property :style_name, with_value: "GD20Complex"
+  it_should_have_value_property :ui_priority, with_value: 10
 
 end

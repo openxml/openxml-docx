@@ -11,6 +11,7 @@ module Rocx
     attribute :type, expects: :valid_style_type
 
     value_property :style_name
+    value_property :ui_priority
 
     def initialize
       @paragraph = Rocx::Elements::Paragraph.new
