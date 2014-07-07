@@ -12,6 +12,7 @@ module Rocx
 
     value_property :style_name
     value_property :ui_priority
+    value_property :unhide_when_used
 
     def initialize
       @paragraph = Rocx::Elements::Paragraph.new
