@@ -106,4 +106,6 @@ describe Rocx::Style do
     expected_xml = "<w:style>\n    <w:pPr>\n      <w:jc w:val=\"start\"/>\n    </w:pPr>\n    <w:rPr>\n      <w:b/>\n    </w:rPr>\n  </w:style>"
   end
 
+  it_should_have_value_property :style_name, with_value: "GD20Complex"
+
 end

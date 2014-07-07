@@ -1,6 +1,7 @@
 module Rocx
   class Style
     include AttributeBuilder
+    include PropertyBuilder
 
     attr_reader :paragraph, :character
 
@@ -8,6 +9,8 @@ module Rocx
     attribute :default, expects: :true_or_false
     attribute :id, expects: :string, displays_as: :styleId
     attribute :type, expects: :valid_style_type
+
+    value_property :style_name
 
     def initialize
       @paragraph = Rocx::Elements::Paragraph.new
