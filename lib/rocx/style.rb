@@ -10,6 +10,7 @@ module Rocx
     attribute :id, expects: :string, displays_as: :styleId
     attribute :type, expects: :valid_style_type
 
+    value_property :linked_style
     value_property :personal
     value_property :personal_compose
     value_property :personal_reply
