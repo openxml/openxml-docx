@@ -18,7 +18,7 @@ module ElementTestMacros
   end
 
   def self.included(base)
-    attr_reader :instance, :attribute, :value
+    attr_reader :instance, :attribute, :value, :args
     base.extend ClassMethods
   end
 
@@ -81,10 +81,10 @@ module ElementTestMacros
       value_context.class_eval &block
     end
 
-    def it_should_assign_successfully
+    def it_should_assign_successfully(*args)
       it "should assign successfully" do
         expect do
-          obj = described_class.new
+          obj = described_class.new *args
           obj.send "#{attribute}=", value
         end.to_not raise_error
       end
@@ -99,10 +99,10 @@ module ElementTestMacros
       end
     end
 
-    def it_should_output(expected_xml, assign: true)
+    def it_should_output(expected_xml, *args, assign: true)
       it "should output the correct XML" do
         if assign
-          @instance = described_class.new
+          @instance = described_class.new *args
           instance.send "#{attribute}=", value
         end
 
@@ -110,10 +110,10 @@ module ElementTestMacros
       end
     end
 
-    def with_no_attributes_set(&block)
-      attribute_context = context "with no attributes set" do
+    def with_no_attributes_set(args: nil, &block)
+      attribute_context = context "with no attributes set, it" do
         before(:each) do
-          @instance = described_class.new
+          @instance = described_class.new *Array(args)
         end
       end
 
@@ -121,9 +121,10 @@ module ElementTestMacros
     end
 
     def with_these_attributes_set(attributes, &block)
+      args = attributes.delete(:args)
       attribute_context = context "with valid attributes set" do
         before(:each) do
-          @instance = described_class.new
+          @instance = described_class.new *Array(args)
           attributes.each do |attr, val|
             instance.send "#{attr}=", val
           end
@@ -158,7 +159,7 @@ module ElementTestMacros
 
       context "this class" do
         before(:each) do
-          @instance = described_class.new
+          @instance = described_class.new *Array(args)
         end
 
         it "should have the #{property} method defined" do
@@ -175,10 +176,18 @@ module ElementTestMacros
           prop_class = Rocx::Properties.const_get class_name
           expect(instance.public_send(property)).to be_instance_of(prop_class)
         end
-
       end
     end
 
+    def with_arguments(*args, &block)
+      arg_context = context "" do
+        before(:each) do
+          @args = args
+        end
+      end
+
+      arg_context.class_eval &block
+    end
   end
 
 end

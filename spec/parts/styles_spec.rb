@@ -15,9 +15,8 @@ describe Rocx::Parts::Styles do
     before(:each) do
       @doc = described_class.new
 
-      style = Rocx::Style.new
+      style = Rocx::Style.new(:paragraph)
       style.id = "coolStyle"
-      style.type = :paragraph
       style.paragraph.alignment = :start
 
       doc << style
