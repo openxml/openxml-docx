@@ -10,6 +10,7 @@ module Rocx
     attribute :id, expects: :string, displays_as: :styleId
     attribute :type, expects: :valid_style_type
 
+    value_property :auto_redefine, as: :style_auto_redefinition
     value_property :hidden_style
     value_property :linked_style
     value_property :locked, as: :style_lock
