@@ -13,6 +13,7 @@ module Rocx
     value_property :hidden_style
     value_property :linked_style
     value_property :locked, as: :style_lock
+    value_property :next_style
     value_property :parent_style
     value_property :personal
     value_property :personal_compose
