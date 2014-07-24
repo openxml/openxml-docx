@@ -89,6 +89,7 @@ describe Rocx::Style do
   end
 
   with_arguments(:paragraph) do
+    it_should_have_value_property :hidden_style, with_value: true
     it_should_have_value_property :linked_style, with_value: "Test"
     it_should_have_value_property :locked, as_instance_of: :style_lock, with_value: true
     it_should_have_value_property :personal, with_value: true
