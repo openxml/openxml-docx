@@ -1,6 +1,6 @@
 module Rocx
   module Parts
-    class Settings < BasePart
+    class Settings < OpenXml::Part
       attr_reader :settings
 
       def initialize

@@ -1,6 +1,6 @@
 module Rocx
   module Parts
-    class Styles < BasePart
+    class Styles < OpenXml::Part
       attr_reader :styles
 
       def initialize

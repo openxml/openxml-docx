@@ -1,6 +1,6 @@
 module Rocx
   module Parts
-    class Document < BasePart
+    class Document < OpenXml::Part
       attr_reader :children, :current_section
 
       def initialize

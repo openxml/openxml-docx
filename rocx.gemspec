@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = "~> 2.0"
 
   gem.add_dependency "nokogiri"
-  gem.add_dependency "open_xml_package"
+  gem.add_dependency "open_xml_package", "0.1.0.beta1"
 
   gem.add_development_dependency "pry"
   gem.add_development_dependency "rspec"
