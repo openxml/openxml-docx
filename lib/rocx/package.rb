@@ -8,20 +8,18 @@ module Rocx
                 :styles
 
     content_types do
-      default "png", "image/png"
-      override "/word/styles.xml", "application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"
-      override "/word/settings.xml", "application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml"
+      default "png", TYPE_PNG
+      override "/word/styles.xml", TYPE_STYLES
+      override "/word/settings.xml", TYPE_SETTINGS
     end
 
     def initialize
       super
 
-      rels.add_relationship "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument", "/word/document.xml"
+      rels.add_relationship REL_DOCUMENT, "/word/document.xml"
       @doc_rels = OpenXml::Parts::Rels.new([
-        { type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles",
-           target: "/word/styles.xml"},
-        { type: "http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings",
-          target: "/word/settings.xml"}
+        { type: REL_STYLES, target: "/word/styles.xml"},
+        { type: REL_SETTINGS, target: "/word/settings.xml"}
       ])
       @settings = Rocx::Parts::Settings.new
       @styles = Rocx::Parts::Styles.new
