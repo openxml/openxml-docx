@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+# require "rails" # workaround: openxml-package uses `extract_options!`
+$:.push Dir.pwd + "/lib"
+require "openxml/docx"
+
+ROWS = 4
+CELLS = 4
+
+document = OpenXml::Docx::Package.new
+
+include OpenXml::Docx::Elements
+
+table = Table.new
+table.table_style = "TableGrid"
+
+ROWS.times do
+  row = TableRow.new
+
+  CELLS.times do
+    cell = TableCell.new
+    paragraph = Paragraph.new
+    cell << paragraph
+    row << cell
+  end
+  table << row
+end
+
+document.document << table
+
+filename = "rocx_test_table.docx"
+system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
+document.save File.expand_path("~/Desktop/#{filename}")
+exec "open ~/Desktop/#{filename}"

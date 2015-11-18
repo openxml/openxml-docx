@@ -1,3 +1,5 @@
+require "openxml/docx/properties/column"
+
 module OpenXml
   module Docx
     module Properties

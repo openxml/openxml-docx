@@ -11,17 +11,9 @@ describe OpenXml::Docx::Properties::Column do
       it_should_output "<w:col w:space=\"2\" w:w=\"1\"/>", 1, 1
     end
 
-    with_value(-1) do
-      it_should_raise_an_exception
-    end
-
-    with_value(12.1) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_floats
+    it_should_not_allow_negative_numbers
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:width) do
@@ -30,17 +22,9 @@ describe OpenXml::Docx::Properties::Column do
       it_should_output "<w:col w:space=\"1\" w:w=\"2\"/>", 1, 1
     end
 
-    with_value(-1) do
-      it_should_raise_an_exception
-    end
-
-    with_value(12.1) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_floats
+    it_should_not_allow_negative_numbers
+    it_should_not_allow_invalid_value
   end
 
 end

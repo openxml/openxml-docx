@@ -11,9 +11,7 @@ describe OpenXml::Docx::Properties::LatentStylesException do
       it_should_output "<w:lsdException w:locked=\"true\" w:name=\"StyleName\"/>", "StyleName"
     end
 
-    with_value(1) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_integers
   end
 
   for_attribute(:style_name) do
@@ -22,9 +20,7 @@ describe OpenXml::Docx::Properties::LatentStylesException do
       it_should_output "<w:lsdException w:name=\"NewStyleName\"/>", "StyleName"
     end
 
-    with_value(nil) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_nil
   end
 
   for_attribute(:qFormat) do
@@ -33,9 +29,7 @@ describe OpenXml::Docx::Properties::LatentStylesException do
       it_should_output "<w:lsdException w:name=\"StyleName\" w:qFormat=\"true\"/>", "StyleName"
     end
 
-    with_value(1) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_integers
   end
 
   for_attribute(:semi_hidden) do
@@ -44,9 +38,7 @@ describe OpenXml::Docx::Properties::LatentStylesException do
       it_should_output "<w:lsdException w:name=\"StyleName\" w:semiHidden=\"true\"/>", "StyleName"
     end
 
-    with_value(1) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_integers
   end
 
   for_attribute(:ui_priority) do
@@ -60,13 +52,8 @@ describe OpenXml::Docx::Properties::LatentStylesException do
       it_should_output "<w:lsdException w:name=\"StyleName\" w:uiPriority=\"-1\"/>", "StyleName"
     end
 
-    with_value(1.3) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:a_lot) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:unhide_when_used) do
@@ -75,9 +62,7 @@ describe OpenXml::Docx::Properties::LatentStylesException do
       it_should_output "<w:lsdException w:name=\"StyleName\" w:unhideWhenUsed=\"true\"/>", "StyleName"
     end
 
-    with_value(1) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_integers
   end
 
 end

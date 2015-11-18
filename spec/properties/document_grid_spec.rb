@@ -6,65 +6,24 @@ describe OpenXml::Docx::Properties::DocumentGrid do
   it_should_use tag: :docGrid, name: "document_grid"
 
   for_attribute(:char_space) do
-    with_value(40960) do
-      it_should_assign_successfully
-      it_should_output "<w:docGrid w:charSpace=\"40960\"/>"
-    end
-
-    with_value(:twelve) do
-      it_should_raise_an_exception
-    end
-
-    with_value(-12345) do
-      it_should_assign_successfully
-      it_should_output "<w:docGrid w:charSpace=\"-12345\"/>"
-    end
-
-    with_value(123.45) do
-      it_should_raise_an_exception
-    end
+    values = [40960, -12345]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
+    it_should_not_allow_floats
   end
 
   for_attribute(:line_pitch) do
-    with_value(40960) do
-      it_should_assign_successfully
-      it_should_output "<w:docGrid w:linePitch=\"40960\"/>"
-    end
-
-    with_value(:twelve) do
-      it_should_raise_an_exception
-    end
-
-    with_value(-12345) do
-      it_should_assign_successfully
-      it_should_output "<w:docGrid w:linePitch=\"-12345\"/>"
-    end
-
-    with_value(123.45) do
-      it_should_raise_an_exception
-    end
+    values = [40960, -12345]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
+    it_should_not_allow_invalid_value
+    it_should_not_allow_floats
   end
 
   for_attribute(:type) do
-    with_value(:default) do
-      it_should_assign_successfully
-      it_should_output "<w:docGrid w:type=\"default\"/>"
-    end
-
-    with_value(:lines) do
-      it_should_assign_successfully
-      it_should_output "<w:docGrid w:type=\"lines\"/>"
-    end
-
-    with_value(:linesAndChars) do
-      it_should_assign_successfully
-      it_should_output "<w:docGrid w:type=\"linesAndChars\"/>"
-    end
-
-    with_value(:snapToChars) do
-      it_should_assign_successfully
-      it_should_output "<w:docGrid w:type=\"snapToChars\"/>"
-    end
+    values = %i(default lines linesAndChars snapToChars)
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
   end
 
   with_no_attributes_set do

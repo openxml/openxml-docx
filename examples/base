@@ -17,7 +17,7 @@ paragraph << run
 
 document.document << paragraph
 
-filename = "gemtest1.docx"
+filename = "rocx_test_base.docx"
 system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
 document.save File.expand_path("~/Desktop/#{filename}")
 exec "open ~/Desktop/#{filename}"

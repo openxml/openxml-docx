@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<root xmlns:w="http://wnamespace.org">
+  <w:tbl>
+    <w:tblPr>
+      <w:cantSplit/>
+    </w:tblPr>
+    <w:tr>
+      <w:trPr>
+        <w:hidden/>
+      </w:trPr>
+      <w:tc>
+        <w:tcPr>
+          <w:noWrap/>
+        </w:tcPr>
+      </w:tc>
+    </w:tr>
+  </w:tbl>
+</root>

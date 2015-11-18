@@ -57,17 +57,9 @@ describe OpenXml::Docx::Properties::LatentStyles do
       end
     end
 
-    with_value(-1) do
-      it_should_raise_an_exception
-    end
-
-    with_value(1.3) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:a_lot) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_negative_numbers
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:default_locked_state) do
@@ -168,13 +160,8 @@ describe OpenXml::Docx::Properties::LatentStyles do
       end
     end
 
-    with_value(1.3) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:a_lot) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:default_unhide_when_used) do

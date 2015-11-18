@@ -94,13 +94,8 @@ describe OpenXml::Docx::Properties::Columns do
         end
       end
 
-      with_value(1.3) do
-        it_should_raise_an_exception
-      end
-
-      with_value(:a_lot) do
-        it_should_raise_an_exception
-      end
+      it_should_not_allow_floats
+      it_should_not_allow_invalid_value
     end
 
     for_attribute(:separator) do
@@ -161,13 +156,8 @@ describe OpenXml::Docx::Properties::Columns do
         end
       end
 
-      with_value(1.3) do
-        it_should_raise_an_exception
-      end
-
-      with_value(:a_lot) do
-        it_should_raise_an_exception
-      end
+      it_should_not_allow_floats
+      it_should_not_allow_invalid_value
     end
 
   end

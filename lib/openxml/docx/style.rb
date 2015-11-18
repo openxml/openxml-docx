@@ -4,7 +4,7 @@ module OpenXml
       include AttributeBuilder
       include PropertyBuilder
 
-      attr_reader :paragraph, :character, :type
+      attr_reader :paragraph, :character, :table, :type
 
       attribute :custom, expects: :true_or_false, displays_as: :customStyle
       attribute :default, expects: :true_or_false
@@ -53,26 +53,36 @@ module OpenXml
         type == :paragraph
       end
 
-      VALID_STYLE_TYPES = %i(character paragraph)
+      def character_style?
+        type == :character
+      end
+
+      VALID_STYLE_TYPES = %i(character paragraph table)
 
     private
 
       def install_paragraph_properties
         @character = nil
+        @table = nil
         @paragraph = OpenXml::Docx::Elements::Paragraph.new
       end
 
       def install_character_properties
         @paragraph = nil
+        @table = nil
         @character = OpenXml::Docx::Elements::Run.new
       end
 
+      def install_table_properties
+        @character = nil
+        @paragraph = nil
+        @table = OpenXml::Docx::Elements::Table.new
+      end
+
       def property_xml(xml)
-        if paragraph_style?
-          paragraph.property_xml(xml)
-        else
-          character.property_xml(xml)
-        end
+        return paragraph.property_xml(xml) if paragraph_style?
+        return character.property_xml(xml) if character_style?
+        table.property_xml(xml)
       end
 
       def valid_style_type(value)

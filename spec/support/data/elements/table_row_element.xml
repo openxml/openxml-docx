@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<root xmlns:w="http://wnamespace.org">
+  <w:tr>
+    <w:trPr>
+      <w:hidden/>
+    </w:trPr>
+    <w:tc>
+      <w:tcPr>
+        <w:noWrap/>
+      </w:tcPr>
+    </w:tc>
+  </w:tr>
+</root>

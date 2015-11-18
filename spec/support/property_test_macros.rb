@@ -112,5 +112,66 @@ module PropertyTestMacros
       attribute_context.class_eval &block
     end
 
+    def it_should_output_expected_xml(*values, expected_xml: nil)
+      it "should output the correct XML" do
+        @instance = described_class.new *values
+        instance.send "#{attribute}=", value
+        property_name, property_namespace = instance.attributes[attribute]
+        expected_xml ||= "<w:#{instance.tag} #{property_namespace}:#{property_name}=\"#{value}\"/>"
+
+        expect(xml(instance)).to eq(expected_xml)
+      end
+    end
+
+    def it_should_assign_and_output_xml(values)
+      values = [values] unless values.respond_to? :each
+      values.each do |value|
+        with_value(value) do
+          it_should_assign_successfully
+          it_should_output_expected_xml
+        end
+      end
+    end
+
+    def it_should_behave_like_a_boolean_attribute
+      with_value(true) do
+        it_should_assign_successfully
+        it_should_output_expected_xml
+      end
+
+      with_value(false) do
+        it_should_assign_successfully
+        it_should_output ""
+      end
+    end
+
+    def it_should_not_allow_invalid_value
+      with_value(:invalid) do
+        it_should_raise_an_exception
+      end
+    end
+
+    def it_should_not_allow_integers
+      with_value(1) do
+        it_should_raise_an_exception
+      end
+    end
+    def it_should_not_allow_floats
+      with_value(12.1) do
+        it_should_raise_an_exception
+      end
+    end
+
+    def it_should_not_allow_negative_numbers
+      with_value(-1) do
+        it_should_raise_an_exception
+      end
+    end
+
+    def it_should_not_allow_nil
+      with_value(nil) do
+        it_should_raise_an_exception
+      end
+    end
   end
 end
