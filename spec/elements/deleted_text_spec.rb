@@ -8,12 +8,12 @@ describe Rocx::Elements::DeletedText do
   for_attribute(:space) do
     with_value(nil) do
       it_should_assign_successfully
-      it_should_output "<w:del></w:del>"
+      it_should_output "<w:del/>"
     end
 
     with_value(:preserve) do
       it_should_assign_successfully
-      it_should_output "<w:del xml:space=\"preserve\"></w:del>"
+      it_should_output "<w:del xml:space=\"preserve\"/>"
     end
 
     with_value(:the_final_frontier) do
