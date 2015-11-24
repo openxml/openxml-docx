@@ -8,7 +8,7 @@ module Rocx
                 :styles
 
     content_types do
-      default "png", TYPE_PNG
+      default "xml", TYPE_XML
       override "/word/styles.xml", TYPE_STYLES
       override "/word/settings.xml", TYPE_SETTINGS
     end
@@ -17,10 +17,7 @@ module Rocx
       super
 
       rels.add_relationship REL_DOCUMENT, "/word/document.xml"
-      @doc_rels = OpenXml::Parts::Rels.new([
-        { type: REL_STYLES, target: "/word/styles.xml"},
-        { type: REL_SETTINGS, target: "/word/settings.xml"}
-      ])
+      @doc_rels = OpenXml::Parts::Rels.new
       @settings = Rocx::Parts::Settings.new
       @styles = Rocx::Parts::Styles.new
       @document = Rocx::Parts::Document.new

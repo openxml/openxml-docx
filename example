@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+# require "rails" # workaround: openxml-package uses `extract_options!`
+$:.push Dir.pwd + "/lib"
+require "rocx"
+
+document = Rocx::Package.new
+
+include Rocx::Elements
+
+text = Text.new("Some text that I want to include in my new OOXML document")
+
+run = Run.new
+run << text
+paragraph = Paragraph.new
+paragraph << run
+
+document.document << paragraph
+
+filename = "gemtest1.docx"
+system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
+document.save File.expand_path("~/Desktop/#{filename}")
+exec "open ~/Desktop/#{filename}"
