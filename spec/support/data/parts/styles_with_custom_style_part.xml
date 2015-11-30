@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><w:styles xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:docDefaults><w:rPrDefault><w:rPr><w:lang w:bidi="ar-SA" w:eastAsia="en-US" w:val="en-US"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="0" w:line="240" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults><w:style w:styleId="coolStyle" w:type="paragraph"><w:name w:val="coolStyle"/><w:pPr><w:ind w:firstLine="0" w:left="0" w:right="0"/><w:jc w:val="left"/></w:pPr><w:rPr/></w:style></w:styles>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<w:styles xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+  <w:docDefaults>
+    <w:rPrDefault>
+      <w:rPr>
+        <w:lang w:bidi="ar-SA" w:eastAsia="en-US" w:val="en-US"/>
+      </w:rPr>
+    </w:rPrDefault>
+    <w:pPrDefault>
+      <w:pPr>
+        <w:spacing w:after="0" w:line="240" w:lineRule="auto"/>
+      </w:pPr>
+    </w:pPrDefault>
+  </w:docDefaults>
+  <w:style w:styleId="coolStyle" w:type="paragraph">
+    <w:pPr>
+      <w:jc w:val="start"/>
+    </w:pPr>
+  </w:style>
+</w:styles>

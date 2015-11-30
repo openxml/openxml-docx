@@ -7,7 +7,7 @@ module Rocx
       class << self
         def child_class(*args)
           if args.any?
-            prop_name = args.first.to_s.capitalize
+            prop_name = args.first.to_s.split(/_/).map(&:capitalize).join # LazyCamelCase
             child_class_obj = Rocx::Properties.const_get prop_name
             @child_class = Rocx::Properties.const_get prop_name
           end
