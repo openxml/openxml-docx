@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::ContentPart do
+describe OpenXml::Docx::Elements::ContentPart do
   include ElementTestMacros
 
   it_should_use tag: :contentPart, name: "content_part"

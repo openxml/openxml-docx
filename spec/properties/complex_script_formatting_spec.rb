@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::ComplexScriptFormatting do
+describe OpenXml::Docx::Properties::ComplexScriptFormatting do
   include ValuePropertyTestMacros
 
   it_should_use tag: :cs, name: "complex_script_formatting"

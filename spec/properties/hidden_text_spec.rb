@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::HiddenText do
+describe OpenXml::Docx::Properties::HiddenText do
   include ValuePropertyTestMacros
 
   it_should_use tag: :vanish, name: "hidden_text"
@@ -19,5 +19,5 @@ describe Rocx::Properties::HiddenText do
     it_should_work
     it_should_output ""
   end
-  
+
 end

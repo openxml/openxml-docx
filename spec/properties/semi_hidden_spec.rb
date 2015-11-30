@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::SemiHidden do
+describe OpenXml::Docx::Properties::SemiHidden do
   include ValuePropertyTestMacros
 
   it_should_use tag: :semiHidden, name: "semi_hidden", value: true

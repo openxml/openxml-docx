@@ -148,7 +148,7 @@ module ElementTestMacros
 
         it "should have #{property} return an instance of #{as_instance_of}" do
           class_name = as_instance_of.to_s.split("_").map(&:capitalize).join
-          prop_class = Rocx::Properties.const_get class_name
+          prop_class = OpenXml::Docx::Properties.const_get class_name
           expect(instance.public_send(property)).to be_instance_of(prop_class)
         end
       end
@@ -173,7 +173,7 @@ module ElementTestMacros
         it "should have #{property} return an instance of #{as_instance_of}" do
           instance.public_send "#{property}=", with_value
           class_name = as_instance_of.to_s.split("_").map(&:capitalize).join
-          prop_class = Rocx::Properties.const_get class_name
+          prop_class = OpenXml::Docx::Properties.const_get class_name
           expect(instance.public_send(property)).to be_instance_of(prop_class)
         end
       end

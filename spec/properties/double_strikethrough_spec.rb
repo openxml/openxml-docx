@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::DoubleStrikethrough do
+describe OpenXml::Docx::Properties::DoubleStrikethrough do
   include ValuePropertyTestMacros
 
   it_should_use tag: :dstrike, name: "double_strikethrough"

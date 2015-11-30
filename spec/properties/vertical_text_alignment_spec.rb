@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::VerticalTextAlignment do
+describe OpenXml::Docx::Properties::VerticalTextAlignment do
   include ValuePropertyTestMacros
 
   it_should_use tag: :vAlign, name: "vertical_text_alignment", value: :both

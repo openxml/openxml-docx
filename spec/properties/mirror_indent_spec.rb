@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::MirrorIndent do
+describe OpenXml::Docx::Properties::MirrorIndent do
   include ValuePropertyTestMacros
 
   it_should_use tag: :mirrorIndent, name: "mirror_indent"

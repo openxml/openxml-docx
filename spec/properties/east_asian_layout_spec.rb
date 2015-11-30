@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::EastAsianLayout do
+describe OpenXml::Docx::Properties::EastAsianLayout do
   include PropertyTestMacros
 
   it_should_use tag: :eastAsianLayout, name: "east_asian_layout"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::KeepLines do
+describe OpenXml::Docx::Properties::KeepLines do
   include ValuePropertyTestMacros
 
   it_should_use tag: :keepLines, name: "keep_lines"

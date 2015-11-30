@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::Ruby do
+describe OpenXml::Docx::Elements::Ruby do
   include ElementTestMacros
 
   it_should_use tag: :ruby, name: "ruby"
@@ -14,8 +14,8 @@ describe Rocx::Elements::Ruby do
   context "for base text" do
     before(:each) do
       @instance = described_class.new
-      text = Rocx::Elements::Text.new("Howdy Partner")
-      run = Rocx::Elements::Run.new
+      text = OpenXml::Docx::Elements::Text.new("Howdy Partner")
+      run = OpenXml::Docx::Elements::Run.new
       run << text
       instance.base = run
     end
@@ -26,14 +26,14 @@ describe Rocx::Elements::Ruby do
   context "for base text and ruby text" do
     before(:each) do
       @instance = described_class.new
-      text = Rocx::Elements::Text.new("東̄")
-      run = Rocx::Elements::Run.new
+      text = OpenXml::Docx::Elements::Text.new("東̄")
+      run = OpenXml::Docx::Elements::Run.new
       run.bold = true
       run << text
       instance.base = run
 
-      text = Rocx::Elements::Text.new("tō")
-      run = Rocx::Elements::Run.new
+      text = OpenXml::Docx::Elements::Text.new("tō")
+      run = OpenXml::Docx::Elements::Run.new
       run.bold = true
       run << text
       instance.ruby = run
@@ -45,14 +45,14 @@ describe Rocx::Elements::Ruby do
   context "with base text, ruby text and properties set" do
     before(:each) do
       @instance = described_class.new
-      text = Rocx::Elements::Text.new("東̄")
-      run = Rocx::Elements::Run.new
+      text = OpenXml::Docx::Elements::Text.new("東̄")
+      run = OpenXml::Docx::Elements::Run.new
       run.bold = true
       run << text
       instance.base = run
 
-      text = Rocx::Elements::Text.new("tō")
-      run = Rocx::Elements::Run.new
+      text = OpenXml::Docx::Elements::Text.new("tō")
+      run = OpenXml::Docx::Elements::Run.new
       run.bold = true
       run << text
       instance.ruby = run

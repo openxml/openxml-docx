@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Emboss do
+describe OpenXml::Docx::Properties::Emboss do
   include ValuePropertyTestMacros
 
   it_should_use tag: :emboss, name: "emboss"

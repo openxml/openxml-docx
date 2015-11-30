@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::NoProof do
+describe OpenXml::Docx::Properties::NoProof do
   include ValuePropertyTestMacros
 
   it_should_use tag: :noProof, name: "no_proof"

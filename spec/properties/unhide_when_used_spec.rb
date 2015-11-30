@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::UnhideWhenUsed do
+describe OpenXml::Docx::Properties::UnhideWhenUsed do
   include ValuePropertyTestMacros
 
   it_should_use tag: :unhideWhenUsed, name: "unhide_when_used"

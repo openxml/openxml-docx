@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::LongMonth do
+describe OpenXml::Docx::Elements::LongMonth do
   include ElementTestMacros
 
   it_should_use tag: :monthLong, name: "long_month"

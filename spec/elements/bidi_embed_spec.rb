@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::BidiEmbed do
+describe OpenXml::Docx::Elements::BidiEmbed do
   include ElementTestMacros
 
   it_should_use tag: :dir, name: "bidi_embed"
@@ -20,8 +20,8 @@ describe Rocx::Elements::BidiEmbed do
   context "with children" do
     before(:each) do
       @instance = described_class.new
-      text = Rocx::Elements::Text.new("Smucker's Preserves")
-      run = Rocx::Elements::Run.new
+      text = OpenXml::Docx::Elements::Text.new("Smucker's Preserves")
+      run = OpenXml::Docx::Elements::Run.new
       run << text
       instance << run
     end

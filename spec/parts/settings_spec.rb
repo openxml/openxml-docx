@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Parts::Settings do
+describe OpenXml::Docx::Parts::Settings do
   include PartTestMacros
 
   context "always" do

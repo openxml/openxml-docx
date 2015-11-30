@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::FontSize do
+describe OpenXml::Docx::Properties::FontSize do
   include ValuePropertyTestMacros
 
   it_should_use tag: :sz, name: "font_size", value: 22

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::Dirty do
+describe OpenXml::Docx::Elements::Dirty do
   include ElementTestMacros
 
   it_should_use tag: :dirty, name: "dirty"

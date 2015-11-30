@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::DeletedText do
+describe OpenXml::Docx::Elements::DeletedText do
   include ElementTestMacros
 
   it_should_use tag: :del, name: "deleted_text"

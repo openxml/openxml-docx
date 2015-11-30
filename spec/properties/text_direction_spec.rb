@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::TextDirection do
+describe OpenXml::Docx::Properties::TextDirection do
   include ValuePropertyTestMacros
 
   it_should_use tag: :textDirection, name: "text_direction", value: :lr

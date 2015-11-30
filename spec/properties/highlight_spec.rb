@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Highlight do
+describe OpenXml::Docx::Properties::Highlight do
   include ValuePropertyTestMacros
 
   it_should_use tag: :highlight, name: "highlight", value: :yellow
@@ -93,5 +93,5 @@ describe Rocx::Properties::Highlight do
   with_value(:purple) do
     it_should_not_work
   end
-  
+
 end

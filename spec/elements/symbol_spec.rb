@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::Symbol do
+describe OpenXml::Docx::Elements::Symbol do
   include ElementTestMacros
 
   it_should_use tag: :sym, name: "symbol"

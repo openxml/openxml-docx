@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Tabs do
+describe OpenXml::Docx::Properties::Tabs do
   include PropertyTestMacros
 
   it_should_use tag: :tabs, name: "tabs"
@@ -28,8 +28,8 @@ describe Rocx::Properties::Tabs do
   context "when there are tabs" do
     before(:each) do
       @instance = described_class.new
-      instance << Rocx::Properties::Tab.new(1234, :start)
-      instance << Rocx::Properties::Tab.new(5678, :end, :heavy)
+      instance << OpenXml::Docx::Properties::Tab.new(1234, :start)
+      instance << OpenXml::Docx::Properties::Tab.new(5678, :end, :heavy)
     end
 
     it "should output the correct XML" do

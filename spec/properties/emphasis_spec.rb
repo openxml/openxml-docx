@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Emphasis do
+describe OpenXml::Docx::Properties::Emphasis do
   include ValuePropertyTestMacros
 
   it_should_use tag: :em, name: "emphasis", value: :circle

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Alignment do
+describe OpenXml::Docx::Properties::Alignment do
   include ValuePropertyTestMacros
 
   it_should_use tag: :jc, name: "alignment", value: :end

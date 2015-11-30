@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::CompressPunctuation do
+describe OpenXml::Docx::Properties::CompressPunctuation do
   include ValuePropertyTestMacros
 
   it_should_use tag: :topLinePunct, name: "compress_punctuation"

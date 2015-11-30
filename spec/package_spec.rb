@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Package do
+describe OpenXml::Docx::Package do
   attr_reader :package
 
   context "when starting a new package" do
@@ -13,7 +13,7 @@ describe Rocx::Package do
     end
 
     it "should create the document part" do
-      expect(package.document).to be_instance_of(Rocx::Parts::Document)
+      expect(package.document).to be_instance_of(OpenXml::Docx::Parts::Document)
     end
 
     it "should create the global rels part" do
@@ -25,11 +25,11 @@ describe Rocx::Package do
     end
 
     it "should create the settings part" do
-      expect(package.settings).to be_instance_of(Rocx::Parts::Settings)
+      expect(package.settings).to be_instance_of(OpenXml::Docx::Parts::Settings)
     end
 
     it "should create the styles part" do
-      expect(package.styles).to be_instance_of(Rocx::Parts::Styles)
+      expect(package.styles).to be_instance_of(OpenXml::Docx::Parts::Styles)
     end
   end
 

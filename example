@@ -2,11 +2,11 @@
 
 # require "rails" # workaround: openxml-package uses `extract_options!`
 $:.push Dir.pwd + "/lib"
-require "rocx"
+require "openxml/docx"
 
-document = Rocx::Package.new
+document = OpenXml::Docx::Package.new
 
-include Rocx::Elements
+include OpenXml::Docx::Elements
 
 text = Text.new("Some text that I want to include in my new OOXML document")
 

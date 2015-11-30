@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Kerning do
+describe OpenXml::Docx::Properties::Kerning do
   include ValuePropertyTestMacros
 
   it_should_use tag: :kern, name: "kerning", value: 22

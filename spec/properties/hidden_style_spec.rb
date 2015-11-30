@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::HiddenStyle do
+describe OpenXml::Docx::Properties::HiddenStyle do
   include ValuePropertyTestMacros
 
   it_should_use tag: :hidden, name: "hidden_style"

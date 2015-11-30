@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::AbsolutePositionTab do
+describe OpenXml::Docx::Elements::AbsolutePositionTab do
   include ElementTestMacros
 
   it_should_use tag: :ptab, name: "absolute_position_tab"

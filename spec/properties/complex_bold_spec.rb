@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::ComplexBold do
+describe OpenXml::Docx::Properties::ComplexBold do
   include ValuePropertyTestMacros
 
   it_should_use tag: :bCs, name: "complex_bold"

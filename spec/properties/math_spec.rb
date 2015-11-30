@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Math do
+describe OpenXml::Docx::Properties::Math do
   include ValuePropertyTestMacros
 
   it_should_use tag: :oMath, name: "math"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::Control do
+describe OpenXml::Docx::Elements::Control do
   include ElementTestMacros
 
   it_should_use tag: :control, name: "control"

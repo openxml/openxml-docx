@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Imprint do
+describe OpenXml::Docx::Properties::Imprint do
   include ValuePropertyTestMacros
 
   it_should_use tag: :imprint, name: "imprint"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::Paragraph do
+describe OpenXml::Docx::Elements::Paragraph do
   include ElementTestMacros
 
   it_should_use tag: :p, name: "paragraph"
@@ -10,11 +10,11 @@ describe Rocx::Elements::Paragraph do
       @instance = described_class.new
       instance.indentation.start = 720
       instance.indentation.end = -1440
-      run = Rocx::Elements::Run.new
-      run << Rocx::Elements::Text.new("Hey Run 1")
+      run = OpenXml::Docx::Elements::Run.new
+      run << OpenXml::Docx::Elements::Text.new("Hey Run 1")
       instance << run
-      run = Rocx::Elements::Run.new
-      run << Rocx::Elements::Text.new("Hey Run 2")
+      run = OpenXml::Docx::Elements::Run.new
+      run << OpenXml::Docx::Elements::Text.new("Hey Run 2")
       instance << run
     end
 

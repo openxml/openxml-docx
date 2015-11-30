@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::LongDay do
+describe OpenXml::Docx::Elements::LongDay do
   include ElementTestMacros
 
   it_should_use tag: :dayLong, name: "long_day"

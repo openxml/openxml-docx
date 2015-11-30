@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Section do
+describe OpenXml::Docx::Section do
   include ElementTestMacros
 
   it_should_have_property :columns
@@ -33,7 +33,7 @@ describe Rocx::Section do
     before(:each) do
       @instance = described_class.new
       instance.bidi = true
-      instance.columns << Rocx::Properties::Column.new(1, 1)
+      instance.columns << OpenXml::Docx::Properties::Column.new(1, 1)
     end
 
     it "should output the correct XML" do

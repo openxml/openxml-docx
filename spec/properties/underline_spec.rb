@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Underline do
+describe OpenXml::Docx::Properties::Underline do
   include PropertyTestMacros
 
   it_should_use tag: :u, name: "underline"

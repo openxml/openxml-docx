@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Personal do
+describe OpenXml::Docx::Properties::Personal do
   include ValuePropertyTestMacros
 
   it_should_use tag: :personal, name: "personal"

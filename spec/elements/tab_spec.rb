@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::Tab do
+describe OpenXml::Docx::Elements::Tab do
   include ElementTestMacros
 
   it_should_use tag: :tab, name: "tab"

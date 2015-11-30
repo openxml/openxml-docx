@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::StyleAliases do
+describe OpenXml::Docx::Properties::StyleAliases do
   include ValuePropertyTestMacros
 
   it_should_use tag: :aliases, name: "style_aliases", value: "Default"

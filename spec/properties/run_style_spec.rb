@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::RunStyle do
+describe OpenXml::Docx::Properties::RunStyle do
   include ValuePropertyTestMacros
 
   it_should_use tag: :rStyle, name: "run_style", value: "Nope"

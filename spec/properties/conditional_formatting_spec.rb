@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::ConditionalFormatting do
+describe OpenXml::Docx::Properties::ConditionalFormatting do
   include PropertyTestMacros
 
   it_should_use tag: :cnfStyle, name: "conditional_formatting"

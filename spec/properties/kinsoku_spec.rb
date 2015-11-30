@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Kinsoku do
+describe OpenXml::Docx::Properties::Kinsoku do
   include ValuePropertyTestMacros
 
   it_should_use tag: :kinsoku, name: "kinsoku"

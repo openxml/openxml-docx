@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PageSize do
+describe OpenXml::Docx::Properties::PageSize do
   include PropertyTestMacros
 
   it_should_use tag: :pgSz, name: "page_size"

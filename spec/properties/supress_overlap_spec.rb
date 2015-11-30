@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::SupressOverlap do
+describe OpenXml::Docx::Properties::SupressOverlap do
   include ValuePropertyTestMacros
 
   it_should_use tag: :supressOverlap, name: "supress_overlap"

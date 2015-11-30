@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::SmallCaps do
+describe OpenXml::Docx::Properties::SmallCaps do
   include ValuePropertyTestMacros
 
   it_should_use tag: :smallCaps, name: "small_caps"

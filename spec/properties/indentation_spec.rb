@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Indentation do
+describe OpenXml::Docx::Properties::Indentation do
   include PropertyTestMacros
 
   it_should_use tag: :ind, name: "indentation"

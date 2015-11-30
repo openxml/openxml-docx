@@ -11,4 +11,4 @@ require "support/value_property_test_macros"
 require "simplecov"
 SimpleCov.start
 
-require "rocx"
+require "openxml/docx"

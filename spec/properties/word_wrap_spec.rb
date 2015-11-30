@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::WordWrap do
+describe OpenXml::Docx::Properties::WordWrap do
   include ValuePropertyTestMacros
 
   it_should_use tag: :wordWrap, name: "word_wrap"

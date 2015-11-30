@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::KeepNext do
+describe OpenXml::Docx::Properties::KeepNext do
   include ValuePropertyTestMacros
 
   it_should_use tag: :keepNext, name: "keep_next"

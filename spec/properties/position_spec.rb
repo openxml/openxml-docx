@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Position do
+describe OpenXml::Docx::Properties::Position do
   include ValuePropertyTestMacros
 
   it_should_use tag: :position, name: "position", value: 1

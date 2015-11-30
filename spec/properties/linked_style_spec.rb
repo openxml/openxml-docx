@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::LinkedStyle do
+describe OpenXml::Docx::Properties::LinkedStyle do
   include ValuePropertyTestMacros
 
   it_should_use tag: :link, name: "linked_style", value: "Something"

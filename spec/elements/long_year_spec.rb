@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::LongYear do
+describe OpenXml::Docx::Elements::LongYear do
   include ElementTestMacros
 
   it_should_use tag: :yearLong, name: "long_year"

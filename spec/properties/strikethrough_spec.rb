@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Strikethrough do
+describe OpenXml::Docx::Properties::Strikethrough do
   include ValuePropertyTestMacros
 
   it_should_use tag: :strike, name: "strikethrough"
@@ -19,5 +19,5 @@ describe Rocx::Properties::Strikethrough do
     it_should_work
     it_should_output ""
   end
-  
+
 end

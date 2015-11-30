@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Tab do
+describe OpenXml::Docx::Properties::Tab do
   include PropertyTestMacros
 
   it_should_use tag: :tab, name: "tab", value: [1234, :start]

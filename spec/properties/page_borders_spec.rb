@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PageBorders do
+describe OpenXml::Docx::Properties::PageBorders do
   include PropertyTestMacros
 
   it_should_use tag: :pgBorders, name: "page_borders"

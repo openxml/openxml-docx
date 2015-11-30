@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PaperSource do
+describe OpenXml::Docx::Properties::PaperSource do
   include PropertyTestMacros
 
   it_should_use tag: :paperSrc, name: "paper_source"

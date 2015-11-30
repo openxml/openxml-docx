@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::SpecVanish do
+describe OpenXml::Docx::Properties::SpecVanish do
   include ValuePropertyTestMacros
 
   it_should_use tag: :specVanish, name: "spec_vanish"

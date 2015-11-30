@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PageMargins do
+describe OpenXml::Docx::Properties::PageMargins do
   include PropertyTestMacros
 
   it_should_use tag: :pgMar, name: "page_margins"

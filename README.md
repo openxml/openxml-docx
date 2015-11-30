@@ -1,27 +1,27 @@
-# Rocx [![Code Climate](https://codeclimate.com/github/genebot/rocx.png)](https://codeclimate.com/github/genebot/rocx)
+# OpenXml::Docx [![Code Climate](https://codeclimate.com/github/openxml/openxml-docx.png)](https://codeclimate.com/github/openxml/openxml-docx)
 
-Rocx is a gem for creating .docx (Office Open XML) files. It's designed to validate _before_ the document is generated, so (hopefully) any errors are caught prior to opening the file using software that can handle OOXML (like Microsoft Word, Apache Open Office, Google Docs, etc).
+OpenXml::Docx is a gem for creating .docx (Office Open XML) files. It's designed to validate _before_ the document is generated, so (hopefully) any errors are caught prior to opening the file using software that can handle OOXML (like Microsoft Word, Apache Open Office, Google Docs, etc).
 
 An example:
 
 ```ruby
-require "rocx"
+require "openxml/docx"
 
-text = Rocx::Elements::Text.new("Some text that I want to include in my new OOXML document")
-run = Rocx::Elements::Run.new
+text = OpenXml::Docx::Elements::Text.new("Some text that I want to include in my new OOXML document")
+run = OpenXml::Docx::Elements::Run.new
 run.bold = true
 run << text
-paragraph = Rocx::Elements::Paragraph.new
+paragraph = OpenXml::Docx::Elements::Paragraph.new
 paragraph << run
 
-document = Rocx::Package.new
+document = OpenXml::Docx::Package.new
 document.document << paragraph
 document.save("/path/where/i/save/things/test.docx")
 ```
 
 ## Installation
 
-You can install Rocx by running `gem install rocx`, or if you like Rails, include `gem "rocx"` in your Gemfile.
+You can install OpenXml::Docx by running `gem install openxml-docx`, or if you like Rails, include `gem "openxml-docx"` in your Gemfile.
 
 ## Current features
 

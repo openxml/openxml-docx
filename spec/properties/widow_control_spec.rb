@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::WidowControl do
+describe OpenXml::Docx::Properties::WidowControl do
   include ValuePropertyTestMacros
 
   it_should_use tag: :widowControl, name: "widow_control"

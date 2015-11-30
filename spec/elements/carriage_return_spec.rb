@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::CarriageReturn do
+describe OpenXml::Docx::Elements::CarriageReturn do
   include ElementTestMacros
 
   it_should_use tag: :cr, name: "carriage_return"
@@ -8,5 +8,5 @@ describe Rocx::Elements::CarriageReturn do
   with_no_attributes_set do
     it_should_output "<w:cr/>", assign: false
   end
-  
+
 end

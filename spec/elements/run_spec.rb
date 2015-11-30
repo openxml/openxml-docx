@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::Run do
+describe OpenXml::Docx::Elements::Run do
   include ElementTestMacros
 
   context "after creation" do

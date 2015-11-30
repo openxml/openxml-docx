@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::TextboxTightWrap do
+describe OpenXml::Docx::Properties::TextboxTightWrap do
   include ValuePropertyTestMacros
 
   it_should_use tag: :textboxTightWrap, name: "textbox_tight_wrap", value: :none

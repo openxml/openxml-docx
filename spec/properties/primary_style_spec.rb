@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PrimaryStyle do
+describe OpenXml::Docx::Properties::PrimaryStyle do
   include ValuePropertyTestMacros
 
   it_should_use tag: :qFormat, name: "primary_style"

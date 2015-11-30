@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::ComplexItalics do
+describe OpenXml::Docx::Properties::ComplexItalics do
   include ValuePropertyTestMacros
 
   it_should_use tag: :iCs, name: "complex_italics"

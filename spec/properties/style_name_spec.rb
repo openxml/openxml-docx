@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::StyleName do
+describe OpenXml::Docx::Properties::StyleName do
   include ValuePropertyTestMacros
 
   it_should_use tag: :name, name: "style_name", value: "Something"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::FormProtection do
+describe OpenXml::Docx::Properties::FormProtection do
   include ValuePropertyTestMacros
 
   it_should_use tag: :formProt, name: "form_protection"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::DivId do
+describe OpenXml::Docx::Properties::DivId do
   include ValuePropertyTestMacros
 
   it_should_use tag: :divId, name: "div_id", value: 1

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::LatentStyles do
+describe OpenXml::Docx::Properties::LatentStyles do
   include PropertyTestMacros
 
   it_should_use tag: :latentStyles, name: "latent_styles"
@@ -28,8 +28,8 @@ describe Rocx::Properties::LatentStyles do
   context "when there are exceptions" do
     before(:each) do
       @instance = described_class.new
-      instance << Rocx::Properties::LatentStylesException.new("StyleName1")
-      instance << Rocx::Properties::LatentStylesException.new("StyleName2")
+      instance << OpenXml::Docx::Properties::LatentStylesException.new("StyleName1")
+      instance << OpenXml::Docx::Properties::LatentStylesException.new("StyleName2")
     end
 
     it "should output the correct XML" do
@@ -201,7 +201,7 @@ describe Rocx::Properties::LatentStyles do
   # for_attribute(:equal_width) do
   #   before(:each) do
   #     @instance = described_class.new
-  #     @instance << Rocx::Properties::Column.new(1, 1)
+  #     @instance << OpenXml::Docx::Properties::Column.new(1, 1)
   #   end
   #
   #   context "when the value is true" do
@@ -222,7 +222,7 @@ describe Rocx::Properties::LatentStyles do
   #   for_attribute(:number) do
   #     before(:each) do
   #       @instance = described_class.new
-  #       @instance << Rocx::Properties::Column.new(1, 1)
+  #       @instance << OpenXml::Docx::Properties::Column.new(1, 1)
   #     end
   #
   #     context "when the value is 1" do
@@ -267,7 +267,7 @@ describe Rocx::Properties::LatentStyles do
   #   for_attribute(:separator) do
   #     before(:each) do
   #       @instance = described_class.new
-  #       @instance << Rocx::Properties::Column.new(1, 1)
+  #       @instance << OpenXml::Docx::Properties::Column.new(1, 1)
   #     end
   #
   #     context "when the value is true" do
@@ -289,7 +289,7 @@ describe Rocx::Properties::LatentStyles do
   #   for_attribute(:space) do
   #     before(:each) do
   #       @instance = described_class.new
-  #       @instance << Rocx::Properties::Column.new(1, 1)
+  #       @instance << OpenXml::Docx::Properties::Column.new(1, 1)
   #     end
   #
   #     context "when the value is 1" do

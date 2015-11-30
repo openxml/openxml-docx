@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PersonalReply do
+describe OpenXml::Docx::Properties::PersonalReply do
   include ValuePropertyTestMacros
 
   it_should_use tag: :personalReply, name: "personal_reply"

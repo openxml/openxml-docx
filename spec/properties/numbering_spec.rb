@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Numbering do
+describe OpenXml::Docx::Properties::Numbering do
   include PropertyTestMacros
 
   it_should_use tag: :numPr, name: "numbering"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::TextAlignment do
+describe OpenXml::Docx::Properties::TextAlignment do
   include ValuePropertyTestMacros
 
   it_should_use tag: :textAlignment, name: "text_alignment", value: :auto

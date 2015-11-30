@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::ParagraphStyle do
+describe OpenXml::Docx::Properties::ParagraphStyle do
   include ValuePropertyTestMacros
 
   it_should_use tag: :pStyle, name: "paragraph_style", value: "Nope"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Shading do
+describe OpenXml::Docx::Properties::Shading do
   include PropertyTestMacros
 
   it_should_use tag: :shd, name: "shading"

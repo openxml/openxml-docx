@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::StyleAutoRedefinition do
+describe OpenXml::Docx::Properties::StyleAutoRedefinition do
   include ValuePropertyTestMacros
 
   it_should_use tag: :autoRedefine, name: "style_auto_redefinition"

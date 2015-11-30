@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::UiPriority do
+describe OpenXml::Docx::Properties::UiPriority do
   include ValuePropertyTestMacros
 
   it_should_use tag: :uiPriority, name: "ui_priority", value: 1

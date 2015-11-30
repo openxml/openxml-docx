@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::SupressLineNumbers do
+describe OpenXml::Docx::Properties::SupressLineNumbers do
   include ValuePropertyTestMacros
 
   it_should_use tag: :supressLineNumbers, name: "supress_line_numbers"

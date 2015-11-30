@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PageNumbering do
+describe OpenXml::Docx::Properties::PageNumbering do
   include PropertyTestMacros
 
   it_should_use tag: :pgNumType, name: "page_numbering"

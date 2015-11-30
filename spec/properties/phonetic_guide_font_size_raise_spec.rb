@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PhoneticGuideFontSizeRaise do
+describe OpenXml::Docx::Properties::PhoneticGuideFontSizeRaise do
   include ValuePropertyTestMacros
 
   it_should_use tag: :hpsRaise, name: "font_size_raise", value: 1

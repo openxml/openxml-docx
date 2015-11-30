@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::RightToLeft do
+describe OpenXml::Docx::Properties::RightToLeft do
   include ValuePropertyTestMacros
 
   it_should_use tag: :rtl, name: "right_to_left"

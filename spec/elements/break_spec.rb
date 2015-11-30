@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::Break do
+describe OpenXml::Docx::Elements::Break do
   include ElementTestMacros
 
   it_should_use tag: :br, name: "break"

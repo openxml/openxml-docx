@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::NonbreakingHyphen do
+describe OpenXml::Docx::Elements::NonbreakingHyphen do
   include ElementTestMacros
 
   it_should_use tag: :noBreakHyphen, name: "nonbreaking_hyphen"

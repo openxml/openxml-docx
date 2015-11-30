@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Bidi do
+describe OpenXml::Docx::Properties::Bidi do
   include ValuePropertyTestMacros
 
   it_should_use tag: :bidi, name: "bidi"

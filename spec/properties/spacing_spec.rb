@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Spacing do
+describe OpenXml::Docx::Properties::Spacing do
   include PropertyTestMacros
 
   it_should_use tag: :spacing, name: "spacing"

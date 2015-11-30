@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::OverflowPunctuation do
+describe OpenXml::Docx::Properties::OverflowPunctuation do
   include ValuePropertyTestMacros
 
   it_should_use tag: :overflowPunct, name: "overflow_punctuation"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::SectionType do
+describe OpenXml::Docx::Properties::SectionType do
   include ValuePropertyTestMacros
 
   it_should_use tag: :type, name: "type", value: :oddPage

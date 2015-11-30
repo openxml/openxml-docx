@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::SnapToGrid do
+describe OpenXml::Docx::Properties::SnapToGrid do
   include ValuePropertyTestMacros
 
   it_should_use tag: :snapToGrid, name: "snap_to_grid"

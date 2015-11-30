@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Border do
+describe OpenXml::Docx::Properties::Border do
   include PropertyTestMacros
 
   context "always" do

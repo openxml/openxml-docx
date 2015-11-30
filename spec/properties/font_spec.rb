@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Font do
+describe OpenXml::Docx::Properties::Font do
   include PropertyTestMacros
 
   it_should_use tag: :rFonts, name: "font"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::LineNumbering do
+describe OpenXml::Docx::Properties::LineNumbering do
   include PropertyTestMacros
 
   it_should_use tag: :lnNumType, name: "line_numbering"

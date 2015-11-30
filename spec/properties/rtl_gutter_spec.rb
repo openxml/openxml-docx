@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::RtlGutter do
+describe OpenXml::Docx::Properties::RtlGutter do
   include ValuePropertyTestMacros
 
   it_should_use tag: :rtlGutter, name: "rtl_gutter"

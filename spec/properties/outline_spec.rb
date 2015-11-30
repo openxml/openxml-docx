@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Outline do
+describe OpenXml::Docx::Properties::Outline do
   include ValuePropertyTestMacros
 
   it_should_use tag: :outline, name: "outline"

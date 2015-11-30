@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::Text do
+describe OpenXml::Docx::Elements::Text do
   include ElementTestMacros
 
   it_should_use tag: :t, name: "text"

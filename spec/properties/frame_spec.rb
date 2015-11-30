@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Frame do
+describe OpenXml::Docx::Properties::Frame do
   include PropertyTestMacros
 
   it_should_use tag: :framePr, name: "frame"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::DocumentGrid do
+describe OpenXml::Docx::Properties::DocumentGrid do
   include PropertyTestMacros
 
   it_should_use tag: :docGrid, name: "document_grid"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::WebHidden do
+describe OpenXml::Docx::Properties::WebHidden do
   include ValuePropertyTestMacros
 
   it_should_use tag: :webHidden, name: "web_hidden"

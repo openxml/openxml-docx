@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::AutoAdjustRightIndent do
+describe OpenXml::Docx::Properties::AutoAdjustRightIndent do
   include ValuePropertyTestMacros
 
   it_should_use tag: :adjustRightInd, name: "auto_adjust_right_ind"

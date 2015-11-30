@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PersonalCompose do
+describe OpenXml::Docx::Properties::PersonalCompose do
   include ValuePropertyTestMacros
 
   it_should_use tag: :personalCompose, name: "personal_compose"

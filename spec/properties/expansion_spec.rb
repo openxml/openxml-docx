@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Expansion do
+describe OpenXml::Docx::Properties::Expansion do
   include ValuePropertyTestMacros
 
   it_should_use tag: :w, name: "expansion", value: "100%"

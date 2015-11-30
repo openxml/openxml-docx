@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::ShortYear do
+describe OpenXml::Docx::Elements::ShortYear do
   include ElementTestMacros
 
   it_should_use tag: :yearShort, name: "short_year"

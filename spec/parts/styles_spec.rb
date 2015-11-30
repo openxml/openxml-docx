@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Parts::Styles do
+describe OpenXml::Docx::Parts::Styles do
   include PartTestMacros
 
   context "when adding no additional styles" do
@@ -15,7 +15,7 @@ describe Rocx::Parts::Styles do
     before(:each) do
       @doc = described_class.new
 
-      style = Rocx::Style.new(:paragraph)
+      style = OpenXml::Docx::Style.new(:paragraph)
       style.id = "coolStyle"
       style.paragraph.alignment = :start
 

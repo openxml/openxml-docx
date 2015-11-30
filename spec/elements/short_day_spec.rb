@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::ShortDay do
+describe OpenXml::Docx::Elements::ShortDay do
   include ElementTestMacros
 
   it_should_use tag: :dayShort, name: "short_day"

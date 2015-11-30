@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::ComplexFontSize do
+describe OpenXml::Docx::Properties::ComplexFontSize do
   include ValuePropertyTestMacros
 
   it_should_use tag: :szCs, name: "complex_font_size", value: 22

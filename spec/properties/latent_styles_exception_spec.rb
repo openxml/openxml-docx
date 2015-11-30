@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::LatentStylesException do
+describe OpenXml::Docx::Properties::LatentStylesException do
   include PropertyTestMacros
 
   it_should_use tag: :lsdException, name: "latent_styles_exception", value: "StyleName"

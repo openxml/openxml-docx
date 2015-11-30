@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::ParentStyle do
+describe OpenXml::Docx::Properties::ParentStyle do
   include ValuePropertyTestMacros
 
   it_should_use tag: :basedOn, name: "parent_style", value: "Something"

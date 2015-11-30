@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::ManualWidth do
+describe OpenXml::Docx::Properties::ManualWidth do
   include PropertyTestMacros
 
   it_should_use tag: :fitText, name: "manual_width"

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Column do
+describe OpenXml::Docx::Properties::Column do
   include PropertyTestMacros
 
   it_should_use tag: :col, name: "column", value: [1, 1]

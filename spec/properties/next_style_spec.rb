@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::NextStyle do
+describe OpenXml::Docx::Properties::NextStyle do
   include ValuePropertyTestMacros
 
   it_should_use tag: :next, name: "next_style", value: "Style Name"

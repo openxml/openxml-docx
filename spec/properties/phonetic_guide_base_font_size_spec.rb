@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PhoneticGuideBaseFontSize do
+describe OpenXml::Docx::Properties::PhoneticGuideBaseFontSize do
   include ValuePropertyTestMacros
 
   it_should_use tag: :hpsBaseText, name: "base_font_size", value: 1

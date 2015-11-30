@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Effect do
+describe OpenXml::Docx::Properties::Effect do
   include ValuePropertyTestMacros
 
   it_should_use tag: :effect, name: "effect", value: :none

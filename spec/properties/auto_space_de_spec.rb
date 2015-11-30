@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::AutoSpaceDe do
+describe OpenXml::Docx::Properties::AutoSpaceDe do
   include ValuePropertyTestMacros
 
   it_should_use tag: :autoSpaceDE, name: "auto_space_de"

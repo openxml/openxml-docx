@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::PhoneticGuideLanguage do
+describe OpenXml::Docx::Properties::PhoneticGuideLanguage do
   include ValuePropertyTestMacros
 
   it_should_use tag: :lid, name: "language", value: "ja-JP"

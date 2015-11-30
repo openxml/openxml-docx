@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Elements::BidiOverride do
+describe OpenXml::Docx::Elements::BidiOverride do
   include ElementTestMacros
 
   it_should_use tag: :bdo, name: "bidi_override"
@@ -20,8 +20,8 @@ describe Rocx::Elements::BidiOverride do
   context "with children" do
     before(:each) do
       @instance = described_class.new
-      text = Rocx::Elements::Text.new("Smucker's Preserves")
-      run = Rocx::Elements::Run.new
+      text = OpenXml::Docx::Elements::Text.new("Smucker's Preserves")
+      run = OpenXml::Docx::Elements::Run.new
       run << text
       instance << run
     end

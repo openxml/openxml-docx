@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Properties::Color do
+describe OpenXml::Docx::Properties::Color do
   include PropertyTestMacros
 
   it_should_use tag: :color, name: "color"

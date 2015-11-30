@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rocx::Style do
+describe OpenXml::Docx::Style do
   include ElementTestMacros
 
   it_should_use tag: :style, name: "style", value: :paragraph
@@ -73,7 +73,7 @@ describe Rocx::Style do
   end
 
   it "should be able to have paragraph styles" do
-    @instance = Rocx::Style.new(:paragraph)
+    @instance = OpenXml::Docx::Style.new(:paragraph)
     instance.paragraph.alignment = :start
 
     expected_xml = "<w:style w:type=\"paragraph\">\n    <w:pPr>\n      <w:jc w:val=\"start\"/>\n    </w:pPr>\n  </w:style>"
@@ -81,7 +81,7 @@ describe Rocx::Style do
   end
 
   it "should be able to have character styles" do
-    @instance = Rocx::Style.new(:character)
+    @instance = OpenXml::Docx::Style.new(:character)
     instance.character.bold = true
 
     expected_xml = "<w:style w:type=\"character\">\n    <w:rPr>\n      <w:b/>\n    </w:rPr>\n  </w:style>"
