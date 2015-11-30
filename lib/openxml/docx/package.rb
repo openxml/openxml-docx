@@ -1,4 +1,4 @@
-require "open_xml/package"
+require "openxml/package"
 
 module OpenXml
   module Docx
