@@ -3,8 +3,8 @@ module OpenXml
     module Properties
       class TrHeight < ComplexProperty
 
-        attribute :hRule, expects: :valid_hrule
-        attribute :val, expects: :positive_integer
+        attribute :hRule, expects: :valid_hrule, namespace: :w
+        attribute :val, expects: :positive_integer, namespace: :w
 
       private
         def valid_hrule(value)

@@ -4,10 +4,12 @@ module OpenXml
       class TableRow < Container
         tag :tr
 
-        attribute :rsidDel, expects: :valid_long_hex
-        attribute :rsidR, expects: :valid_long_hex
-        attribute :rsidRPr, expects: :valid_long_hex
-        attribute :risdTr, expects: :valid_long_hex
+        with_namespace :w do
+          attribute :rsidDel, expects: :valid_long_hex
+          attribute :rsidR, expects: :valid_long_hex
+          attribute :rsidRPr, expects: :valid_long_hex
+          attribute :risdTr, expects: :valid_long_hex
+        end
 
         value_property :cant_split
         value_property :div_id

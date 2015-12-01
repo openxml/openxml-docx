@@ -4,8 +4,10 @@ module OpenXml
       class Numbering < ComplexProperty
         tag :numPr
 
-        attribute :level, expects: :positive_integer, displays_as: :ilvl
-        attribute :id, expects: :positive_integer, displays_as: :numId
+        with_namespace :w do
+          attribute :level, expects: :positive_integer, displays_as: :ilvl
+          attribute :id, expects: :positive_integer, displays_as: :numId
+        end
 
         def to_xml(xml)
           return unless render?

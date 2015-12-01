@@ -4,9 +4,11 @@ module OpenXml
       class DocumentGrid < ComplexProperty
         tag :docGrid
 
-        attribute :char_space, expects: :integer
-        attribute :line_pitch, expects: :integer
-        attribute :type, expects: :valid_grid_type
+        with_namespace :w do
+          attribute :char_space, expects: :integer
+          attribute :line_pitch, expects: :integer
+          attribute :type, expects: :valid_grid_type
+        end
 
         VALID_GRID_TYPES = %i(default lines linesAndChars snapToChars)
 

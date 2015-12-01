@@ -22,6 +22,11 @@ module OpenXml
             @property_name = args.first if args.any?
             @name
           end
+
+          def namespace(*args)
+            @namespace = args.first if args.any?
+            @namespace
+          end
         end
 
         def initialize(tag=nil, *args)
@@ -50,6 +55,14 @@ module OpenXml
 
         def default_tag
           (class_name[0, 1].downcase + class_name[1..-1]).to_sym
+        end
+
+        def namespace
+          self.class.namespace || default_namespace
+        end
+
+        def default_namespace
+          :w
         end
 
       private

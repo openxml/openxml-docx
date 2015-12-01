@@ -5,9 +5,12 @@ module OpenXml
         attr_reader :left, :right, :top, :bottom
 
         tag :pgBorders
-        attribute :display, expects: :valid_display
-        attribute :offset_from, expects: :valid_offset
-        attribute :z_order, expects: :valid_z_order
+
+        with_namespace :w do
+          attribute :display, expects: :valid_display
+          attribute :offset_from, expects: :valid_offset
+          attribute :z_order, expects: :valid_z_order
+        end
 
         def initialize
           @left = new_border :left

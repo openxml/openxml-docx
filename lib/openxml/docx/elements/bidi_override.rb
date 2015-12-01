@@ -3,7 +3,7 @@ module OpenXml
     module Elements
       class BidiOverride < Container
         tag :bdo
-        attribute :direction, expects: :valid_direction, displays_as: :val
+        attribute :direction, expects: :valid_direction, displays_as: :val, namespace: :w
 
         VALID_DIRECTIONS = %i(rtl ltr)
 

@@ -4,8 +4,10 @@ module OpenXml
       class Break < Element
         tag :br
 
-        attribute :clear, expects: :valid_clear
-        attribute :type, expects: :valid_break_type
+        with_namespace :w do
+          attribute :clear, expects: :valid_clear
+          attribute :type, expects: :valid_break_type
+        end
 
         VALID_CLEARS = %i(all left none right)
         VALID_BREAK_TYPES = %i(column page textWrapping)

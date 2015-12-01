@@ -4,10 +4,12 @@ module OpenXml
       class LineNumbering < ComplexProperty
         tag :lnNumType
 
-        attribute :count_by, expects: :integer
-        attribute :distance, expects: :positive_integer
-        attribute :restart, expects: :valid_line_numbering_restart
-        attribute :start, expects: :integer
+        with_namespace :w do
+          attribute :count_by, expects: :integer
+          attribute :distance, expects: :positive_integer
+          attribute :restart, expects: :valid_line_numbering_restart
+          attribute :start, expects: :integer
+        end
 
         VALID_LINE_NUMBERING_RESTARTS = %i(continuous newPage newSection)
 

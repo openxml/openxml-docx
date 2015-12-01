@@ -4,10 +4,12 @@ module OpenXml
       class PageNumbering < ComplexProperty
         tag :pgNumType
 
-        attribute :chapter_separator, expects: :valid_chapter_separator, displays_as: :chapSep
-        attribute :chapter_style, expects: :integer, displays_as: :chapStyle
-        attribute :format, expects: :valid_page_number_format, displays_as: :fmt
-        attribute :start, expects: :integer
+        with_namespace :w do
+          attribute :chapter_separator, expects: :valid_chapter_separator, displays_as: :chapSep
+          attribute :chapter_style, expects: :integer, displays_as: :chapStyle
+          attribute :format, expects: :valid_page_number_format, displays_as: :fmt
+          attribute :start, expects: :integer
+        end
 
         VALID_CHAPTER_SEPARATORS = %i(colon emDash enDash hyphen period)
         VALID_PAGE_NUMBER_FORMATS = %i(aiueo

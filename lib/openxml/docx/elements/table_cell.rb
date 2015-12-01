@@ -4,7 +4,7 @@ module OpenXml
       class TableCell < Container
         tag :tc
 
-        attribute :id
+        attribute :id, namespace: :w
 
         value_property :div_id
         value_property :grid_span

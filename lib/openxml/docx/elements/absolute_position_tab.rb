@@ -3,9 +3,12 @@ module OpenXml
     module Elements
       class AbsolutePositionTab < Element
         tag :ptab
-        attribute :alignment, expects: :valid_ptab_alignment
-        attribute :leader, expects: :valid_ptab_leader
-        attribute :relativeTo, expects: :valid_ptab_relative_to
+
+        with_namespace :w do
+          attribute :alignment, expects: :valid_ptab_alignment
+          attribute :leader, expects: :valid_ptab_leader
+          attribute :relativeTo, expects: :valid_ptab_relative_to
+        end
 
         VALID_PTAB_ALIGNMENTS = %i(center left right)
         VALID_PTAB_LEADERS = %i(dot hyphen middleDot none underscore)

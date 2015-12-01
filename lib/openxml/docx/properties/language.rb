@@ -4,9 +4,11 @@ module OpenXml
       class Language < ComplexProperty
         tag :lang
 
-        attribute :bidi, expects: :valid_language
-        attribute :east_asia, expects: :valid_language
-        attribute :latin, expects: :valid_language, displays_as: :val
+        with_namespace :w do
+          attribute :bidi, expects: :valid_language
+          attribute :east_asia, expects: :valid_language
+          attribute :latin, expects: :valid_language, displays_as: :val
+        end
 
       private
 
