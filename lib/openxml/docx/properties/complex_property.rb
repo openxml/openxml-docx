@@ -6,7 +6,7 @@ module OpenXml
 
         def to_xml(xml)
           return unless render?
-          xml["w"].public_send(tag, xml_attributes)
+          xml[namespace].public_send(tag, xml_attributes)
         end
 
         def render?

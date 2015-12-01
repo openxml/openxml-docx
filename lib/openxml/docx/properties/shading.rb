@@ -42,15 +42,18 @@ module OpenXml
                                     thinVertStripe
                                     vertStripe)
 
-        attribute :color, expects: :hex_color
-        attribute :fill, expects: :hex_color
-        attribute :theme_color, expects: :valid_theme_color
-        attribute :theme_fill, expects: :valid_theme_color
-        attribute :theme_fill_shade, expects: :hex_digit
-        attribute :theme_fill_tint, expects: :hex_digit
-        attribute :theme_shade, expects: :hex_digit
-        attribute :theme_tint, expects: :hex_digit
-        attribute :pattern, expects: :shading_pattern, displays_as: :val
+
+        with_namespace :w do
+          attribute :color, expects: :hex_color
+          attribute :fill, expects: :hex_color
+          attribute :theme_color, expects: :valid_theme_color
+          attribute :theme_fill, expects: :valid_theme_color
+          attribute :theme_fill_shade, expects: :hex_digit
+          attribute :theme_fill_tint, expects: :hex_digit
+          attribute :theme_shade, expects: :hex_digit
+          attribute :theme_tint, expects: :hex_digit
+          attribute :pattern, expects: :shading_pattern, displays_as: :val
+        end
 
       private
 

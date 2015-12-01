@@ -6,6 +6,7 @@ module OpenXml
 
         class << self
           attr_reader :property_name
+          attr_reader :namespace
 
           def tag(*args)
             @tag = args.first if args.any?
@@ -37,7 +38,7 @@ module OpenXml
         end
 
         def to_xml(xml)
-          xml["w"].public_send(tag, xml_attributes)
+          xml[namespace].public_send(tag, xml_attributes)
         end
 
       private

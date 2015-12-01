@@ -6,10 +6,10 @@ module OpenXml
 
       attr_reader :paragraph, :character, :table, :type
 
-      attribute :custom, expects: :true_or_false, displays_as: :customStyle
-      attribute :default, expects: :true_or_false
-      attribute :id, expects: :string, displays_as: :styleId
-      attribute :type, expects: :valid_style_type
+      attribute :custom, expects: :true_or_false, displays_as: :customStyle, namespace: :w
+      attribute :default, expects: :true_or_false, namespace: :w
+      attribute :id, expects: :string, displays_as: :styleId, namespace: :w
+      attribute :type, expects: :valid_style_type, namespace: :w
 
       value_property :auto_redefine, as: :style_auto_redefinition
       value_property :hidden_style

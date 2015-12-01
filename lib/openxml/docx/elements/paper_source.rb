@@ -4,8 +4,10 @@ module OpenXml
       class PaperSource < ComplexProperty
         tag :paperSrc
 
-        attribute :first, expects: :integer
-        attribute :other, expects: :integer
+        with_namespace :w do
+          attribute :first, expects: :integer
+          attribute :other, expects: :integer
+        end
 
       end
     end

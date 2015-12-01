@@ -4,15 +4,17 @@ module OpenXml
       class Font < ComplexProperty
         tag :rFonts
 
-        attribute :ascii, expects: :string
-        attribute :ascii_theme, expects: :valid_theme
-        attribute :complex, expects: :string, displays_as: :cs
-        attribute :complex_theme, expects: :valid_theme, displays_as: :cstheme
-        attribute :east_asia, expects: :string
-        attribute :east_asia_theme, expects: :valid_theme
-        attribute :high_ansi, expects: :string, displays_as: :hAnsi
-        attribute :high_ansi_theme, expects: :valid_theme, displays_as: :hAnsiTheme
-        attribute :hint, expects: :valid_hint
+        with_namespace :w do
+          attribute :ascii, expects: :string
+          attribute :ascii_theme, expects: :valid_theme
+          attribute :complex, expects: :string, displays_as: :cs
+          attribute :complex_theme, expects: :valid_theme, displays_as: :cstheme
+          attribute :east_asia, expects: :string
+          attribute :east_asia_theme, expects: :valid_theme
+          attribute :high_ansi, expects: :string, displays_as: :hAnsi
+          attribute :high_ansi_theme, expects: :valid_theme, displays_as: :hAnsiTheme
+          attribute :hint, expects: :valid_hint
+        end
 
         VALID_HINTS = %i(cs default eastAsia)
 

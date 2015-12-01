@@ -4,16 +4,18 @@ module OpenXml
       class TablePPr < ComplexProperty
         tag :tblpPr
 
-        attribute :bottomFromText, expects: :positive_integer
-        attribute :horizAnchor, expects: :valid_anchor
-        attribute :leftFromText, expects: :positive_integer
-        attribute :rightFromText, expects: :positive_integer
-        attribute :tblpX, expects: :integer
-        attribute :tblpXSpec, expects: :valid_x_spec
-        attribute :tblpY, expects: :integer
-        attribute :tblpYSpec, expects: :valid_y_spec
-        attribute :topFromText, expects: :positive_integer
-        attribute :vertAnchor, expects: :valid_anchor
+        with_namespace :w do
+          attribute :bottomFromText, expects: :positive_integer
+          attribute :horizAnchor, expects: :valid_anchor
+          attribute :leftFromText, expects: :positive_integer
+          attribute :rightFromText, expects: :positive_integer
+          attribute :tblpX, expects: :integer
+          attribute :tblpXSpec, expects: :valid_x_spec
+          attribute :tblpY, expects: :integer
+          attribute :tblpYSpec, expects: :valid_y_spec
+          attribute :topFromText, expects: :positive_integer
+          attribute :vertAnchor, expects: :valid_anchor
+        end
 
       private
 
