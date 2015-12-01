@@ -1,4 +1,4 @@
-require "openxml/docx/properties/table_border"
+require "openxml/docx/properties/table/table_border"
 
 module OpenXml
   module Docx

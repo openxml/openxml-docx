@@ -1,4 +1,4 @@
-require "openxml/docx/properties/table_cell_margin"
+require "openxml/docx/properties/table/table_cell_margin"
 
 module OpenXml
   module Docx
