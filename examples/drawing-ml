@@ -1,0 +1,134 @@
+#!/usr/bin/env ruby
+
+$:.push Dir.pwd + "/lib"
+require "openxml/docx"
+require "openxml/vml"
+
+include OpenXml::Docx::Elements
+
+document = OpenXml::Docx::Package.new
+
+table = Table.new
+table.table_width.type = :auto
+table.table_width.width = 0
+table.table_layout = :fixed
+
+table_cell_margins = OpenXml::Docx::Properties::TableCellMargins.new
+start_margin = OpenXml::Docx::Properties::TableCellMargin.new(:start)
+end_margin = OpenXml::Docx::Properties::TableCellMargin.new(:end)
+start_margin.type = :dxa
+start_margin.width = 86
+end_margin.type = :dxa
+end_margin.width = 86
+table_cell_margins << start_margin
+table_cell_margins << end_margin
+
+table << table_cell_margins
+
+table.table_look.firstColumn = false
+table.table_look.firstRow = false
+table.table_look.lastColumn = false
+table.table_look.lastRow = false
+table.table_look.noHBand = false
+table.table_look.noVBand = false
+
+table_grid = TableGrid.new
+[3787, 172, 3787, 172, 3787].each do |width|
+  grid_column = GridColumn.new
+  grid_column.w = width
+  table_grid << grid_column
+end
+
+table << table_grid
+
+table_row = TableRow.new
+table_row.table_row_height.hRule = :exact
+table_row.table_row_height.val = 1140
+
+table_cell = TableCell.new
+
+table_cell_width = OpenXml::Docx::Properties::TableCellWidth.new
+table_cell_width.type = :dxa
+table_cell_width.width = 0
+table_cell << table_cell_width
+
+table_cell_margins = OpenXml::Docx::Properties::TableCellMargins.new
+
+top_margin = OpenXml::Docx::Properties::TableCellMargin.new(:top)
+top_margin.type = :dxa
+top_margin.width = 0
+
+bottom_margin = OpenXml::Docx::Properties::TableCellMargin.new(:bottom)
+bottom_margin.type = :dxa
+bottom_margin.width = 0
+
+table_cell_margins << top_margin
+table_cell_margins << bottom_margin
+table_cell << table_cell_margins
+
+table_cell.v_align = :center
+
+paragraph = Paragraph.new
+table_cell << paragraph
+table_row << table_cell
+table << table_row
+document.document << table
+
+outline_paragraph = Paragraph.new
+outline_paragraph.spacing.after = 0
+outline_paragraph.spacing.line = 20
+outline_paragraph.spacing.line_rule = :exact
+
+outline_run = Run.new
+
+vml_container = VmlContainer.new
+
+round_rectangle = OpenXml::Vml::Elements::RoundedRectangle.new
+round_rectangle.arc_size = "6554f"
+round_rectangle.filled = :false
+round_rectangle.id = "AutoShape_x0020_31"
+round_rectangle.allow_in_cell = :false
+round_rectangle.optional_string = "_x0000_s1026"
+round_rectangle.stroke_color = "#bfbfbf"
+round_rectangle.stroke_weight = ".25pt"
+round_rectangle.print = :false
+style_string = "position:absolute;margin-left:13.55pt;margin-top:36.1pt;width:189.35pt;height:1in;z-index:251642880;visibility:visible;mso-wrap-style:square;mso-width-percent:0;mso-height-percent:0;mso-wrap-distance-left:9pt;mso-wrap-distance-top:0;mso-wrap-distance-right:9pt;mso-wrap-distance-bottom:0;mso-position-horizontal:absolute;mso-position-horizontal-relative:page;mso-position-vertical:absolute;mso-position-vertical-relative:page;mso-width-percent:0;mso-height-percent:0;mso-width-relative:page;mso-height-relative:page;v-text-anchor:top"
+round_rectangle.style = style_string
+
+vml_container << round_rectangle
+
+outline_run << vml_container
+
+outline_paragraph << outline_run
+
+document.document << outline_paragraph
+
+section_properties = SectionProperties.new
+
+page_size = OpenXml::Docx::Properties::PageSize.new
+page_size.height = 15840
+page_size.width = 12240
+section_properties << page_size
+
+page_margin = OpenXml::Docx::Properties::PageMargins.new
+page_margin.bottom = 600
+page_margin.footer = 0
+page_margin.gutter = 0
+page_margin.header = 0
+page_margin.left = 367
+page_margin.right = 446
+page_margin.top = 720
+
+section_properties << page_margin
+
+columns = OpenXml::Docx::Properties::Columns.new
+columns.space = 720
+
+section_properties << columns
+
+document.document << section_properties
+
+filename = "border_test.docx"
+system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
+document.save File.expand_path("~/Desktop/#{filename}")
+exec "open ~/Desktop/#{filename}"
