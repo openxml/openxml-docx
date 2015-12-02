@@ -5,25 +5,11 @@ describe OpenXml::Docx::Elements::Break do
 
   it_should_use tag: :br, name: "break"
 
-  for_attribute(:clear) do
-    with_value(:all) do
+  for_attribute(:clear, with_namespace: :w) do
+    allowed = %i(all left none right)
+    with_values(allowed) do
       it_should_assign_successfully
-      it_should_output "<w:br w:clear=\"all\"/>"
-    end
-
-    with_value(:left) do
-      it_should_assign_successfully
-      it_should_output "<w:br w:clear=\"left\"/>"
-    end
-
-    with_value(:none) do
-      it_should_assign_successfully
-      it_should_output "<w:br w:clear=\"none\"/>"
-    end
-
-    with_value(:right) do
-      it_should_assign_successfully
-      it_should_output "<w:br w:clear=\"right\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(:somethingElse) do
@@ -31,20 +17,11 @@ describe OpenXml::Docx::Elements::Break do
     end
   end
 
-  for_attribute(:type) do
-    with_value(:column) do
+  for_attribute(:type, with_namespace: :w) do
+    allowed = %i(column page textWrapping)
+    with_values(allowed) do
       it_should_assign_successfully
-      it_should_output "<w:br w:type=\"column\"/>"
-    end
-
-    with_value(:page) do
-      it_should_assign_successfully
-      it_should_output "<w:br w:type=\"page\"/>"
-    end
-
-    with_value(:textWrapping) do
-      it_should_assign_successfully
-      it_should_output "<w:br w:type=\"textWrapping\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(:somethingElse) do
