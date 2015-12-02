@@ -283,6 +283,11 @@ module OpenXml
         raise ArgumentError, message if !value.is_a?(String) || value.length.zero?
       end
 
+      def percentage(value)
+        message = "Invalid #{name}: must be a percentage"
+        raise ArgumentError, message unless value.is_a?(String) && value =~ /-?[0-9]+(\.[0-9]+)?%/ # Regex supplied in sec. 22.9.2.9 of Office Open XML docs
+      end
+
       def on_or_off(value)
         valid_in? value, [:on, :off]
       end

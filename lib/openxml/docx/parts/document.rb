@@ -57,7 +57,9 @@ module OpenXml
             "xmlns:wps" => 'http://schemas.microsoft.com/office/word/2010/wordprocessingShape',
             "xmlns:w" => "http://schemas.openxmlformats.org/wordprocessingml/2006/main",
             "xmlns:mc" => "http://schemas.openxmlformats.org/markup-compatibility/2006",
-            "mc:Ignorable" => "w14 wp14" }
+            "xmlns:a" => "http://schemas.openxmlformats.org/drawingml/2006/main",
+            "xmlns:a14" => "http://schemas.microsoft.com/office/drawing/2010/main",
+            "mc:Ignorable" => "w14 wp14 a14" }
         end
 
       end

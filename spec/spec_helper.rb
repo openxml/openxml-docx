@@ -11,4 +11,5 @@ require "simplecov"
 SimpleCov.start
 
 require "openxml/docx"
+require "openxml/drawingml"
 require "nokogiri"
