@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class VmlObject < Container
+      class VmlContainer < Container
         tag :pict
 
       end
