@@ -12,14 +12,14 @@ module OpenXml
         attribute :coordinate_origin, expects: :valid_coordinate, displays_as: :coordorigin
         attribute :coordinate_size, expects: :valid_coordinate, displays_as: :coordsize
         attribute :fill_color, expects: :valid_color, displays_as: :fillcolor
-        attribute :filled, expects: :true_or_false
+        attribute :filled, expects: :explicit_true_false
         attribute :href, expects: :string
         attribute :id, expects: :string
-        attribute :inset_pen, expects: :true_or_false, displays_as: :insetpen
+        attribute :inset_pen, expects: :explicit_true_false, displays_as: :insetpen
         attribute :opacity, expects: :string # Can be a float or 1/65536ths when followed by `f`
-        attribute :print, expects: :true_or_false
+        attribute :print, expects: :explicit_true_false
         attribute :stroke_color, expects: :valid_color
-        attribute :stroked, expects: :true_or_false
+        attribute :stroked, expects: :explicit_true_false
         attribute :stroke_weight, expects: :string, displays_as: :strokeweight # Expects number with units
         attribute :style, expects: :string
         attribute :target, expects: :string
@@ -27,40 +27,40 @@ module OpenXml
         attribute :wrap_coordinates, expects: :string, displays_as: :wrapcoords
 
         with_namespace :o do
-          attribute :allow_in_cell, expects: :true_or_false, displays_as: :allowincell
-          attribute :allow_overlap, expects: :true_or_false, displays_as: :allowoverlap
+          attribute :allow_in_cell, expects: :explicit_true_false, displays_as: :allowincell
+          attribute :allow_overlap, expects: :explicit_true_false, displays_as: :allowoverlap
           attribute :border_bottom_color, expects: :string, displays_as: :borderbottomcolor
           attribute :border_left_color, expects: :string, displays_as: :borderleftcolor
           attribute :border_right_color, expects: :string, displays_as: :borderrightcolor
           attribute :border_top_color, expects: :string, displays_as: :bordertopcolor
-          attribute :bullet, expects: :true_or_false
-          attribute :button, expects: :true_or_false
+          attribute :bullet, expects: :explicit_true_false
+          attribute :button, expects: :explicit_true_false
           attribute :bw_mode, expects: :valid_bw_mode, displays_as: :bwmode
           attribute :bw_normal, expects: :valid_bw_mode, displays_as: :bwnormal
           attribute :bw_pure, expects: :valid_bw_mode, displays_as: :bwpure
-          attribute :clip, expects: :true_or_false
-          attribute :clip_to_wrap, expects: :true_or_false, displays_as: :cliptowrap
+          attribute :clip, expects: :explicit_true_false
+          attribute :clip_to_wrap, expects: :explicit_true_false, displays_as: :cliptowrap
           attribute :connector_type, expects: :valid_connector_type, displays_as: :connectortype
           attribute :diagram_node_layout, expects: :valid_diagram_layout, displays_as: :dgmlayout
           attribute :diagram_node_recent_layout, expects: :valid_diagram_layout, displays_as: :dgmlayoutmru
           attribute :diagram_node_kind, expects: :integer, displays_as: :dgmnodekind
-          attribute :double_click_notify, expects: :true_or_false, displays_as: :doubleclicknotify
-          attribute :force_dash, expects: :true_or_false, displays_as: :forcedash
-          attribute :hr, expects: :true_or_false
+          attribute :double_click_notify, expects: :explicit_true_false, displays_as: :doubleclicknotify
+          attribute :force_dash, expects: :explicit_true_false, displays_as: :forcedash
+          attribute :hr, expects: :explicit_true_false
           attribute :hr_align, expects: :valid_hr_align, displays_as: :hralign
-          attribute :hr_no_shade, expects: :true_or_false, displays_as: :hrnoshade
+          attribute :hr_no_shade, expects: :explicit_true_false, displays_as: :hrnoshade
           attribute :hr_percent, expects: :integer, displays_as: :hrpct
-          attribute :hr_standard, expects: :true_or_false, displays_as: :hrstd
+          attribute :hr_standard, expects: :explicit_true_false, displays_as: :hrstd
           attribute :inset_mode, expects: :valid_inset_mode, displays_as: :insetmode
-          attribute :ole, expects: :true_or_false
-          attribute :ole_icon, expects: :true_or_false, displays_as: :oleicon
-          attribute :hide_extra_handles, expects: :true_or_false, displays_as: :oned
-          attribute :prefer_relative, expects: :true_or_false, displays_as: :preferrelative
+          attribute :ole, expects: :explicit_true_false
+          attribute :ole_icon, expects: :explicit_true_false, displays_as: :oleicon
+          attribute :hide_extra_handles, expects: :explicit_true_false, displays_as: :oned
+          attribute :prefer_relative, expects: :explicit_true_false, displays_as: :preferrelative
           attribute :regroup_id, expects: :integer, displays_as: :regroupid
           attribute :optional_string, expects: :string, displays_as: :spid
           attribute :optional_number, expects: :string, displays_as: :spt # Actually expects float
-          attribute :user_drawn, expects: :true_or_false, displays_as: :userdrawn
-          attribute :user_hidden, expects: :true_or_false, displays_as: :userhidden
+          attribute :user_drawn, expects: :explicit_true_false, displays_as: :userdrawn
+          attribute :user_hidden, expects: :explicit_true_false, displays_as: :userhidden
         end
 
       private
@@ -109,6 +109,10 @@ module OpenXml
           ok_values = %i(auto custom)
           message = "Invalid inset mode (#{value}). Valid modes are: #{ok_values.join(", ")}."
           raise ArgumentError, message unless ok_values.include? value
+        end
+
+        def explicit_true_false(value)
+          raise ArgumentError unless value.to_s =~ /^(?:[01tf]|true|false)$/
         end
 
       end
