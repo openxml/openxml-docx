@@ -7,8 +7,8 @@ module OpenXml
 
         attribute :alternate_text, expects: :string, displays_as: :alt
         attribute :arc_size, expects: :valid_arc_size, displays_as: :arcsize
-        attribute :chroma_key, expects: :valid_color
-        attribute :css_class, expects: :string
+        attribute :chroma_key, expects: :valid_color, displays_as: :chromakey
+        attribute :css_class, expects: :string, displays_as: :class
         attribute :coordinate_origin, expects: :valid_coordinate, displays_as: :coordorigin
         attribute :coordinate_size, expects: :valid_coordinate, displays_as: :coordsize
         attribute :fill_color, expects: :valid_color, displays_as: :fillcolor
@@ -18,7 +18,7 @@ module OpenXml
         attribute :inset_pen, expects: :explicit_true_false, displays_as: :insetpen
         attribute :opacity, expects: :string # Can be a float or 1/65536ths when followed by `f`
         attribute :print, expects: :explicit_true_false
-        attribute :stroke_color, expects: :valid_color
+        attribute :stroke_color, expects: :valid_color, displays_as: :strokecolor
         attribute :stroked, expects: :explicit_true_false
         attribute :stroke_weight, expects: :string, displays_as: :strokeweight # Expects number with units
         attribute :style, expects: :string

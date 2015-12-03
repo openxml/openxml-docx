@@ -12,4 +12,5 @@ SimpleCov.start
 
 require "openxml/docx"
 require "openxml/drawingml"
+require "openxml/vml"
 require "nokogiri"
