@@ -5,142 +5,652 @@ describe OpenXml::Vml::Elements::RoundedRectangle do
 
   it_should_use tag: :roundrect, name: "rounded_rectangle"
 
-  coordinate_attrs = {
-    coordinate_origin: { display: :coordorigin },
-    coordinate_size: { display: :coordsize }
-  }
+  # Arc Size Attribute
 
-  color_attrs = {
-    chroma_key: { display: :chromakey },
-    fill_color: { display: :fillcolor },
-    stroke_color: { display: :strokecolor }
-  }
+  for_attribute(:arc_size, displays_as: :arcsize) do
+    with_values(%w(50% 1% 9000f)) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
 
-  diagram_layout_attrs = {
-    diagram_node_layout: { display: :dgmlayout, namespace: :o },
-    diagram_node_recent_layout: { display: :dgmlayoutmru, namespace: :o }
-  }
-
-  integer_attrs = {
-    diagram_node_kind: { display: :dgmnodekind, namespace: :o },
-    hr_percent: { display: :hrpct, namespace: :o },
-    regroup_id: { display: :regroupid, namespace: :o }
-  }
-
-  bw_mode_attrs = {
-    bw_mode: { display: :bwmode, namespace: :o },
-    bw_normal: { display: :bwnormal, namespace: :o },
-    bw_pure: { display: :bwpure, namespace: :o }
-  }
-
-  string_attrs = {
-    alternate_text: { display: :alt },
-    css_class: { display: :class },
-    href: { display: :href },
-    id: { display: :id },
-    opacity: { display: :opacity },
-    stroke_weight: { display: :strokeweight },
-    style: { display: :style },
-    target: { display: :target },
-    title: { display: :title },
-    wrap_coordinates: { display: :wrapcoords },
-    border_bottom_color: { display: :borderbottomcolor, namespace: :o },
-    border_left_color: { display: :borderleftcolor, namespace: :o },
-    border_right_color: { display: :borderrightcolor, namespace: :o },
-    border_top_color: { display: :bordertopcolor, namespace: :o },
-    optional_string: { display: :spid, namespace: :o },
-    optional_number: { display: :spt, namespace: :o }
-  }
-
-  true_false_attrs = {
-    filled: { display: :filled },
-    inset_pen: { display: :insetpen },
-    print: { display: :print },
-    stroked: { display: :stroked },
-    allow_in_cell: { display: :allowincell, namespace: :o },
-    allow_overlap: { display: :allowoverlap, namespace: :o },
-    bullet: { display: :bullet, namespace: :o },
-    button: { display: :button, namespace: :o },
-    clip: { display: :clip, namespace: :o },
-    clip_to_wrap: { display: :cliptowrap, namespace: :o },
-    double_click_notify: { display: :doubleclicknotify, namespace: :o },
-    force_dash: { display: :forcedash, namespace: :o },
-    hr: { display: :hr, namespace: :o },
-    hr_no_shade: { display: :hrnoshade, namespace: :o },
-    hr_standard: { display: :hrstd, namespace: :o },
-    ole: { display: :ole, namespace: :o },
-    ole_icon: { display: :oleicon, namespace: :o },
-    hide_extra_handles: { display: :oned, namespace: :o },
-    prefer_relative: { display: :preferrelative, namespace: :o },
-    user_drawn: { display: :userdrawn, namespace: :o },
-    user_hidden: { display: :userhidden, namespace: :o }
-  }
-
-  # One-off Attributes
-  # ====================
-  # No namespace
-  #   attribute :arc_size, expects: :valid_arc_size, displays_as: :arcsize
-
-  # Namespace :o
-  #   attribute :connector_type, expects: :valid_connector_type, displays_as: :connectortype
-  #   attribute :hr_align, expects: :valid_hr_align, displays_as: :hralign
-  #   attribute :inset_mode, expects: :valid_inset_mode, displays_as: :insetmode
-
-  attribute_clusters = [
-    { attributes: coordinate_attrs,
-      valid_values: [ "100,100", "-100,-100", "100,-100", "100, 100", "-100, -100", "100, -100" ],
-      invalid_values: [ "100 100", "x:10,y:10", :over_there ] },
-    { attributes: color_attrs,
-      valid_values: [ "#FFFFFF", :red, "palateEntry [0]", "palateEntry" ],
-      invalid_values: [ 54 ] },
-    { attributes: diagram_layout_attrs,
-      valid_values: (0..3),
-      invalid_values: [4, :invalid, false] },
-    { attributes: integer_attrs,
-      valid_values: [1, -1, 0],
-      invalid_values: [2.5, :five, "five"] },
-    { attributes: bw_mode_attrs,
-      valid_values: %i(auto black blackTextAndLines color grayOutline grayScale hide highContrast inverseGray lightGrayscale undrawn white),
-      invalid_values: [:paintItBlack, 0, "rainbows"] },
-    { attributes: string_attrs,
-      valid_values: ["A String", "AnotherString", "000001f"],
-      invalid_values: [0, :nope, false] },
-    { attributes: true_false_attrs,
-      valid_values: %w(0 1 t f true false),
-      invalid_values: ["yes", "no", "on", "off", 5] },
-    { attributes: { arc_size: { display: :arcsize } },
-      valid_values: %w(50% 1% 9000f),
-      invalid_values: [50, 2, "9000"] },
-    { attributes: { connector_type: { display: :connectortype, namespace: :o } },
-      valid_values: %i(curved elbow none straight),
-      invalid_values: [:funky, 5, "auto"] },
-    { attributes: { hr_align: { display: :hralign, namespace: :o} },
-      valid_values: %i(center left right),
-      invalid_values: [:justified, 4, "overThere"] },
-    { attributes: { inset_mode: { display: :insetmode, namespace: :o } },
-      valid_values: %i(auto custom),
-      invalid_values: [:left, "right", 0] }]
-
-  attribute_clusters.each do |cluster|
-    attributes = cluster[:attributes]
-    attributes.keys.each do |attr_name|
-      for_attribute(attr_name) do
-        cluster[:valid_values].each do |ok_value|
-          display = attributes[attr_name][:display]
-          display = "#{attributes[attr_name][:namespace]}:#{display}" unless attributes[attr_name][:namespace].nil?
-          with_value(ok_value) do
-            it_should_assign_successfully
-            it_should_output "<v:roundrect #{display}=\"#{ok_value}\"/>"
-          end
-        end
-
-        cluster[:invalid_values].each do |bad_value|
-          with_value(bad_value) do
-            it_should_raise_an_exception
-          end
-        end
-      end
+    with_values([50, 2, "9000"]) do
+      it_should_raise_an_exception
     end
   end
+
+
+  # Connector Type Attribute
+
+  for_attribute(:connector_type, displays_as: :connectortype, with_namespace: :o) do
+    with_values(%i(curved elbow none straight)) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values([:funky, 5, "auto"]) do
+      it_should_raise_an_exception
+    end
+  end
+
+
+  # HR Align Attribute
+
+  for_attribute(:hr_align, displays_as: :hralign, with_namespace: :o) do
+    with_values(%i(center left right)) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values([:justified, 4, "overThere"]) do
+      it_should_raise_an_exception
+    end
+  end
+
+
+  # Inset Mode Attribute
+
+  for_attribute(:inset_mode, displays_as: :insetmode, with_namespace: :o) do
+    with_values(%i(auto custom)) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values([:left, "right", 0]) do
+      it_should_raise_an_exception
+    end
+  end
+
+
+  # Coordinate-based Attributes
+
+  good_coord_values = [ "100,100", "-100,-100", "100,-100", "100, 100", "-100, -100", "100, -100" ]
+  bad_coord_values = [ "100 100", "x:10,y:10", :over_there ]
+
+  for_attribute(:coordinate_origin, displays_as: :coordorigin) do
+    with_values(good_coord_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_coord_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:coordinate_size, displays_as: :coordsize) do
+    with_values(good_coord_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_coord_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+
+  # Color-based Attributes
+
+  good_color_values = [ "#FFFFFF", :red, "palateEntry [0]", "palateEntry" ]
+  bad_color_values = [ 54, 0 ]
+
+  for_attribute(:chroma_key, displays_as: :chromakey) do
+    with_values(good_color_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_color_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:fill_color, displays_as: :fillcolor) do
+    with_values(good_color_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_color_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:stroke_color, displays_as: :strokecolor) do
+    with_values(good_color_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_color_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+
+  # Diagram Layout-based Attributes
+
+  good_diagram_layout_values = (0..3)
+  bad_diagram_layout_values = [ -1, 4, "Five is Right Out" ]
+
+  for_attribute(:diagram_node_layout, displays_as: :dgmlayout, with_namespace: :o) do
+    with_values(good_diagram_layout_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_diagram_layout_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:diagram_node_recent_layout, displays_as: :dgmlayoutmru, with_namespace: :o) do
+    with_values(good_diagram_layout_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_diagram_layout_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+
+  # Integer-based Attributes
+
+  good_integer_values = [1, -1, 0]
+  bad_integer_values = [2.5, :five, "five"]
+
+  for_attribute(:diagram_node_kind, displays_as: :dgmnodekind, with_namespace: :o) do
+    with_values(good_integer_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_integer_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:hr_percent, displays_as: :hrpct, with_namespace: :o) do
+    with_values(good_integer_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_integer_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:regroup_id, displays_as: :regroupid, with_namespace: :o) do
+    with_values(good_integer_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_integer_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+
+  # Black and White Mode-based Attributes
+
+  good_bw_mode_values = %i(auto black blackTextAndLines color grayOutline grayScale hide highContrast inverseGray lightGrayscale undrawn white)
+  bad_bw_mode_values = [:paintItBlack, 0, "rainbows"]
+
+  for_attribute(:bw_mode, displays_as: :bwmode, with_namespace: :o) do
+    with_values(good_bw_mode_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_bw_mode_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:bw_normal, displays_as: :bwnormal, with_namespace: :o) do
+    with_values(good_bw_mode_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_bw_mode_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:bw_pure, displays_as: :bwpure, with_namespace: :o) do
+    with_values(good_bw_mode_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_bw_mode_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+
+  # String-based Attributes
+
+  good_string_values = ["A String", "AnotherString", "000001f"]
+  bad_string_values = [0, :nope, false]
+
+  for_attribute(:alternate_text, displays_as: :alt) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:css_class, displays_as: :class) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:href) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:id) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:opacity) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:stroke_weight, displays_as: :strokeweight) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:style) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:target) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:title) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:wrap_coordinates, displays_as: :wrapcoords) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:border_bottom_color, displays_as: :borderbottomcolor, with_namespace: :o) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:border_left_color, displays_as: :borderleftcolor, with_namespace: :o) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:border_right_color, displays_as: :borderrightcolor, with_namespace: :o) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:border_top_color, displays_as: :bordertopcolor, with_namespace: :o) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:optional_string, displays_as: :spid, with_namespace: :o) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:optional_number, displays_as: :spt, with_namespace: :o) do
+    with_values(good_string_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_string_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+
+  # (Explicitly) True/False-based Attributes
+
+  good_tf_values = %w(0 1 t f true false)
+  bad_tf_values = ["yes", "no", "on", "off", 5]
+
+  for_attribute(:filled) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:inset_pen, displays_as: :insetpen) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:print) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:stroked) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:allow_in_cell, displays_as: :allowincell, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:allow_overlap, displays_as: :allowoverlap, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:bullet, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:button, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:clip, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:clip_to_wrap, displays_as: :cliptowrap, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:double_click_notify, displays_as: :doubleclicknotify, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:force_dash, displays_as: :forcedash, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:hr, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:hr_no_shade, displays_as: :hrnoshade, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:hr_standard, displays_as: :hrstd, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:ole, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:ole_icon, displays_as: :oleicon, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:hide_extra_handles, displays_as: :oned, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:prefer_relative, displays_as: :preferrelative, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:user_drawn, displays_as: :userdrawn, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:user_hidden, displays_as: :userhidden, with_namespace: :o) do
+    with_values(good_tf_values) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_values(bad_tf_values) do
+      it_should_raise_an_exception
+    end
+  end
+
 
 end

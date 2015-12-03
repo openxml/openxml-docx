@@ -84,25 +84,31 @@ module ElementTestMacros
       end
     end
 
-    def for_attribute(attribute, &block)
+    def for_attribute(attribute, displays_as: nil, with_namespace: nil, &block)
       attribute_context = context "for the #{attribute} attribute" do
         before(:each) do
           @attribute = attribute
+          @display = displays_as
+          @namespace = with_namespace
         end
       end
 
       attribute_context.class_eval &block
     end
 
-    def with_value(value, &block)
-      value_context = context "with the value as #{value}" do
-        before(:each) do
-          @value = value
+    def with_value(values, &block)
+      values = [values] unless values.respond_to?(:each)
+      values.each do |value|
+        value_context = context "with the value as #{value}" do
+          before(:each) do
+            @value = value
+          end
         end
-      end
 
-      value_context.class_eval &block
+        value_context.class_eval &block
+      end
     end
+    alias :with_values :with_value
 
     def it_should_assign_successfully(*args)
       it "should assign successfully" do
@@ -128,6 +134,23 @@ module ElementTestMacros
           @instance = described_class.new *args
           instance.send "#{attribute}=", value
         end
+
+        expect(xml(instance)).to eq(expected_xml)
+      end
+    end
+
+    def it_should_output_regular_xml(*args, assign: true)
+      it "should output the expected regular XML" do
+        @instance = described_class.new *args
+        if assign
+          instance.send "#{attribute}=", value
+        end
+
+        tag = instance.tag
+        tag = "#{instance.namespace}:#{tag}" unless instance.namespace.nil?
+        attr_name = @display.nil? ? attribute.to_s : @display.to_s
+        attr_name = "#{@namespace}:#{attr_name}" unless @namespace.nil?
+        expected_xml = "<#{tag} #{attr_name}=\"#{value}\"/>"
 
         expect(xml(instance)).to eq(expected_xml)
       end
