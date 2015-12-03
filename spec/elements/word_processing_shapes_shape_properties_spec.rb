@@ -5,14 +5,11 @@ describe OpenXml::Docx::Elements::WordProcessingShapesShapeProperties do
 
   it_should_use tag: :spPr, name: "word_processing_shapes_shape_properties"
 
-  ok_values = %i(auto black blackGray blackWhite clr gray grayWhite hidden invGray ltGray white)
-
   for_attribute(:bwMode) do
-    ok_values.each do |value|
-      with_value(value) do
-        it_should_assign_successfully
-        it_should_output "<wps:spPr bwMode=\"#{value}\"/>"
-      end
+    allowed = %i(auto black blackGray blackWhite clr gray grayWhite hidden invGray ltGray white)
+    with_values(allowed) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
     end
 
     with_value(:notRight) do

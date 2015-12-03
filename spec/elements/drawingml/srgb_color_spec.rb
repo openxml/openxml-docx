@@ -5,21 +5,14 @@ describe OpenXml::DrawingML::Elements::SRGBColor do
 
   it_should_use tag: :srgbClr, name: "srgb_color"
 
-  for_attribute(:value) do
+  for_attribute(:value, displays_as: :val) do
     with_value("FFFFFF") do
       it_should_assign_successfully
-      it_should_output "<a:srgbClr val=\"FFFFFF\"/>"
+      it_should_output_regular_xml
     end
 
-    with_value("blue") do
-      it_should_raise_an_exception
-    end
-
-    with_value(:blue) do
-      it_should_raise_an_exception
-    end
-
-    with_value(23) do
+    not_allowed = ["blue", :blue, 23]
+    with_values(not_allowed) do
       it_should_raise_an_exception
     end
   end

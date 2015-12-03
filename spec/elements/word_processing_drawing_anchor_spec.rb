@@ -14,7 +14,7 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingAnchor do
     for_attribute(attr) do
       with_value(true) do
         it_should_assign_successfully
-        it_should_output "<wp:anchor #{attr}=\"true\"/>"
+        it_should_output_regular_xml
       end
 
       with_value("") do
@@ -28,7 +28,7 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingAnchor do
     for_attribute(attr) do
       with_value(1234)do
         it_should_assign_successfully
-        it_should_output "<wp:anchor #{attr}=\"1234\"/>"
+        it_should_output_regular_xml
       end
 
       with_value(-1234) do

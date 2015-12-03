@@ -5,10 +5,10 @@ describe OpenXml::DrawingML::Elements::PresetGeometry do
 
   it_should_use tag: :prstGeom, name: "preset_geometry"
 
-  for_attribute(:preset) do
+  for_attribute(:preset, displays_as: :prst) do
     with_value(:roundRect) do
       it_should_assign_successfully
-      it_should_output "<a:prstGeom prst=\"roundRect\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(:invalidGeometry) do

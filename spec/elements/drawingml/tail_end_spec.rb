@@ -5,24 +5,39 @@ describe OpenXml::DrawingML::Elements::TailEnd do
 
   it_should_use tag: :tailEnd, name: "tail_end"
 
-  attributes = {
-    length: { display: :len, ok_values: %i(lg med sm) },
-    type: { display: :type, ok_values: %i(arrow diamond none oval stealth triangle) },
-    width: { display: :w, ok_values: %i(lg med sm) }
-  }
+  for_attribute(:length, displays_as: :len) do
+    allowed = %i(lg med sm)
+    with_values(allowed) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
 
-  attributes.keys.each do |attr_name|
-    for_attribute(attr_name) do
-      attributes[attr_name][:ok_values].each do |ok_value|
-        with_value(ok_value) do
-          it_should_assign_successfully
-          it_should_output "<a:tailEnd #{attributes[attr_name][:display]}=\"#{ok_value}\"/>"
-        end
-      end
+    with_value(:bad_value) do
+      it_should_raise_an_exception
+    end
+  end
 
-      with_value(:bad_value) do
-        it_should_raise_an_exception
-      end
+  for_attribute(:type) do
+    allowed = %i(arrow diamond none oval stealth triangle)
+    with_values(allowed) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_value(:bad_value) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:width, displays_as: :w) do
+    allowed = %i(lg med sm)
+    with_values(allowed) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
+
+    with_value(:bad_value) do
+      it_should_raise_an_exception
     end
   end
 

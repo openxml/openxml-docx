@@ -6,11 +6,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
   it_should_use tag: :bodyPr, name: "word_processing_shapes_body_properties"
 
   for_attribute(:anchor)do
-    %i(b ctr dist just t).each do |value|
-      with_value(value) do
-        it_should_assign_successfully
-        it_should_output "<wps:bodyPr anchor=\"#{value}\"/>"
-      end
+    allowed = %i(b ctr dist just t)
+    with_values(allowed) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
     end
 
     with_value(:notRight) do
@@ -21,7 +20,7 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
   for_attribute(:anchorCtr)do
     with_value(true) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr anchorCtr=\"true\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
@@ -29,10 +28,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
     end
   end
 
-  for_attribute(:bottom_inset)do
+  for_attribute(:bottom_inset, displays_as: :bIns)do
     with_value(1234) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr bIns=\"1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(-1234) do
@@ -40,10 +39,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
     end
   end
 
-  for_attribute(:compatible_line_spacing)do
+  for_attribute(:compatible_line_spacing, displays_as: :compatLnSpc)do
     with_value(true) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr compatLnSpc=\"true\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
@@ -51,10 +50,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
     end
   end
 
-  for_attribute(:force_anti_alias)do
+  for_attribute(:force_anti_alias, displays_as: :forceAA)do
     with_value(true) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr forceAA=\"true\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
@@ -65,7 +64,7 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
   for_attribute(:fromWordArt)do
     with_value(true) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr fromWordArt=\"true\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
@@ -74,11 +73,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
   end
 
   for_attribute(:horzOverflow)do
-    %i(clip overflow).each do |value|
-      with_value(value) do
-        it_should_assign_successfully
-        it_should_output "<wps:bodyPr horzOverflow=\"#{value}\"/>"
-      end
+    allowed = %i(clip overflow)
+    with_values(allowed) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
     end
 
     with_value(:notRight) do
@@ -86,10 +84,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
     end
   end
 
-  for_attribute(:left_inset)do
+  for_attribute(:left_inset, displays_as: :lIns)do
     with_value(1234) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr lIns=\"1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(-1234) do
@@ -98,11 +96,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
   end
 
   for_attribute(:numCol)do
-    (1..16).to_a.each do |value|
-      with_value(value) do
-        it_should_assign_successfully
-        it_should_output "<wps:bodyPr numCol=\"#{value}\"/>"
-      end
+    allowed = (1..16).to_a
+    with_values(allowed) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
     end
 
     with_value(:notRight) do
@@ -110,10 +107,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
     end
   end
 
-  for_attribute(:right_inset)do
+  for_attribute(:right_inset, displays_as: :rIns)do
     with_value(1234) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr rIns=\"1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(-1234) do
@@ -121,15 +118,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
     end
   end
 
-  for_attribute(:rotation)do
-    with_value(1234) do
+  for_attribute(:rotation, displays_as: :rot)do
+    with_values([1234, -1234]) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr rot=\"1234\"/>"
-    end
-
-    with_value(-1234) do
-      it_should_assign_successfully
-      it_should_output "<wps:bodyPr rot=\"-1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value("not valid") do
@@ -137,10 +129,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
     end
   end
 
-  for_attribute(:right_to_left_columns)do
+  for_attribute(:right_to_left_columns, displays_as: :rtlCol)do
     with_value(true) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr rtlCol=\"true\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
@@ -148,10 +140,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
     end
   end
 
-  for_attribute(:space_between_columns)do
+  for_attribute(:space_between_columns, displays_as: :spcCol)do
     with_value(1234) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr spcCol=\"1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(-1234) do
@@ -159,10 +151,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
     end
   end
 
-  for_attribute(:paragraph_spacing)do
+  for_attribute(:paragraph_spacing, displays_as: :spcFirstLastPara)do
     with_value(true) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr spcFirstLastPara=\"true\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
@@ -170,10 +162,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
     end
   end
 
-  for_attribute(:top_inset)do
+  for_attribute(:top_inset, displays_as: :tIns)do
     with_value(1234) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr tIns=\"1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(-1234) do
@@ -184,7 +176,7 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
   for_attribute(:upright)do
     with_value(true) do
       it_should_assign_successfully
-      it_should_output "<wps:bodyPr upright=\"true\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
@@ -193,12 +185,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
   end
 
   for_attribute(:vert)do
-    ok_values = %i(eaVert horz mongolianVert vert vert270 wordArt Vert wordArtVertRtl)
-    ok_values.each do |value|
-      with_value(value) do
-        it_should_assign_successfully
-        it_should_output "<wps:bodyPr vert=\"#{value}\"/>"
-      end
+    allowed = %i(eaVert horz mongolianVert vert vert270 wordArt Vert wordArtVertRtl)
+    with_values(allowed) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
     end
 
     with_value(:notRight) do
@@ -207,11 +197,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
   end
 
   for_attribute(:vertOverflow)do
-    %i(clip ellipsis overflow).each do |value|
-      with_value(value) do
-        it_should_assign_successfully
-        it_should_output "<wps:bodyPr vertOverflow=\"#{value}\"/>"
-      end
+    allowed = %i(clip ellipsis overflow)
+    with_values(allowed) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
     end
 
     with_value(:notRight) do
@@ -220,11 +209,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesBodyProperties do
   end
 
   for_attribute(:wrap)do
-     %i(none square).each do |value|
-      with_value(value) do
-        it_should_assign_successfully
-        it_should_output "<wps:bodyPr wrap=\"#{value}\"/>"
-      end
+    allowed = %i(none square)
+    with_values(allowed) do
+      it_should_assign_successfully
+      it_should_output_regular_xml
     end
 
     with_value(:notRight) do

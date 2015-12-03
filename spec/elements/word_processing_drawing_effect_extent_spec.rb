@@ -10,15 +10,10 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingEffectExtent do
   end
 
 
-  for_attribute(:bottom_edge) do
-    with_value(1234)do
+  for_attribute(:bottom_edge, displays_as: :b) do
+    with_values([1234, -1234])do
       it_should_assign_successfully
-      it_should_output "<wp:effectExtent b=\"1234\"/>"
-    end
-
-    with_value(-1234) do
-      it_should_assign_successfully
-      it_should_output "<wp:effectExtent b=\"-1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value("wrong") do
@@ -26,15 +21,10 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingEffectExtent do
     end
   end
 
-  for_attribute(:left_edge) do
-    with_value(1234)do
+  for_attribute(:left_edge, displays_as: :l) do
+    with_values([1234, -1234])do
       it_should_assign_successfully
-      it_should_output "<wp:effectExtent l=\"1234\"/>"
-    end
-
-    with_value(-1234) do
-      it_should_assign_successfully
-      it_should_output "<wp:effectExtent l=\"-1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value("wrong") do
@@ -42,15 +32,10 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingEffectExtent do
     end
   end
 
-  for_attribute(:right_edge) do
-    with_value(1234)do
+  for_attribute(:right_edge, displays_as: :r) do
+    with_value([1234, -1234])do
       it_should_assign_successfully
-      it_should_output "<wp:effectExtent r=\"1234\"/>"
-    end
-
-    with_value(-1234) do
-      it_should_assign_successfully
-      it_should_output "<wp:effectExtent r=\"-1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value("wrong") do
@@ -58,15 +43,10 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingEffectExtent do
     end
   end
 
-  for_attribute(:top_edge) do
-    with_value(1234)do
+  for_attribute(:top_edge, displays_as: :t) do
+    with_value([1234, -1234])do
       it_should_assign_successfully
-      it_should_output "<wp:effectExtent t=\"1234\"/>"
-    end
-
-    with_value(-1234) do
-      it_should_assign_successfully
-      it_should_output "<wp:effectExtent t=\"-1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value("wrong") do

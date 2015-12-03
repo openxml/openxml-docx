@@ -148,9 +148,11 @@ module ElementTestMacros
 
         tag = instance.tag
         tag = "#{instance.namespace}:#{tag}" unless instance.namespace.nil?
-        attr_name = @display.nil? ? attribute.to_s : @display.to_s
+        attr_name = @display
+        attr_name = attribute if attr_name.nil?
         attr_name = "#{@namespace}:#{attr_name}" unless @namespace.nil?
         expected_xml = "<#{tag} #{attr_name}=\"#{value}\"/>"
+        expected_xml = "<#{tag}/>" if value == false
 
         expect(xml(instance)).to eq(expected_xml)
       end

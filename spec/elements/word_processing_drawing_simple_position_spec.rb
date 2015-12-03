@@ -9,22 +9,25 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingSimplePosition do
     it_should_output "<wp:simplePos/>", assign: false
   end
 
+  for_attribute(:x) do
+    with_value([1234, -1234])do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
 
-  %i(x y).each do |attr|
-    for_attribute(attr) do
-      with_value(1234)do
-        it_should_assign_successfully
-        it_should_output "<wp:simplePos #{attr}=\"1234\"/>"
-      end
+    with_value("hey") do
+      it_should_raise_an_exception
+    end
+  end
 
-      with_value(-1234) do
-        it_should_assign_successfully
-        it_should_output "<wp:simplePos #{attr}=\"-1234\"/>"
-      end
+  for_attribute(:y) do
+    with_value([1234, -1234])do
+      it_should_assign_successfully
+      it_should_output_regular_xml
+    end
 
-      with_value("hey") do
-        it_should_raise_an_exception
-      end
+    with_value("hey") do
+      it_should_raise_an_exception
     end
   end
 

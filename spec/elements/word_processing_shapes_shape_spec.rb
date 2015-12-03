@@ -12,7 +12,7 @@ describe OpenXml::Docx::Elements::WordProcessingShapesShape do
   for_attribute(:normalEastAsianFlow) do
     with_value(true)do
       it_should_assign_successfully
-      it_should_output "<wps:wsp normalEastAsianFlow=\"true\"/>"
+      it_should_output_regular_xml
     end
 
     with_value("invalid") do

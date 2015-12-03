@@ -9,10 +9,10 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingExtent do
     it_should_output "<wp:extent/>", assign: false
   end
 
-  for_attribute(:extent_length) do
+  for_attribute(:extent_length, displays_as: :cx) do
     with_value(1234)do
       it_should_assign_successfully
-      it_should_output "<wp:extent cx=\"1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(-1234) do
@@ -20,10 +20,10 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingExtent do
     end
   end
 
-  for_attribute(:extent_width) do
+  for_attribute(:extent_width, displays_as: :cy) do
     with_value(1234)do
       it_should_assign_successfully
-      it_should_output "<wp:extent cy=\"1234\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(-1234) do

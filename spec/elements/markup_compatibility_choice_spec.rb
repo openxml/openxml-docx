@@ -12,7 +12,7 @@ describe OpenXml::Docx::Elements::MarkupCompatibilityChoice do
   for_attribute(:Required) do
     with_value("wps") do
       it_should_assign_successfully
-      it_should_output "<mc:Choice Required=\"wps\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do

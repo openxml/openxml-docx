@@ -9,10 +9,10 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingObjectNvProperties do
     it_should_output "<wp:docPr/>", assign: false
   end
 
-  for_attribute(:description) do
+  for_attribute(:description, displays_as: :descr) do
     with_value("valid value")do
       it_should_assign_successfully
-      it_should_output "<wp:docPr descr=\"valid value\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
@@ -23,7 +23,7 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingObjectNvProperties do
   for_attribute(:hidden) do
     with_value(true)do
       it_should_assign_successfully
-      it_should_output "<wp:docPr hidden=\"true\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
@@ -34,7 +34,7 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingObjectNvProperties do
   for_attribute(:id) do
     with_value(1)do
       it_should_assign_successfully
-      it_should_output "<wp:docPr id=\"1\"/>"
+      it_should_output_regular_xml
     end
 
     with_value("invalid") do
@@ -42,10 +42,10 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingObjectNvProperties do
     end
   end
 
-  for_attribute(:property_name) do
+  for_attribute(:property_name, displays_as: :name) do
     with_value("valid")do
       it_should_assign_successfully
-      it_should_output "<wp:docPr name=\"valid\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
@@ -56,7 +56,7 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingObjectNvProperties do
   for_attribute(:title) do
     with_value("valid")do
       it_should_assign_successfully
-      it_should_output "<wp:docPr title=\"valid\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(1234) do
