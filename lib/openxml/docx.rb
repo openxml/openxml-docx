@@ -5,12 +5,16 @@ module OpenXml
     REL_SETTINGS = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings".freeze
     REL_HEADER = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/header".freeze
     REL_FOOTER = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer".freeze
+    REL_FONT_TABLE = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable".freeze
+    REL_FONT = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/font".freeze
 
     TYPE_STYLES = "application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml".freeze
     TYPE_SETTINGS = "application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml".freeze
     TYPE_HEADER = "application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml".freeze
     TYPE_FOOTER = "application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml".freeze
+    TYPE_FONT_TABLE = "application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml".freeze
     TYPE_XML = "application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml".freeze
+    TYPE_OBSCURED_FONT = "application/vnd.openxmlformats-officedocument.obfuscatedFont".freeze
   end
 end
 
