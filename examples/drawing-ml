@@ -39,6 +39,8 @@ table_grid = TableGrid.new
   table_grid << grid_column
 end
 
+table << table_grid
+
 table_row = TableRow.new
 table_row.table_row_height.hRule = :exact
 table_row.table_row_height.val = 1140
@@ -123,6 +125,8 @@ columns = OpenXml::Docx::Properties::Columns.new
 columns.space = 720
 
 section_properties << columns
+
+document.document << section_properties
 
 filename = "border_test.docx"
 system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
