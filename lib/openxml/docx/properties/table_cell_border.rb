@@ -2,7 +2,7 @@ module OpenXml
   module Docx
     module Properties
       class TableCellBorder < ComplexProperty
-        attr_accessor :tag
+        tag_is_one_of %i(top start bottom end insideH insideV tl2br tr2bl)
 
         attribute :color, expects: :hex_color
         attribute :frame, expects: :true_or_false
@@ -15,7 +15,7 @@ module OpenXml
         attribute :width, expects: :positive_integer, displays_as: :sz
 
         def initialize(tag, value)
-          self.tag = tag
+          super tag
           self.value = value
         end
 
