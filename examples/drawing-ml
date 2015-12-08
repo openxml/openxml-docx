@@ -3,6 +3,7 @@
 $:.push Dir.pwd + "/lib"
 require "openxml/docx"
 require "openxml/vml"
+require "faker"
 
 include OpenXml::Docx::Elements
 
