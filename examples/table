@@ -1,0 +1,68 @@
+#!/usr/bin/env ruby
+
+# require "rails" # workaround: openxml-package uses `extract_options!`
+$:.push Dir.pwd + "/lib"
+require "ox"
+require "openxml/docx"
+
+
+def default_table_style
+  style = OpenXml::Docx::Style.new(:table)
+  style.id = "TableGrid"
+
+  table_grid_tags.each do |tag_name|
+    tag = OpenXml::Docx::Properties::TableBorder.new(tag_name, :single)
+    table_border_styles = {width: 4, space: 0, color: "000000"}
+    table_border_styles.each {|key, val| tag.send("#{key}=", val) }
+    style.table.table_borders <<  tag
+  end
+
+  table_cell_margin_tags.each do |tag_name|
+    tag = OpenXml::Docx::Properties::TableCellMargin.new(tag_name)
+    tag.type = :dxa
+    tag.width = %i(start end).include?(tag_name) ? 108 : 0
+    style.table.table_cell_margins << tag
+  end
+
+  style
+end
+
+def table_grid_tags
+  %i(start end top bottom insideH insideV)
+end
+
+def table_cell_margin_tags
+  %i(top start bottom end)
+end
+
+
+ROWS = 4
+CELLS = 4
+
+document = OpenXml::Docx::Package.new
+document.styles << default_table_style
+
+include OpenXml::Docx::Elements
+
+table = Table.new
+table.table_style = "TableGrid"
+
+ROWS.times do
+  row = TableRow.new
+
+  CELLS.times do
+    cell = TableCell.new
+    paragraph = Paragraph.new
+    cell << paragraph
+    row << cell
+  end
+  table << row
+end
+
+document.document << table
+
+filename = "rocx_test_table.docx"
+system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
+document.save File.expand_path("~/Desktop/#{filename}")
+exec "open ~/Desktop/#{filename}"
+

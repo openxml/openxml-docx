@@ -6,42 +6,17 @@ describe OpenXml::Docx::Properties::ManualWidth do
   it_should_use tag: :fitText, name: "manual_width"
 
   for_attribute(:id) do
-    with_value(12) do
-      it_should_assign_successfully
-      it_should_output "<w:fitText w:id=\"12\"/>"
-    end
-
-    with_value(-134) do
-      it_should_assign_successfully
-      it_should_output "<w:fitText w:id=\"-134\"/>"
-    end
-
-    with_value(12.3) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:three) do
-      it_should_raise_an_exception
-    end
+    values = [12, -134]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:width) do
-    with_value(12) do
-      it_should_assign_successfully
-      it_should_output "<w:fitText w:val=\"12\"/>"
-    end
-
-    with_value(-134) do
-      it_should_raise_an_exception
-    end
-
-    with_value(12.3) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:three) do
-      it_should_raise_an_exception
-    end
+    it_should_assign_and_output_xml 12
+    it_should_not_allow_negative_numbers
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
   end
 
   with_no_attributes_set do

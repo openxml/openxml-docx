@@ -32,125 +32,51 @@ describe OpenXml::Docx::Properties::Border do
   end
 
   for_attribute(:color) do
-    with_value("4F81BD") do
-      it_should_assign_successfully
-      it_should_output "<w:bdr w:color=\"4F81BD\"/>"
-    end
-
-    with_value(:auto) do
-      it_should_assign_successfully
-      it_should_output "<w:bdr w:color=\"auto\"/>"
-    end
-
-    with_value(:green) do
-      it_should_raise_an_exception
-    end
+    values = ["4581BD", :auto]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:frame) do
-    with_value(true) do
-      it_should_assign_successfully
-      it_should_output "<w:bdr w:frame=\"true\"/>"
-    end
-
-    with_value(false) do
-      it_should_assign_successfully
-      it_should_output ""
-    end
-
-    with_value(:yep) do
-      it_should_raise_an_exception
-    end
+    it_should_behave_like_a_boolean_attribute
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:shadow) do
-    with_value(true) do
-      it_should_assign_successfully
-      it_should_output "<w:bdr w:shadow=\"true\"/>"
-    end
-
-    with_value(false) do
-      it_should_assign_successfully
-      it_should_output ""
-    end
-
-    with_value(:yep) do
-      it_should_raise_an_exception
-    end
+    it_should_behave_like_a_boolean_attribute
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:size) do
-    with_value(24) do
-      it_should_assign_successfully
-      it_should_output "<w:bdr w:sz=\"24\"/>"
-    end
-
-    with_value(-24) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
+    it_should_assign_and_output_xml 24
+    it_should_not_allow_negative_numbers
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:space) do
-    with_value(24) do
-      it_should_assign_successfully
-      it_should_output "<w:bdr w:space=\"24\"/>"
-    end
-
-    with_value(-24) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
+    it_should_assign_and_output_xml 24
+    it_should_not_allow_negative_numbers
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:theme_color) do
-    with_value(:hyperlink) do
-      it_should_assign_successfully
-      it_should_output "<w:bdr w:themeColor=\"hyperlink\"/>"
-    end
-
-    with_value(:lens_flare) do
-      it_should_raise_an_exception
-    end
+    it_should_assign_and_output_xml :hyperlink
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:theme_shade) do
-    with_value("BF") do
-      it_should_assign_successfully
-      it_should_output "<w:bdr w:themeShade=\"BF\"/>"
-    end
-
-    with_value(:dark) do
-      it_should_raise_an_exception
-    end
+    it_should_assign_and_output_xml "BF"
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:theme_tint) do
-    with_value("BF") do
-      it_should_assign_successfully
-      it_should_output "<w:bdr w:themeTint=\"BF\"/>"
-    end
-
-    with_value(:pink) do
-      it_should_raise_an_exception
-    end
+    it_should_assign_and_output_xml "BF"
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:type) do
-    with_value(:single) do
-      it_should_assign_successfully
-      it_should_output "<w:bdr w:val=\"single\"/>"
-    end
-
-    with_value(:programmers) do
-      it_should_raise_an_exception
-    end
+    it_should_assign_and_output_xml :single
+    it_should_not_allow_invalid_value
   end
 
 end

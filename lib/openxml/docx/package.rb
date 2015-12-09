@@ -23,6 +23,9 @@ module OpenXml
         @styles = OpenXml::Docx::Parts::Styles.new
         @document = OpenXml::Docx::Parts::Document.new
 
+        doc_rels.add_relationship REL_STYLES, "styles.xml"
+        doc_rels.add_relationship REL_SETTINGS, "settings.xml"
+
         add_part "word/_rels/document.xml.rels", doc_rels
         add_part "word/document.xml", document
         add_part "word/settings.xml", settings

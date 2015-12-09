@@ -6,146 +6,54 @@ describe OpenXml::Docx::Properties::Spacing do
   it_should_use tag: :spacing, name: "spacing"
 
   for_attribute(:after) do
-    with_value(24) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:after=\"24\"/>"
-    end
-
-    with_value(-24) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
+    it_should_assign_and_output_xml 24
+    it_should_not_allow_negative_numbers
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:after_auto) do
-    with_value(:on) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:afterAutospacing=\"on\"/>"
-    end
-
-    with_value(:off) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:afterAutospacing=\"off\"/>"
-    end
-
-    with_value(:on_and_off) do
-      it_should_raise_an_exception
-    end
+    values = %i(on off)
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:after_lines) do
-    with_value(24) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:afterLines=\"24\"/>"
-    end
-
-    with_value(-24) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:afterLines=\"-24\"/>"
-    end
-
-    with_value(2.56) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
+    values = [24, -24]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
+    it_should_not_allow_floats
   end
 
   for_attribute(:before) do
-    with_value(24) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:before=\"24\"/>"
-    end
-
-    with_value(-24) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
+    it_should_assign_and_output_xml 24
+    it_should_not_allow_invalid_value
+    it_should_not_allow_negative_numbers
   end
 
   for_attribute(:before_auto) do
-    with_value(:on) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:beforeAutospacing=\"on\"/>"
-    end
-
-    with_value(:off) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:beforeAutospacing=\"off\"/>"
-    end
-
-    with_value(:on_and_off) do
-      it_should_raise_an_exception
-    end
+    values = %i(on off)
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:before_lines) do
-    with_value(24) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:beforeLines=\"24\"/>"
-    end
-
-    with_value(-24) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:beforeLines=\"-24\"/>"
-    end
-
-    with_value(2.56) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
+    values = [24, -24]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
+    it_should_not_allow_floats
   end
 
   for_attribute(:line) do
-    with_value(24) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:line=\"24\"/>"
-    end
-
-    with_value(-24) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:line=\"-24\"/>"
-    end
-
-    with_value(2.56) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
+    values = [24, -24]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
+    it_should_not_allow_floats
   end
 
   for_attribute(:line_rule) do
-    with_value(:atLeast) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:lineRule=\"atLeast\"/>"
-    end
-
-    with_value(:auto) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:lineRule=\"auto\"/>"
-    end
-
-    with_value(:exact) do
-      it_should_assign_successfully
-      it_should_output "<w:spacing w:lineRule=\"exact\"/>"
-    end
-
-    with_value(:something) do
-      it_should_raise_an_exception
-    end
+    values = %i(atLeast auto exact)
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
   end
 
   with_no_attributes_set do

@@ -6,83 +6,30 @@ describe OpenXml::Docx::Properties::LineNumbering do
   it_should_use tag: :lnNumType, name: "line_numbering"
 
   for_attribute(:count_by) do
-    with_value(5) do
-      it_should_assign_successfully
-      it_should_output "<w:lnNumType w:countBy=\"5\"/>"
-    end
-
-    with_value(-5) do
-      it_should_assign_successfully
-      it_should_output "<w:lnNumType w:countBy=\"-5\"/>"
-    end
-
-    with_value(123.4) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:twelve) do
-      it_should_raise_an_exception
-    end
+    values = [5, -5]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:distance) do
-    with_value(720) do
-      it_should_assign_successfully
-      it_should_output "<w:lnNumType w:distance=\"720\"/>"
-    end
-
-    with_value(-720) do
-      it_should_raise_an_exception
-    end
-
-    with_value(123.4) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:twelve) do
-      it_should_raise_an_exception
-    end
+    it_should_assign_and_output_xml 720
+    it_should_not_allow_negative_numbers
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:restart) do
-    with_value(:continuous) do
-      it_should_assign_successfully
-      it_should_output "<w:lnNumType w:restart=\"continuous\"/>"
-    end
-
-    with_value(:newPage) do
-      it_should_assign_successfully
-      it_should_output "<w:lnNumType w:restart=\"newPage\"/>"
-    end
-
-    with_value(:newSection) do
-      it_should_assign_successfully
-      it_should_output "<w:lnNumType w:restart=\"newSection\"/>"
-    end
-
-    with_value(:somethingElse) do
-      it_should_raise_an_exception
-    end
+    values = %i(continuous newPage newSection)
+    it_should_assign_and_output_xml values
+    it_should_not_allow_invalid_value
   end
 
   for_attribute(:start) do
-    with_value(5) do
-      it_should_assign_successfully
-      it_should_output "<w:lnNumType w:start=\"5\"/>"
-    end
-
-    with_value(-5) do
-      it_should_assign_successfully
-      it_should_output "<w:lnNumType w:start=\"-5\"/>"
-    end
-
-    with_value(123.4) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:twelve) do
-      it_should_raise_an_exception
-    end
+    values = [5, -5]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
   end
 
   with_no_attributes_set do

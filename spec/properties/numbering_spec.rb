@@ -11,13 +11,9 @@ describe OpenXml::Docx::Properties::Numbering do
       it_should_output "<w:numPr>\n    <w:ilvl w:val=\"24\"/>\n  </w:numPr>"
     end
 
-    with_value(-24) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_negative_numbers
+    it_should_not_allow_invalid_value
 
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
   end
 
   for_attribute(:id) do
@@ -26,13 +22,8 @@ describe OpenXml::Docx::Properties::Numbering do
       it_should_output "<w:numPr>\n    <w:numId w:val=\"24\"/>\n  </w:numPr>"
     end
 
-    with_value(-24) do
-      it_should_raise_an_exception
-    end
-
-    with_value(:big) do
-      it_should_raise_an_exception
-    end
+    it_should_not_allow_negative_numbers
+    it_should_not_allow_invalid_value
   end
 
   with_no_attributes_set do

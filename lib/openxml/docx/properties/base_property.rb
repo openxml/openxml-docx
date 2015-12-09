@@ -6,6 +6,12 @@ module OpenXml
 
         class << self
           attr_reader :property_name
+          attr_reader :allowed_tags
+
+          def tag_is_one_of(tags)
+            attr_accessor :tag
+            @allowed_tags = tags
+          end
 
           def tag(*args)
             @tag = args.first if args.any?
@@ -16,6 +22,14 @@ module OpenXml
             @property_name = args.first if args.any?
             @name
           end
+        end
+
+        def initialize(tag=nil, *args)
+          return unless self.class.allowed_tags
+          unless self.class.allowed_tags.include?(tag)
+            raise ArgumentError, "Invalid tag name for #{name}: #{tag.inspect}. It should be one of #{self.class.allowed_tags.join(", ")}."
+          end
+          @tag = tag
         end
 
         def render?
