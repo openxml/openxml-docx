@@ -70,9 +70,21 @@ header << paragraph
 
 header_id = document.add_header(header)
 
+footer = OpenXml::Docx::Parts::Footer.new
+paragraph = Paragraph.new
+run = Run.new
+run << Text.new("This is some footer text")
+paragraph << run
+footer << paragraph
+
+footer_id = document.add_footer(footer)
+
 section = OpenXml::Docx::Section.new
 section.header_reference.id = header_id
 section.header_reference.type = :default
+
+section.footer_reference.id = footer_id
+section.footer_reference.type = :default
 
 document.document << section
 

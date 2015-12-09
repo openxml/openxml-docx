@@ -7,6 +7,7 @@ module OpenXml
                   :doc_rels,
                   :settings,
                   :headers,
+                  :footers,
                   :styles
 
       content_types do
@@ -24,6 +25,7 @@ module OpenXml
         @styles = OpenXml::Docx::Parts::Styles.new
         @document = OpenXml::Docx::Parts::Document.new
         @headers = []
+        @footers = []
 
         doc_rels.add_relationship REL_STYLES, "styles.xml"
         doc_rels.add_relationship REL_SETTINGS, "settings.xml"
@@ -40,6 +42,15 @@ module OpenXml
         Package.content_types { override "/word/#{header_name}", TYPE_HEADER }
         add_part "word/#{header_name}", header
         relationship = doc_rels.add_relationship REL_HEADER, header_name
+        relationship.id
+      end
+
+      def add_footer(footer)
+        footers << footer
+        footer_name = "footer#{footers.count}.xml"
+        Package.content_types { override "/word/#{footer_name}", TYPE_FOOTER }
+        add_part "word/#{footer_name}", footer
+        relationship = doc_rels.add_relationship REL_FOOTER, footer_name
         relationship.id
       end
 

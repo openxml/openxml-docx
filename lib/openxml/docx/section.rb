@@ -7,6 +7,7 @@ module OpenXml
 
       property :columns
       property :document_grid
+      property :footer_reference
       property :header_reference
       property :line_numbering
       property :page_borders
