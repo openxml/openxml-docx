@@ -4,7 +4,7 @@ module OpenXml
       class GridColumn < Element
         tag :gridColumn
 
-        attribute :w, expects: :integer
+        attribute :w, expects: :integer, namespace: :w
 
       end
     end

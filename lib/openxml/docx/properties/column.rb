@@ -4,8 +4,10 @@ module OpenXml
       class Column < ComplexProperty
         tag :col
 
-        attribute :space, expects: :positive_integer
-        attribute :width, expects: :positive_integer, displays_as: :w
+        with_namespace :w do
+          attribute :space, expects: :positive_integer
+          attribute :width, expects: :positive_integer, displays_as: :w
+        end
 
         def initialize(space, width)
           self.space = space

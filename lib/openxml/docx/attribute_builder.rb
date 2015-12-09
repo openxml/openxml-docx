@@ -215,11 +215,16 @@ module OpenXml
           end
 
           camelized_name = name.to_s.gsub(/_([a-z])/i) { $1.upcase }.to_sym
-          attributes[name] = [displays_as || camelized_name, namespace || :w]
+          attributes[name] = [displays_as || camelized_name, namespace || @attribute_namespace]
         end
 
         def attributes
           @attributes ||= {}
+        end
+
+        def with_namespace(namespace, &block)
+          @attribute_namespace = namespace
+          instance_eval(&block)
         end
       end
 
@@ -237,7 +242,9 @@ module OpenXml
         attributes.each_with_object({}) do |(name, options), attrs|
           display, namespace = options
           value = send(name)
-          attrs["#{namespace}:#{display}"] = value if value
+          attr_name = "#{namespace}:#{display}"
+          attr_name = "#{display}" if namespace.nil?
+          attrs[attr_name] = value if value
         end
       end
 

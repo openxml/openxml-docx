@@ -3,8 +3,10 @@ module OpenXml
     module Properties
       class WBefore < WidthProperty
 
-        attribute :type, expects: :valid_width_type
-        attribute :width, expects: :positive_integer, displays_as: :w
+        with_namespace :w do
+          attribute :type, expects: :valid_width_type
+          attribute :width, expects: :positive_integer, displays_as: :w
+        end
 
       end
     end
