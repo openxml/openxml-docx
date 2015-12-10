@@ -3,7 +3,7 @@ module OpenXml
     module Elements
       class DeletedText < Text
         tag :del
-        attribute :space, expects: :valid_space_preserve, namespace: :xml
+        attribute :space, one_of: [:preserve, nil], namespace: :xml
       end
     end
   end

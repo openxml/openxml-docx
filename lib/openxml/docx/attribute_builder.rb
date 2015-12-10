@@ -203,14 +203,15 @@ module OpenXml
       end
 
       module ClassMethods
-        def attribute(name, expects: nil, displays_as: nil, namespace: nil)
+        def attribute(name, expects: nil, one_of: nil,  displays_as: nil, namespace: nil)
           bad_names = %w(tag name namespace properties_tag)
           raise ArgumentError if bad_names.member? name
 
           attr_reader name
 
           define_method "#{name}=" do |value|
-            send(expects, value)
+            valid_in?(value, one_of) unless one_of.nil?
+            send(expects, value) unless expects.nil?
             instance_variable_set "@#{name}", value
           end
 

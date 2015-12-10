@@ -7,9 +7,9 @@ module OpenXml
         tag :pgBorders
 
         with_namespace :w do
-          attribute :display, expects: :valid_display
-          attribute :offset_from, expects: :valid_offset
-          attribute :z_order, expects: :valid_z_order
+          attribute :display, one_of: %i(allPages firstPage notFirstPage)
+          attribute :offset_from, one_of: %i(page text)
+          attribute :z_order, one_of: %i(front back)
         end
 
         def initialize
@@ -28,10 +28,6 @@ module OpenXml
           xml["w"].public_send(tag, xml_attributes) { render_borders_xml(xml) }
         end
 
-        VALID_DISPLAYS = %i(allPages firstPage notFirstPage)
-        VALID_OFFSETS = %i(page text)
-        VALID_Z_ORDERS = %i(front back)
-
       private
 
         def render_borders_xml(xml)
@@ -44,18 +40,6 @@ module OpenXml
 
         def new_border(direction)
           OpenXml::Docx::Properties::Border.new direction
-        end
-
-        def valid_display(value)
-          valid_in? value, VALID_DISPLAYS
-        end
-
-        def valid_offset(value)
-          valid_in? value, VALID_OFFSETS
-        end
-
-        def valid_z_order(value)
-          valid_in? value, VALID_Z_ORDERS
         end
 
       end

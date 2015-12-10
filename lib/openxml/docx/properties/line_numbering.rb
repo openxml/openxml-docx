@@ -7,16 +7,8 @@ module OpenXml
         with_namespace :w do
           attribute :count_by, expects: :integer
           attribute :distance, expects: :positive_integer
-          attribute :restart, expects: :valid_line_numbering_restart
+          attribute :restart, one_of: %i(continuous newPage newSection)
           attribute :start, expects: :integer
-        end
-
-        VALID_LINE_NUMBERING_RESTARTS = %i(continuous newPage newSection)
-
-      private
-
-        def valid_line_numbering_restart(value)
-          valid_in? value, VALID_LINE_NUMBERING_RESTARTS
         end
 
       end

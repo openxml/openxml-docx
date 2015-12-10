@@ -48,7 +48,7 @@ describe OpenXml::Docx::Properties::PageNumbering do
   end
 
   with_these_attributes_set(chapter_separator: :colon, chapter_style: 1, format: :taiwaneseCountingThousand, start: 2) do
-    it_should_output "<w:pgNumType w:chapSep=\"colon\" w:chapStyle=\"1\" w:fmt=\"taiwaneseCountingThousand\" w:start=\"2\"/>", assign: false
+    it_should_output "<w:pgNumType w:chapSep=\"colon\" w:chapStyle=\"1\" w:start=\"2\" w:fmt=\"taiwaneseCountingThousand\"/>", assign: false
   end
 
 end
