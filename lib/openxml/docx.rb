@@ -17,6 +17,7 @@ end
 require "openxml/docx/attribute_builder"
 require "openxml/docx/property_builder"
 require "openxml/docx/properties"
+require "openxml/docx/root_namespaces"
 require "openxml/docx/elements"
 require "openxml/docx/package"
 require "openxml/docx/parts"

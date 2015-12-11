@@ -2,6 +2,10 @@ module OpenXml
   module Docx
     module Parts
       class Styles < OpenXml::Part
+        include RootNamespaces
+
+        use_namespaces :r, :w
+
         attr_reader :styles
 
         def initialize
@@ -37,11 +41,6 @@ module OpenXml
               }
             }
           }
-        end
-
-        def root_namespaces
-          { "xmlns:r" => "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
-            "xmlns:w" => "http://schemas.openxmlformats.org/wordprocessingml/2006/main" }
         end
 
       end
