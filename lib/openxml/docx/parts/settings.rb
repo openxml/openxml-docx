@@ -15,7 +15,7 @@ module OpenXml
         def to_xml
           build_standalone_xml do |xml|
             xml.settings(root_namespaces) {
-              xml.parent.namespace = xml.parent.namespace_definitions.find { |ns| ns.prefix == "w" }
+              xml.parent.namespace = :w
             }
           end
         end
