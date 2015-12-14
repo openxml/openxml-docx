@@ -3,7 +3,7 @@ PATH
   specs:
     openxml-docx (0.9.0)
       nokogiri
-      openxml-package (>= 0.2.1)
+      openxml-package (>= 0.2.2)
 
 GEM
   remote: https://rubygems.org/
@@ -16,7 +16,7 @@ GEM
     mini_portile2 (2.0.0)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
-    openxml-package (0.2.1)
+    openxml-package (0.2.2)
       nokogiri
       ox
       rubyzip (~> 1.1.0)

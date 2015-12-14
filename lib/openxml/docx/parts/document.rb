@@ -33,7 +33,7 @@ module OpenXml
         def to_xml
           build_xml do |xml|
             xml.document(root_namespaces) {
-              xml.parent.namespace = xml.parent.namespace_definitions.find { |ns| ns.prefix == "w" }
+              xml.parent.namespace = :w
               xml["w"].body {
                 children.each { |child| child.to_xml(xml) }
                 current_section.to_xml(xml) unless current_section.nil?

@@ -19,7 +19,7 @@ module OpenXml
         def to_xml
           build_standalone_xml do |xml|
             xml.styles(root_namespaces) {
-              xml.parent.namespace = xml.parent.namespace_definitions.find { |ns| ns.prefix == "w" }
+              xml.parent.namespace = :w
               add_default_styles(xml)
               styles.each { |style| style.to_xml(xml) }
             }
