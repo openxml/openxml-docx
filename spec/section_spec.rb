@@ -5,6 +5,8 @@ describe OpenXml::Docx::Section do
 
   it_should_have_property :columns
   it_should_have_property :document_grid
+  it_should_have_property :footer_reference
+  it_should_have_property :header_reference
   it_should_have_property :line_numbering
   it_should_have_property :page_margins
   it_should_have_property :page_borders
