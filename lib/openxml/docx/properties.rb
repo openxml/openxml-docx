@@ -15,7 +15,6 @@ require "openxml/docx/properties/string_property"
 require "openxml/docx/properties/on_off_property"
 require "openxml/docx/properties/toggle_property"
 require "openxml/docx/properties/string_property"
-require "openxml/docx/properties/width_property"
 require "openxml/docx/properties/container_property"
 require "openxml/docx/properties/style"
 Dir.glob("#{File.join(File.dirname(__FILE__), "properties", "*.rb")}").each do |file|

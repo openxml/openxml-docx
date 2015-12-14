@@ -5,27 +5,9 @@ module OpenXml
         tag :ptab
 
         with_namespace :w do
-          attribute :alignment, expects: :valid_ptab_alignment
-          attribute :leader, expects: :valid_ptab_leader
-          attribute :relativeTo, expects: :valid_ptab_relative_to
-        end
-
-        VALID_PTAB_ALIGNMENTS = %i(center left right)
-        VALID_PTAB_LEADERS = %i(dot hyphen middleDot none underscore)
-        VALID_PTAB_RELATIVE_TOS = %i(indent margin)
-
-      private
-
-        def valid_ptab_alignment(value)
-          valid_in? value, VALID_PTAB_ALIGNMENTS
-        end
-
-        def valid_ptab_leader(value)
-          valid_in? value, VALID_PTAB_LEADERS
-        end
-
-        def valid_ptab_relative_to(value)
-          valid_in? value, VALID_PTAB_RELATIVE_TOS
+          attribute :alignment, one_of: %i(center left right)
+          attribute :leader, one_of: %i(dot hyphen middleDot none underscore)
+          attribute :relativeTo, one_of: %i(indent margin)
         end
 
       end

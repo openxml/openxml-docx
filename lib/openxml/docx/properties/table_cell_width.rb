@@ -1,11 +1,11 @@
 module OpenXml
   module Docx
     module Properties
-      class TableCellWidth < WidthProperty
+      class TableCellWidth < ComplexProperty
         tag :tcW
 
         with_namespace :w do
-          attribute :type, expects: :valid_width_type
+          attribute :type, one_of: %i(auto dxa nil pct)
           attribute :width, expects: :positive_integer, displays_as: :w
         end
 

@@ -3,16 +3,7 @@ module OpenXml
     module Elements
       class BidiEmbed < Container
         tag :dir
-        attribute :direction, expects: :valid_direction, displays_as: :val, namespace: :w
-
-        VALID_DIRECTIONS = %i(rtl ltr)
-
-      private
-
-        def valid_direction(value)
-          valid_in? value, VALID_DIRECTIONS
-        end
-
+        attribute :direction, one_of: %i(rtl ltr), displays_as: :val, namespace: :w
       end
     end
   end
