@@ -1,22 +1,24 @@
 require "spec_helper"
 
 describe OpenXml::Docx::Properties::TableLayout do
-  include ValuePropertyTestMacros
+  include PropertyTestMacros
 
-  it_should_use tag: :tblLayout, name: "table_layout", value: :autofit
+  it_should_use tag: :tblLayout, name: "table_layout"
 
-  with_value(:autofit) do
-    it_should_work
-    it_should_output "<w:tblLayout w:val=\"autofit\"/>"
-  end
+  for_attribute(:type) do
+    with_value(:autofit) do
+      it_should_assign_successfully
+      it_should_output "<w:tblLayout w:type=\"autofit\"/>"
+    end
 
-  with_value(:fixed) do
-    it_should_work
-    it_should_output "<w:tblLayout w:val=\"fixed\"/>"
-  end
+    with_value(:fixed) do
+      it_should_assign_successfully
+      it_should_output "<w:tblLayout w:type=\"fixed\"/>"
+    end
 
-  with_value(:nope) do
-    it_should_not_work
+    with_value(:nope) do
+      it_should_raise_an_exception
+    end
   end
 
 end

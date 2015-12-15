@@ -2,7 +2,7 @@ module OpenXml
   module Docx
     module Elements
       class GridColumn < Element
-        tag :gridColumn
+        tag :gridCol
 
         attribute :w, expects: :integer, namespace: :w
 

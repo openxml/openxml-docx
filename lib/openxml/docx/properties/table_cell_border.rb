@@ -2,7 +2,7 @@ module OpenXml
   module Docx
     module Properties
       class TableCellBorder < ComplexProperty
-        tag_is_one_of %i(top start bottom end insideH insideV tl2br tr2bl)
+        tag_is_one_of %i(top start bottom end insideH insideV tl2br tr2bl left right)
 
         with_namespace :w do
           attribute :color, expects: :hex_color

@@ -5,7 +5,7 @@ module OpenXml
         tag :jc
 
         def ok_values
-          [:both, :center, :distribute, :end, :highKashida, :lowKashida, :mediumKashida, :numTab, :start, :thaiDistribute]
+          %i(both center distribute end highKashida lowKashida mediumKashida numTab start thaiDistribute left right)
         end
 
       end

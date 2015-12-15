@@ -10,7 +10,6 @@ module OpenXml
         value_property :alignment
         value_property :table_caption
         value_property :table_description
-        value_property :table_layout
         value_property :table_overlap
         value_property :table_style
 
@@ -20,6 +19,7 @@ module OpenXml
         property :table_cell_margins
         property :table_cell_spacing
         property :table_indent
+        property :table_layout
         property :table_look
         property :table_p_pr
         property :table_width
