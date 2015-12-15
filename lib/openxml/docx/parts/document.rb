@@ -6,8 +6,8 @@ module OpenXml
 
         attr_reader :children, :current_section
 
-        use_namespaces :wpc, :mo, :mv, :o, :r, :m, :v, :wp14, :wp, :w10, :w14, :wpg, :wpi, :wne, :wps, :w, :mc
-        can_ignore :w14, :wp14
+        use_namespaces :wpc, :mo, :mv, :o, :r, :m, :v, :wp14, :wp, :w10, :w14, :wpg, :wpi, :wne, :wps, :w, :mc, :a14, :pic
+        can_ignore :w14, :wp14, :a14
 
         def initialize
           @children = []

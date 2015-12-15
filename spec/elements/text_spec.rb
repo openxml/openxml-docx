@@ -5,7 +5,7 @@ describe OpenXml::Docx::Elements::Text do
 
   it_should_use tag: :t, name: "text"
 
-  for_attribute(:space) do
+  for_attribute(:space, with_namespace: :xml) do
     with_value(nil) do
       it_should_assign_successfully
       it_should_output "<w:t/>"
@@ -13,7 +13,7 @@ describe OpenXml::Docx::Elements::Text do
 
     with_value(:preserve) do
       it_should_assign_successfully
-      it_should_output "<w:t xml:space=\"preserve\"/>"
+      it_should_output_regular_xml
     end
 
     with_value(:the_final_frontier) do

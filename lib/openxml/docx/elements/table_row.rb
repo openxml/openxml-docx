@@ -22,7 +22,7 @@ module OpenXml
 
         property :conditional_formatting
         property :table_cell_spacing
-        property :tr_height
+        property :table_row_height
         property :w_after
         property :w_before
 
