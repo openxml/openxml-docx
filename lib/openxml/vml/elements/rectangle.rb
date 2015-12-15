@@ -1,12 +1,11 @@
 module OpenXml
   module Vml
     module Elements
-      class RoundedRectangle < OpenXml::Docx::Elements::Container
+      class Rectangle < OpenXml::Docx::Elements::Container
         namespace :v
-        tag :roundrect
+        tag :rect
 
         attribute :alt, expects: :string
-        attribute :arc_size, expects: :valid_arc_size, displays_as: :arcsize
         attribute :chroma_key, expects: :valid_color, displays_as: :chromakey
         attribute :css_class, expects: :string, displays_as: :class
         attribute :coordinate_origin, expects: :valid_coordinate, displays_as: :coordorigin
@@ -64,11 +63,6 @@ module OpenXml
         end
 
       private
-
-        def valid_arc_size(value)
-          message = "Invalid arc size. Requires a percent or value in terms of f."
-          raise ArgumentError, message unless value.is_a?(String) && value =~ /^[0-9]+[%f]$/
-        end
 
         def valid_bw_mode(value)
           ok_values = %i(auto black blackTextAndLines color grayOutline grayScale hide highContrast inverseGray lightGrayscale undrawn white)
