@@ -12,6 +12,7 @@ module OpenXml
         value_property :no_wrap
         value_property :table_cell_fit_text
         value_property :text_direction
+        value_property :v_align
 
         property :conditional_formatting
         property :headers

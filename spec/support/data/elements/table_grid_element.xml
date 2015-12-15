@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <root xmlns:w="http://wnamespace.org">
   <w:tblGrid>
-    <w:gridColumn w:w="1"/>
+    <w:gridCol w:w="1"/>
   </w:tblGrid>
 </root>

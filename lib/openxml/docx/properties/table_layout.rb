@@ -1,12 +1,10 @@
 module OpenXml
   module Docx
     module Properties
-      class TableLayout < ValueProperty
+      class TableLayout < ComplexProperty
         tag :tblLayout
 
-        def ok_values
-          %i(autofit fixed)
-        end
+        attribute :type, one_of: %i(autofit fixed), namespace: :w
 
       end
     end

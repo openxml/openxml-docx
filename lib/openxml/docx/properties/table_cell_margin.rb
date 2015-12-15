@@ -2,7 +2,7 @@ module OpenXml
   module Docx
     module Properties
       class TableCellMargin < ComplexProperty
-        tag_is_one_of %i(top start bottom end)
+        tag_is_one_of %i(top start bottom end left right)
 
         with_namespace :w do
           attribute :type, one_of: %i(auto dxa nil pct)
