@@ -4,12 +4,13 @@ module OpenXml
       class Fonts < OpenXml::Part
         include RootNamespaces
 
-        attr_reader :fonts
+        attr_reader :fonts, :relationships
 
         use_namespaces :r, :w
 
         def initialize
           @fonts = []
+          @relationships = OpenXml::Parts::Rels.new
         end
 
         def <<(font)

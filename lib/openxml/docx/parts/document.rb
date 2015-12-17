@@ -4,13 +4,14 @@ module OpenXml
       class Document < OpenXml::Part
         include RootNamespaces
 
-        attr_reader :children, :current_section
+        attr_reader :children, :current_section, :relationships
 
-        use_namespaces :wpc, :mo, :mv, :o, :r, :m, :v, :wp14, :wp, :w10, :w14, :wpg, :wpi, :wne, :wps, :w, :mc, :a14, :pic
+        use_namespaces :wpc, :mo, :mv, :o, :r, :m, :v, :wp14, :wp, :w10, :w14, :wpg, :wpi, :wne, :wps, :w, :mc, :a, :a14, :pic
         can_ignore :w14, :wp14, :a14
 
         def initialize
           @children = []
+          @relationships = OpenXml::Parts::Rels.new
         end
 
         def <<(child)

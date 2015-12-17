@@ -4,8 +4,6 @@ module OpenXml
   module Docx
     class Package < OpenXml::Package
       attr_reader :document,
-                  :doc_rels,
-                  :font_rels,
                   :settings,
                   :headers,
                   :footers,
@@ -24,8 +22,6 @@ module OpenXml
         super
 
         rels.add_relationship REL_DOCUMENT, "/word/document.xml"
-        @doc_rels = OpenXml::Parts::Rels.new
-        @font_rels = OpenXml::Parts::Rels.new
         @settings = OpenXml::Docx::Parts::Settings.new
         @styles = OpenXml::Docx::Parts::Styles.new
         @fonts = OpenXml::Docx::Parts::Fonts.new
@@ -33,12 +29,12 @@ module OpenXml
         @headers = []
         @footers = []
 
-        doc_rels.add_relationship REL_STYLES, "styles.xml"
-        doc_rels.add_relationship REL_SETTINGS, "settings.xml"
-        doc_rels.add_relationship REL_FONT_TABLE, "fontTable.xml"
+        document.relationships.add_relationship REL_STYLES, "styles.xml"
+        document.relationships.add_relationship REL_SETTINGS, "settings.xml"
+        document.relationships.add_relationship REL_FONT_TABLE, "fontTable.xml"
 
-        add_part "word/_rels/document.xml.rels", doc_rels
-        add_part "word/_rels/fontTable.xml.rels", font_rels
+        add_part "word/_rels/document.xml.rels", document.relationships
+        add_part "word/_rels/fontTable.xml.rels", fonts.relationships
         add_part "word/document.xml", document
         add_part "word/settings.xml", settings
         add_part "word/styles.xml", styles
@@ -51,7 +47,7 @@ module OpenXml
           data = obfuscation_data[:bytes] << source_font.read
           destination_font_name = "font#{fonts.fonts.count + 1}.odttf"
           add_part "word/fonts/#{destination_font_name}", OpenXml::Parts::UnparsedPart.new(data)
-          font_relationship = font_rels.add_relationship REL_FONT, "fonts/#{destination_font_name}"
+          font_relationship = fonts.relationships.add_relationship REL_FONT, "fonts/#{destination_font_name}"
 
           font_description = OpenXml::Docx::Elements::Font.new
           font_description.font_name = name
@@ -68,7 +64,8 @@ module OpenXml
         header_name = "header#{headers.count}.xml"
         Package.content_types { override "/word/#{header_name}", TYPE_HEADER }
         add_part "word/#{header_name}", header
-        relationship = doc_rels.add_relationship REL_HEADER, header_name
+        add_part "word/_rels/#{header_name}.rels", header.relationships
+        relationship = document.relationships.add_relationship REL_HEADER, header_name
         relationship.id
       end
 
@@ -77,7 +74,8 @@ module OpenXml
         footer_name = "footer#{footers.count}.xml"
         Package.content_types { override "/word/#{footer_name}", TYPE_FOOTER }
         add_part "word/#{footer_name}", footer
-        relationship = doc_rels.add_relationship REL_FOOTER, footer_name
+        add_part "word/_rels/#{footer_name}.rels", footer.relationships
+        relationship = document.relationships.add_relationship REL_FOOTER, footer_name
         relationship.id
       end
 

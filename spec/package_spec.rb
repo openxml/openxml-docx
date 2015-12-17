@@ -20,8 +20,8 @@ describe OpenXml::Docx::Package do
       expect(package.rels).to be_instance_of(OpenXml::Parts::Rels)
     end
 
-    it "should create the _rels part" do
-      expect(package.doc_rels).to be_instance_of(OpenXml::Parts::Rels)
+    it "should create the document's _rels part" do
+      expect(package.document.relationships).to be_instance_of(OpenXml::Parts::Rels)
     end
 
     it "should create the settings part" do
