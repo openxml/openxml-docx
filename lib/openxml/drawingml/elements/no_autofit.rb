@@ -1,9 +1,9 @@
 module OpenXml
   module DrawingML
     module Elements
-      class NoFill < OpenXml::Docx::Elements::Element
+      class NoAutofit < OpenXml::Docx::Elements::Element
         namespace :a
-        tag :noFill
+        tag :noAutofit
       end
     end
   end
