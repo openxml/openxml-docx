@@ -1,3 +1,5 @@
+require "openxml/docx/properties/tab"
+
 module OpenXml
   module Docx
     module Properties
