@@ -13,7 +13,7 @@ describe OpenXml::Docx::Style do
 
     with_value(false) do
       it_should_assign_successfully :paragraph
-      it_should_output "<w:style w:type=\"paragraph\"/>", :paragraph
+      it_should_output "<w:style w:customStyle=\"false\" w:type=\"paragraph\"/>", :paragraph
     end
 
     with_value(:maybe) do
@@ -29,7 +29,7 @@ describe OpenXml::Docx::Style do
 
     with_value(false) do
       it_should_assign_successfully :paragraph
-      it_should_output "<w:style w:type=\"paragraph\"/>", :paragraph
+      it_should_output "<w:style w:default=\"false\" w:type=\"paragraph\"/>", :paragraph
     end
 
     with_value(:maybe) do

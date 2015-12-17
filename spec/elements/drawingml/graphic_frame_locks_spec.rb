@@ -5,10 +5,15 @@ describe OpenXml::DrawingML::Elements::GraphicFrameLocks do
 
   it_should_use tag: :graphicFrameLocks, name: "graphic_frame_locks"
 
-  for_attribute(:noChangeAspect) do
-    with_values([true, false]) do
+  for_attribute(:disallow_aspect_ratio_changes) do
+    with_value(true) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<a:graphicFrameLocks noChangeAspect=\"true\"/>"
+    end
+
+    with_value(false) do
+      it_should_assign_successfully
+      it_should_output "<a:graphicFrameLocks noChangeAspect=\"false\"/>"
     end
 
     with_value(:neither) do
@@ -16,10 +21,15 @@ describe OpenXml::DrawingML::Elements::GraphicFrameLocks do
     end
   end
 
-  for_attribute(:noDrilldown) do
-    with_values([true, false]) do
+  for_attribute(:disallow_drilldown) do
+    with_value(true) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<a:graphicFrameLocks noDrilldown=\"true\"/>"
+    end
+
+    with_value(false) do
+      it_should_assign_successfully
+      it_should_output "<a:graphicFrameLocks noDrilldown=\"false\"/>"
     end
 
     with_value(:neither) do
@@ -27,10 +37,15 @@ describe OpenXml::DrawingML::Elements::GraphicFrameLocks do
     end
   end
 
-  for_attribute(:noGrouping, displays_as: :noGrp) do
-    with_values([true, false]) do
+  for_attribute(:disallow_grouping) do
+    with_value(true) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<a:graphicFrameLocks noGrp=\"true\"/>"
+    end
+
+    with_value(false) do
+      it_should_assign_successfully
+      it_should_output "<a:graphicFrameLocks noGrp=\"false\"/>"
     end
 
     with_value(:neither) do
@@ -38,10 +53,30 @@ describe OpenXml::DrawingML::Elements::GraphicFrameLocks do
     end
   end
 
-  for_attribute(:noMove) do
-    with_values([true, false]) do
+  for_attribute(:disallow_moving) do
+    with_value(true) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<a:graphicFrameLocks noMove=\"true\"/>"
+    end
+
+    with_value(false) do
+      it_should_assign_successfully
+      it_should_output "<a:graphicFrameLocks noMove=\"false\"/>"
+    end
+    with_value(:neither) do
+      it_should_raise_an_exception
+    end
+  end
+
+  for_attribute(:disallow_resizing) do
+    with_value(true) do
+      it_should_assign_successfully
+      it_should_output "<a:graphicFrameLocks noResize=\"true\"/>"
+    end
+
+    with_value(false) do
+      it_should_assign_successfully
+      it_should_output "<a:graphicFrameLocks noResize=\"false\"/>"
     end
 
     with_value(:neither) do
@@ -49,21 +84,15 @@ describe OpenXml::DrawingML::Elements::GraphicFrameLocks do
     end
   end
 
-  for_attribute(:noResize) do
-    with_values([true, false]) do
+  for_attribute(:disallow_selection) do
+    with_value(true) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<a:graphicFrameLocks noSelect=\"true\"/>"
     end
 
-    with_value(:neither) do
-      it_should_raise_an_exception
-    end
-  end
-
-  for_attribute(:noSelect) do
-    with_values([true, false]) do
+    with_value(false) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<a:graphicFrameLocks noSelect=\"false\"/>"
     end
 
     with_value(:neither) do

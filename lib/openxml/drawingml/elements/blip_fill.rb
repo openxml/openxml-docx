@@ -6,7 +6,7 @@ module OpenXml
         tag :blipFill
 
         attribute :dpi, expects: :integer
-        attribute :rotWithShape, expects: :true_or_false
+        attribute :rotate_with_shape, expects: :true_or_false, displays_as: :rotWithShape
 
       end
     end
