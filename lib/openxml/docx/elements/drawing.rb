@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class Drawing < Element
+      class Drawing < Container
         tag :drawing
       end
     end

@@ -42,7 +42,7 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingObjectNvProperties do
     end
   end
 
-  for_attribute(:property_name, displays_as: :name) do
+  for_attribute(:object_name, displays_as: :name) do
     with_value("valid")do
       it_should_assign_successfully
       it_should_output_regular_xml
