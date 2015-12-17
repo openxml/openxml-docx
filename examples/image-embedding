@@ -1,0 +1,141 @@
+#!/usr/bin/env ruby
+
+$:.push Dir.pwd + "/lib"
+require "pry"
+require "ox"
+require "openxml/docx"
+require "openxml/drawingml"
+
+package = OpenXml::Docx::Package.new
+
+include OpenXml::Docx::Elements
+include OpenXml::DrawingML::Elements
+
+text = Text.new("Some text that I want to include in my new OOXML document")
+
+run = Run.new
+run << text
+paragraph = Paragraph.new
+paragraph << run
+
+package.document << paragraph
+
+image_rid = package.embed_image(path: File.join(File.dirname(__FILE__), "ochanomizu.jpg"))
+
+paragraph = Paragraph.new
+run = Run.new
+
+# This is the overall container for the drawing elements
+drawing = Drawing.new
+
+# This is the anchor that provides positioning information in Word
+anchor = WordProcessingDrawingAnchor.new
+anchor.allow_overlap = true
+anchor.behind_document = false
+anchor.layout_in_cell = true
+anchor.locked = false
+anchor.z_index = 1000
+anchor.simple_position = false
+anchor.distance_from_bottom = 0
+anchor.distance_from_top = 0
+anchor.distance_from_left = 0
+anchor.distance_from_right = 0
+
+# These elements are required to be children of anchor and supply the actual positioning information
+simple_pos = WordProcessingDrawingSimplePosition.new
+simple_pos.x = 0
+simple_pos.y = 0
+anchor << simple_pos
+position_h = WordProcessingDrawingPositionH.new
+position_h.relative_from = :column
+position_offset = WordProcessingDrawingPositionOffset.new
+position_offset.value = "0"
+position_h << position_offset
+anchor << position_h
+position_v = WordProcessingDrawingPositionV.new
+position_v.relative_from = :paragraph
+position_offset = WordProcessingDrawingPositionOffset.new
+position_offset.value = "0"
+position_v << position_offset
+anchor << position_v
+
+# Extent is the size of the Object
+extent = WordProcessingDrawingExtent.new
+extent.extent_length = 599 * 20 # Convert pixels to EMU?
+extent.extent_width = 393 * 20
+anchor << extent
+
+# One of the wrap properties is required
+anchor << WordProcessingDrawingWrapNone.new
+
+# Object (non-visual) properties are also required
+doc_pr = WordProcessingDrawingObjectNvProperties.new
+doc_pr.description = "ochanomizu.jpg"
+doc_pr.object_name = "Ochanomizu but not from Tetsuwan Atomu"
+doc_pr.id = 1
+anchor << doc_pr
+
+# This is the actual graphics object
+graphic = Graphic.new
+graphic_data = GraphicData.new
+graphic_data.uri = "http://schemas.openxmlformats.org/drawingml/2006/picture"
+pic_container = Picture.new
+
+# Must also define the Picture's non-visual Properties
+pic_nv_properties = NonVisualPictureProperties.new
+nv_properties = NonVisualDrawingProperties.new
+nv_properties.id = 0
+nv_properties.picture_name = "Ochanomizu but not from Tetsuwan Atomu"
+nv_properties.description = "ochanomizu.jpg"
+pic_nv_properties << nv_properties
+drawing_properties = NonVisualPictureDrawingProperties.new
+picture_locks = PictureLocks.new
+picture_locks.disallow_aspect_ratio_changes = true
+picture_locks.disallow_arrowhead_changes = true
+drawing_properties << picture_locks
+pic_nv_properties << drawing_properties
+pic_container << pic_nv_properties
+
+# Blip Fill defines the picture that will fill the object's shape
+blip_fill = BlipFill.new
+pic_ref = Blip.new
+pic_ref.embed = image_rid
+stretch = Stretch.new
+fill_rect = FillRectangle.new
+stretch << fill_rect
+blip_fill << pic_ref
+blip_fill << stretch
+blip_fill << SourceRectangle.new
+pic_container << blip_fill
+
+# Must also define the picture's shape properties
+shape_properties = PictureShapeProperties.new
+shape_properties.black_and_white_mode = :auto
+preset_geometry = PresetGeometry.new
+preset_geometry.preset = :rect
+shape_properties << preset_geometry
+transform = TransformEffect.new
+offset = Offset.new
+offset.x = 0
+offset.y = 0
+transform << offset
+extent = Extents.new
+extent.extent_length = 599 * 20
+extent.extent_width = 393 * 20
+transform << extent
+shape_properties << transform
+pic_container << shape_properties
+
+graphic_data << pic_container
+graphic << graphic_data
+
+anchor << graphic
+drawing << anchor
+run << drawing
+paragraph << run
+package.document << paragraph
+
+filename = "image_embedding_test.docx"
+system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
+package.save File.expand_path("~/Desktop/#{filename}")
+exec "open ~/Desktop/#{filename}"

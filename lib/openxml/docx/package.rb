@@ -8,11 +8,17 @@ module OpenXml
                   :headers,
                   :footers,
                   :styles,
-                  :fonts
+                  :fonts,
+                  :image_names
 
       content_types do
         default "xml", TYPE_XML
         default "odttf", TYPE_OBSCURED_FONT
+        default "jpeg", TYPE_IMAGE[:jpeg]
+        default "png", TYPE_IMAGE[:png]
+        default "gif", TYPE_IMAGE[:gif]
+        default "bmp", TYPE_IMAGE[:bmp]
+        default "tiff", TYPE_IMAGE[:tiff]
         override "/word/styles.xml", TYPE_STYLES
         override "/word/settings.xml", TYPE_SETTINGS
         override "/word/fontTable.xml", TYPE_FONT_TABLE
@@ -28,6 +34,7 @@ module OpenXml
         @document = OpenXml::Docx::Parts::Document.new
         @headers = []
         @footers = []
+        @image_names = []
 
         document.relationships.add_relationship REL_STYLES, "styles.xml"
         document.relationships.add_relationship REL_SETTINGS, "settings.xml"
@@ -56,6 +63,27 @@ module OpenXml
           embed_tag.relationship_id = font_relationship.id
           font_description << embed_tag
           fonts << font_description
+        end
+      end
+
+      def embed_image(path: nil, content_type: nil, into_part: nil)
+        return if path.nil?
+        into_part = document unless into_part.respond_to?(:relationships)
+
+        extension_match = path.match(/\.(?<extension>[^\.]+)$/)
+        content_type ||= extension_match[:extension] if extension_match
+        return if content_type.nil?
+
+        content_type = "jpeg" if content_type == "jpg"
+        content_type = content_type.to_sym
+
+        File.open(path, "rb") do |source_image|
+          destination_image_name = "image#{image_names.count + 1}.#{content_type}"
+          add_part "word/media/#{destination_image_name}", OpenXml::Parts::UnparsedPart.new(source_image.read)
+          image_names << destination_image_name
+
+          image_relationship = into_part.relationships.add_relationship REL_IMAGE, "media/#{destination_image_name}"
+          image_relationship.id
         end
       end
 
