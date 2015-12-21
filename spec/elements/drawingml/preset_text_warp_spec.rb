@@ -19,7 +19,7 @@ describe OpenXml::DrawingML::Elements::PresetTextWarp do
               textTriangleInverted textWave1 textWave2
               textWave4)
 
-  for_attribute(:prst) do
+  for_attribute(:preset) do
     presets.each do |preset|
       with_value(preset) do
         it_should_assign_successfully

@@ -6,14 +6,14 @@ module OpenXml
         namespace :wps
 
         attribute :anchor, expects: :anchor_value
-        attribute :anchorCtr, expects: :true_or_false
+        attribute :anchor_center, expects: :true_or_false, displays_as: :anchorCtr
         attribute :bottom_inset, expects: :positive_integer, displays_as: :bIns
         attribute :compatible_line_spacing, expects: :true_or_false, displays_as: :compatLnSpc
         attribute :force_anti_alias, expects: :true_or_false, displays_as: :forceAA
-        attribute :fromWordArt, expects: :true_or_false
-        attribute :horzOverflow, expects: :horizontal_overflow_value
+        attribute :from_word_art, expects: :true_or_false, displays_as: :fromWordArt
+        attribute :horizontal_overflow, expects: :horizontal_overflow_value, displays_as: :horzOverflow
         attribute :left_inset, expects: :positive_integer, displays_as: :lIns
-        attribute :numCol, expects: :number_of_columns
+        attribute :number_of_columns, expects: :valid_number_of_columns, displays_as: :numCol
         attribute :right_inset, expects: :positive_integer, displays_as: :rIns
         attribute :rotation, expects: :integer, displays_as: :rot
         attribute :right_to_left_columns, expects: :true_or_false, displays_as: :rtlCol
@@ -21,8 +21,8 @@ module OpenXml
         attribute :paragraph_spacing, expects: :true_or_false, displays_as: :spcFirstLastPara
         attribute :top_inset, expects: :positive_integer, displays_as: :tIns
         attribute :upright, expects: :true_or_false
-        attribute :vert, expects: :vertical_value
-        attribute :vertOverflow, expects: :vertical_overflow_value
+        attribute :vertical, expects: :vertical_value, displays_as: :vert
+        attribute :vertical_overflow, expects: :vertical_overflow_value, displays_as: :vertOverflow
         attribute :wrap, expects: :wrap_value
 
       private
@@ -35,7 +35,7 @@ module OpenXml
           raise ArgumentError unless %i(clip overflow).include? value
         end
 
-        def number_of_columns(value)
+        def valid_number_of_columns(value)
           raise ArgumentError unless (1..16).to_a.include? value
         end
 
