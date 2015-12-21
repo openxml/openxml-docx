@@ -12,10 +12,15 @@ module OpenXml
           @settings = []
         end
 
+        def <<(child)
+          settings << child
+        end
+
         def to_xml
           build_standalone_xml do |xml|
             xml.settings(root_namespaces) {
               xml.parent.namespace = :w
+              settings.each { |setting| setting.to_xml(xml) }
             }
           end
         end
