@@ -13,6 +13,16 @@ module OpenXml
           attribute :separator, expects: :true_or_false, displays_as: :sep
           attribute :space, expects: :integer
         end
+
+        def render?
+          attributes = %i(equal_width number separator space)
+          attributes.each do |attribute|
+            return true unless self.send(attribute).nil?
+          end
+          super
+
+        end
+
       end
     end
   end

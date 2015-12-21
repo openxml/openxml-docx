@@ -1,9 +1,10 @@
 module OpenXml
   module DrawingML
     module Elements
-      class NoFill < OpenXml::Docx::Elements::Element
+      class Line < OpenXml::Docx::Elements::Container
         namespace :a
-        tag :noFill
+        tag :ln
+
       end
     end
   end
