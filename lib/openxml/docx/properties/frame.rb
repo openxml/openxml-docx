@@ -5,7 +5,7 @@ module OpenXml
         tag :framePr
 
         with_namespace :w do
-          attribute :anchor_lock, expects: :true_or_false
+          attribute :anchor_lock, expects: :boolean
           attribute :drop_cap, one_of: %i(drop margin none)
           attribute :height, expects: :positive_integer, displays_as: :h
           attribute :height_rule, one_of: %i(atLeast auto exact), displays_as: :hRule

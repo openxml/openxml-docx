@@ -250,7 +250,7 @@ module OpenXml
         end
       end
 
-      def true_or_false(value)
+      def boolean(value)
         message = "Invalid #{name}: frame must be true or false"
         raise ArgumentError, message unless [true, false].member? value
       end

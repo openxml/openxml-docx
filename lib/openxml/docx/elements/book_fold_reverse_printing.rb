@@ -4,7 +4,7 @@ module OpenXml
       class BookFoldReversePrinting < Element
         tag :bookFoldRevPrinting
 
-        attribute :value, expects: :true_or_false, displays_as: :val, namespace: :w
+        attribute :value, expects: :boolean, displays_as: :val, namespace: :w
 
       end
     end

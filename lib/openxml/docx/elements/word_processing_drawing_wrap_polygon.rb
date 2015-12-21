@@ -5,7 +5,7 @@ module OpenXml
         tag :wrapPolygon
         namespace :wp
 
-        attribute :edited, expects: :true_or_false
+        attribute :edited, expects: :boolean
 
       end
     end

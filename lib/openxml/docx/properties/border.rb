@@ -6,8 +6,8 @@ module OpenXml
 
         with_namespace :w do
           attribute :color, expects: :hex_color
-          attribute :frame, expects: :true_or_false
-          attribute :shadow, expects: :true_or_false
+          attribute :frame, expects: :boolean
+          attribute :shadow, expects: :boolean
           attribute :size, expects: :positive_integer, displays_as: :sz
           attribute :space, expects: :positive_integer
           attribute :theme_color, expects: :valid_theme_color
