@@ -5,7 +5,7 @@ module OpenXml
         tag :Choice
         namespace :mc
 
-        attribute :Required, expects: :string
+        attribute :requires, expects: :string, displays_as: :Requires
 
       end
     end

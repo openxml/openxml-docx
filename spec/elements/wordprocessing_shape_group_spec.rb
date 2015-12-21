@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe OpenXml::DrawingML::Elements::WordprocessingShapeGroup do
+describe OpenXml::Docx::Elements::WordprocessingShapeGroup do
   include ElementTestMacros
 
   it_should_use tag: :wgp, name: "wordprocessing_shape_group"
