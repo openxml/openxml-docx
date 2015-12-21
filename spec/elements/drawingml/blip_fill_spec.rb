@@ -16,10 +16,15 @@ describe OpenXml::DrawingML::Elements::BlipFill do
     end
   end
 
-  for_attribute(:rotWithShape) do
-    with_values([true, false]) do
+  for_attribute(:rotate_with_shape) do
+    with_value(true) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<pic:blipFill rotWithShape=\"true\"/>"
+    end
+
+    with_value(false) do
+      it_should_assign_successfully
+      it_should_output "<pic:blipFill rotWithShape=\"false\"/>"
     end
 
     with_value(:not_a_boolean) do

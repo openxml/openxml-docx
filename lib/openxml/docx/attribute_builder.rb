@@ -245,7 +245,7 @@ module OpenXml
           value = send(name)
           attr_name = "#{namespace}:#{display}"
           attr_name = "#{display}" if namespace.nil?
-          attrs[attr_name] = value if value
+          attrs[attr_name] = value unless value.nil?
         end
       end
 

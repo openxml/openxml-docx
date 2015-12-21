@@ -141,7 +141,7 @@ module PropertyTestMacros
 
       with_value(false) do
         it_should_assign_successfully
-        it_should_output ""
+        it_should_output_expected_xml
       end
     end
 

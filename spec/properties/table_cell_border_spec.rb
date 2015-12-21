@@ -39,7 +39,7 @@ describe OpenXml::Docx::Properties::TableCellBorder do
 
     with_value(false) do
       it_should_assign_successfully :bottom, :babyPacifier
-      it_should_output "<w:bottom w:val=\"babyPacifier\"/>", :bottom, :babyPacifier
+      it_should_output "<w:bottom w:frame=\"false\" w:val=\"babyPacifier\"/>", :bottom, :babyPacifier
     end
 
     it_should_not_allow_invalid_value
@@ -53,7 +53,7 @@ describe OpenXml::Docx::Properties::TableCellBorder do
 
     with_value(false) do
       it_should_assign_successfully :bottom, :babyPacifier
-      it_should_output "<w:bottom w:val=\"babyPacifier\"/>", :bottom, :babyPacifier
+      it_should_output "<w:bottom w:shadow=\"false\" w:val=\"babyPacifier\"/>", :bottom, :babyPacifier
     end
 
     it_should_not_allow_invalid_value

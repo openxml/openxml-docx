@@ -4,17 +4,21 @@ module OpenXml
   module Docx
     class Package < OpenXml::Package
       attr_reader :document,
-                  :doc_rels,
-                  :font_rels,
                   :settings,
                   :headers,
                   :footers,
                   :styles,
-                  :fonts
+                  :fonts,
+                  :image_names
 
       content_types do
         default "xml", TYPE_XML
         default "odttf", TYPE_OBSCURED_FONT
+        default "jpeg", TYPE_IMAGE[:jpeg]
+        default "png", TYPE_IMAGE[:png]
+        default "gif", TYPE_IMAGE[:gif]
+        default "bmp", TYPE_IMAGE[:bmp]
+        default "tiff", TYPE_IMAGE[:tiff]
         override "/word/styles.xml", TYPE_STYLES
         override "/word/settings.xml", TYPE_SETTINGS
         override "/word/fontTable.xml", TYPE_FONT_TABLE
@@ -24,21 +28,20 @@ module OpenXml
         super
 
         rels.add_relationship REL_DOCUMENT, "/word/document.xml"
-        @doc_rels = OpenXml::Parts::Rels.new
-        @font_rels = OpenXml::Parts::Rels.new
         @settings = OpenXml::Docx::Parts::Settings.new
         @styles = OpenXml::Docx::Parts::Styles.new
         @fonts = OpenXml::Docx::Parts::Fonts.new
         @document = OpenXml::Docx::Parts::Document.new
         @headers = []
         @footers = []
+        @image_names = []
 
-        doc_rels.add_relationship REL_STYLES, "styles.xml"
-        doc_rels.add_relationship REL_SETTINGS, "settings.xml"
-        doc_rels.add_relationship REL_FONT_TABLE, "fontTable.xml"
+        document.relationships.add_relationship REL_STYLES, "styles.xml"
+        document.relationships.add_relationship REL_SETTINGS, "settings.xml"
+        document.relationships.add_relationship REL_FONT_TABLE, "fontTable.xml"
 
-        add_part "word/_rels/document.xml.rels", doc_rels
-        add_part "word/_rels/fontTable.xml.rels", font_rels
+        add_part "word/_rels/document.xml.rels", document.relationships
+        add_part "word/_rels/fontTable.xml.rels", fonts.relationships
         add_part "word/document.xml", document
         add_part "word/settings.xml", settings
         add_part "word/styles.xml", styles
@@ -51,7 +54,7 @@ module OpenXml
           data = obfuscation_data[:bytes] << source_font.read
           destination_font_name = "font#{fonts.fonts.count + 1}.odttf"
           add_part "word/fonts/#{destination_font_name}", OpenXml::Parts::UnparsedPart.new(data)
-          font_relationship = font_rels.add_relationship REL_FONT, "fonts/#{destination_font_name}"
+          font_relationship = fonts.relationships.add_relationship REL_FONT, "fonts/#{destination_font_name}"
 
           font_description = OpenXml::Docx::Elements::Font.new
           font_description.font_name = name
@@ -63,12 +66,34 @@ module OpenXml
         end
       end
 
+      def embed_image(path: nil, content_type: nil, into_part: nil)
+        return if path.nil?
+        into_part = document unless into_part.respond_to?(:relationships)
+
+        extension_match = path.match(/\.(?<extension>[^\.]+)$/)
+        content_type ||= extension_match[:extension] if extension_match
+        return if content_type.nil?
+
+        content_type = "jpeg" if content_type == "jpg"
+        content_type = content_type.to_sym
+
+        File.open(path, "rb") do |source_image|
+          destination_image_name = "image#{image_names.count + 1}.#{content_type}"
+          add_part "word/media/#{destination_image_name}", OpenXml::Parts::UnparsedPart.new(source_image.read)
+          image_names << destination_image_name
+
+          image_relationship = into_part.relationships.add_relationship REL_IMAGE, "media/#{destination_image_name}"
+          image_relationship.id
+        end
+      end
+
       def add_header(header)
         headers << header
         header_name = "header#{headers.count}.xml"
         Package.content_types { override "/word/#{header_name}", TYPE_HEADER }
         add_part "word/#{header_name}", header
-        relationship = doc_rels.add_relationship REL_HEADER, header_name
+        add_part "word/_rels/#{header_name}.rels", header.relationships
+        relationship = document.relationships.add_relationship REL_HEADER, header_name
         relationship.id
       end
 
@@ -77,7 +102,8 @@ module OpenXml
         footer_name = "footer#{footers.count}.xml"
         Package.content_types { override "/word/#{footer_name}", TYPE_FOOTER }
         add_part "word/#{footer_name}", footer
-        relationship = doc_rels.add_relationship REL_FOOTER, footer_name
+        add_part "word/_rels/#{footer_name}.rels", footer.relationships
+        relationship = document.relationships.add_relationship REL_FOOTER, footer_name
         relationship.id
       end
 

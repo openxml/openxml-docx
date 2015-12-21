@@ -5,7 +5,7 @@ module OpenXml
         namespace :pic
         tag :cNvPr
 
-        attribute :descr, expects: :string
+        attribute :description, expects: :string, displays_as: :descr
         attribute :hidden, expects: :true_or_false
         attribute :id, expects: :positive_integer
         attribute :picture_name, expects: :string, displays_as: :name

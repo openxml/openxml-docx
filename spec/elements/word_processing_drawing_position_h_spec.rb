@@ -5,11 +5,12 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingPositionH do
 
   it_should_use tag: :positionH, name: "word_processing_drawing_position_h"
 
-  for_attribute(:relativeFrom) do
-    allowed = %i(character column insideMargin leftMargin margin outsideMargin page rightMargin)
-    with_values(allowed) do
-      it_should_assign_successfully
-      it_should_output_regular_xml
+  for_attribute(:relative_from) do
+    %i(character column insideMargin leftMargin margin outsideMargin page rightMargin).each do |good_value|
+      with_value(good_value) do
+        it_should_assign_successfully
+        it_should_output "<wp:positionH relativeFrom=\"#{good_value}\"/>"
+      end
     end
 
     with_value(:notRight) do

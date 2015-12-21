@@ -5,18 +5,8 @@ module OpenXml
         tag :positionH
         namespace :wp
 
-        attribute :relativeFrom, expects: :valid_relative_from
+        attribute :relative_from, one_of: %i(character column insideMargin leftMargin margin outsideMargin page rightMargin), displays_as: :relativeFrom
 
-      private
-
-        def valid_relative_from(value)
-          raise ArgumentError unless ok_values.include? value
-        end
-
-        def ok_values
-          %i(character column insideMargin leftMargin margin outsideMargin
-          page rightMargin)
-        end
       end
     end
   end

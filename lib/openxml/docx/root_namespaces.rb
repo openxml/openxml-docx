@@ -23,7 +23,7 @@ module OpenXml
         mc: "http://schemas.openxmlformats.org/markup-compatibility/2006".freeze,
         a: "http://schemas.openxmlformats.org/drawingml/2006/main".freeze,
         a14: "http://schemas.microsoft.com/office/drawing/2010/main".freeze,
-        pic: "http://purl.oclc.org/ooxml/drawingml/main".freeze
+        pic: "http://schemas.openxmlformats.org/drawingml/2006/picture".freeze
       }
 
       def self.included(base)
