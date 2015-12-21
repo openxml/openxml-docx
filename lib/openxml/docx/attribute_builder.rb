@@ -203,7 +203,7 @@ module OpenXml
       end
 
       module ClassMethods
-        def attribute(name, expects: nil, one_of: nil,  displays_as: nil, namespace: nil)
+        def attribute(name, expects: nil, one_of: nil, displays_as: nil, namespace: nil, matches: nil)
           bad_names = %w(tag name namespace properties_tag)
           raise ArgumentError if bad_names.member? name
 
@@ -212,6 +212,7 @@ module OpenXml
           define_method "#{name}=" do |value|
             valid_in?(value, one_of) unless one_of.nil?
             send(expects, value) unless expects.nil?
+            matches?(value, matches) unless matches.nil?
             instance_variable_set "@#{name}", value
           end
 
@@ -314,6 +315,11 @@ module OpenXml
       def valid_in?(value, list)
         message = "Invalid #{name}: must be one of #{list.join(", ")} (was #{value.inspect})"
         raise ArgumentError, message unless list.member?(value)
+      end
+
+      def matches?(value, regexp)
+        message = "Value does not match #{regexp}"
+        raise ArgumentError, message unless value =~ regexp
       end
 
     end

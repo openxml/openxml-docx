@@ -15,10 +15,7 @@ module OpenXml
         end
 
         def render?
-          attributes = %i(equal_width number separator space)
-          attributes.each do |attribute|
-            return true unless self.send(attribute).nil?
-          end
+          return true if %i(equal_width number separator space).any? { |attribute| !public_send(attribute).nil? }
           super
 
         end
