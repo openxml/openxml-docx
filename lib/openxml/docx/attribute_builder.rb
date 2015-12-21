@@ -269,6 +269,16 @@ module OpenXml
         raise ArgumentError, message unless value =~ /[0-9A-F]{4}/
       end
 
+      def long_hex_number(value)
+        message = "Invalid #{name}: must be an eight-digit hex number, e.g., FFAC0013"
+        raise ArgumentError, message unless value =~ /^[0-9A-F]{8}$/
+      end
+
+      def hex_string(value)
+        message = "Invalid #{name}: must be a string of hexadecimal numbers, e.g. FFA23C6E"
+        raise ArgumentError, message unless value =~ /^[0-9A-F]+$/
+      end
+
       def integer(value)
         message = "Invalid #{name}: must be an integer"
         raise ArgumentError, message unless value.is_a?(Integer)
