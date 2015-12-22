@@ -13,7 +13,7 @@ describe OpenXml::Docx::Elements::Text do
 
     with_value(:preserve) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<w:t xml:space=\"preserve\"/>"
     end
 
     with_value(:the_final_frontier) do

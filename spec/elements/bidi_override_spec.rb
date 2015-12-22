@@ -5,11 +5,19 @@ describe OpenXml::Docx::Elements::BidiOverride do
 
   it_should_use tag: :bdo, name: "bidi_override"
 
-  for_attribute(:direction, displays_as: :val, with_namespace: :w) do
-    allowed = %i(rtl ltr)
-    with_values(allowed) do
+  for_attribute(:direction) do
+    with_value(:rtl) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<w:bdo w:val=\"rtl\"/>"
+    end
+
+    with_value(:ltr) do
+      it_should_assign_successfully
+      it_should_output "<w:bdo w:val=\"ltr\"/>"
+    end
+
+    with_value(:not_allowed) do
+      it_should_raise_an_exception
     end
   end
 

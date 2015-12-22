@@ -23,10 +23,10 @@ describe OpenXml::DrawingML::Elements::ShapeGuide do
                "tan h w",
                "val 100" ] # Arguments to formulae can be a variable, a positive integer, or a negative integer
 
-  for_attribute(:guide_name, displays_as: :name) do
+  for_attribute(:guide_name) do
     with_value("Some String") do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<a:gd name=\"Some String\"/>"
     end
 
     with_values([1, :not_a_string]) do
@@ -37,7 +37,11 @@ describe OpenXml::DrawingML::Elements::ShapeGuide do
   for_attribute(:formula, displays_as: :fmla) do
     with_values(formulae) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+    end
+
+    with_value("*/ h 10 -100") do
+      it_should_assign_successfully
+      it_should_output "<a:gd fmla=\"*/ h 10 -100\"/>"
     end
 
     not_allowed = ["a^2 + b^2 = c^2", "Not a formula", 2 ]

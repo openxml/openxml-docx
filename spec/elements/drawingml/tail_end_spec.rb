@@ -5,11 +5,12 @@ describe OpenXml::DrawingML::Elements::TailEnd do
 
   it_should_use tag: :tailEnd, name: "tail_end"
 
-  for_attribute(:length, displays_as: :len) do
-    allowed = %i(lg med sm)
-    with_values(allowed) do
-      it_should_assign_successfully
-      it_should_output_regular_xml
+  for_attribute(:length) do
+    %i(lg med sm).each do |allowed_value|
+      with_value(allowed_value) do
+        it_should_assign_successfully
+        it_should_output "<a:tailEnd len=\"#{allowed_value}\"/>"
+      end
     end
 
     with_value(:bad_value) do
@@ -18,10 +19,11 @@ describe OpenXml::DrawingML::Elements::TailEnd do
   end
 
   for_attribute(:type) do
-    allowed = %i(arrow diamond none oval stealth triangle)
-    with_values(allowed) do
-      it_should_assign_successfully
-      it_should_output_regular_xml
+    %i(arrow diamond none oval stealth triangle).each do |allowed_value|
+      with_value(allowed_value) do
+        it_should_assign_successfully
+        it_should_output "<a:tailEnd type=\"#{allowed_value}\"/>"
+      end
     end
 
     with_value(:bad_value) do
@@ -29,11 +31,12 @@ describe OpenXml::DrawingML::Elements::TailEnd do
     end
   end
 
-  for_attribute(:width, displays_as: :w) do
-    allowed = %i(lg med sm)
-    with_values(allowed) do
-      it_should_assign_successfully
-      it_should_output_regular_xml
+  for_attribute(:width) do
+    %i(lg med sm).each do |allowed_value|
+      with_value(allowed_value) do
+        it_should_assign_successfully
+        it_should_output "<a:tailEnd w=\"#{allowed_value}\"/>"
+      end
     end
 
     with_value(:bad_value) do

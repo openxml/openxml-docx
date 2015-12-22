@@ -5,7 +5,7 @@ module OpenXml
         tag :wsp
         namespace :wps
 
-        attribute :normalEastAsianFlow, expects: :true_or_false
+        attribute :normal_east_asian_flow, expects: :true_or_false, displays_as: :normalEastAsianFlow
       end
     end
   end

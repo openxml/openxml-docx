@@ -9,10 +9,10 @@ describe OpenXml::Docx::Elements::WordProcessingShapesShape do
     it_should_output "<wps:wsp/>", assign: false
   end
 
-  for_attribute(:normalEastAsianFlow) do
+  for_attribute(:normal_east_asian_flow) do
     with_value(true)do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<wps:wsp normalEastAsianFlow=\"true\"/>"
     end
 
     with_value("invalid") do
