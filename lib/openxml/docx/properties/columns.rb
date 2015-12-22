@@ -17,7 +17,6 @@ module OpenXml
         def render?
           return true if %i(equal_width number separator space).any? { |attribute| !public_send(attribute).nil? }
           super
-
         end
 
       end
