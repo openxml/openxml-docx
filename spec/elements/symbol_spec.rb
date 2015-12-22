@@ -5,10 +5,10 @@ describe OpenXml::Docx::Elements::Symbol do
 
   it_should_use tag: :sym, name: "symbol"
 
-  for_attribute(:font, with_namespace: :w) do
+  for_attribute(:font) do
     with_value("Wingdings") do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<w:sym w:font=\"Wingdings\"/>"
     end
 
     with_value(123) do
@@ -16,10 +16,10 @@ describe OpenXml::Docx::Elements::Symbol do
     end
   end
 
-  for_attribute(:character, with_namespace: :w, displays_as: :char) do
+  for_attribute(:character) do
     with_value("43FD") do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<w:sym w:char=\"43FD\"/>"
     end
 
     with_value("43gg") do

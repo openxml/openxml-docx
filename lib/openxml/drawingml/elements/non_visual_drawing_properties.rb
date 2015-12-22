@@ -6,7 +6,7 @@ module OpenXml
         tag :cNvPr
 
         attribute :description, expects: :string, displays_as: :descr
-        attribute :hidden, expects: :true_or_false
+        attribute :hidden, expects: :boolean
         attribute :id, expects: :positive_integer
         attribute :picture_name, expects: :string, displays_as: :name
         attribute :title, expects: :string

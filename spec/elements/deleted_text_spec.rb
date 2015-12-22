@@ -5,7 +5,7 @@ describe OpenXml::Docx::Elements::DeletedText do
 
   it_should_use tag: :del, name: "deleted_text"
 
-  for_attribute(:space, with_namespace: :xml) do
+  for_attribute(:space) do
     with_value(nil) do
       it_should_assign_successfully
       it_should_output "<w:del/>"
@@ -13,7 +13,7 @@ describe OpenXml::Docx::Elements::DeletedText do
 
     with_value(:preserve) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<w:del xml:space=\"preserve\"/>"
     end
 
     with_value(:the_final_frontier) do

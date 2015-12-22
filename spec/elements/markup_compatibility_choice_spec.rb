@@ -9,10 +9,10 @@ describe OpenXml::Docx::Elements::MarkupCompatibilityChoice do
     it_should_output "<mc:Choice/>", assign: false
   end
 
-  for_attribute(:Required) do
+  for_attribute(:requires) do
     with_value("wps") do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<mc:Choice Requires=\"wps\"/>"
     end
 
     with_value(1234) do

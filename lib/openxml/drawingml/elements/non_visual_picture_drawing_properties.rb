@@ -5,7 +5,7 @@ module OpenXml
         namespace :pic
         tag :cNvPicPr
 
-        attribute :preferRelativeResize, expects: :true_or_false
+        attribute :preferRelativeResize, expects: :boolean
       end
     end
   end

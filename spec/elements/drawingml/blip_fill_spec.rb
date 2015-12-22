@@ -6,12 +6,17 @@ describe OpenXml::DrawingML::Elements::BlipFill do
   it_should_use tag: :blipFill, name: "blip_fill"
 
   for_attribute(:dpi) do
-    with_values([1, -1]) do
+    with_value(1) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<pic:blipFill dpi=\"1\"/>"
     end
 
-    with_value(:not_a_number) do
+    with_value(-1) do
+      it_should_assign_successfully
+      it_should_output "<pic:blipFill dpi=\"-1\"/>"
+    end
+
+    with_values([:not_a_number, 12.34]) do
       it_should_raise_an_exception
     end
   end

@@ -5,12 +5,12 @@ module OpenXml
         tag :lsdException
 
         with_namespace :w do
-          attribute :locked, expects: :true_or_false
+          attribute :locked, expects: :boolean
           attribute :style_name, expects: :string, displays_as: :name
-          attribute :qFormat, expects: :true_or_false
-          attribute :semi_hidden, expects: :true_or_false, displays_as: :semiHidden
+          attribute :qFormat, expects: :boolean
+          attribute :semi_hidden, expects: :boolean, displays_as: :semiHidden
           attribute :ui_priority, expects: :integer, displays_as: :uiPriority
-          attribute :unhide_when_used, expects: :true_or_false, displays_as: :unhideWhenUsed
+          attribute :unhide_when_used, expects: :boolean, displays_as: :unhideWhenUsed
         end
 
 

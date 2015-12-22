@@ -10,23 +10,33 @@ describe OpenXml::Docx::Elements::WordProcessingDrawingSimplePosition do
   end
 
   for_attribute(:x) do
-    with_value([1234, -1234])do
+    with_value(1234)do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<wp:simplePos x=\"1234\"/>"
     end
 
-    with_value("hey") do
+    with_value(-1234)do
+      it_should_assign_successfully
+      it_should_output "<wp:simplePos x=\"-1234\"/>"
+    end
+
+    with_values([12.34, "not a number"]) do
       it_should_raise_an_exception
     end
   end
 
   for_attribute(:y) do
-    with_value([1234, -1234])do
+    with_value(1234)do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<wp:simplePos y=\"1234\"/>"
     end
 
-    with_value("hey") do
+    with_value(-1234)do
+      it_should_assign_successfully
+      it_should_output "<wp:simplePos y=\"-1234\"/>"
+    end
+
+    with_values([12.34, "not a number"]) do
       it_should_raise_an_exception
     end
   end

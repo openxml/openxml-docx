@@ -5,12 +5,12 @@ module OpenXml
         tag :tblLook
 
         with_namespace :w do
-          attribute :firstColumn, expects: :true_or_false
-          attribute :firstRow, expects: :true_or_false
-          attribute :lastColumn, expects: :true_or_false
-          attribute :lastRow, expects: :true_or_false
-          attribute :noHBand, expects: :true_or_false
-          attribute :noVBand, expects: :true_or_false
+          attribute :firstColumn, expects: :boolean
+          attribute :firstRow, expects: :boolean
+          attribute :lastColumn, expects: :boolean
+          attribute :lastRow, expects: :boolean
+          attribute :noHBand, expects: :boolean
+          attribute :noVBand, expects: :boolean
         end
 
       end

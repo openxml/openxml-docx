@@ -8,9 +8,14 @@ describe OpenXml::DrawingML::Elements::Offset do
   attributes = %i(x y)
 
   for_attribute(:x) do
-    with_values([1, -1]) do
+    with_value(1) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<a:off x=\"1\"/>"
+    end
+
+    with_value(-1) do
+      it_should_assign_successfully
+      it_should_output "<a:off x=\"-1\"/>"
     end
 
     with_values([1.1, :not_a_number]) do
@@ -19,9 +24,14 @@ describe OpenXml::DrawingML::Elements::Offset do
   end
 
   for_attribute(:y) do
-    with_values([1, -1]) do
+    with_value(1) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<a:off y=\"1\"/>"
+    end
+
+    with_value(-1) do
+      it_should_assign_successfully
+      it_should_output "<a:off y=\"-1\"/>"
     end
 
     with_values([1.1, :not_a_number]) do
