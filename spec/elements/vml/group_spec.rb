@@ -359,7 +359,7 @@ describe OpenXml::Vml::Elements::Group do
   end
 
   describe "(Explicitly) True/False-based Attributes" do
-    good_tf_values = %w(0 1 t f true false)
+    good_tf_values = [true, false]
     bad_tf_values = ["yes", "no", "on", "off", 5]
 
     for_attribute(:filled) do

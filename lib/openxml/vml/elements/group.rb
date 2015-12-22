@@ -10,41 +10,41 @@ module OpenXml
         attribute :coordinate_size, matches: /^[\-0-9]+,\s?[\-0-9]+$/, displays_as: :coordsize
         attribute :edit_as, one_of: %i(bullseye canvas cycle orgchart radial stacked venn), displays_as: :editas
         attribute :fill_color, expects: :valid_color, displays_as: :fillcolor
-        attribute :filled, matches: /^(?:[01tf]|true|false)$/
+        attribute :filled, expects: :boolean
         attribute :href, expects: :string
         attribute :id, expects: :string
-        attribute :print, matches: /^(?:[01tf]|true|false)$/
+        attribute :print, expects: :boolean
         attribute :style, expects: :string
         attribute :target, expects: :string
         attribute :title, expects: :string
         attribute :wrap_coordinates, expects: :string, displays_as: :wrapcoords
 
         with_namespace :o do
-          attribute :allow_in_cell, matches: /^(?:[01tf]|true|false)$/, displays_as: :allowincell
-          attribute :allow_overlap, matches: /^(?:[01tf]|true|false)$/, displays_as: :allowoverlap
+          attribute :allow_in_cell, expects: :boolean, displays_as: :allowincell
+          attribute :allow_overlap, expects: :boolean, displays_as: :allowoverlap
           attribute :border_bottom_color, expects: :string, displays_as: :borderbottomcolor
           attribute :border_left_color, expects: :string, displays_as: :borderleftcolor
           attribute :border_right_color, expects: :string, displays_as: :borderrightcolor
           attribute :border_top_color, expects: :string, displays_as: :bordertopcolor
-          attribute :bullet, matches: /^(?:[01tf]|true|false)$/
-          attribute :button, matches: /^(?:[01tf]|true|false)$/
+          attribute :bullet, expects: :boolean
+          attribute :button, expects: :boolean
           attribute :diagram_node_layout, expects: :valid_diagram_layout, displays_as: :dgmlayout
           attribute :diagram_node_recent_layout, expects: :valid_diagram_layout, displays_as: :dgmlayoutmru
           attribute :diagram_node_kind, expects: :integer, displays_as: :dgmnodekind
-          attribute :double_click_notify, matches: /^(?:[01tf]|true|false)$/, displays_as: :doubleclicknotify
-          attribute :hr, matches: /^(?:[01tf]|true|false)$/
+          attribute :double_click_notify, expects: :boolean, displays_as: :doubleclicknotify
+          attribute :hr, expects: :boolean
           attribute :hr_align, one_of: %i(center left right), displays_as: :hralign
-          attribute :hr_no_shade, matches: /^(?:[01tf]|true|false)$/, displays_as: :hrnoshade
+          attribute :hr_no_shade, expects: :boolean, displays_as: :hrnoshade
           attribute :hr_percent, expects: :integer, displays_as: :hrpct
-          attribute :hr_standard, matches: /^(?:[01tf]|true|false)$/, displays_as: :hrstd
+          attribute :hr_standard, expects: :boolean, displays_as: :hrstd
           attribute :inset_mode, one_of: %i(auto custom), displays_as: :insetmode
-          attribute :hide_extra_handles, matches: /^(?:[01tf]|true|false)$/, displays_as: :oned
+          attribute :hide_extra_handles, expects: :boolean, displays_as: :oned
           attribute :regroup_id, expects: :integer, displays_as: :regroupid
           attribute :optional_string, expects: :string, displays_as: :spid
           attribute :table_limits, expects: :string, displays_as: :tablelimits
           attribute :table_properties, expects: :string, displays_as: :tableproperties
-          attribute :user_drawn, matches: /^(?:[01tf]|true|false)$/, displays_as: :userdrawn
-          attribute :user_hidden, matches: /^(?:[01tf]|true|false)$/, displays_as: :userhidden
+          attribute :user_drawn, expects: :boolean, displays_as: :userdrawn
+          attribute :user_hidden, expects: :boolean, displays_as: :userhidden
         end
 
       private
