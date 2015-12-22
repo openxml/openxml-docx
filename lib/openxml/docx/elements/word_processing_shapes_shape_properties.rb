@@ -5,17 +5,7 @@ module OpenXml
         tag :spPr
         namespace :wps
 
-        attribute :bwMode, expects: :valid_colors
-
-      private
-
-        def valid_colors(value)
-          raise ArgumentError unless ok_values.include? value
-        end
-
-        def ok_values
-          %i(auto black blackGray blackWhite clr gray grayWhite hidden invGray ltGray white)
-        end
+        attribute :bw_mode, displays_as: :bwMode, one_of: %i(auto black blackGray blackWhite clr gray grayWhite hidden invGray ltGray white)
 
       end
     end

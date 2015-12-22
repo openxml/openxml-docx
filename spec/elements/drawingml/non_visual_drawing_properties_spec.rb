@@ -5,10 +5,10 @@ describe OpenXml::DrawingML::Elements::NonVisualDrawingProperties do
 
   it_should_use tag: :cNvPr, name: "non_visual_drawing_properties"
 
-  for_attribute(:description, displays_as: :descr) do
+  for_attribute(:description) do
     with_value("string") do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<pic:cNvPr descr=\"string\"/>"
     end
 
     with_value(:not_a_string) do
@@ -35,7 +35,7 @@ describe OpenXml::DrawingML::Elements::NonVisualDrawingProperties do
   for_attribute(:id) do
     with_value(123) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<pic:cNvPr id=\"123\"/>"
     end
 
     with_values([-123, :not_a_number]) do
@@ -43,10 +43,10 @@ describe OpenXml::DrawingML::Elements::NonVisualDrawingProperties do
     end
   end
 
-  for_attribute(:picture_name, displays_as: :name) do
+  for_attribute(:picture_name) do
     with_value("string") do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<pic:cNvPr name=\"string\"/>"
     end
 
     with_value(:not_a_string) do
@@ -57,7 +57,7 @@ describe OpenXml::DrawingML::Elements::NonVisualDrawingProperties do
   for_attribute(:title) do
     with_value("string") do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<pic:cNvPr title=\"string\"/>"
     end
 
     with_value(:not_a_string) do

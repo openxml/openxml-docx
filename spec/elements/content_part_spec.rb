@@ -5,10 +5,10 @@ describe OpenXml::Docx::Elements::ContentPart do
 
   it_should_use tag: :contentPart, name: "content_part"
 
-  for_attribute(:id, with_namespace: :r) do
+  for_attribute(:id) do
     with_value("rId8") do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<w:contentPart r:id=\"rId8\"/>"
     end
 
     with_value("") do

@@ -8,7 +8,7 @@ describe OpenXml::DrawingML::Elements::PresetGeometry do
   for_attribute(:preset, displays_as: :prst) do
     with_value(:roundRect) do
       it_should_assign_successfully
-      it_should_output_regular_xml
+      it_should_output "<a:prstGeom prst=\"roundRect\"/>"
     end
 
     with_value(:invalidGeometry) do

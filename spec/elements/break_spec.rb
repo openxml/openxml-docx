@@ -5,11 +5,12 @@ describe OpenXml::Docx::Elements::Break do
 
   it_should_use tag: :br, name: "break"
 
-  for_attribute(:clear, with_namespace: :w) do
-    allowed = %i(all left none right)
-    with_values(allowed) do
-      it_should_assign_successfully
-      it_should_output_regular_xml
+  for_attribute(:clear) do
+    %i(all left none right).each do |allowed_value|
+      with_value(allowed_value) do
+        it_should_assign_successfully
+        it_should_output "<w:br w:clear=\"#{allowed_value}\"/>"
+      end
     end
 
     with_value(:somethingElse) do
@@ -17,11 +18,12 @@ describe OpenXml::Docx::Elements::Break do
     end
   end
 
-  for_attribute(:type, with_namespace: :w) do
-    allowed = %i(column page textWrapping)
-    with_values(allowed) do
-      it_should_assign_successfully
-      it_should_output_regular_xml
+  for_attribute(:type) do
+    %i(column page textWrapping).each do |allowed_value|
+      with_value(allowed_value) do
+        it_should_assign_successfully
+        it_should_output "<w:br w:type=\"#{allowed_value}\"/>"
+      end
     end
 
     with_value(:somethingElse) do
