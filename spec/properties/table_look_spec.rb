@@ -35,4 +35,9 @@ describe OpenXml::Docx::Properties::TableLook do
     it_should_not_allow_invalid_value
   end
 
+  for_attribute(:value) do
+    it_should_assign_and_output_xml "00AF"
+    it_should_not_allow_invalid_value
+  end
+
 end

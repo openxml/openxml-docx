@@ -47,6 +47,34 @@ describe OpenXml::Docx::Properties::Indentation do
     it_should_not_allow_invalid_value
   end
 
+  for_attribute(:left) do
+    values = [1220, -1220]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
+  end
+
+  for_attribute(:left_characters) do
+    values = [1220, -1220]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
+  end
+
+  for_attribute(:right) do
+    values = [1220, -1220]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
+  end
+
+  for_attribute(:right_characters) do
+    values = [1220, -1220]
+    it_should_assign_and_output_xml values
+    it_should_not_allow_floats
+    it_should_not_allow_invalid_value
+  end
+
   for_attribute(:start) do
     values = [1220, -1220]
     it_should_assign_and_output_xml values
