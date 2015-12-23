@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+# require "rails" # workaround: openxml-package uses `extract_options!`
+$:.push Dir.pwd + "/lib"
+require "ox"
+require "openxml/docx"
+
+package = OpenXml::Docx::Package.new
+
+include OpenXml::Docx::Elements
+
+lorem_ipsum = [
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ullamcorper arcu nunc, eget maximus mi elementum ut. Nulla facilisi. Morbi eget augue tristique, aliquet purus quis, mollis eros. Maecenas massa purus, vehicula vel tellus eget, feugiat cursus metus. Vivamus consequat leo leo. Quisque interdum gravida placerat. Praesent auctor vestibulum nisi, quis viverra diam luctus interdum. Vivamus eu massa non tortor gravida ultrices. Nulla dapibus porta ipsum, et dignissim metus ultricies accumsan. In hac habitasse platea dictumst. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+  "Integer dapibus ac velit finibus elementum. Curabitur vel lacus mauris. Quisque diam diam, commodo at consectetur at, consectetur ut orci. Suspendisse nec nulla eu quam ullamcorper dignissim. Morbi et ligula non dolor scelerisque commodo vel nec tortor. Integer molestie lobortis elementum. Aenean vehicula turpis nulla, in viverra ex lacinia ac. Nam consectetur ante id velit vehicula, a tincidunt ex auctor. Nunc sodales tempus tristique. Aliquam nunc risus, pretium at lorem in, varius accumsan est. Mauris vel dolor eget lectus auctor malesuada. Aenean interdum dignissim hendrerit. Nullam vulputate mi nec massa pretium, at maximus arcu sodales. Mauris vitae neque sit amet urna facilisis rutrum id et lacus. Aliquam pretium orci nec auctor interdum. Nulla egestas mauris turpis, vel accumsan sem volutpat quis.",
+  "Integer tristique magna eu tellus cursus gravida. Fusce scelerisque ipsum eu odio malesuada faucibus. Proin malesuada, purus id eleifend facilisis, massa diam pellentesque libero, ac semper nisl turpis vel eros. Donec faucibus faucibus lectus sed vehicula. Vivamus sed tempus dui. Aliquam volutpat risus bibendum blandit sollicitudin. Mauris vitae rhoncus ipsum. Morbi id tempus ex, et consectetur nibh. Curabitur massa leo, fringilla vel pulvinar non, convallis ac justo. Ut non lobortis ante, ut rutrum arcu. Duis laoreet varius orci non gravida. Phasellus luctus elementum nunc, malesuada congue lorem viverra maximus. Donec ornare rhoncus nibh faucibus congue. Nulla placerat eros eu elit auctor ultricies. Phasellus pretium accumsan bibendum.",
+  "Nulla hendrerit augue a felis placerat, id luctus enim sagittis. Proin id arcu et sem dignissim elementum eu at nibh. Quisque enim augue, porttitor et auctor a, mollis in ante. Donec tempus volutpat volutpat. Donec ipsum magna, pellentesque vitae libero id, vestibulum ullamcorper lacus. Maecenas elit velit, scelerisque ut suscipit vitae, gravida ac neque. Phasellus nisl dui, feugiat et dapibus vel, feugiat quis nunc. Maecenas non bibendum augue, eget sagittis dolor.",
+  "Donec malesuada est enim, sed finibus massa sollicitudin a. Mauris leo eros, euismod eget nisi sed, bibendum egestas magna. Proin vel nulla in dolor dictum suscipit. Praesent tincidunt dictum metus ac ornare. Sed quis arcu nibh. Vestibulum faucibus lobortis condimentum. Cras id elementum risus, id faucibus ipsum. Suspendisse sed ante eu lacus ornare ultrices. Nullam erat nunc, volutpat eu odio quis, facilisis congue justo. Nulla facilisis sagittis mauris at imperdiet. Nulla facilisi. Morbi ornare aliquet tempus. Suspendisse eu tincidunt mauris. In hac habitasse platea dictumst.",
+  "Vestibulum elementum velit quis consequat cursus. Donec sagittis vitae massa eget accumsan. Donec pellentesque elementum risus at pulvinar. Proin dignissim aliquet purus in viverra. Ut ut quam sed leo porttitor sagittis sed quis arcu. Etiam feugiat leo ex. Nullam volutpat sapien nisi, vitae tristique metus sodales et. Duis eu ligula in turpis fermentum finibus eget sed est. In blandit, lectus non pharetra consectetur, neque augue rhoncus lorem, at convallis justo neque vel purus. Vestibulum purus erat, pretium vel ex sit amet, eleifend accumsan massa. Aliquam vel augue maximus, pharetra leo a, commodo ante. Integer efficitur dapibus nibh, at mattis tellus molestie sit amet.",
+  "Nunc aliquam ultricies libero, non egestas nisl ultricies ut. Nulla augue ante, interdum non suscipit vitae, ullamcorper nec mauris. Praesent feugiat interdum mauris, ut ornare nibh lacinia sed. Mauris eget porta ipsum. Aliquam vitae pretium augue. Sed molestie est sit amet ex tempus, vitae facilisis eros malesuada. Curabitur mollis sagittis mauris, id iaculis ex sodales a. Nunc in nunc vitae tortor rhoncus ultrices. Vivamus aliquet purus at lacus sodales maximus.",
+  "Quisque ullamcorper dolor nunc, nec accumsan massa dignissim ac. Maecenas porta eros vel venenatis consequat. Vestibulum nec erat eget ipsum interdum blandit quis non justo. Integer condimentum, neque non molestie laoreet, augue purus porta risus, dapibus bibendum tellus mauris ac arcu. Mauris a elementum nibh. Praesent ullamcorper ligula et justo viverra rhoncus. Nullam eget convallis velit. Nulla ullamcorper id tellus interdum mollis. Fusce ac aliquet ipsum. Quisque luctus cursus massa, tincidunt pharetra ante porta pellentesque. Praesent in diam quam. Nullam hendrerit quam malesuada venenatis finibus. Curabitur diam purus, luctus sed dictum sit amet, tristique sit amet est. Aenean pulvinar pulvinar velit, vitae vehicula est luctus ac. Morbi libero urna, tempor sed urna id, interdum ultrices orci.",
+  "Cras id nisi sagittis, tincidunt purus quis, porta est. Integer cursus leo risus, in pellentesque dui consectetur at. Sed convallis nulla id magna laoreet pretium. Suspendisse lacus metus, efficitur quis convallis nec, maximus dictum mi. Duis quis sodales velit. Integer ornare tincidunt condimentum. Proin dignissim mauris sed tortor maximus, vitae vestibulum urna volutpat. Morbi ornare velit at lacinia porttitor. In posuere volutpat ex non mollis. Phasellus diam est, lacinia quis consectetur eu, semper in justo. Quisque quis elementum tortor.",
+  "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque id lacus consequat, viverra augue vitae, tristique ex. Vivamus convallis metus odio, in cursus sem semper quis. Fusce blandit eget dolor sit amet tempus. Sed lobortis ipsum sit amet elementum dapibus. Ut orci leo, porta maximus nisi eu, efficitur viverra odio. Nunc sed posuere felis."
+]
+
+lorem_ipsum.each do |lorem|
+  text = Text.new(lorem)
+  run = Run.new
+  run << text
+  paragraph = Paragraph.new
+  paragraph << run
+  package.document << paragraph
+end
+
+booklet_print = BookFoldPrinting.new
+booklet_print.value = true
+package.settings << booklet_print
+
+booklet_print_page_count = BookFoldPrintingSheets.new
+booklet_print_page_count.value = 4
+package.settings << booklet_print_page_count
+
+filename = "docx_booklet_test.docx"
+system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
+package.save File.expand_path("~/Desktop/#{filename}")
+exec "open ~/Desktop/#{filename}"
