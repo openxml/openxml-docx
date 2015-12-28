@@ -57,13 +57,17 @@ module OpenXml
         type == :character
       end
 
+      def table_style?
+        type == :table
+      end
+
       VALID_STYLE_TYPES = %i(character paragraph table)
 
     private
 
       def install_paragraph_properties
-        @character = nil
         @table = nil
+        @character = OpenXml::Docx::Elements::Run.new
         @paragraph = OpenXml::Docx::Elements::Paragraph.new
       end
 
@@ -80,9 +84,9 @@ module OpenXml
       end
 
       def property_xml(xml)
-        return paragraph.property_xml(xml) if paragraph_style?
-        return character.property_xml(xml) if character_style?
-        table.property_xml(xml)
+        return table.property_xml(xml) if table_style?
+        character.property_xml(xml)
+        paragraph.property_xml(xml) if paragraph_style?
       end
 
       def valid_style_type(value)
