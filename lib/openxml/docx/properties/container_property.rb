@@ -7,14 +7,14 @@ module OpenXml
 
         class << self
           def child_class(*args)
-            if args.any?
-              prop_name = args.first.to_s.split(/_/).map(&:capitalize).join # LazyCamelCase
-              child_class_obj = OpenXml::Docx::Properties.const_get prop_name
-              @child_class = OpenXml::Docx::Properties.const_get prop_name
-            end
+            @child_classes = args.map do |arg|
+              prop_name = arg.to_s.split(/_/).map(&:capitalize).join # LazyCamelCase
+              OpenXml::Docx::Properties.const_get prop_name
+            end unless args.empty?
 
-            @child_class
+            @child_classes
           end
+          alias :child_classes :child_class
         end
 
         def initialize
@@ -48,15 +48,15 @@ module OpenXml
 
         def invalid_child_message
           class_name = self.class.to_s.split(/::/).last
-          "#{class_name} must be instances of OpenXml::Docx::Properties::#{child_class}"
+          "#{class_name} must be instances of one of the following: #{child_classes}"
         end
 
         def valid_child?(child)
-          child.is_a?(child_class)
+          child_classes.any? {|child_class| child.is_a?(child_class) }
         end
 
-        def child_class
-          self.class.child_class
+        def child_classes
+          self.class.child_classes
         end
 
       end
