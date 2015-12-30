@@ -31,6 +31,16 @@ lorem_ipsum.each do |lorem|
   package.document << paragraph
 end
 
+section_properties = SectionProperties.new
+
+page_size = OpenXml::Docx::Properties::PageSize.new
+page_size.height = 12240
+page_size.width = 7920
+page_size.orientation = :landscape
+section_properties << page_size
+
+package.document << section_properties
+
 booklet_print = BookFoldPrinting.new
 booklet_print.value = true
 package.settings << booklet_print
