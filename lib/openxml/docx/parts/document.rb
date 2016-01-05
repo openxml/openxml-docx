@@ -31,10 +31,15 @@ module OpenXml
           end
         end
 
+        def background
+          @background ||= OpenXml::Docx::Elements::Background.new
+        end
+
         def to_xml
           build_xml do |xml|
             xml.document(root_namespaces) {
               xml.parent.namespace = :w
+              background.to_xml(xml) unless @background.nil?
               xml["w"].body {
                 children.each { |child| child.to_xml(xml) }
                 current_section.to_xml(xml) unless current_section.nil?
