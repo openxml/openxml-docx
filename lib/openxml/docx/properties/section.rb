@@ -5,7 +5,7 @@ module OpenXml
     module Properties
       class Section < ContainerProperty
         tag :sectPr
-        child_classes :page_size, :page_margins, :columns
+        child_classes :page_size, :page_margins, :columns, :header_reference
       end
     end
   end
