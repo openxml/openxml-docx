@@ -1,3 +1,5 @@
+require "openxml/docx/properties/footer_reference"
+
 module OpenXml
   module Docx
     module Properties
