@@ -1,4 +1,5 @@
 require "openxml/package"
+require "open-uri"
 
 module OpenXml
   module Docx
@@ -49,7 +50,7 @@ module OpenXml
       end
 
       def embed_truetype_font(path: nil, name: nil)
-        File.open(path, "rb") do |source_font|
+        open(path, "rb") do |source_font|
           obfuscation_data = obfuscate_font source_font
           data = obfuscation_data[:bytes] << source_font.read
           destination_font_name = "font#{fonts.fonts.count + 1}.odttf"
@@ -70,14 +71,14 @@ module OpenXml
         return if path.nil?
         into_part = document unless into_part.respond_to?(:relationships)
 
-        extension_match = path.match(/\.(?<extension>[^\.]+)$/)
+        extension_match = path.match(/\.(?<extension>[^\.]+?)(?:\?.+)?$/)
         content_type ||= extension_match[:extension] if extension_match
         return if content_type.nil?
 
         content_type = "jpeg" if content_type == "jpg"
         content_type = content_type.to_sym
 
-        File.open(path, "rb") do |source_image|
+        open(path, "rb") do |source_image|
           destination_image_name = "image#{image_names.count + 1}.#{content_type}"
           add_part "word/media/#{destination_image_name}", OpenXml::Parts::UnparsedPart.new(source_image.read)
           image_names << destination_image_name
