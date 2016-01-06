@@ -257,17 +257,17 @@ module OpenXml
 
       def hex_color(value)
         message = "Invalid #{name}: must be :auto or a hex color, e.g. 4F1B8C"
-        raise ArgumentError, message unless value == :auto || value =~ /[0-9A-F]{6}/
+        raise ArgumentError, message unless value == :auto || value =~ /^[0-9A-F]{6}$/
       end
 
       def hex_digit(value)
         message = "Invalid #{name}: must be a two-digit hex number, e.g. BF"
-        raise ArgumentError, message unless value =~ /[0-9A-F]{2}/
+        raise ArgumentError, message unless value =~ /^[0-9A-F]{2}$/
       end
 
       def hex_digit_4(value)
         message = "Invalid #{name}: must be a four-digit hex number, e.g. BF12"
-        raise ArgumentError, message unless value =~ /[0-9A-F]{4}/
+        raise ArgumentError, message unless value =~ /^[0-9A-F]{4}$/
       end
 
       def long_hex_number(value)

@@ -5,7 +5,7 @@ module OpenXml
         namespace :wps
         tag :cNvSpPr
 
-        attribute :txBox, expects: :boolean
+        attribute :textbox, expects: :boolean, displays_as: :txBox
       end
     end
   end
