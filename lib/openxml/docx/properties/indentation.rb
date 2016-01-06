@@ -9,8 +9,12 @@ module OpenXml
           attribute :end_characters, expects: :integer, displays_as: :endChars
           attribute :hanging, expects: :integer
           attribute :hanging_characters, expects: :integer, displays_as: :hangingChars
-          attribute :first_line, expects: :integer
+          attribute :first_line, expects: :integer, displays_as: :firstLine
           attribute :first_line_characters, expects: :integer, displays_as: :firstLineChars
+          attribute :left, expects: :integer, deprecated: true
+          attribute :left_characters, expects: :integer, displays_as: :leftChars, deprecated: true
+          attribute :right, expects: :integer, deprecated: true
+          attribute :right_characters, expects: :integer, displays_as: :rightChars, deprecated: true
           attribute :start, expects: :integer
           attribute :start_characters, expects: :integer, displays_as: :startChars
         end
