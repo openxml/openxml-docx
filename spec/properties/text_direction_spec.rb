@@ -35,6 +35,11 @@ describe OpenXml::Docx::Properties::TextDirection do
     it_should_output "<w:textDirection w:val=\"tbV\"/>"
   end
 
+  with_value(:btLr) do
+    it_should_work
+    it_should_output "<w:textDirection w:val=\"btLr\"/>"
+  end
+
   with_value(:left_to_right) do
     it_should_not_work
   end

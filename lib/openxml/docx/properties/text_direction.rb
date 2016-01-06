@@ -4,7 +4,7 @@ module OpenXml
       class TextDirection < ValueProperty
 
         def ok_values
-          %i(lr lrV rl rlV tb tbV)
+          %i(lr lrV rl rlV tb tbV btLr)
         end
 
       end
