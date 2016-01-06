@@ -38,6 +38,7 @@ module OpenXml
         property :shading
         property :spacing
         property :tabs
+        property :section
 
         def section_properties=(section)
           raise ArgumentError, "Section properties must be an instance of OpenXml::Docx::Section" unless section.is_a?(OpenXml::Docx::Section)

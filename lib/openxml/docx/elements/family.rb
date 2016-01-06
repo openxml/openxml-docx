@@ -13,7 +13,7 @@ module OpenXml
         def valid_font_family(value)
           ok_values = %i(auto decorative modern roman script swiss) # From the spec section 17.18.30
           message = "Invalid font family type (#{value}). Valid options are: #{ok_values.join(", ")}."
-          raise ArgumentError, message unless ok_values.inculde? value
+          raise ArgumentError, message unless ok_values.include? value
         end
 
       end

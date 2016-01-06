@@ -30,4 +30,29 @@ describe OpenXml::Docx::Elements::Paragraph do
     it_should_output_correct_xml
   end
 
+  context "with section properties" do
+    before(:each) do
+      @instance = described_class.new
+      ps = OpenXml::Docx::Properties::PageSize.new
+      ps.height = 15840
+      ps.width = 12240
+      @instance.section << ps
+
+      pm = OpenXml::Docx::Properties::PageMargins.new
+      pm.bottom = 1440
+      pm.footer = 720
+      pm.header = 720
+      pm.left = 1440
+      pm.right = 1440
+      pm.top = 1440
+
+      @instance.section << pm
+      columns = OpenXml::Docx::Properties::Columns.new
+      columns.space = 720
+      @instance.section << columns
+
+    end
+
+    it_should_output_correct_xml node_xml: "paragraph_with_section_properties"
+  end
 end
