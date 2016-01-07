@@ -203,7 +203,7 @@ module OpenXml
       end
 
       module ClassMethods
-        def attribute(name, expects: nil, one_of: nil, displays_as: nil, namespace: nil, matches: nil)
+        def attribute(name, expects: nil, one_of: nil, displays_as: nil, namespace: nil, matches: nil, deprecated: false)
           bad_names = %w(tag name namespace properties_tag)
           raise ArgumentError if bad_names.member? name
 
