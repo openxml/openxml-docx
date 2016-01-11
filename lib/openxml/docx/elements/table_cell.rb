@@ -13,6 +13,7 @@ module OpenXml
         value_property :table_cell_fit_text
         value_property :text_direction
         value_property :v_align
+        value_property :vertical_merge
 
         property :conditional_formatting
         property :headers
