@@ -1,4 +1,7 @@
 require "openxml/docx/properties/column"
+require "openxml/docx/properties/page_margins"
+require "openxml/docx/properties/page_size"
+require "openxml/docx/properties/header_reference"
 
 module OpenXml
   module Docx
