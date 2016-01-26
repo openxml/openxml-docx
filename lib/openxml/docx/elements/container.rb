@@ -6,8 +6,9 @@ module OpenXml
 
         attr_reader :children
 
-        def initialize
+        def initialize(options={})
           @children = []
+          super
         end
 
         def <<(child)

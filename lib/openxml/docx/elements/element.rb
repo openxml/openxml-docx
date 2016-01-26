@@ -25,6 +25,21 @@ module OpenXml
 
         end
 
+        def initialize(options={})
+          options.each do |(attr_name, value)|
+            self.public_send("#{attr_name}=", value) if self.respond_to? :"#{attr_name}="
+          end
+
+          if block_given?
+            block = Proc.new
+            if block.arity == 0
+              instance_eval(&block)
+            else
+              yield self
+            end
+          end
+        end
+
         def tag
           self.class.tag || default_tag
         end

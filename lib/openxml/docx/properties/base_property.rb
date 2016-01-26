@@ -35,6 +35,14 @@ module OpenXml
             raise ArgumentError, "Invalid tag name for #{name}: #{tag.inspect}. It should be one of #{self.class.allowed_tags.join(", ")}."
           end
           @tag = tag
+
+          if block_given?
+            if block.arity == 0
+              instance_eval(&block)
+            else
+              yield self
+            end
+          end
         end
 
         def render?

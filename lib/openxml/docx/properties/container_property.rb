@@ -17,8 +17,9 @@ module OpenXml
           alias :child_classes :child_class
         end
 
-        def initialize
+        def initialize(*args)
           @children = []
+          super
         end
 
         def <<(child)
