@@ -3,6 +3,7 @@
 $:.push Dir.pwd + "/lib"
 require "ox"
 require "openxml/docx"
+require "openxml/drawingml"
 
 ROWS = 8
 COLUMNS = 4
@@ -43,6 +44,42 @@ def build_docx
   end
 
   docx.document << table
+
+  # ochanomizu.jpg
+  # 96 ppi
+  # 393px x 599px
+  image_width = (393 * (96.0 / 300) * 12700).round # Rough conversion to EMU: 1pt = 12700emu
+  image_height = (599 * (96.0 / 300) * 12700).round
+  image_rid = docx.embed_image(path: File.join(File.dirname(__FILE__), "ochanomizu.jpg"))
+  inline_image = OpenXml::Docx::Elements::Paragraph.new do
+    alignment(:center)
+    push OpenXml::Docx::Elements::Run.new
+      .push(OpenXml::Docx::Elements::Drawing.new(scaffold: true, width: image_width, height: image_height, anchor_type: :inline, wrap_type: :top_and_bottom) do
+        graphic << OpenXml::DrawingML::Elements::GraphicData.new
+          .uri(OpenXml::DrawingML::Elements::GraphicData.data_types[:picture])
+          .push(OpenXml::DrawingML::Elements::Picture.new(scaffold: true, image_rid: image_rid, width: image_width, height: image_height))
+      end)
+  end
+  docx.document << inline_image
+
+  textbox_width = 6 * 72 * 12700
+  textbox_height = 2 * 72 * 12700
+  floating_textbox = OpenXml::Docx::Elements::Paragraph.new do
+    push(OpenXml::Docx::Elements::Run.new do
+      push(OpenXml::Docx::Elements::Drawing.new(scaffold: true, width: textbox_width, height: textbox_height, wrap_type: :top_and_bottom) do
+        graphic << OpenXml::DrawingML::Elements::GraphicData.new
+          .uri(OpenXml::DrawingML::Elements::GraphicData.data_types[:wordprocessing_shape])
+          .push(OpenXml::Docx::Elements::WordProcessingShapesShape.new(scaffold: true, width: textbox_width, height: textbox_height, textbox: true) do
+            text_content << OpenXml::Docx::Elements::Paragraph.new
+              .alignment(:center)
+              .paragraph_style("Heading1")
+              .push(OpenXml::Docx::Elements::Run.new("Hello, Textboxes!"))
+          end)
+      end)
+    end)
+  end
+  docx.document << floating_textbox
+
   docx.document << OpenXml::Docx::Section.new
     .page_size
       .height(15840)
