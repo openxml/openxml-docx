@@ -9,8 +9,10 @@ module OpenXml
           value << text if text.is_a? String
         end
 
-        def value
-          @value ||= ""
+        def value(*args)
+          return @value ||= "" unless args.any?
+          @value = args.first.to_s
+          self
         end
 
         def value=(new_value)
