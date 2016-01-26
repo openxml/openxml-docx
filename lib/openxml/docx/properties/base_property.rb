@@ -29,12 +29,13 @@ module OpenXml
           end
         end
 
-        def initialize(tag=nil, *args)
+        def initialize(tag=nil, *args, scaffold: true)
           return unless self.class.allowed_tags
           unless self.class.allowed_tags.include?(tag)
             raise ArgumentError, "Invalid tag name for #{name}: #{tag.inspect}. It should be one of #{self.class.allowed_tags.join(", ")}."
           end
           @tag = tag
+          build_scaffold if scaffold
 
           if block_given?
             if block.arity == 0
@@ -74,6 +75,9 @@ module OpenXml
         end
 
       private
+
+        def build_scaffold
+        end
 
         def class_name
           self.class.to_s.split(/::/).last
