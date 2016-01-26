@@ -1,0 +1,134 @@
+#!/usr/bin/env ruby
+
+$:.push Dir.pwd + "/lib"
+require "ox"
+require "openxml/docx"
+
+ROWS = 8
+COLUMNS = 4
+
+def build_docx
+  docx = OpenXml::Docx::Package.new
+
+  heading = OpenXml::Docx::Elements::Paragraph.new
+    .paragraph_style("Heading1")
+
+  heading << OpenXml::Docx::Elements::Run.new("A Table of Some Sort")
+  docx.document << heading
+
+  table = OpenXml::Docx::Elements::Table.new
+    .width(5000)
+    .width_unit(:pct)
+    .table_style("TableGrid")
+
+  ROWS.times do
+    row = OpenXml::Docx::Elements::TableRow.new
+
+    COLUMNS.times do
+      cell = OpenXml::Docx::Elements::TableCell.new
+
+      paragraph = OpenXml::Docx::Elements::Paragraph.new
+        .paragraph_style("CellText")
+      line_one = OpenXml::Docx::Elements::Run.new("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+      line_one << OpenXml::Docx::Elements::Break.new
+      line_two = OpenXml::Docx::Elements::Run.new("Donec a diam lectus. Sed sit amet ipsum mauris.")
+
+      paragraph << line_one
+      paragraph << line_two
+      cell << paragraph
+      row << cell
+    end
+
+    table << row
+  end
+
+  docx.document << table
+  docx.document << OpenXml::Docx::Section.new
+    .page_size
+      .height(15840)
+      .width(12240)
+      .orientation(:portrait)
+      .end_chain
+    .page_margins
+      .bottom(720)
+      .footer(360)
+      .gutter(0)
+      .header(360)
+      .left(720)
+      .right(720)
+      .top(720)
+      .end_chain
+
+  docx.styles << build_heading_style
+  docx.styles << build_table_style
+  docx.styles << build_cell_text_style
+
+  filename = "rocx_test_table.docx"
+  system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
+  docx.save File.expand_path("~/Desktop/#{filename}")
+  exec "open ~/Desktop/#{filename}"
+end
+
+def build_table_style
+  OpenXml::Docx::Style.new(:table)
+    .id("TableGrid")
+    .style_name("Table Grid")
+    .primary_style(true)
+    .table
+      .table_borders do
+        all_tags.each do |tag_name|
+          push OpenXml::Docx::Properties::TableBorder.new(tag_name, :single)
+            .color("000000")
+            .width(8)
+        end
+      end
+      .table_cell_margins do
+        vertical_tags.each do |tag_name|
+          push OpenXml::Docx::Properties::TableCellMargin.new(tag_name)
+            .type(:dxa)
+            .width(0)
+        end
+        horizontal_tags.each do |tag_name|
+          push OpenXml::Docx::Properties::TableCellMargin.new(tag_name)
+            .type(:dxa)
+            .width(108)
+        end
+      end
+      .end_chain
+end
+
+def build_heading_style
+  OpenXml::Docx::Style.new(:paragraph)
+    .id("Heading1")
+    .style_name("Heading 1")
+    .primary_style(true)
+    .paragraph
+      .alignment(:center)
+      .end_chain
+    .character
+      .bold(true)
+      .font_size(48)
+      .end_chain
+end
+
+def build_cell_text_style
+  OpenXml::Docx::Style.new(:paragraph)
+    .id("CellText")
+    .style_name("Table Cell")
+    .primary_style(true)
+    .paragraph
+      .alignment(:center)
+      .text_alignment(:center)
+      .end_chain
+    .character
+      .font
+        .ascii("Times New Roman")
+        .high_ansi("Times New Roman")
+        .end_chain
+      .font_size(20)
+      .end_chain
+end
+
+# Do the thing!
+build_docx
+
