@@ -21,6 +21,13 @@ module OpenXml
           }
         end
 
+        def method_missing(method, *args, &block)
+          found_child = children.select { |child| child.name == method.to_s }
+          return if found_child.empty?
+          return found_child.first if found_child.count == 1
+          found_child
+        end
+
       private
 
         def properties_tag

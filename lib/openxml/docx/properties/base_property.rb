@@ -20,7 +20,7 @@ module OpenXml
 
           def name(*args)
             @property_name = args.first if args.any?
-            @name
+            @property_name
           end
 
           def namespace(*args)

@@ -1,10 +1,12 @@
+require "openxml/docx/chainable_nested_context"
+
 module OpenXml
   module Docx
     class Style
       include AttributeBuilder
       include PropertyBuilder
 
-      attr_reader :paragraph, :character, :table, :type
+      attr_reader :type
 
       attribute :custom, expects: :boolean, displays_as: :customStyle, namespace: :w
       attribute :default, expects: :boolean, namespace: :w
@@ -33,6 +35,21 @@ module OpenXml
       def type=(value)
         @type = value
         send "install_#{value}_properties"
+      end
+
+      def paragraph
+        @paragraph.instance_variable_set "@self_was", self
+        @paragraph
+      end
+
+      def character
+        @character.instance_variable_set "@self_was", self
+        @character
+      end
+
+      def table
+        @table.instance_variable_set "@self_was", self
+        @table
       end
 
       def tag
@@ -69,18 +86,22 @@ module OpenXml
         @table = nil
         @character = OpenXml::Docx::Elements::Run.new
         @paragraph = OpenXml::Docx::Elements::Paragraph.new
+        @character.extend OpenXml::Docx::ChainableNestedContext
+        @paragraph.extend OpenXml::Docx::ChainableNestedContext
       end
 
       def install_character_properties
         @paragraph = nil
         @table = nil
         @character = OpenXml::Docx::Elements::Run.new
+        @character.extend OpenXml::Docx::ChainableNestedContext
       end
 
       def install_table_properties
         @character = nil
         @paragraph = nil
         @table = OpenXml::Docx::Elements::Table.new
+        @table.extend OpenXml::Docx::ChainableNestedContext
       end
 
       def property_xml(xml)

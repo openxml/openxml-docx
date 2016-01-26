@@ -204,16 +204,21 @@ module OpenXml
 
       module ClassMethods
         def attribute(name, expects: nil, one_of: nil, displays_as: nil, namespace: nil, matches: nil, deprecated: false)
-          bad_names = %w(tag name namespace properties_tag)
+          bad_names = %w(tag name namespace properties_tag class)
           raise ArgumentError if bad_names.member? name
-
-          attr_reader name
 
           define_method "#{name}=" do |value|
             valid_in?(value, one_of) unless one_of.nil?
             send(expects, value) unless expects.nil?
             matches?(value, matches) unless matches.nil?
             instance_variable_set "@#{name}", value
+          end
+
+          # Attributes will return the element, properties will return property
+          define_method "#{name}" do |*args|
+            return instance_variable_get "@#{name}" if args.empty?
+            public_send(:"#{name}=", args.first)
+            self
           end
 
           camelized_name = name.to_s.gsub(/_([a-z])/i) { $1.upcase }.to_sym
