@@ -26,7 +26,10 @@ module OpenXml
         end
 
         def initialize(options={})
-          build_scaffold if options.fetch(:scaffold, true)
+          if options.fetch(:scaffold, false)
+            @options = options # Make available for scaffolding if needed
+            build_scaffold
+          end
 
           options.each do |(attr_name, value)|
             self.public_send("#{attr_name}=", value) if self.respond_to? :"#{attr_name}="
@@ -59,6 +62,7 @@ module OpenXml
         end
 
       private
+        attr_reader :options
 
         # Override in subclasses to set up default attributes, properties, and children
         # when the `build` class method is used to construct the object

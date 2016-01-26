@@ -16,7 +16,7 @@ def build_docx
   heading << OpenXml::Docx::Elements::Run.new("A Table of Some Sort")
   docx.document << heading
 
-  table = OpenXml::Docx::Elements::Table.new
+  table = OpenXml::Docx::Elements::Table.new(scaffold: true)
     .width(5000)
     .width_unit(:pct)
     .table_style("TableGrid")
