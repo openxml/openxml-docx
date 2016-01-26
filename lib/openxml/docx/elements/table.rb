@@ -24,6 +24,15 @@ module OpenXml
         property :table_p_pr
         property :table_width
 
+      private
+
+        def build_scaffold
+          table_width.type = :auto
+          table_width.width = 0
+          table_layout.type = :fixed
+          push OpenXml::Docx::Elements::TableGrid.new
+        end
+
       end
     end
   end
