@@ -13,6 +13,13 @@ module OpenXml
 
         def <<(child)
           children << child
+          self
+        end
+        alias :push :<<
+
+        def concat(new_children)
+          Array(new_children).each { |child| self.push child }
+          self
         end
 
         def to_xml(xml)

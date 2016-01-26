@@ -25,6 +25,13 @@ module OpenXml
         def <<(child)
           raise ArgumentError, invalid_child_message unless valid_child?(child)
           children << child
+          self
+        end
+        alias :push :<<
+
+        def concat(new_children)
+          Array(new_children).each { |child| self.push child }
+          self
         end
 
         def each(*args, &block)

@@ -24,6 +24,19 @@ module OpenXml
         property :table_p_pr
         property :table_width
 
+        def width(*args)
+          return table_width.width if args.empty?
+          table_width.width = args.first
+          table_width.type = :dxa if table_width.type == :auto
+          self
+        end
+
+        def width_unit(*args)
+          return table_width.type if args.empty?
+          table_width.type = args.first
+          self
+        end
+
       private
 
         def build_scaffold
