@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:w="http://wnamespace.org">
+  <wps:wsp>
+    <wps:cNvSpPr txBox="false"/>
+    <wps:spPr>
+      <a:xfrm>
+        <a:off x="0" y="0"/>
+        <a:ext cx="0" cy="0"/>
+      </a:xfrm>
+      <a:prstGeom prst="rect">
+        <a:avLst/>
+      </a:prstGeom>
+      <a:noFill/>
+      <a:ln>
+        <a:noFill/>
+      </a:ln>
+    </wps:spPr>
+    <wps:bodyPr anchor="t" anchorCtr="false" compatLnSpc="true" forceAA="false" horzOverflow="overflow" numCol="1" rot="0" spcFirstLastPara="false" vert="horz" vertOverflow="overflow" wrap="square">
+      <a:prstTxWarp prst="textNoShape">
+        <a:avLst/>
+      </a:prstTxWarp>
+    </wps:bodyPr>
+  </wps:wsp>
+</root>

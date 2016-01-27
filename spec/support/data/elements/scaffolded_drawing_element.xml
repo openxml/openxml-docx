@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:w="http://wnamespace.org">
+  <w:drawing>
+    <wp:anchor allowOverlap="true" behindDoc="false" distB="0" distL="0" distR="0" distT="0" layoutInCell="true" locked="false" relativeHeight="1000" simplePos="false">
+      <wp:simplePos x="0" y="0"/>
+      <wp:positionH relativeFrom="column">
+        <wp:posOffset>0</wp:posOffset>
+      </wp:positionH>
+      <wp:positionV relativeFrom="paragraph">
+        <wp:posOffset>0</wp:posOffset>
+      </wp:positionV>
+      <wp:extent cx="0" cy="0"/>
+      <wp:wrapNone/>
+      <wp:docPr descr="Drawing" id="1" name="Drawing"/>
+      <a:graphic/>
+    </wp:anchor>
+  </w:drawing>
+</root>

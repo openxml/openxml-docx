@@ -65,6 +65,28 @@ module ElementTestMacros
       end
     end
 
+    def it_should_scaffold_itself_correctly(options={})
+      it "should correctly scaffold itself and its children" do
+        node_xml = options[:node_xml]
+        if node_xml.nil?
+          node_xml = described_class.to_s.split(/::/).last
+          node_xml = node_xml.gsub(/(.)([A-Z])/, '\1_\2').downcase
+        end
+        node_xml = "scaffolded_#{node_xml}"
+
+        options.merge!({scaffold: true})
+        @instance = described_class.new(options)
+
+        generated_xml = OpenXml::Builder.new do |xml|
+          xml.root("xmlns:w" => "http://wnamespace.org") {
+            instance.to_xml(xml)
+          }
+        end.to_xml
+
+        expect(generated_xml).to eq(element_xml(node_xml) + "\n")
+      end
+    end
+
     def it_should_use(tag: nil, name: nil, value: nil)
       context "always" do
         before(:each) do

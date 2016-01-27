@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:w="http://wnamespace.org">
+  <pic:pic>
+    <pic:nvPicPr>
+      <pic:cNvPr descr="Image" id="1" name="Image"/>
+      <pic:cNvPicPr>
+        <a:picLocks noChangeArrowheads="true" noChangeAspect="true"/>
+      </pic:cNvPicPr>
+    </pic:nvPicPr>
+    <pic:blipFill>
+      <a:blip r:embed="rId5"/>
+      <a:stretch>
+        <a:fillRect/>
+      </a:stretch>
+      <a:srcRect/>
+    </pic:blipFill>
+    <pic:spPr>
+      <a:xfrm>
+        <a:off x="0" y="0"/>
+        <a:ext cx="0" cy="0"/>
+      </a:xfrm>
+      <a:prstGeom prst="rect">
+        <a:avLst/>
+      </a:prstGeom>
+      <a:noFill/>
+      <a:ln>
+        <a:noFill/>
+      </a:ln>
+    </pic:spPr>
+  </pic:pic>
+</root>

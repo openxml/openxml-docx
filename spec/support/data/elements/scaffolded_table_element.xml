@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:w="http://wnamespace.org">
+  <w:tbl>
+    <w:tblPr>
+      <w:tblLayout w:type="fixed"/>
+      <w:tblW w:type="auto" w:w="0"/>
+    </w:tblPr>
+    <w:tblGrid/>
+  </w:tbl>
+</root>

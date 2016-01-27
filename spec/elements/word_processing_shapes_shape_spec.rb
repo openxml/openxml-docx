@@ -20,4 +20,6 @@ describe OpenXml::Docx::Elements::WordProcessingShapesShape do
     end
   end
 
+  it_should_scaffold_itself_correctly
+
 end
