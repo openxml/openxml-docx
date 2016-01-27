@@ -30,6 +30,6 @@ describe OpenXml::Docx::Elements::BidiOverride do
       instance << run
     end
 
-    it_should_output "<w:bdo>\n    <w:r>\n      <w:t>Smucker's Preserves</w:t>\n    </w:r>\n  </w:bdo>", assign: false
+    it_should_output "<w:bdo>\n    <w:r>\n      <w:t>Smucker&apos;s Preserves</w:t>\n    </w:r>\n  </w:bdo>", assign: false
   end
 end

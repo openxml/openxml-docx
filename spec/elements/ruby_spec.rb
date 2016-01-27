@@ -39,7 +39,7 @@ describe OpenXml::Docx::Elements::Ruby do
       instance.ruby = run
     end
 
-    it_should_output "<w:ruby>\n    <w:rt>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>to&#x304;</w:t>\n      </w:r>\n    </w:rt>\n    <w:rubyBase>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>&#x6771;&#x304;</w:t>\n      </w:r>\n    </w:rubyBase>\n  </w:ruby>", assign: false
+    it_should_output "<w:ruby>\n    <w:rt>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>tō</w:t>\n      </w:r>\n    </w:rt>\n    <w:rubyBase>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>東̄</w:t>\n      </w:r>\n    </w:rubyBase>\n  </w:ruby>", assign: false
   end
 
   context "with base text, ruby text and properties set" do
@@ -60,7 +60,7 @@ describe OpenXml::Docx::Elements::Ruby do
       instance.alignment = :left
     end
 
-    it_should_output "<w:ruby>\n    <w:rubyPr>\n      <w:rubyAlign w:val=\"left\"/>\n    </w:rubyPr>\n    <w:rt>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>to&#x304;</w:t>\n      </w:r>\n    </w:rt>\n    <w:rubyBase>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>&#x6771;&#x304;</w:t>\n      </w:r>\n    </w:rubyBase>\n  </w:ruby>", assign: false
+    it_should_output "<w:ruby>\n    <w:rubyPr>\n      <w:rubyAlign w:val=\"left\"/>\n    </w:rubyPr>\n    <w:rt>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>tō</w:t>\n      </w:r>\n    </w:rt>\n    <w:rubyBase>\n      <w:r>\n        <w:rPr>\n          <w:b/>\n        </w:rPr>\n        <w:t>東̄</w:t>\n      </w:r>\n    </w:rubyBase>\n  </w:ruby>", assign: false
   end
 
 end

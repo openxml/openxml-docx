@@ -18,7 +18,7 @@ module StyleTestMacros
           style_xml = style_xml.gsub(/(.)([A-Z])/, '\1_\2').downcase
         end
 
-        generated_xml = Nokogiri::XML::Builder.new do |xml|
+        generated_xml = OpenXml::Builder.new do |xml|
           xml.styleFoo("xmlns:w" => "http://wnamespace.com") {
             style.build_xml(xml)
           }

@@ -5,7 +5,7 @@ module ElementTestMacros
   end
 
   def xml(obj)
-    doc = Nokogiri::XML::Builder.new do |xml|
+    doc = OpenXml::Builder.new do |xml|
       xml.root(root_namespaces) {
         obj.to_xml(xml)
       }
@@ -14,7 +14,7 @@ module ElementTestMacros
   end
 
   def doc_pattern
-    /<\?xml\sversion="1.0"\?>\n<root (?:xmlns:\w+=".+?".?)+>\n\s+([^\s].+)\n<\/root>/m
+    /<\?xml\sversion="1.0"\sencoding=\"utf-8\"\?>\n<root (?:xmlns:\w+=".+?".?)+>\n\s+([^\s].+)\n<\/root>/m
   end
 
   def self.included(base)
@@ -55,7 +55,7 @@ module ElementTestMacros
           node_xml = node_xml.gsub(/(.)([A-Z])/, '\1_\2').downcase
         end
 
-        generated_xml = Nokogiri::XML::Builder.new do |xml|
+        generated_xml = OpenXml::Builder.new do |xml|
           xml.root("xmlns:w" => "http://wnamespace.org") {
             instance.to_xml(xml)
           }

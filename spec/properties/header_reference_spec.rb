@@ -26,7 +26,7 @@ describe OpenXml::Docx::Properties::HeaderReference do
   end
 
   with_these_attributes_set(id: "rId5", type: :default) do
-    it_should_output "<w:headerReference w:type=\"default\" r:id=\"rId5\"/>", assign: false
+    it_should_output "<w:headerReference r:id=\"rId5\" w:type=\"default\"/>", assign: false
   end
 
 end
