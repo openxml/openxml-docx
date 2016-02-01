@@ -100,7 +100,7 @@ def build_docx
   docx.styles << build_table_style
   docx.styles << build_cell_text_style
 
-  filename = "rocx_test_table.docx"
+  filename = "docx_test_dsl.docx"
   system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
   docx.save File.expand_path("~/Desktop/#{filename}")
   exec "open ~/Desktop/#{filename}"
