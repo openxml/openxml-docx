@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openxml-docx (0.10.2)
+    openxml-docx (0.10.3)
       nokogiri
       openxml-package (>= 0.2.2)
 
