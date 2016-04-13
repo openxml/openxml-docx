@@ -24,6 +24,8 @@ module OpenXml
       value_property :text_direction
       value_property :type, as: :section_type
       value_property :vertical_alignment, as: :vertical_text_alignment
+      value_property :title_page
+      value_property :even_and_odd_headers
 
       def to_xml(xml)
         property_xml xml
