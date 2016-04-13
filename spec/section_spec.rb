@@ -20,6 +20,8 @@ describe OpenXml::Docx::Section do
   it_should_have_value_property :text_direction, with_value: :lr
   it_should_have_value_property :type, as_instance_of: :section_type, with_value: :oddPage
   it_should_have_value_property :vertical_alignment, as_instance_of: :vertical_text_alignment, with_value: :both
+  it_should_have_value_property :title_page
+  it_should_have_value_property :even_and_odd_headers
 
   context "if no attribute are set" do
     before(:each) do
