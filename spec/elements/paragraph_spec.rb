@@ -46,6 +46,8 @@ describe OpenXml::Docx::Elements::Paragraph do
       pm.right = 1440
       pm.top = 1440
 
+      @instance.section << OpenXml::Docx::Properties::SectionType.new(:continuous)
+
       @instance.section << pm
       columns = OpenXml::Docx::Properties::Columns.new
       columns.space = 720
