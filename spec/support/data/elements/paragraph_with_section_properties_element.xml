@@ -4,6 +4,7 @@
     <w:pPr>
       <w:sectPr>
         <w:pgSz w:h="15840" w:w="12240"/>
+        <w:type w:val="continuous"/>
         <w:pgMar w:bottom="1440" w:footer="720" w:header="720" w:left="1440" w:right="1440" w:top="1440"/>
         <w:cols w:space="720"/>
       </w:sectPr>
