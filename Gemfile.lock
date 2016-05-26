@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openxml-docx (0.10.4)
+    openxml-docx (0.10.5)
       nokogiri
       openxml-package (>= 0.2.2)
 
@@ -62,4 +62,4 @@ DEPENDENCIES
   timecop
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
