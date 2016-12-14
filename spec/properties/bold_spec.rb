@@ -3,7 +3,7 @@ require "spec_helper"
 describe OpenXml::Docx::Properties::Bold do
   include ValuePropertyTestMacros
 
-  it_should_use tag: :b, name: "bold"
+  it_should_use tag: :b, name: "bold", value: true
 
   with_value(true) do
     it_should_work
@@ -16,8 +16,7 @@ describe OpenXml::Docx::Properties::Bold do
   end
 
   with_value(nil) do
-    it_should_work
-    it_should_output ""
+    it_should_not_work
   end
 
 end

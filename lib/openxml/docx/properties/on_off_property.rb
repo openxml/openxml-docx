@@ -4,11 +4,12 @@ module OpenXml
       class OnOffProperty < ValueProperty
 
         def ok_values
-          [nil, :on, :off]
+          [true, false, :on, :off] # :on and :off are from the Transitional Spec
         end
 
         def to_xml(xml)
-          xml["w"].public_send(tag, "w:val" => value) if value
+          return xml["w"].public_send(tag) if value == true
+          xml["w"].public_send(tag, "w:val" => value)
         end
 
       end
