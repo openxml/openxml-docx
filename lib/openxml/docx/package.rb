@@ -69,23 +69,29 @@ module OpenXml
 
       def embed_image(path: nil, content_type: nil, into_part: nil)
         return if path.nil?
-        into_part = document unless into_part.respond_to?(:relationships)
 
         extension_match = path.match(/\.(?<extension>[^\.]+?)(?:\?.+)?$/)
         content_type ||= extension_match[:extension] if extension_match
         return if content_type.nil?
 
+        open(path, "rb") do |source_image|
+          embed_image_data(data: source_image.read, content_type: content_type, into_part: into_part)
+        end
+      end
+
+      def embed_image_data(data: nil, content_type: nil, into_part: nil)
+        return if data.nil? || content_type.nil?
+        into_part = document unless into_part.respond_to?(:relationships)
+
         content_type = "jpeg" if content_type == "jpg"
         content_type = content_type.to_sym
 
-        open(path, "rb") do |source_image|
-          destination_image_name = "image#{image_names.count + 1}.#{content_type}"
-          add_part "word/media/#{destination_image_name}", OpenXml::Parts::UnparsedPart.new(source_image.read)
-          image_names << destination_image_name
+        destination_image_name = "image#{image_names.count + 1}.#{content_type}"
+        add_part "word/media/#{destination_image_name}", OpenXml::Parts::UnparsedPart.new(data)
+        image_names << destination_image_name
 
-          image_relationship = into_part.relationships.add_relationship REL_IMAGE, "media/#{destination_image_name}"
-          image_relationship.id
-        end
+        image_relationship = into_part.relationships.add_relationship REL_IMAGE, "media/#{destination_image_name}"
+        image_relationship.id
       end
 
       def add_header(header)
