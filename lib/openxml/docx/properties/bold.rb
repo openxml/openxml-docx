@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Properties
-      class Bold < ExplicitToggleProperty
+      class Bold < ToggleProperty
         tag :b
 
       end

@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Properties
-      class Italics < ExplicitToggleProperty
+      class Italics < ToggleProperty
         tag :i
 
       end

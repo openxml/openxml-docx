@@ -12,12 +12,11 @@ describe OpenXml::Docx::Properties::SemiHidden do
 
   with_value(false) do
     it_should_work
-    it_should_output ""
+    it_should_output "<w:semiHidden w:val=\"false\"/>"
   end
 
   with_value(nil) do
-    it_should_work
-    it_should_output ""
+    it_should_not_work
   end
 
 end

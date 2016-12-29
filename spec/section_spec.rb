@@ -14,14 +14,14 @@ describe OpenXml::Docx::Section do
   it_should_have_property :page_size
   it_should_have_property :paper_source
 
-  it_should_have_value_property :bidi
-  it_should_have_value_property :form_protection
+  it_should_have_value_property :bidi, with_value: true
+  it_should_have_value_property :form_protection, with_value: true
   it_should_have_value_property :rtl_gutter
   it_should_have_value_property :text_direction, with_value: :lr
   it_should_have_value_property :type, as_instance_of: :section_type, with_value: :oddPage
   it_should_have_value_property :vertical_alignment, as_instance_of: :vertical_text_alignment, with_value: :both
-  it_should_have_value_property :title_page
-  it_should_have_value_property :even_and_odd_headers
+  it_should_have_value_property :title_page, with_value: true
+  it_should_have_value_property :even_and_odd_headers, with_value: true
 
   context "if no attribute are set" do
     before(:each) do
