@@ -6,8 +6,8 @@ require "openxml/docx/version"
 Gem::Specification.new do |spec|
   spec.name          = "openxml-docx"
   spec.version       = OpenXml::Docx::VERSION
-  spec.authors       = ["Gene Doyel"]
-  spec.email         = ["genedoyel@gmail.com"]
+  spec.authors       = ["Gene Doyel", "Bob Lail"]
+  spec.email         = ["genedoyel@gmail.com", "bob.lailfamily@gmail.com"]
 
   spec.description   = %q{Create Microsoft Word (.docx) files.}
   spec.summary       = %q{Implements the Office Open XML spec for creating WordprocessingML documents}
