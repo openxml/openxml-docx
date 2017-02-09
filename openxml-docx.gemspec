@@ -1,32 +1,33 @@
-# -*- encoding: utf-8 -*-
+# coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "openxml/docx/version"
 
-Gem::Specification.new do |gem|
-  gem.name          = "openxml-docx"
-  gem.version       = OpenXml::Docx::VERSION
-  gem.authors       = ["Gene Doyel"]
-  gem.email         = ["genedoyel@gmail.com"]
+Gem::Specification.new do |spec|
+  spec.name          = "openxml-docx"
+  spec.version       = OpenXml::Docx::VERSION
+  spec.authors       = ["Gene Doyel"]
+  spec.email         = ["genedoyel@gmail.com"]
 
-  gem.description   = %q{Create Microsoft Word (.docx) files.}
-  gem.summary       = %q{Using a simple API, create docx files programmatically, including bullet points, titles, headings, page breaks and tables!}
-  gem.license       = "MIT"
-  gem.homepage      = "https://github.com/openxml/openxml-docx"
+  spec.description   = %q{Create Microsoft Word (.docx) files.}
+  spec.summary       = %q{Implements the Office Open XML spec for creating WordprocessingML documents}
+  spec.homepage      = "https://github.com/openxml/openxml-docx"
+  spec.license       = "MIT"
 
-  gem.files         = `git ls-files`.split($/)
-  gem.test_files    = Dir.glob("test/**/*_test.rb")
-  gem.require_paths = ["lib"]
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.bindir        = "exe"
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
 
-  gem.required_ruby_version = "~> 2.0"
+  spec.required_ruby_version = "~> 2.0"
 
-  gem.add_dependency "nokogiri"
-  gem.add_dependency "openxml-package", ">= 0.2.2"
+  spec.add_dependency "nokogiri"
+  spec.add_dependency "openxml-package", ">= 0.2.2"
 
-  gem.add_development_dependency "pry"
-  gem.add_development_dependency "rspec"
-  gem.add_development_dependency "rake"
-  gem.add_development_dependency "rr"
-  gem.add_development_dependency "simplecov"
-  gem.add_development_dependency "timecop"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rr"
+  spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "timecop"
 end

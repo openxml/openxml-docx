@@ -1,4 +1,8 @@
-# OpenXml::Docx [![Code Climate](https://codeclimate.com/github/openxml/openxml-docx.png)](https://codeclimate.com/github/openxml/openxml-docx)
+# OpenXml::Docx
+
+[![Gem Version](https://badge.fury.io/rb/openxml-docx.svg)](https://rubygems.org/gems/openxml-docx)
+[![Code Climate](https://codeclimate.com/github/openxml/openxml-docx.svg)](https://codeclimate.com/github/openxml/openxml-docx)
+[![Build Status](https://travis-ci.org/openxml/openxml-docx.svg)](https://travis-ci.org/openxml/openxml-docx)
 
 OpenXml::Docx is a gem for creating .docx (Office Open XML) files. It's designed to validate _before_ the document is generated, so (hopefully) any errors are caught prior to opening the file using software that can handle OOXML (like Microsoft Word, Apache Open Office, Google Docs, etc).
 
