@@ -26,7 +26,7 @@ describe OpenXml::Docx::Properties::FooterReference do
   end
 
   with_these_attributes_set(id: "rId5", type: :default) do
-    it_should_output "<w:footerReference w:type=\"default\" r:id=\"rId5\"/>", assign: false
+    it_should_output "<w:footerReference r:id=\"rId5\" w:type=\"default\"/>", assign: false
   end
 
 end

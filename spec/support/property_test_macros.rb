@@ -1,7 +1,7 @@
 module PropertyTestMacros
 
   def xml(obj)
-    doc = Nokogiri::XML::Builder.new do |xml|
+    doc = OpenXml::Builder.new do |xml|
       xml.root("xmlns:w" => "http://wnamespace.org") {
         obj.to_xml(xml)
       }
@@ -10,7 +10,7 @@ module PropertyTestMacros
   end
 
   def doc_pattern
-    /<\?xml\sversion="1.0"\?>\n<root xmlns:w="http:\/\/wnamespace.org">\n\s+([^\s].+)\n<\/root>/m
+    /<\?xml\sversion="1.0"\sencoding=\"utf-8\"\?>\n<root xmlns:w="http:\/\/wnamespace.org">\n\s+([^\s].+)\n<\/root>/m
   end
 
   def self.included(base)

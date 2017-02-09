@@ -15,7 +15,7 @@ module OpenXml
 
           def name(*args)
             @property_name = args.first if args.any?
-            @name
+            @property_name
           end
 
           def namespace(*args)
@@ -23,6 +23,26 @@ module OpenXml
             @namespace
           end
 
+        end
+
+        def initialize(options={})
+          if options.fetch(:scaffold, false)
+            @options = options # Make available for scaffolding if needed
+            build_scaffold
+          end
+
+          options.each do |(attr_name, value)|
+            self.public_send("#{attr_name}=", value) if self.respond_to? :"#{attr_name}="
+          end
+
+          if block_given?
+            block = Proc.new
+            if block.arity == 0
+              instance_eval(&block)
+            else
+              yield self
+            end
+          end
         end
 
         def tag
@@ -42,6 +62,12 @@ module OpenXml
         end
 
       private
+        attr_reader :options
+
+        # Override in subclasses to set up default attributes, properties, and children
+        # when the `build` class method is used to construct the object
+        def build_scaffold
+        end
 
         def default_tag
           (class_name[0, 1].downcase + class_name[1..-1]).to_sym

@@ -30,6 +30,6 @@ describe OpenXml::Docx::Elements::BidiEmbed do
       instance << run
     end
 
-    it_should_output "<w:dir>\n    <w:r>\n      <w:t>Smucker's Preserves</w:t>\n    </w:r>\n  </w:dir>", assign: false
+    it_should_output "<w:dir>\n    <w:r>\n      <w:t>Smucker&apos;s Preserves</w:t>\n    </w:r>\n  </w:dir>", assign: false
   end
 end

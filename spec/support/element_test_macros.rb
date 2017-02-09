@@ -5,7 +5,7 @@ module ElementTestMacros
   end
 
   def xml(obj)
-    doc = Nokogiri::XML::Builder.new do |xml|
+    doc = OpenXml::Builder.new do |xml|
       xml.root(root_namespaces) {
         obj.to_xml(xml)
       }
@@ -14,7 +14,7 @@ module ElementTestMacros
   end
 
   def doc_pattern
-    /<\?xml\sversion="1.0"\?>\n<root (?:xmlns:\w+=".+?".?)+>\n\s+([^\s].+)\n<\/root>/m
+    /<\?xml\sversion="1.0"\sencoding=\"utf-8\"\?>\n<root (?:xmlns:\w+=".+?".?)+>\n\s+([^\s].+)\n<\/root>/m
   end
 
   def self.included(base)
@@ -55,7 +55,29 @@ module ElementTestMacros
           node_xml = node_xml.gsub(/(.)([A-Z])/, '\1_\2').downcase
         end
 
-        generated_xml = Nokogiri::XML::Builder.new do |xml|
+        generated_xml = OpenXml::Builder.new do |xml|
+          xml.root("xmlns:w" => "http://wnamespace.org") {
+            instance.to_xml(xml)
+          }
+        end.to_xml
+
+        expect(generated_xml).to eq(element_xml(node_xml) + "\n")
+      end
+    end
+
+    def it_should_scaffold_itself_correctly(options={})
+      it "should correctly scaffold itself and its children" do
+        node_xml = options[:node_xml]
+        if node_xml.nil?
+          node_xml = described_class.to_s.split(/::/).last
+          node_xml = node_xml.gsub(/(.)([A-Z])/, '\1_\2').downcase
+        end
+        node_xml = "scaffolded_#{node_xml}"
+
+        options.merge!({scaffold: true})
+        @instance = described_class.new(options)
+
+        generated_xml = OpenXml::Builder.new do |xml|
           xml.root("xmlns:w" => "http://wnamespace.org") {
             instance.to_xml(xml)
           }

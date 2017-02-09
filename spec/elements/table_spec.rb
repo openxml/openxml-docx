@@ -17,5 +17,6 @@ describe OpenXml::Docx::Elements::Table do
   end
 
   it_should_output_correct_xml
+  it_should_scaffold_itself_correctly
 
 end

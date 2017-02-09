@@ -1,0 +1,171 @@
+#!/usr/bin/env ruby
+
+$:.push Dir.pwd + "/lib"
+require "ox"
+require "openxml/docx"
+require "openxml/drawingml"
+
+ROWS = 8
+COLUMNS = 4
+
+def build_docx
+  docx = OpenXml::Docx::Package.new
+
+  heading = OpenXml::Docx::Elements::Paragraph.new
+    .paragraph_style("Heading1")
+
+  heading << OpenXml::Docx::Elements::Run.new("A Table of Some Sort")
+  docx.document << heading
+
+  table = OpenXml::Docx::Elements::Table.new(scaffold: true)
+    .width(5000)
+    .width_unit(:pct)
+    .table_style("TableGrid")
+
+  ROWS.times do
+    row = OpenXml::Docx::Elements::TableRow.new
+
+    COLUMNS.times do
+      cell = OpenXml::Docx::Elements::TableCell.new
+
+      paragraph = OpenXml::Docx::Elements::Paragraph.new
+        .paragraph_style("CellText")
+      line_one = OpenXml::Docx::Elements::Run.new("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+      line_one << OpenXml::Docx::Elements::Break.new
+      line_two = OpenXml::Docx::Elements::Run.new("Donec a diam lectus. Sed sit amet ipsum mauris.")
+
+      paragraph << line_one
+      paragraph << line_two
+      cell << paragraph
+      row << cell
+    end
+
+    table << row
+  end
+
+  docx.document << table
+
+  # ochanomizu.jpg
+  # 96 ppi
+  # 393px x 599px
+  image_width = (393 * (96.0 / 300) * 12700).round # Rough conversion to EMU: 1pt = 12700emu
+  image_height = (599 * (96.0 / 300) * 12700).round
+  image_rid = docx.embed_image(path: File.join(File.dirname(__FILE__), "ochanomizu.jpg"))
+  inline_image = OpenXml::Docx::Elements::Paragraph.new do
+    alignment(:center)
+    push OpenXml::Docx::Elements::Run.new
+      .push(OpenXml::Docx::Elements::Drawing.new(scaffold: true, width: image_width, height: image_height, anchor_type: :inline, wrap_type: :top_and_bottom) do
+        graphic << OpenXml::DrawingML::Elements::GraphicData.new
+          .uri(OpenXml::DrawingML::Elements::GraphicData.data_types[:picture])
+          .push(OpenXml::DrawingML::Elements::Picture.new(scaffold: true, image_rid: image_rid, width: image_width, height: image_height))
+      end)
+  end
+  docx.document << inline_image
+
+  textbox_width = 6 * 72 * 12700
+  textbox_height = 2 * 72 * 12700
+  floating_textbox = OpenXml::Docx::Elements::Paragraph.new do
+    push(OpenXml::Docx::Elements::Run.new do
+      push(OpenXml::Docx::Elements::Drawing.new(scaffold: true, width: textbox_width, height: textbox_height, wrap_type: :top_and_bottom) do
+        graphic << OpenXml::DrawingML::Elements::GraphicData.new
+          .uri(OpenXml::DrawingML::Elements::GraphicData.data_types[:wordprocessing_shape])
+          .push(OpenXml::Docx::Elements::WordProcessingShapesShape.new(scaffold: true, width: textbox_width, height: textbox_height, textbox: true) do
+            text_content << OpenXml::Docx::Elements::Paragraph.new
+              .alignment(:center)
+              .paragraph_style("Heading1")
+              .push(OpenXml::Docx::Elements::Run.new("Hello, Textboxes!"))
+          end)
+      end)
+    end)
+  end
+  docx.document << floating_textbox
+
+  docx.document << OpenXml::Docx::Section.new
+    .page_size
+      .height(15840)
+      .width(12240)
+      .orientation(:portrait)
+      .end_chain
+    .page_margins
+      .bottom(720)
+      .footer(360)
+      .gutter(0)
+      .header(360)
+      .left(720)
+      .right(720)
+      .top(720)
+      .end_chain
+
+  docx.styles << build_heading_style
+  docx.styles << build_table_style
+  docx.styles << build_cell_text_style
+
+  filename = "docx_test_dsl.docx"
+  system "rm -f ~/Desktop/#{filename}" # -f so that we don't have an error if the file doesn't exist
+  docx.save File.expand_path("~/Desktop/#{filename}")
+  exec "open ~/Desktop/#{filename}"
+end
+
+def build_table_style
+  OpenXml::Docx::Style.new(:table)
+    .id("TableGrid")
+    .style_name("Table Grid")
+    .primary_style(true)
+    .table
+      .table_borders do
+        all_tags.each do |tag_name|
+          push OpenXml::Docx::Properties::TableBorder.new(tag_name, :single)
+            .color("000000")
+            .width(8)
+        end
+      end
+      .table_cell_margins do
+        vertical_tags.each do |tag_name|
+          push OpenXml::Docx::Properties::TableCellMargin.new(tag_name)
+            .type(:dxa)
+            .width(0)
+        end
+        horizontal_tags.each do |tag_name|
+          push OpenXml::Docx::Properties::TableCellMargin.new(tag_name)
+            .type(:dxa)
+            .width(108)
+        end
+      end
+      .end_chain
+end
+
+def build_heading_style
+  OpenXml::Docx::Style.new(:paragraph)
+    .id("Heading1")
+    .style_name("Heading 1")
+    .primary_style(true)
+    .paragraph
+      .alignment(:center)
+      .end_chain
+    .character
+      .bold(true)
+      .font_size(48)
+      .end_chain
+end
+
+def build_cell_text_style
+  OpenXml::Docx::Style.new(:paragraph)
+    .id("CellText")
+    .style_name("Table Cell")
+    .primary_style(true)
+    .paragraph
+      .alignment(:center)
+      .text_alignment(:center)
+      .end_chain
+    .character
+      .font
+        .ascii("Times New Roman")
+        .high_ansi("Times New Roman")
+        .end_chain
+      .font_size(20)
+      .end_chain
+end
+
+# Do the thing!
+build_docx
+

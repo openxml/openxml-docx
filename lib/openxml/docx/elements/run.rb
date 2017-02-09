@@ -1,3 +1,5 @@
+require "openxml/docx/elements/text"
+
 module OpenXml
   module Docx
     module Elements
@@ -44,6 +46,12 @@ module OpenXml
         property :manual_width
         property :shading
         property :underline
+
+        def initialize(text=nil, options={})
+          # More performant than &block: http://mudge.name/2011/01/26/passing-blocks-in-ruby-without-block.html
+          block_given? ? super(options, &Proc.new) : super(options)
+          push OpenXml::Docx::Elements::Text.new(text).space(options.fetch(:text_spacing, :preserve)) unless text.nil?
+        end
 
       end
     end
