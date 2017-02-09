@@ -23,15 +23,30 @@ document.document << paragraph
 document.save("/path/where/i/save/things/test.docx")
 ```
 
+
 ## Installation
 
-You can install OpenXml::Docx by running `gem install openxml-docx`, or if you like Rails, include `gem "openxml-docx"` in your Gemfile.
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'openxml-docx'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install openxml-docx
+
 
 ## Current features
 
   - Paragraphs
   - Runs and text
   - Formatting and styles for the paragraphs, runs, and text
+
 
 ## Roadmap
 
@@ -52,14 +67,21 @@ It's important to note that lists goes off into the future quite a bit, therefor
   - 0.19.0: Mail merge
   - 0.20.0: Layer on a DSL for making the whole thing smoother
 
-## Contribute!
 
-Want to help? Thanks, friend! Here's how:
 
-  1. Fork it
-  2. Make your changes on a topic branch
-  3. Create new a pull request
-  4. Receive many thank-yous
+## Development
+
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+
+Reference for WordprocessingML can be found in Part 1 of the Fourth Edition of [ECMA-376](http://www.ecma-international.org/publications/standards/Ecma-376.htm) (the Office Open XML Standard).
+
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/openxml/openxml-docx.
+
 
 ## Changelog
 
