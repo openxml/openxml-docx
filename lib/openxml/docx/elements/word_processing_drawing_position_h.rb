@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingPositionH < Container
+      class WordProcessingDrawingPositionH < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :positionH
         namespace :wp
 

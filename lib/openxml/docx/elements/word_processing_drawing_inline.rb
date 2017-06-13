@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingInline < Container
+      class WordProcessingDrawingInline < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :inline
         namespace :wp
 

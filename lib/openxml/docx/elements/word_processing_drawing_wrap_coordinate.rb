@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingWrapCoordinate < Element
+      class WordProcessingDrawingWrapCoordinate < OpenXml::Docx::Element
         namespace :wp
 
         attr_reader :tag

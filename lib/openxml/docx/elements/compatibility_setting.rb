@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class CompatibilitySettings < Container
+      class CompatibilitySettings < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :compat
 
       end

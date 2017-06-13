@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class TableRow < Container
+      class TableRow < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :tr
 
         with_namespace :w do

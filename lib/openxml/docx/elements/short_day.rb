@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class ShortDay < Element
+      class ShortDay < OpenXml::Docx::Element
         tag :dayShort
 
       end

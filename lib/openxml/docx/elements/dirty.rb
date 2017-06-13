@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class Dirty < Element
+      class Dirty < OpenXml::Docx::Element
       end
     end
   end

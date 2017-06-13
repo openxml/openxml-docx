@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class EmbedItalic < Element
+      class EmbedItalic < OpenXml::Docx::Element
         namespace :w
 
         with_namespace :w do

@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class FontAlternateName < Element
+      class FontAlternateName < OpenXml::Docx::Element
         namespace :w
         tag :altName
 

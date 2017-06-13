@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class TableCell < Container
+      class TableCell < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :tc
 
         attribute :id, namespace: :w

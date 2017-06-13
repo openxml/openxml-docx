@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class ShortYear < Element
+      class ShortYear < OpenXml::Docx::Element
         tag :yearShort
 
       end

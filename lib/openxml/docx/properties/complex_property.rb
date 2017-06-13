@@ -1,8 +1,10 @@
+require "openxml/has_attributes"
+
 module OpenXml
   module Docx
     module Properties
       class ComplexProperty < BaseProperty
-        include AttributeBuilder
+        include HasAttributes
 
         def to_xml(xml)
           return unless render?

@@ -3,6 +3,7 @@ PATH
   specs:
     openxml-docx (0.10.6)
       nokogiri
+      openxml-drawingml
       openxml-package (>= 0.2.2)
       ox (~> 2.4.3, < 2.4.10)
 
@@ -17,7 +18,10 @@ GEM
     mini_portile2 (2.2.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
-    openxml-package (0.2.8)
+    openxml-drawingml (0.1.0)
+      nokogiri
+      openxml-package (~> 0.2.9)
+    openxml-package (0.2.9)
       nokogiri
       ox
       rubyzip (~> 1.2.1)

@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class Run < Container
+      class Run < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :r
 
         value_property :bold

@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class AbsolutePositionTab < Element
+      class AbsolutePositionTab < OpenXml::Docx::Element
         tag :ptab
 
         with_namespace :w do

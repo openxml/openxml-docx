@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     class Section
-      include PropertyBuilder
+      include HasProperties
 
       properties_tag :sectPr
 

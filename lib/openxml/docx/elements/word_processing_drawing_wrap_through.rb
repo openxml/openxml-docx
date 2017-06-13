@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingWrapThrough < Container
+      class WordProcessingDrawingWrapThrough < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :wrapThrough
         namespace :wp
 

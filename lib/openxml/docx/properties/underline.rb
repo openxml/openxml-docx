@@ -8,7 +8,7 @@ module OpenXml
 
         with_namespace :w do
           attribute :color, expects: :hex_color
-          attribute :theme_color, expects: :valid_theme_color
+          attribute :theme_color, one_of: OpenXml::Docx::THEME_COLORS
           attribute :theme_shade, expects: :hex_digit
           attribute :theme_tint, expects: :hex_digit
           attribute :type, displays_as: :val, one_of: %i(dash dashDotDotHeavy

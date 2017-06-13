@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingObjectNvProperties < Element
+      class WordProcessingDrawingObjectNvProperties < OpenXml::Docx::Element
         tag :docPr
         namespace :wp
 

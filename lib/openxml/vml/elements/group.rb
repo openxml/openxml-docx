@@ -1,7 +1,9 @@
 module OpenXml
   module Vml
     module Elements
-      class Group < OpenXml::Docx::Elements::Container
+      class Group < Element
+        include HasChildren
+
         namespace :v
 
         attribute :alt, expects: :string

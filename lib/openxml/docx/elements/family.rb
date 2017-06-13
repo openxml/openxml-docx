@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class Family < Element
+      class Family < OpenXml::Docx::Element
         namespace :w
 
         with_namespace :w do

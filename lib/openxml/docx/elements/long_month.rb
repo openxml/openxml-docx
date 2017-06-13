@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class LongMonth < Element
+      class LongMonth < OpenXml::Docx::Element
         tag :monthLong
 
       end

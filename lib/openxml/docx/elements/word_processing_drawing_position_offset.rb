@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingPositionOffset < Element
+      class WordProcessingDrawingPositionOffset < OpenXml::Docx::Element
         tag :posOffset
         namespace :wp
 

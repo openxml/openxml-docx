@@ -1,8 +1,9 @@
+require "openxml/has_attributes"
+
 module OpenXml
   module Docx
     class Style
-      include AttributeBuilder
-      include PropertyBuilder
+      include HasAttributes, HasProperties
 
       attr_reader :paragraph, :character, :table, :type
 

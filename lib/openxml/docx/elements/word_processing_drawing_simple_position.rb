@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingSimplePosition < Element
+      class WordProcessingDrawingSimplePosition < OpenXml::Docx::Element
         tag :simplePos
         namespace :wp
 

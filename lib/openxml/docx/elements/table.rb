@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class Table < Container
+      class Table < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :tbl
 
         value_property :bidi_visual, as: :bidi

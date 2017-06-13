@@ -1,9 +1,11 @@
+require "openxml/has_attributes"
+
 module OpenXml
   module Docx
     module Properties
       class ContainerProperty < BaseProperty
         include Enumerable
-        include AttributeBuilder
+        include HasAttributes
 
         class << self
           def child_class(*args)

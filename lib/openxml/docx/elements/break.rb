@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class Break < Element
+      class Break < OpenXml::Docx::Element
         tag :br
 
         with_namespace :w do

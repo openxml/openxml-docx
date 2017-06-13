@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class Text < Element
+      class Text < OpenXml::Docx::Element
         attr_reader :text
 
         tag :t

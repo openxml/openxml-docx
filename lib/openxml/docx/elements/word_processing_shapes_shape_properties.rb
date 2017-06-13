@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingShapesShapeProperties < Container
+      class WordProcessingShapesShapeProperties < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :spPr
         namespace :wps
 

@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class FontCharacterSet < Element
+      class FontCharacterSet < OpenXml::Docx::Element
         namespace :w
         tag :charset
 

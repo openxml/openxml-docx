@@ -1,6 +1,6 @@
 module OpenXml
   module Docx
-    module PropertyBuilder
+    module HasProperties
 
       def self.included(base)
         base.extend ClassMethods
@@ -50,6 +50,13 @@ module OpenXml
         end
       end
 
+      def to_xml(xml)
+        super(xml) do
+          property_xml(xml)
+          yield xml if block_given?
+        end
+      end
+
       def property_xml(xml)
         props = properties.keys.map(&method(:send)).compact
         return if props.none?(&:render?)
@@ -66,7 +73,11 @@ module OpenXml
       end
 
       def properties_tag
-        self.class.properties_tag
+        self.class.properties_tag || default_properties_tag
+      end
+
+      def default_properties_tag
+        :"#{tag}Pr"
       end
 
     end

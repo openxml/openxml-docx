@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class OptionalHyphen < Element
+      class OptionalHyphen < OpenXml::Docx::Element
         tag :softHyphen
 
       end

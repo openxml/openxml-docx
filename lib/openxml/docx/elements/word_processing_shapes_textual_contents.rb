@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingShapesTextualContent < Container
+      class WordProcessingShapesTextualContent < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :txbx
         namespace :wps
 

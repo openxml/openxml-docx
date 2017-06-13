@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class Tab < Element
+      class Tab < OpenXml::Docx::Element
       end
     end
   end

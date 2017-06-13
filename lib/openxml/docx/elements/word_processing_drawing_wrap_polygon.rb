@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingWrapPolygon < Container
+      class WordProcessingDrawingWrapPolygon < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :wrapPolygon
         namespace :wp
 

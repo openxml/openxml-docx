@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class FontSig < Element
+      class FontSig < OpenXml::Docx::Element
         namespace :w
         tag :sig
 

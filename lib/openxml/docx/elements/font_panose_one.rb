@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class FontPanoseOne < Element
+      class FontPanoseOne < OpenXml::Docx::Element
         namespace :w
         tag :panose1
 

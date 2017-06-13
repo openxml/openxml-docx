@@ -1,7 +1,9 @@
 module OpenXml
   module Vml
     module Elements
-      class RoundedRectangle < OpenXml::Docx::Elements::Container
+      class RoundedRectangle < Element
+        include HasChildren
+
         namespace :v
         tag :roundrect
 

@@ -5,8 +5,8 @@ module OpenXml
   end
 end
 
-require "openxml/docx/elements/element"
-require "openxml/docx/elements/container"
+require "openxml/element"
+require "openxml/has_children"
 require "openxml/docx/elements/text"
 Dir.glob("#{File.join(File.dirname(__FILE__), "elements", "*.rb")}").each do |file|
   require file

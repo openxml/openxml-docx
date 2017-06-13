@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class Control < Element
+      class Control < OpenXml::Docx::Element
         attribute :id, expects: :string, namespace: :r
 
         with_namespace :w do

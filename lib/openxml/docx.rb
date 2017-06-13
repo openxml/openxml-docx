@@ -23,11 +23,14 @@ module OpenXml
       bmp: "image/bmp".freeze,
       tiff: "image/tiff".freeze
     }
+
+    THEME_COLORS = %i(accent1 accent2 accent3 accent4 accent5 accent6 background1 background2 dark1 dark2 followedHyperlink hyperlink light1 light2 none text1 text2).freeze
+
+    BORDER_TYPES = %i(apples archedScallops babyPacifier babyRattle balloons3Colors balloonsHotAir basicBlackDashes basicBlackDots basicBlackSquares basicThinLines basicWhiteDashes basicWhiteDots basicWhiteSquares basicWideInline basicWideMidline basicWideOutline bats birds birdsFlight cabins cakeSlice candyCorn celticKnotwork certificateBanner chainLink champagneBottle checkedBarBlack checkedBarColor checkered christmasTree circlesLines circlesRectangles classicalWave clocks compass confetti confettiGrays confettiOutlines confettiStreamers confettiWhite cornerTriangles couponCutoutDashes couponCutoutDots crazyMaze creaturesButterfly creaturesFish creaturesInsects creaturesLadyBug crossStitch cup custom dashDotStroked dashed dashSmallGap decoArch decoArchColor decoBlocks diamondsGray dotDash dotDotDash dotted double doubleD doubleDiamonds doubleWave earth1 earth2 earth3 eclipsingSquares1 eclipsingSquares2 eggsBlack fans film firecrackers flowersBlockPrint flowersDaisies flowersModern1 flowersModern2 flowersPansy flowersRedRose flowersRoses flowersTeacup flowersTiny gems gingerbreadMan gradient handmade1 handmade2 heartBalloon heartGray hearts heebieJeebies holly houseFunky hypnotic iceCreamCones inset lightBulb lightning1 lightning2 mapleLeaf mapleMuffins mapPins marquee marqueeToothed moons mosaic musicNotes nil none northwest outset ovals packages palmsBlack palmsColor paperClips papyrus partyFavor partyGlass pencils people peopleHats peopleWaving poinsettias postageStamp pumpkin1 pushPinNote1 pushPinNote2 pyramids pyramidsAbove quadrants rings safari sawtooth sawtoothGray scaredCat seattle shadowedSquares shapes1 shapes2 sharksTeeth shorebirdTracks single skyrocket snowflakeFancy snowflaskes sombrero southwest stars stars3d starsBlack starsShadowed starsTop sun swirligig thick thickThinLargeGap thickThinMediumGap thickThinSmallGap thinThickLargeGap thinThickMediumGap thinThickSmallGap thinThickThinLargeGap thinThickThinMediumGap thinThickThinSmallGap threeDEmboss threeDEngrave tornPaper tornPaperBlack trees triangle1 triangle2 triangleCircle1 triangleCircle2 triangleParty triangle triple twistedLines1 twistedLines2 vine wave waveline weavingAngles weavingBraid weavingRibbon weavingStrips whiteFlowers woodwork xIllusions zanyTriangles zigZag zigZagStitch).freeze
   end
 end
 
-require "openxml/docx/attribute_builder"
-require "openxml/docx/property_builder"
+require "openxml/docx/has_properties"
 require "openxml/docx/properties"
 require "openxml/docx/root_namespaces"
 require "openxml/docx/elements"

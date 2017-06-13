@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class MarkupCompatibilityChoice < Container
+      class MarkupCompatibilityChoice < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :Choice
         namespace :mc
 

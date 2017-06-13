@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class Symbol < Element
+      class Symbol < OpenXml::Docx::Element
         tag :sym
 
         with_namespace :w do

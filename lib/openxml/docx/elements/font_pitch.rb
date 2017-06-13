@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class FontPitch < Element
+      class FontPitch < OpenXml::Docx::Element
         namespace :w
         tag :pitch
 

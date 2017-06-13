@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class Font < Container
+      class Font < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         namespace :w
 
         with_namespace :w do

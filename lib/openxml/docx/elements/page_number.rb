@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class PageNumber < Element
+      class PageNumber < OpenXml::Docx::Element
         tag :pgNum
       end
     end

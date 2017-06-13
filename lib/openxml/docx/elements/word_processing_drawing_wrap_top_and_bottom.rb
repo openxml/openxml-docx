@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingWrapTopAndBottom < Element
+      class WordProcessingDrawingWrapTopAndBottom < OpenXml::Docx::Element
         tag :wrapTopAndBottom
         namespace :wp
 

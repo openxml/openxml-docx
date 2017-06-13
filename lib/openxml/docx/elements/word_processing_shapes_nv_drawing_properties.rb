@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingShapesNvDrawingProperties < Container
+      class WordProcessingShapesNvDrawingProperties < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :cNvPr
         namespace :wps
 

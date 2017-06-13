@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingNvGraphicFrameProperties < Container
+      class WordProcessingDrawingNvGraphicFrameProperties < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :cNvGraphicFramePr
         namespace :wp
 

@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class CarriageReturn < Element
+      class CarriageReturn < OpenXml::Docx::Element
         tag :cr
 
       end

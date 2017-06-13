@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class LastRenderedPageBreak < Element
+      class LastRenderedPageBreak < OpenXml::Docx::Element
       end
     end
   end

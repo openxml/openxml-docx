@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class SaveSubsetFonts < Element
+      class SaveSubsetFonts < OpenXml::Docx::Element
         namespace :w
 
         with_namespace :w do

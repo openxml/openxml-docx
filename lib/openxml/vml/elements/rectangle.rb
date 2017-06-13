@@ -1,7 +1,9 @@
 module OpenXml
   module Vml
     module Elements
-      class Rectangle < OpenXml::Docx::Elements::Container
+      class Rectangle < Element
+        include HasChildren
+
         namespace :v
         tag :rect
 

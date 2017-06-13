@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class TitlePage < Element
+      class TitlePage < OpenXml::Docx::Element
         tag :titlePg
 
         attribute :value, expects: :boolean, displays_as: :val, namespace: :w

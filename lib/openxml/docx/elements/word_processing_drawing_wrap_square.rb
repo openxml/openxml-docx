@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingWrapSquare < Element
+      class WordProcessingDrawingWrapSquare < OpenXml::Docx::Element
         tag :wrapSquare
         namespace :wp
 

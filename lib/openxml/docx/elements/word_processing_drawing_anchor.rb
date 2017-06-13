@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingAnchor < Container
+      class WordProcessingDrawingAnchor < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :anchor
         namespace :wp
 

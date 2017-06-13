@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingGroupsNvShapeDrawingProperties < Container
+      class WordProcessingGroupsNvShapeDrawingProperties < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         tag :cNvGrpSpPr
         namespace :wpg
 

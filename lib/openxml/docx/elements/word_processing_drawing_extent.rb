@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class WordProcessingDrawingExtent < Element
+      class WordProcessingDrawingExtent < OpenXml::Docx::Element
         tag :extent
         namespace :wp
 

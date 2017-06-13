@@ -1,7 +1,9 @@
 module OpenXml
   module Docx
     module Elements
-      class Paragraph < Container
+      class Paragraph < OpenXml::Docx::Element
+        include HasChildren, HasProperties
+
         attr_reader :section_properties
         tag :p
 

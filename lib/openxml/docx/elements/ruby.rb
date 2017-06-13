@@ -1,7 +1,8 @@
 module OpenXml
   module Docx
     module Elements
-      class Ruby < Container
+      class Ruby < OpenXml::Docx::Element
+        include HasChildren, HasProperties
         attr_reader :base, :ruby
 
         value_property :alignment, as: :phonetic_guide_alignment
