@@ -24,6 +24,11 @@ Gem::Specification.new do |spec|
   spec.add_dependency "nokogiri"
   spec.add_dependency "openxml-package", ">= 0.2.2"
 
+  # Ox 2.4.10 changed how special characters are encoded,
+  # but a few of openxml-docx's tests rely on the previous
+  # behavior. Remove this line after refactoring those tests.
+  spec.add_dependency "ox", "~> 2.4.3", "< 2.4.10"
+
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "rake"
