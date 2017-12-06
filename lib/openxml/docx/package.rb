@@ -10,6 +10,7 @@ module OpenXml
                   :footers,
                   :styles,
                   :fonts,
+                  :numbering,
                   :image_names
 
       content_types do
@@ -23,6 +24,7 @@ module OpenXml
         override "/word/styles.xml", TYPE_STYLES
         override "/word/settings.xml", TYPE_SETTINGS
         override "/word/fontTable.xml", TYPE_FONT_TABLE
+        override "/word/numbering.xml", TYPE_NUMBERING
       end
 
       def initialize
@@ -32,6 +34,7 @@ module OpenXml
         @settings = OpenXml::Docx::Parts::Settings.new
         @styles = OpenXml::Docx::Parts::Styles.new
         @fonts = OpenXml::Docx::Parts::Fonts.new
+        @numbering = OpenXml::Docx::Parts::Numbering.new
         @document = OpenXml::Docx::Parts::Document.new
         @headers = []
         @footers = []
@@ -40,6 +43,7 @@ module OpenXml
         document.relationships.add_relationship REL_STYLES, "styles.xml"
         document.relationships.add_relationship REL_SETTINGS, "settings.xml"
         document.relationships.add_relationship REL_FONT_TABLE, "fontTable.xml"
+        document.relationships.add_relationship REL_NUMBERING, "numbering.xml"
 
         add_part "word/_rels/document.xml.rels", document.relationships
         add_part "word/_rels/fontTable.xml.rels", fonts.relationships
@@ -47,6 +51,7 @@ module OpenXml
         add_part "word/settings.xml", settings
         add_part "word/styles.xml", styles
         add_part "word/fontTable.xml", fonts
+        add_part "word/numbering.xml", numbering
       end
 
       def embed_truetype_font(path: nil, name: nil)
