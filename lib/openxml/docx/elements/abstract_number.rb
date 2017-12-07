@@ -10,7 +10,7 @@ module OpenXml
         end
 
         # value_property :nsid
-        # value_property :multi_level_type
+        value_property :multi_level_type
         # value_property :tmpl
         # value_property :name
         # value_property :style_link

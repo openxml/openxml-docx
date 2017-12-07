@@ -5,9 +5,11 @@ module OpenXml
         include HasChildren, HasProperties
         tag :lvl
 
-        attribute :level, expects: :integer, displays_as: :ilvl
-        attribute :tplc
-        attribute :tentative
+        with_namespace :w do
+          attribute :level, expects: :integer, displays_as: :ilvl
+          attribute :tplc
+          attribute :tentative
+        end
 
         value_property :start
         value_property :number_format

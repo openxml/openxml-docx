@@ -10,7 +10,9 @@ module OpenXml
           self.id = id
         end
 
-        attribute :id, expects: :integer, displays_as: :numId, required: true
+        with_namespace :w do
+          attribute :id, expects: :integer, displays_as: :numId, required: true
+        end
 
         value_property :abstract_number_id
         value_property :lvl_override, as: :level_override
