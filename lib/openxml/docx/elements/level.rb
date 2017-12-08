@@ -20,8 +20,6 @@ module OpenXml
         value_property :level_text
         # value_property :lvl_pic_bullet_id
         value_property :alignment, as: :level_alignment
-        # property :p
-        # property :r
 
         def paragraph_style
           @paragraph_style ||= Paragraph.new
