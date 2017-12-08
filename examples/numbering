@@ -35,7 +35,7 @@ package.styles << list_style
 
 # Create an abstract number that describes a bulleted list:
 abstract_number = AbstractNumber.new(0)
-#abstract_number.multi_level_type = :hybridMultilevel
+
 # Each number can have multiple levels. Define the first level as a bulleted list:
 level_0 = Level.new
 level_0.level = 0

@@ -6,20 +6,19 @@ module OpenXml
         tag :lvl
 
         with_namespace :w do
-          attribute :level, expects: :integer, displays_as: :ilvl
-          # The following are "UI attributes:" tplc is an entirely opaque
-          # Word "template code" and "tenative" just means it wasn't used but
-          # was generated anyway.
+          attribute :level, expects: :integer, displays_as: :ilvl # required
+          # tplc is an entirely opaque "Word template code" and is
+          # "application-specific" according to the spec
           # attribute :tplc
-          # attribute :tentative
+          attribute :tentative, expects: :boolean
         end
 
         value_property :start
         value_property :number_format
-        # value_property :lvl_restart
+        value_property :level_restart
         # value_property :p_style
         # value_property :is_lgl
-        # value_property :suff
+        value_property :suffix
         value_property :level_text
         # value_property :lvl_pic_bullet_id
         value_property :alignment, as: :level_alignment
@@ -37,8 +36,14 @@ module OpenXml
           return if props.none?(&:render?)
 
           props.each { |prop| prop.to_xml(xml) }
-          @paragraph_style.property_xml(xml) unless @paragraph_style.nil?
-          @character_style.property_xml(xml) unless @character_style.nil?
+        end
+
+        def to_xml(xml)
+          xml["w"].public_send(tag, xml_attributes) {
+            property_xml(xml)
+            @paragraph_style.property_xml(xml) unless @paragraph_style.nil?
+            @character_style.property_xml(xml) unless @character_style.nil?
+          }
         end
       end
     end
