@@ -9,14 +9,15 @@ module OpenXml
           super()
           self.id = id
         end
+        # TODO: child levels is limited to a max of 9
 
         with_namespace :w do
-          attribute :id, expects: :integer, displays_as: :abstractNumId, required: true
+          attribute :id, expects: :integer, displays_as: :abstractNumId#, required: true
         end
 
-        # value_property :nsid
+        # value_property :nsid - this is a UI property and likely not worth implementing
         value_property :multi_level_type
-        # value_property :tmpl
+        # value_property :tmpl - this is a UI property and likely not worth implementing
         # value_property :name
         # value_property :style_link
         # value_property :num_style_link

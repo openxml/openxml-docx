@@ -9,9 +9,10 @@ module OpenXml
           super()
           self.id = id
         end
+        # TODO: child lvlOverride is limited to 9
 
         with_namespace :w do
-          attribute :id, expects: :integer, displays_as: :numId, required: true
+          attribute :id, expects: :integer, displays_as: :numId#, required: true
         end
 
         value_property :abstract_number_id
