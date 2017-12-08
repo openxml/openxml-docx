@@ -42,7 +42,8 @@ level_0 = Level.new
 level_0.level = 0
 level_0.start = 1
 level_0.number_format = :bullet
-level_0.level_text = "o"
+# This is the default bullet Word uses
+level_0.level_text = "\u00B7".encode("UTF-8")
 level_0.alignment = :left
 level_0.character_style.font.ascii = "Symbol"
 level_0.character_style.font.high_ansi = "Symbol"
