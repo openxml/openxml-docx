@@ -5,8 +5,13 @@ module OpenXml
         include HasChildren, HasProperties
         tag :abstractNum
 
+        def initialize(id)
+          super()
+          self.id = id
+        end
+
         with_namespace :w do
-          attribute :id, expects: :integer, displays_as: :abstractNumId
+          attribute :id, expects: :integer, displays_as: :abstractNumId, required: true
         end
 
         # value_property :nsid

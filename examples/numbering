@@ -34,8 +34,7 @@ package.styles << list_style
 # Each list needs a numbering within the numbering part of the document.
 
 # Create an abstract number that describes a bulleted list:
-abstract_number = AbstractNumber.new
-abstract_number.id = 0
+abstract_number = AbstractNumber.new(0)
 #abstract_number.multi_level_type = :hybridMultilevel
 # Each number can have multiple levels. Define the first level as a bulleted list:
 level_0 = Level.new
@@ -84,6 +83,42 @@ list_item.numbering.level = 0
 list_item.numbering.id = 1
 
 package.document << list_item
+
+package.document << create_paragraph("Outline Example")
+
+# Lists with numbers are a bit more complicated. The following creates an
+# "outline" list:
+
+abstract_number = AbstractNumber.new(1)
+
+[:upperRoman, :upperLetter, :decimal, :lowerLetter, :lowerRoman, :decimal, :lowerLetter].each.with_index do |number_format, index|
+  level = Level.new
+  level.level = index
+  level.start = 1
+  level.number_format = number_format
+  # Level text replacement tokens are always 1-based, while the levels
+  # themselves are 0-based
+  level.level_text = index < 4 ? "%#{index+1}." : "(%#{index+1})"
+  level.alignment = :left
+  level.paragraph_style.indentation.left = (360 * (index+1))
+  level.paragraph_style.indentation.hanging = 360
+  abstract_number << level
+end
+
+package.numbering << abstract_number
+
+number = Number.new(2)
+number.abstract_number_id = 1
+
+package.numbering << number
+
+(0..6).each do |level|
+  list_item = create_paragraph("Level #{level+1}")
+  list_item.paragraph_style = 'ListParagraph'
+  list_item.numbering.level = level
+  list_item.numbering.id = 2
+  package.document << list_item
+end
 
 filename = "numbering_example.docx"
 package.save File.expand_path("#{filename}")
