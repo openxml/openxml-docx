@@ -15,7 +15,6 @@ module OpenXml
         end
 
         value_property :abstract_number_id
-        value_property :lvl_override, as: :level_override
 
         def property_xml(xml)
           props = properties.keys.map(&method(:send)).compact
