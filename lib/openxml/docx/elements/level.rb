@@ -7,8 +7,11 @@ module OpenXml
 
         with_namespace :w do
           attribute :level, expects: :integer, displays_as: :ilvl
-          attribute :tplc
-          attribute :tentative
+          # The following are "UI attributes:" tplc is an entirely opaque
+          # Word "template code" and "tenative" just means it wasn't used but
+          # was generated anyway.
+          # attribute :tplc
+          # attribute :tentative
         end
 
         value_property :start
