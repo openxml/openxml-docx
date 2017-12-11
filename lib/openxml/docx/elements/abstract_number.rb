@@ -21,6 +21,13 @@ module OpenXml
         # value_property :name
         # value_property :style_link
         # value_property :num_style_link
+
+        def property_xml(xml)
+          props = properties.keys.map(&method(:send)).compact
+          return if props.none?(&:render?)
+
+          props.each { |prop| prop.to_xml(xml) }
+        end
       end
     end
   end
