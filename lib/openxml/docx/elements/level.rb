@@ -16,7 +16,7 @@ module OpenXml
         value_property :start
         value_property :number_format
         value_property :level_restart
-        value_property :paragraph_style
+        value_property :associated_paragraph_style, as: :paragraph_style
         value_property :legal_numbering
         value_property :suffix
         value_property :level_text

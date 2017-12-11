@@ -15,9 +15,9 @@ module OpenXml
         end
 
         def <<(child)
-          if child.is_a?(OpenXml::Docx::Elements::AbstractNumber)
+          if child.is_a?(OpenXml::Docx::Elements::AbstractNumbering)
             abstractNumbers << child
-          elsif child.is_a?(OpenXml::Docx::Elements::Number)
+          elsif child.is_a?(OpenXml::Docx::Elements::Numbering)
             numbers << child
           end
         end

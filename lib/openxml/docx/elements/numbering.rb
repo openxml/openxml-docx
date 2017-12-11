@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Elements
-      class Number < OpenXml::Docx::Element
+      class Numbering < OpenXml::Docx::Element
         include HasChildren, HasProperties
         tag :num
 
@@ -15,7 +15,7 @@ module OpenXml
           attribute :id, expects: :integer, displays_as: :numId#, required: true
         end
 
-        value_property :abstract_number_id
+        value_property :abstract_numbering_id
 
         def property_xml(xml)
           props = properties.keys.map(&method(:send)).compact

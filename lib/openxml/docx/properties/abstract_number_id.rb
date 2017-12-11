@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Properties
-      class AbstractNumberId < IntegerProperty
+      class AbstractNumberingId < IntegerProperty
         tag :abstractNumId
 
       end
