@@ -9,17 +9,19 @@ module OpenXml
           attribute :level, expects: :integer, displays_as: :ilvl # required
           # tplc is an entirely opaque "Word template code" and is
           # "application-specific" according to the spec
-          # attribute :tplc
+          attribute :template_code, expects: :long_hex_number, displays_as: :tplc
           attribute :tentative, expects: :boolean
         end
 
         value_property :start
         value_property :number_format
         value_property :level_restart
-        # value_property :p_style
-        # value_property :is_lgl
+        value_property :paragraph_style
+        value_property :legal_numbering
         value_property :suffix
         value_property :level_text
+        # TODO: Add pic_bullet support (this refers to an element that isn't
+        # implemented in the Numbering part)
         # value_property :lvl_pic_bullet_id
         value_property :alignment, as: :level_alignment
 
