@@ -7,6 +7,7 @@ module OpenXml
     REL_FOOTER = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer".freeze
     REL_FONT_TABLE = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable".freeze
     REL_FONT = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/font".freeze
+    REL_NUMBERING = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering".freeze
     REL_IMAGE = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image".freeze
 
     TYPE_STYLES = "application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml".freeze
@@ -14,6 +15,7 @@ module OpenXml
     TYPE_HEADER = "application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml".freeze
     TYPE_FOOTER = "application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml".freeze
     TYPE_FONT_TABLE = "application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml".freeze
+    TYPE_NUMBERING = "application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml".freeze
     TYPE_XML = "application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml".freeze
     TYPE_OBSCURED_FONT = "application/vnd.openxmlformats-officedocument.obfuscatedFont".freeze
     TYPE_IMAGE = {

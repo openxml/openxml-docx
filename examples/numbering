@@ -1,0 +1,125 @@
+#!/usr/bin/env ruby
+
+# This example shows how to use the "numbering" system to describe how a list
+# should be numbered within a document.
+
+# require "rails" # workaround: openxml-package uses `extract_options!`
+$:.push Dir.pwd + "/lib"
+require "openxml/docx"
+
+package = OpenXml::Docx::Package.new
+
+include OpenXml::Docx::Elements
+
+# Each list item is a paragraph. A helper function to create paragraphs in the
+# final document:
+def create_paragraph(content)
+  text = Text.new(content)
+  run = Run.new
+  run << text
+  paragraph = Paragraph.new
+  paragraph << run
+  paragraph
+end
+
+# First up, create a style for the list paragraph
+list_style = OpenXml::Docx::Style.new :paragraph
+list_style.id = 'ListParagraph'
+list_style.style_name = 'List Paragraph'
+list_style.paragraph.indentation.left = 720
+list_style.paragraph.contextual_spacing = true
+
+package.styles << list_style
+
+# Each list needs a numbering within the numbering part of the document.
+
+# Create an abstract numbering that describes a bulleted list:
+abstract_numbering = AbstractNumbering.new(0)
+
+# Each numbering can have multiple levels. Define the first level as a bulleted list:
+level_0 = Level.new
+level_0.level = 0
+level_0.start = 1
+level_0.number_format = :bullet
+# This is the default bullet Word uses
+level_0.level_text = "\u00B7".encode("UTF-8")
+level_0.alignment = :left
+level_0.character_style.font.ascii = "Symbol"
+level_0.character_style.font.high_ansi = "Symbol"
+level_0.character_style.font.hint = :default
+level_0.paragraph_style.indentation.left = 720
+level_0.paragraph_style.indentation.hanging = 360
+abstract_numbering << level_0
+
+package.numbering << abstract_numbering
+
+package.document << create_paragraph("Example of adding a list to a document")
+
+list_item = create_paragraph("First list item")
+list_item.paragraph_style = 'ListParagraph'
+# Say that this list item belongs to our first abstract numbering:
+list_item.numbering.level = 0
+list_item.numbering.id = 1
+# This ID is NOT the numbering ID we created above. Instead, it is a concrete
+# numbering that defines an instance of a list in the document. To link it to
+# our existing abstract numbering, we need to create a concrete numbering
+# instance:
+
+numbering = Numbering.new(1)
+# Setting the abstract numbering ID here links it to a given abstract numbering
+numbering.abstract_numbering_id = 0
+
+# And add this number to the numbering
+package.numbering << numbering
+
+# All that allows us to finally add the item to the document.
+
+package.document << list_item
+
+list_item = create_paragraph("Second list item")
+list_item.paragraph_style = 'ListParagraph'
+
+# The second list item is simpler: we can reuse the numbering we used above.
+list_item.numbering.level = 0
+list_item.numbering.id = 1
+
+package.document << list_item
+
+package.document << create_paragraph("Outline Example")
+
+# Lists with numbers are a bit more complicated. The following creates an
+# "outline" list:
+
+abstract_numbering = AbstractNumbering.new(1)
+
+[:upperRoman, :upperLetter, :decimal, :lowerLetter, :lowerRoman, :decimal, :lowerLetter].each.with_index do |number_format, index|
+  level = Level.new
+  level.level = index
+  level.start = 1
+  level.number_format = number_format
+  # Level text replacement tokens are always 1-based, while the levels
+  # themselves are 0-based
+  level.level_text = index < 4 ? "%#{index+1}." : "(%#{index+1})"
+  level.alignment = :left
+  level.paragraph_style.indentation.left = (360 * (index+1))
+  level.paragraph_style.indentation.hanging = 360
+  abstract_numbering << level
+end
+
+package.numbering << abstract_numbering
+
+numbering = Numbering.new(2)
+numbering.abstract_numbering_id = 1
+
+package.numbering << numbering
+
+(0..6).each do |level|
+  list_item = create_paragraph("Level #{level+1}")
+  list_item.paragraph_style = 'ListParagraph'
+  list_item.numbering.level = level
+  list_item.numbering.id = 2
+  package.document << list_item
+end
+
+filename = "numbering_example.docx"
+package.save File.expand_path("#{filename}")
