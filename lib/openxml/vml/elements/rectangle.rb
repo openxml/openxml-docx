@@ -76,7 +76,7 @@ module OpenXml
 
         def valid_diagram_layout(value)
           message = "Invalid diagram layout. Must be a single digit between 0 and 3 inclusive"
-          raise ArgumentError, message unless (value.is_a?(Fixnum) && (0..3).include?(value)) || value =~ /^[0-3]$/
+          raise ArgumentError, message unless (value.is_a?(Integer) && (0..3).include?(value)) || value =~ /^[0-3]$/
         end
       end
     end
