@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openxml-docx (0.11.1)
+    openxml-docx (0.11.2)
       nokogiri
       openxml-drawingml
       openxml-package (>= 0.2.2)
