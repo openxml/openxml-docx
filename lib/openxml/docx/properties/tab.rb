@@ -4,7 +4,7 @@ module OpenXml
       class Tab < BaseProperty
         attr_reader :position, :type, :leader
 
-        VALID_TYPES = %i(bar center clear decimal end num start)
+        VALID_TYPES = %i(bar center clear decimal end num start left right)
         VALID_LEADERS = [nil, :dot, :heavy, :hyphen, :middleDot, :none, :underscore]
 
         def initialize(position, type, leader=nil)
