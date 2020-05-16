@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "nokogiri"
   spec.add_dependency "openxml-package", ">= 0.2.2"
   spec.add_dependency "openxml-drawingml"
-  spec.add_dependency "ox", "~> 2.9.0"
+  spec.add_dependency "ox", "~> 2.9"
 
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rspec"
