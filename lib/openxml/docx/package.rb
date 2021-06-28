@@ -102,7 +102,7 @@ module OpenXml
       def add_header(header)
         headers << header
         header_name = "header#{headers.count}.xml"
-        Package.content_types { override "/word/#{header_name}", TYPE_HEADER }
+        content_types.add_override "/word/#{header_name}", TYPE_HEADER
         add_part "word/#{header_name}", header
         add_part "word/_rels/#{header_name}.rels", header.relationships
         relationship = document.relationships.add_relationship REL_HEADER, header_name
@@ -112,7 +112,7 @@ module OpenXml
       def add_footer(footer)
         footers << footer
         footer_name = "footer#{footers.count}.xml"
-        Package.content_types { override "/word/#{footer_name}", TYPE_FOOTER }
+        content_types.add_override "/word/#{footer_name}", TYPE_FOOTER
         add_part "word/#{footer_name}", footer
         add_part "word/_rels/#{footer_name}.rels", footer.relationships
         relationship = document.relationships.add_relationship REL_FOOTER, footer_name
