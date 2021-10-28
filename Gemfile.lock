@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openxml-docx (0.11.2)
+    openxml-docx (0.11.3)
       nokogiri
       openxml-drawingml
       openxml-package (>= 0.2.2)
@@ -14,20 +14,22 @@ GEM
     diff-lcs (1.3)
     docile (1.3.2)
     method_source (1.0.0)
-    mini_portile2 (2.4.0)
-    nokogiri (1.10.9)
-      mini_portile2 (~> 2.4.0)
+    mini_portile2 (2.6.1)
+    nokogiri (1.12.5)
+      mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
     openxml-drawingml (0.2.0)
       nokogiri
       openxml-package (~> 0.3.2)
-    openxml-package (0.3.3)
+    openxml-package (0.3.4)
       nokogiri
       ox
-      rubyzip (~> 1.2.2)
-    ox (2.13.2)
+      rubyzip
+    ox (2.14.5)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    racc (1.6.0)
     rake (13.0.1)
     rr (1.2.1)
     rspec (3.9.0)
@@ -43,7 +45,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.3)
-    rubyzip (1.2.4)
+    rubyzip (2.3.2)
     simplecov (0.18.5)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
