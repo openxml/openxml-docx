@@ -55,7 +55,7 @@ module OpenXml
       end
 
       def embed_truetype_font(path: nil, name: nil)
-        URI.open(path, "rb") do |source_font|
+        open(path, "rb") do |source_font|
           obfuscation_data = obfuscate_font source_font
           data = obfuscation_data[:bytes] << source_font.read
           destination_font_name = "font#{fonts.fonts.count + 1}.odttf"
@@ -79,7 +79,7 @@ module OpenXml
         content_type ||= extension_match[:extension] if extension_match
         return if content_type.nil?
 
-        URI.open(path, "rb") do |source_image|
+        open(path, "rb") do |source_image|
           embed_image_data(data: source_image.read, content_type: content_type, into_part: into_part)
         end
       end
