@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openxml-docx (0.11.4)
+    openxml-docx (0.11.5)
       nokogiri
       openxml-drawingml
       openxml-package (>= 0.2.2)
@@ -15,17 +15,17 @@ GEM
     docile (1.4.0)
     method_source (1.0.0)
     mini_portile2 (2.8.0)
-    nokogiri (1.13.4)
+    nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    openxml-drawingml (0.2.1)
+    openxml-drawingml (0.3.0)
       nokogiri
       openxml-package (~> 0.3.2)
     openxml-package (0.3.4)
       nokogiri
       ox
       rubyzip
-    ox (2.14.6)
+    ox (2.14.11)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -67,4 +67,4 @@ DEPENDENCIES
   timecop
 
 BUNDLED WITH
-   2.1.4
+   2.2.22
