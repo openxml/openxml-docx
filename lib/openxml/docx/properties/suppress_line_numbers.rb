@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Properties
-      class SupressLineNumbers < ToggleProperty
+      class SuppressLineNumbers < ToggleProperty
       end
     end
   end

@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Properties
-      class SupressAutoHyphens < ToggleProperty
+      class SuppressAutoHyphens < ToggleProperty
       end
     end
   end
