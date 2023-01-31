@@ -1,7 +1,7 @@
 module OpenXml
   module Docx
     module Properties
-      class SupressOverlap < ToggleProperty
+      class SuppressOverlap < ToggleProperty
       end
     end
   end

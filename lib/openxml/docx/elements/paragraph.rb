@@ -23,9 +23,9 @@ module OpenXml
         value_property :page_break_before
         value_property :snap_to_grid
         value_property :paragraph_style
-        value_property :supress_auto_hyphens
-        value_property :supress_line_numbers
-        value_property :supress_overlap
+        value_property :suppress_auto_hyphens
+        value_property :suppress_line_numbers
+        value_property :suppress_overlap
         value_property :textbox_tight_wrap
         value_property :text_alignment
         value_property :text_direction
